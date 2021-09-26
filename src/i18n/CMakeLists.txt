@@ -14,12 +14,9 @@ set_property(TARGET ktexttemplate_i18ntags PROPERTY
 target_link_libraries(ktexttemplate_i18ntags PRIVATE
   KF6::TextTemplate
 )
-target_compile_features(ktexttemplate_i18ntags PRIVATE
-  cxx_auto_type
-)
 ktexttemplate_adjust_plugin_name(ktexttemplate_i18ntags)
 
-install(TARGETS ktexttemplate_i18ntags 
+install(TARGETS ktexttemplate_i18ntags
   EXPORT ktexttemplate_targets
   LIBRARY DESTINATION ${PLUGIN_INSTALL_DIR}
   COMPONENT Templates

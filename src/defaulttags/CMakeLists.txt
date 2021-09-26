@@ -26,10 +26,6 @@ set_property(TARGET ktexttemplate_defaulttags PROPERTY
 target_link_libraries(ktexttemplate_defaulttags PRIVATE
   KF6::TextTemplate
 )
-target_compile_features(ktexttemplate_defaulttags PRIVATE
-  cxx_auto_type
-  cxx_variadic_templates
-)
 ktexttemplate_adjust_plugin_name(ktexttemplate_defaulttags)
 
 install(TARGETS ktexttemplate_defaulttags 

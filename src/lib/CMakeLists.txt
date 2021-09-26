@@ -57,12 +57,6 @@ generate_export_header(KTextTemplate)
 set_property(TARGET KTextTemplate PROPERTY
   EXPORT_NAME Templates
 )
-target_compile_features(KTextTemplate
-  PRIVATE
-    cxx_auto_type
-  PUBLIC
-    cxx_override
-)
 
 if (CMAKE_GENERATOR MATCHES "Visual Studio")
 

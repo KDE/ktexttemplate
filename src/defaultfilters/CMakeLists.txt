@@ -13,9 +13,6 @@ set_property(TARGET ktexttemplate_defaultfilters PROPERTY
 target_link_libraries(ktexttemplate_defaultfilters PRIVATE
   KF6::TextTemplate
 )
-target_compile_features(ktexttemplate_defaultfilters PRIVATE
-  cxx_auto_type
-)
 ktexttemplate_adjust_plugin_name(ktexttemplate_defaultfilters)
 
 install(TARGETS ktexttemplate_defaultfilters

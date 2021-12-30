@@ -1,18 +1,13 @@
 
 add_subdirectory(lib)
 
-if (BUILD_MAIN_PLUGINS)
-  add_subdirectory(loadertags)
-  add_subdirectory(defaulttags)
+add_subdirectory(loadertags)
+add_subdirectory(defaulttags)
 
-  add_subdirectory(defaultfilters)
-endif()
+add_subdirectory(defaultfilters)
 
+add_subdirectory(i18n)
 
-if (BUILD_I18N_PLUGIN)
-  add_subdirectory(i18n)
-endif()
-
-if (BUILD_TESTS)
+if (BUILD_TESTING)
   add_subdirectory(tests)
 endif()

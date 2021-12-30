@@ -198,14 +198,14 @@ namespace Grantlee
 
   @code
     mkdir build && cd build
-    cmake .. -DBUILD_TEXTDOCUMENT=OFF -DBUILD_TESTS=OFF
+    cmake .. -DBUILD_TEXTDOCUMENT=OFF -DBUILD_TESTING=OFF
   @endcode
 
   Similarly, it is possible to build only the core of the %Grantlee Template library without the plugins. This may be useful for specialized applications, but as the unit tests depend on the plugins, the tests would need to be deactivated in this case too:
 
   @code
     mkdir build && cd build
-    cmake .. -DBUILD_TEXTDOCUMENT=OFF -DBUILD_TESTS=OFF -DBUILD_MAIN_PLUGINS=OFF
+    cmake .. -DBUILD_TEXTDOCUMENT=OFF -DBUILD_TESTING=OFF -DBUILD_MAIN_PLUGINS=OFF
   @endcode
 
   By default, %Grantlee depends on the QtQml library in order to implement Javascript support. This support is only enabled if the QtQml library is found.

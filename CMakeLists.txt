@@ -16,14 +16,10 @@ if (MINGW)
   endif()
 endif()
 
-option( BUILD_TEMPLATES "Build the Grantlee template library" TRUE )
-option( BUILD_TEXTDOCUMENT "Build the Grantlee textdocument library" TRUE )
-option( BUILD_MAIN_PLUGINS "Build the Grantlee Templates plugins" TRUE )
-option( BUILD_I18N_PLUGIN "Build the Grantlee Templates i18n plugin" TRUE )
-option( BUILD_TESTS "Build the Grantlee tests" TRUE )
+option( BUILD_TESTING "Build automated tests." TRUE )
 option( GRANTLEE_BUILD_WITH_QT6 "Build Grantlee with Qt 6" FALSE)
 
-if (BUILD_TESTS)
+if (BUILD_TESTING)
   include (CTest)
   enable_testing()
 endif()
@@ -98,13 +94,8 @@ else()
     find_package(Qt5Qml 5.2.0)
 endif()
 
-if (BUILD_TEMPLATES)
-  add_subdirectory(templates)
-endif()
-
-if (BUILD_TEXTDOCUMENT)
-  add_subdirectory(textdocument)
-endif()
+add_subdirectory(templates)
+add_subdirectory(textdocument)
 
 set(CMAKECONFIG_INSTALL_DIR "${LIB_INSTALL_DIR}/cmake/Grantlee${Grantlee5_VERSION_MAJOR}" )
 
@@ -145,16 +136,6 @@ install(EXPORT grantlee_targets
   FILE GrantleeTargets.cmake
   COMPONENT Common
 )
-
-# Add support for an uninstall target
-configure_file(
-  "${Grantlee_MODULE_DIR}/cmake_uninstall.cmake.in"
-  "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake"
-  @ONLY)
-
-add_custom_target(uninstall
-  "${CMAKE_COMMAND}" -P
-  "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake")
 
 find_package(Doxygen)
 if (DOXYGEN_FOUND AND DOXYGEN_DOT_FOUND)

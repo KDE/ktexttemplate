@@ -96,6 +96,10 @@ endif()
 
 add_subdirectory(src)
 
+if (BUILD_TESTING)
+    add_subdirectory(autotests)
+endif()
+
 set(CMAKECONFIG_INSTALL_DIR "${LIB_INSTALL_DIR}/cmake/Grantlee${Grantlee5_VERSION_MAJOR}" )
 
 if (GRANTLEE_BUILD_WITH_QT6)

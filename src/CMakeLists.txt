@@ -8,6 +8,3 @@ add_subdirectory(defaultfilters)
 
 add_subdirectory(i18n)
 
-if (BUILD_TESTING)
-  add_subdirectory(tests)
-endif()

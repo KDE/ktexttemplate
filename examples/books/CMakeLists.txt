@@ -31,14 +31,8 @@ target_link_libraries(
   books
   Grantlee5::Templates
 )
-if (GRANTLEE_BUILD_WITH_QT6)
-    target_link_libraries(books
-      Qt6::Widgets
-      Qt6::Sql
-    )
-else()
-    target_link_libraries(books
-      Qt5::Widgets
-      Qt5::Sql
-    )
-endif()
+
+target_link_libraries(books
+  Qt6::Widgets
+  Qt6::Sql
+)

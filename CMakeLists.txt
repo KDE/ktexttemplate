@@ -17,7 +17,6 @@ if (MINGW)
 endif()
 
 option( BUILD_TESTING "Build automated tests." TRUE )
-option( GRANTLEE_BUILD_WITH_QT6 "Build Grantlee with Qt 6" FALSE)
 
 if (BUILD_TESTING)
   include (CTest)
@@ -86,13 +85,8 @@ set( CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 
 include("${Grantlee_MODULE_DIR}/GrantleeMacros.cmake")
 
-if (GRANTLEE_BUILD_WITH_QT6)
-    find_package(Qt6Core 6.0.0 REQUIRED)
-    find_package(Qt6Qml 6.0.0)
-else()
-    find_package(Qt5Core 5.2.0 REQUIRED)
-    find_package(Qt5Qml 5.2.0)
-endif()
+find_package(Qt6Core 6.0.0 REQUIRED)
+find_package(Qt6Qml 6.0.0)
 
 add_subdirectory(src)
 
@@ -101,12 +95,6 @@ if (BUILD_TESTING)
 endif()
 
 set(CMAKECONFIG_INSTALL_DIR "${LIB_INSTALL_DIR}/cmake/Grantlee${Grantlee5_VERSION_MAJOR}" )
-
-if (GRANTLEE_BUILD_WITH_QT6)
-  set(Grantlee_REQUIRED_QT_VERSION 6)
-else()
-  set(Grantlee_REQUIRED_QT_VERSION 5)
-endif()
 
 configure_file(
   "${Grantlee_MODULE_DIR}/Grantlee${Grantlee5_VERSION_MAJOR}Config.cmake.in"

@@ -1,8 +1,4 @@
-if (GRANTLEE_BUILD_WITH_QT6)
-  find_package(Qt6Test 6.0.0 REQUIRED)
-else()
-  find_package(Qt5Test 5.2.0 REQUIRED)
-endif()
+find_package(Qt6Test 6.0.0 REQUIRED)
 
 set( EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_BINARY_DIR} )
 
@@ -10,21 +6,12 @@ set( GRANTLEE_PLUGIN_PATH "${CMAKE_BINARY_DIR}/" )
 
 configure_file(grantlee_paths.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/grantlee_paths.h)
 
-if (GRANTLEE_BUILD_WITH_QT6)
-  find_package(Qt6LinguistTools QUIET)
-else()
-  find_package(Qt5LinguistTools QUIET)
-endif()
-if (Qt5LinguistTools_FOUND OR Qt6LinguistTools_FOUND)
+find_package(Qt6LinguistTools QUIET)
+if (Qt6LinguistTools_FOUND)
   set(TESTS_LOCALES "fr_FR" "de_DE")
 
-  if (GRANTLEE_BUILD_WITH_QT6)
-    set(QT_LUPDATE_EXECUTABLE Qt6::lupdate)
-    set(QT_LRELEASE_EXECUTABLE Qt6::lrelease)
-  else()
-    set(QT_LUPDATE_EXECUTABLE Qt5::lupdate)
-    set(QT_LRELEASE_EXECUTABLE Qt5::lrelease)
-  endif()
+  set(QT_LUPDATE_EXECUTABLE Qt6::lupdate)
+  set(QT_LRELEASE_EXECUTABLE Qt6::lrelease)
 
   set(LINGUIST_TS_ARGS COMMAND "${QT_LUPDATE_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/test_input.cpp" "-ts")
 
@@ -59,21 +46,13 @@ configure_file(testresource.qrc.cmake "${CMAKE_CURRENT_BINARY_DIR}/testresource.
 
 set (_rcc_file "${CMAKE_CURRENT_BINARY_DIR}/testresource.qrc")
 
-if (GRANTLEE_BUILD_WITH_QT6)
-  qt6_add_resources(_testresource_rcc_src ${_rcc_file} OPTIONS -root "/" )
-else()
-  qt5_add_resources(_testresource_rcc_src ${_rcc_file} OPTIONS -root "/" )
-endif()
+qt6_add_resources(_testresource_rcc_src ${_rcc_file} OPTIONS -root "/" )
 
 add_library(template_test_builtins STATIC coverageobject.cpp
   coverageobject.cpp
   ${_testresource_rcc_src}
 )
-if (GRANTLEE_BUILD_WITH_QT6)
-  target_link_libraries(template_test_builtins Qt6::Test)
-else()
-  target_link_libraries(template_test_builtins Qt5::Test)
-endif()
+target_link_libraries(template_test_builtins Qt6::Test)
 target_compile_features(template_test_builtins PUBLIC cxx_auto_type)
 
 macro(grantlee_templates_unit_tests)
@@ -103,13 +82,13 @@ grantlee_templates_unit_tests(
   testgenericcontainers
 )
 
-if (Qt5Qml_FOUND OR Qt6Qml_FOUND)
+if (Qt6Qml_FOUND)
   grantlee_templates_unit_tests(
     testscriptabletags
   )
 endif()
 
-if (Qt5LinguistTools_FOUND OR Qt6LinguistTools_FOUND)
+if (Qt6LinguistTools_FOUND)
   grantlee_templates_unit_tests(
     testinternationalization
   )

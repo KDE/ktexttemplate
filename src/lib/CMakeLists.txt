@@ -82,7 +82,7 @@ target_compile_definitions(Grantlee_Templates
     PLUGINS_PREFER_DEBUG_POSTFIX=$<CONFIG:Debug>
 )
 
-if (Qt5Qml_FOUND OR Qt6Qml_FOUND)
+if (Qt6Qml_FOUND)
   set(scriptabletags_FILES
     scriptablecontext.cpp
     scriptablefilterexpression.cpp
@@ -101,15 +101,9 @@ if (Qt5Qml_FOUND OR Qt6Qml_FOUND)
 
   target_sources(Grantlee_Templates PRIVATE ${scriptabletags_SRCS})
   target_include_directories(Grantlee_Templates PRIVATE ../scriptabletags)
-  if (GRANTLEE_BUILD_WITH_QT6)
-    target_link_libraries(Grantlee_Templates
-      PRIVATE Qt6::Qml
-    )
-  else()
-    target_link_libraries(Grantlee_Templates
-      PRIVATE Qt5::Qml
-    )
-  endif()
+  target_link_libraries(Grantlee_Templates
+    PRIVATE Qt6::Qml
+  )
 endif()
 
 if (BUILD_TESTING)
@@ -118,15 +112,9 @@ endif()
 
 configure_file(grantlee_test_export.h.in "${CMAKE_CURRENT_BINARY_DIR}/grantlee_test_export.h")
 
-if (GRANTLEE_BUILD_WITH_QT6)
-  target_link_libraries(Grantlee_Templates
-    PUBLIC Qt6::Core
-  )
-else()
-  target_link_libraries(Grantlee_Templates
-    PUBLIC Qt5::Core
-  )
-endif()
+target_link_libraries(Grantlee_Templates
+  PUBLIC Qt6::Core
+)
 
 set_target_properties(Grantlee_Templates PROPERTIES
   VERSION    ${Grantlee5_VERSION}

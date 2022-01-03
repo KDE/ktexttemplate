@@ -247,7 +247,7 @@ QString EnginePrivate::getScriptLibraryName(const QString &name,
                                             uint minorVersion) const
 {
   auto pluginIndex = 0;
-  const QString prefix = QStringLiteral("/grantlee/")
+  const QString prefix = QStringLiteral("/KTextTemplate/")
                          + QString::number(KTEXTTEMPLATE_VERSION_MAJOR)
                          + QLatin1Char('.') + QString::number(minorVersion)
                          + QLatin1Char('/');
@@ -318,7 +318,7 @@ EnginePrivate::loadCppLibrary(const QString &name, uint minorVersion)
   while (m_pluginDirs.size() > pluginIndex) {
     const auto nextDir = m_pluginDirs.at(pluginIndex++);
     const QString pluginDirString
-        = nextDir + QStringLiteral("/grantlee/")
+        = nextDir + QStringLiteral("/KTextTemplate/")
           + QString::number(KTEXTTEMPLATE_VERSION_MAJOR) + QLatin1Char('.')
           + QString::number(minorVersion) + QLatin1Char('/');
 

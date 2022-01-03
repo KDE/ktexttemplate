@@ -19,7 +19,7 @@ configure_file(ktexttemplate_paths.h.cmake ${PROJECT_BINARY_DIR}/ktexttemplate_p
 qt5_add_resources(
   codegen_example_RCS_SRCS
   custom_tags.qrc
-  OPTIONS -root "/plugins/grantlee/${KTextTemplate_VERSION_MAJOR}.${KTextTemplate_VERSION_MINOR}/"
+  OPTIONS -root "/plugins/KTextTemplate/${KTextTemplate_VERSION_MAJOR}.${KTextTemplate_VERSION_MINOR}/"
 )
 
 add_executable(codegen

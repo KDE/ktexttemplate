@@ -1,5 +1,5 @@
 <!DOCTYPE RCC><RCC version="1.0">
-<qresource prefix="/plugins/grantlee/@KTextTemplate_MAJOR_MINOR_VERSION_STRING@">
+<qresource prefix="/plugins/KTextTemplate/@KTextTemplate_MAJOR_MINOR_VERSION_STRING@">
     <file alias="scripteddefaults.qs">@CMAKE_CURRENT_SOURCE_DIR@/scripteddefaults.qs</file>
     <file alias="testtags.qs">@CMAKE_CURRENT_SOURCE_DIR@/testtags.qs</file>
 </qresource>

@@ -190,7 +190,7 @@ QVariant MakeListFilter::doFilter(const QVariant &_input,
   auto input = _input;
 
   if (input.userType() == qMetaTypeId<int>())
-    input.convert(QMetaType::QString);
+    input.convert(QMetaType::fromType<QString>());
 
   if (input.userType() == qMetaTypeId<SafeString>()
       || input.userType() == qMetaTypeId<QString>()) {

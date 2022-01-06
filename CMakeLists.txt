@@ -1,25 +1,38 @@
 
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.16)
 
-if (POLICY CMP0071)
-  cmake_policy(SET CMP0071 NEW)
-endif()
+set(KF_VERSION "5.90.0") # handled by release scripts
+project(KTextTemplate VERSION ${KF_VERSION})
 
-project(KTextTemplate VERSION 6.0.0)
+include(FeatureSummary)
+find_package(ECM 5.90.0 CONFIG)
+set_package_properties(ECM PROPERTIES
+  TYPE REQUIRED
+  DESCRIPTION "Extra CMake Modules."
+  URL "https://commits.kde.org/extra-cmake-modules"
+)
+feature_summary(WHAT REQUIRED_PACKAGES_NOT_FOUND FATAL_ON_MISSING_REQUIRED_PACKAGES)
 
-# Workaround for http://public.kitware.com/Bug/view.php?id=12301
-if (MINGW)
-  if(NOT CMAKE_BUILD_TYPE)
-    set(CMAKE_BUILD_TYPE Debug CACHE STRING "Choose the type of build,
-  options are: None(CMAKE_CXX_FLAGS or CMAKE_C_FLAGS used) Debug Release
-  RelWithDebInfo MinSizeRel Coverage." FORCE)
-  endif()
-endif()
+set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
 
-option( BUILD_TESTING "Build automated tests." TRUE )
+include(KDEInstallDirs)
+include(KDEFrameworkCompilerSettings NO_POLICY_SCOPE)
+include(KDECMakeSettings)
+
+set(REQUIRED_QT_VERSION 6.2.0)
+find_package(Qt6Core ${REQUIRED_QT_VERSION} REQUIRED NO_MODULE)
+find_package(Qt6Qml ${REQUIRED_QT_VERSION} NO_MODULE)
+
+set_package_properties(Qt6Qml PROPERTIES
+    TYPE OPTIONAL
+    PURPOSE "Build Javascript binding for KTextDocument"
+)
+
+include(ECMAddQch)
+
+set(EXCLUDE_DEPRECATED_BEFORE_AND_AT 0 CACHE STRING "Control the range of deprecated API excluded from the build [default=0].")
 
 if (BUILD_TESTING)
-  include (CTest)
   enable_testing()
 endif()
 
@@ -45,7 +58,7 @@ endif()
 
 if (CMAKE_COMPILER_IS_GNUCXX)
   set (CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -Wshadow -Wno-long-long -std=iso9899:1990 -Wundef -Wcast-align -Werror-implicit-function-declaration -Wchar-subscripts -Wall -W -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -fno-common")
-  set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wshadow -Wnon-virtual-dtor -Wno-long-long -Wundef -Wcast-align -Wchar-subscripts -Wall -W -Wpointer-arith -Wformat-security -fno-check-new -fno-common -pedantic-errors")
+  set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wshadow -Wnon-virtual-dtor -Wno-long-long -Wundef -Wcast-align -Wchar-subscripts -Wall -W -Wpointer-arith -Wformat-security -fno-check-new -fno-common")
 
   if (NOT APPLE)
     set ( CMAKE_SHARED_LINKER_FLAGS "-Wl,--fatal-warnings -Wl,--no-undefined ${CMAKE_SHARED_LINKER_FLAGS}")
@@ -56,13 +69,14 @@ endif()
 add_definitions(
   -DQT_NO_CAST_TO_ASCII
   -DQT_NO_CAST_FROM_ASCII
-  -DQT_STRICT_ITERATORS
   -DQT_NO_URL_CAST_FROM_STRING
   -DQT_NO_CAST_FROM_BYTEARRAY
   -DQT_NO_KEYWORDS
   -DQT_USE_QSTRINGBUILDER
   -DQT_DISABLE_DEPRECATED_BEFORE=0x060200
 )
+
+kde_enable_exceptions()
 
 # Always include the source and build directories in the include path
 # to save doing so manually in every subdirectory.
@@ -84,9 +98,6 @@ set( CMAKE_INSTALL_NAME_DIR ${CMAKE_INSTALL_PREFIX}/${LIB_INSTALL_DIR})
 set( CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 
 include("${KTextTemplate_MODULE_DIR}/KF6TextTemplateMacros.cmake")
-
-find_package(Qt6Core 6.0.0 REQUIRED)
-find_package(Qt6Qml 6.0.0)
 
 add_subdirectory(src)
 
@@ -178,3 +189,5 @@ if (DOXYGEN_FOUND AND DOXYGEN_DOT_FOUND)
     ${DOCS_ARGS}
   )
 endif()
+
+feature_summary(WHAT ALL   FATAL_ON_MISSING_REQUIRED_PACKAGES)

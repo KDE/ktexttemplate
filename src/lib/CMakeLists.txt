@@ -57,6 +57,10 @@ generate_export_header(KTextTemplate)
 set_property(TARGET KTextTemplate PROPERTY
   EXPORT_NAME Templates
 )
+if (CMAKE_CXX_COMPILER_ID MATCHES GNU OR CMAKE_CXX_COMPILER_ID MATCHES Clang)
+  # Lexer uses CRTP with some specializations overriding, but not all:
+  target_compile_options(KTextTemplate PRIVATE -Wno-suggest-override)
+endif()
 
 if (CMAKE_GENERATOR MATCHES "Visual Studio")
 

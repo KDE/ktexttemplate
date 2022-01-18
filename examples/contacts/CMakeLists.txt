@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.5)
 
 project(contacts_grantlee)
 
-find_package(Grantlee5 REQUIRED)
+find_package(KF6TextTemplate REQUIRED)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOMOC ON)

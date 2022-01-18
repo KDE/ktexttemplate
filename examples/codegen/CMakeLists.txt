@@ -2,24 +2,24 @@ cmake_minimum_required(VERSION 3.5)
 
 project(codegen_grantlee)
 
-find_package(Grantlee5 REQUIRED)
+find_package(KF6TextTemplate REQUIRED)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTORCC ON)
 
-get_property(Grantlee_PLUGIN_DIR TARGET Grantlee5::defaulttags PROPERTY LOCATION)
-get_filename_component(Grantlee_PLUGIN_DIR ${Grantlee_PLUGIN_DIR} PATH)
-get_filename_component(Grantlee_PLUGIN_DIR ${Grantlee_PLUGIN_DIR} PATH)
-get_filename_component(Grantlee_PLUGIN_DIR ${Grantlee_PLUGIN_DIR} PATH)
+get_property(KTextTemplate_PLUGIN_DIR TARGET Grantlee5::defaulttags PROPERTY LOCATION)
+get_filename_component(KTextTemplate_PLUGIN_DIR ${KTextTemplate_PLUGIN_DIR} PATH)
+get_filename_component(KTextTemplate_PLUGIN_DIR ${KTextTemplate_PLUGIN_DIR} PATH)
+get_filename_component(KTextTemplate_PLUGIN_DIR ${KTextTemplate_PLUGIN_DIR} PATH)
 
 configure_file(grantlee_paths.h.cmake ${PROJECT_BINARY_DIR}/grantlee_paths.h)
 
 qt5_add_resources(
   codegen_example_RCS_SRCS
   custom_tags.qrc
-  OPTIONS -root "/plugins/grantlee/${Grantlee5_VERSION_MAJOR}.${Grantlee5_VERSION_MINOR}/"
+  OPTIONS -root "/plugins/grantlee/${KTextTemplate_VERSION_MAJOR}.${KTextTemplate_VERSION_MINOR}/"
 )
 
 add_executable(codegen

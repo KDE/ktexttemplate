@@ -40,7 +40,7 @@ namespace Grantlee
   Idiomatic use of %Grantlee in the buildsystem is now similar to:
 
   @verbatim
-  find_package(Grantlee5 REQUIRED)
+  find_package(KF6TextTemplate REQUIRED)
 
   add_executable(main main.cpp)
   target_link_libraries(main
@@ -61,7 +61,7 @@ namespace Grantlee
   number:
 
   @verbatim
-  find_package(Grantlee5 REQUIRED)
+  find_package(KF6TextTemplate REQUIRED)
   @endverbatim
 
   @section cpp_porting C++ porting

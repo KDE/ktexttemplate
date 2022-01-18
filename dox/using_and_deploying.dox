@@ -18,7 +18,7 @@ namespace Grantlee
 
   @section finding_with_cmake Finding Grantlee with CMake
 
-  %Grantlee uses the <a href="http://www.cmake.org/">CMake</a> cross platform build system, and installs a cmake file called <tt>Grantlee5Config.cmake</tt>. This config file is automatically searched for by CMake and contains the information needed for other CMake based applications to find headers and link against %Grantlee libraries. See https://cmake.org/cmake/help/latest/manual/cmake-packages.7.html for more.
+  %Grantlee uses the <a href="http://www.cmake.org/">CMake</a> cross platform build system, and installs a cmake file called <tt>KF6TextTemplateConfig.cmake</tt>. This config file is automatically searched for by CMake and contains the information needed for other CMake based applications to find headers and link against %Grantlee libraries. See https://cmake.org/cmake/help/latest/manual/cmake-packages.7.html for more.
 
   When creating an application using CMake that depends on %Grantlee, first issue the <tt>find_package</tt> command, and then use the CMake <tt>target_link_libraries</tt> command link to and use the libraries.
 
@@ -30,7 +30,7 @@ namespace Grantlee
     set(CMAKE_AUTOMOC ON)
     set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
-    find_package(Grantlee5 REQUIRED)
+    find_package(KF6TextTemplate REQUIRED)
 
     # ... Application sources etc.
 
@@ -179,7 +179,7 @@ namespace Grantlee
     set (_rcc_file "my_qtscript_library.qrc")
     qt5_add_resources(_scripted_rcc_src
         ${_rcc_file}
-        OPTIONS -root "/plugins/grantlee/${Grantlee5_VERSION_MAJOR}.${Grantlee5_VERSION_MINOR}"
+        OPTIONS -root "/plugins/grantlee/${KTextTemplate_VERSION_MAJOR}.${KTextTemplate_VERSION_MINOR}"
     )
 
     add_executable(my_app, ${my_app_srcs} ${_scripted_rcc_src})

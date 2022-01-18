@@ -5,7 +5,7 @@ if (POLICY CMP0071)
   cmake_policy(SET CMP0071 NEW)
 endif()
 
-project(Grantlee5 VERSION 5.2.0)
+project(KTextTemplate VERSION 6.0.0)
 
 # Workaround for http://public.kitware.com/Bug/view.php?id=12301
 if (MINGW)
@@ -23,8 +23,8 @@ if (BUILD_TESTING)
   enable_testing()
 endif()
 
-set(Grantlee_MODULE_DIR ${CMAKE_SOURCE_DIR}/cmake/modules)
-list(APPEND CMAKE_MODULE_PATH ${Grantlee_MODULE_DIR})
+set(KTextTemplate_MODULE_DIR ${CMAKE_SOURCE_DIR}/cmake/modules)
+list(APPEND CMAKE_MODULE_PATH ${KTextTemplate_MODULE_DIR})
 
 include(GenerateExportHeader)
 set(CMAKE_CXX_VISIBILITY_PRESET hidden)
@@ -70,20 +70,20 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_INCLUDE_CURRENT_DIR_IN_INTERFACE ON)
 set(CMAKE_AUTOMOC ON)
 
-set(Grantlee5_MIN_PLUGIN_VERSION 0)
+set(KTextTemplate_MIN_PLUGIN_VERSION 0)
 
-set(Grantlee5_MAJOR_MINOR_VERSION_STRING "${Grantlee5_VERSION_MAJOR}.${Grantlee5_VERSION_MINOR}" )
+set(KTextTemplate_MAJOR_MINOR_VERSION_STRING "${KTextTemplate_VERSION_MAJOR}.${KTextTemplate_VERSION_MINOR}" )
 
 set (LIB_SUFFIX "" CACHE STRING "Define suffix of library directory name (eg. '64')")
 
 set( LIB_INSTALL_DIR lib${LIB_SUFFIX} )
-set( PLUGIN_INSTALL_DIR ${LIB_INSTALL_DIR}/grantlee/${Grantlee5_MAJOR_MINOR_VERSION_STRING} )
+set( PLUGIN_INSTALL_DIR ${LIB_INSTALL_DIR}/grantlee/${KTextTemplate_MAJOR_MINOR_VERSION_STRING} )
 
 # set up RPATH/install_name_dir
 set( CMAKE_INSTALL_NAME_DIR ${CMAKE_INSTALL_PREFIX}/${LIB_INSTALL_DIR})
 set( CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 
-include("${Grantlee_MODULE_DIR}/GrantleeMacros.cmake")
+include("${KTextTemplate_MODULE_DIR}/KF6TextTemplateMacros.cmake")
 
 find_package(Qt6Core 6.0.0 REQUIRED)
 find_package(Qt6Qml 6.0.0)
@@ -94,37 +94,37 @@ if (BUILD_TESTING)
     add_subdirectory(autotests)
 endif()
 
-set(CMAKECONFIG_INSTALL_DIR "${LIB_INSTALL_DIR}/cmake/Grantlee${Grantlee5_VERSION_MAJOR}" )
+set(CMAKECONFIG_INSTALL_DIR "${LIB_INSTALL_DIR}/cmake/KF6TextTemplate" )
 
 configure_file(
-  "${Grantlee_MODULE_DIR}/Grantlee${Grantlee5_VERSION_MAJOR}Config.cmake.in"
-  "${CMAKE_BINARY_DIR}/Grantlee${Grantlee5_VERSION_MAJOR}Config.cmake"
+  "${KTextTemplate_MODULE_DIR}/KF6TextTemplateConfig.cmake.in"
+  "${CMAKE_BINARY_DIR}/KF6TextTemplateConfig.cmake"
   @ONLY
 )
 
 include(CMakePackageConfigHelpers)
-write_basic_package_version_file("${CMAKE_BINARY_DIR}/Grantlee${Grantlee5_VERSION_MAJOR}ConfigVersion.cmake"
-  VERSION ${Grantlee5_VERSION}
+write_basic_package_version_file("${CMAKE_BINARY_DIR}/KF6TextTemplateConfigVersion.cmake"
+  VERSION ${KTextTemplate_VERSION}
   COMPATIBILITY AnyNewerVersion
 )
 
 install(FILES
-  "${CMAKE_BINARY_DIR}/Grantlee${Grantlee5_VERSION_MAJOR}Config.cmake"
-  "${CMAKE_BINARY_DIR}/Grantlee${Grantlee5_VERSION_MAJOR}ConfigVersion.cmake"
+  "${CMAKE_BINARY_DIR}/KF6TextTemplateConfig.cmake"
+  "${CMAKE_BINARY_DIR}/KF6TextTemplateConfigVersion.cmake"
   DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
   COMPONENT Common
 )
 
 install(FILES
-  "${Grantlee_MODULE_DIR}/GrantleeMacros.cmake"
+  "${KTextTemplate_MODULE_DIR}/KF6TextTemplateMacros.cmake"
   DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
   COMPONENT Common
 )
 
 install(EXPORT grantlee_targets
   DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
-  NAMESPACE Grantlee${Grantlee5_VERSION_MAJOR}::
-  FILE GrantleeTargets.cmake
+  NAMESPACE KF6TextTemplate::
+  FILE KF6TextTemplateTargets.cmake
   COMPONENT Common
 )
 
@@ -145,7 +145,7 @@ if (DOXYGEN_FOUND AND DOXYGEN_DOT_FOUND)
   set(TAGFILES "${QTTAGFILE} ${STLTAGFILE}")
   set(DOCS_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
   configure_file(
-    "${Grantlee_MODULE_DIR}/Doxyfile.in"
+    "${KTextTemplate_MODULE_DIR}/Doxyfile.in"
     "${CMAKE_CURRENT_BINARY_DIR}/Doxyfile"
     @ONLY)
 
@@ -164,7 +164,7 @@ if (DOXYGEN_FOUND AND DOXYGEN_DOT_FOUND)
     set(GENERATE_QHP "yes")
 
     configure_file(
-      "${Grantlee_MODULE_DIR}/Doxyfile.in"
+      "${KTextTemplate_MODULE_DIR}/Doxyfile.in"
       "${CMAKE_CURRENT_BINARY_DIR}/Doxyfile.qt"
       @ONLY)
   endif()

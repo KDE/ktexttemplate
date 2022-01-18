@@ -95,7 +95,6 @@ else()
 endif()
 
 add_subdirectory(templates)
-add_subdirectory(textdocument)
 
 set(CMAKECONFIG_INSTALL_DIR "${LIB_INSTALL_DIR}/cmake/Grantlee${Grantlee5_VERSION_MAJOR}" )
 

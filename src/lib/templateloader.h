@@ -187,7 +187,7 @@ private:
   memory
 
   This class is mostly used for testing purposes, but can also be used for
-  simple uses of %Grantlee.
+  simple uses of %KTextTemplate.
 
   Templates can be made available using the @ref setTemplate method, and will
   then be retrieved by the KTextTemplate::Engine as appropriate.

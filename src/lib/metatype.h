@@ -41,7 +41,7 @@ namespace KTextTemplate
   system.
 
   The **%MetaType** class is used as part of the type registration system of
-  %Grantlee.
+  %KTextTemplate.
 
   @see @ref generic_types_and_templates
   @author Michael Jansen <kde@michael-jansen.biz>
@@ -123,7 +123,7 @@ template <typename RealType, typename HandleAs> static int doRegister(int id)
 }
 
 /*
-  Register a type so grantlee knows how to handle it.
+  Register a type so KTextTemplate knows how to handle it.
  */
 template <typename RealType, typename HandleAs> struct InternalRegisterType {
   static int doReg()
@@ -193,7 +193,7 @@ template <typename RealType, typename HandleAs> int registerMetaType()
 #ifndef Q_QDOC
 /**
   @internal
-  Register a type so %Grantlee knows how to handle it.
+  Register a type so %KTextTemplate knows how to handle it.
 
   This is a convenience method.
  */

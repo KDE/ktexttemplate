@@ -2,9 +2,9 @@
 namespace KTextTemplate
 {
 /**
-  @page using_and_deploying Using %Grantlee in your application
+  @page using_and_deploying Using %KTextTemplate in your application
 
-  Using %Grantlee in %Qt applications will often not require much code.
+  Using %KTextTemplate in %Qt applications will often not require much code.
 
   @code
     auto engine = getEngine();
@@ -14,13 +14,13 @@ namespace KTextTemplate
     browser.setHtml( t->render( c ) );
   @endcode
 
-  Error handling etc is omitted for clarity. In order for the above to work as expected, it is necessary to configure the build system to find %Grantlee, and to configure %Grantlee to find templates and plugins.
+  Error handling etc is omitted for clarity. In order for the above to work as expected, it is necessary to configure the build system to find %KTextTemplate, and to configure %KTextTemplate to find templates and plugins.
 
   @section finding_with_cmake Finding Grantlee with CMake
 
-  %Grantlee uses the <a href="http://www.cmake.org/">CMake</a> cross platform build system, and installs a cmake file called <tt>KF6TextTemplateConfig.cmake</tt>. This config file is automatically searched for by CMake and contains the information needed for other CMake based applications to find headers and link against %Grantlee libraries. See https://cmake.org/cmake/help/latest/manual/cmake-packages.7.html for more.
+  %KTextTemplate uses the <a href="http://www.cmake.org/">CMake</a> cross platform build system, and installs a cmake file called <tt>KF6TextTemplateConfig.cmake</tt>. This config file is automatically searched for by CMake and contains the information needed for other CMake based applications to find headers and link against %KTextTemplate libraries. See https://cmake.org/cmake/help/latest/manual/cmake-packages.7.html for more.
 
-  When creating an application using CMake that depends on %Grantlee, first issue the <tt>find_package</tt> command, and then use the CMake <tt>target_link_libraries</tt> command link to and use the libraries.
+  When creating an application using CMake that depends on %KTextTemplate, first issue the <tt>find_package</tt> command, and then use the CMake <tt>target_link_libraries</tt> command link to and use the libraries.
 
   @code
     project(my_application)
@@ -43,7 +43,7 @@ namespace KTextTemplate
 
   @section deploying_templates Deploying Templates
 
-  %Template files can be installed by your application and must later be found by %Grantlee so they can be used. If the files are installed on the filesystem, the path they were installed to can be specified when creating a AbstractTemplateLoader instance.
+  %Template files can be installed by your application and must later be found by %KTextTemplate so they can be used. If the files are installed on the filesystem, the path they were installed to can be specified when creating a AbstractTemplateLoader instance.
 
   @code
     Engine* getEngine()
@@ -93,7 +93,7 @@ namespace KTextTemplate
 
   @section finding_user_templates Finding user defined templates
 
-  If users are able to define their own templates in an application that uses %Grantlee for theming for example, the path to the location of such potential templates must also be set through the AbstractTemplateLoader instance. Paths to user defined templates should be defined before default/installed templates so that the user templates are found first. If there is a reason to disallow user overriding of certain templates, they can be specified in a separate AbstractTemplateLoader instance.
+  If users are able to define their own templates in an application that uses %KTextTemplate for theming for example, the path to the location of such potential templates must also be set through the AbstractTemplateLoader instance. Paths to user defined templates should be defined before default/installed templates so that the user templates are found first. If there is a reason to disallow user overriding of certain templates, they can be specified in a separate AbstractTemplateLoader instance.
 
   @code
     auto no_override_loader = QSharedPointer<FileSystemTemplateLoader>::create();
@@ -115,16 +115,16 @@ namespace KTextTemplate
 
   @section finding_plugins Finding tags and filters
 
-  %Grantlee looks for plugins in the paths from the Engine::pluginPaths property. It does so
+  %KTextTemplate looks for plugins in the paths from the Engine::pluginPaths property. It does so
   in the same order they appear there.
 
   The property defaults to the following directories
     - The default plugin directory of your %Qt installation (<tt>qmake -query QT_INSTALL_PLUGINS</tt>).
     - The directories specified in the environment variable <tt>QT_PLUGIN_DIR</tt>.
-    - The default plugin directory of your %Grantlee installation.
+    - The default plugin directory of your %KTextTemplate installation.
 
   Each path has <tt>&quot;grantlee/$version/&quot;</tt> appended to it, and the resulting
-  directory is searched for plugins. For example, if the version of %Grantlee is 5.0 and
+  directory is searched for plugins. For example, if the version of %KTextTemplate is 5.0 and
   QCoreApplication::libraryPaths() contains <tt>&quot;/usr/lib/plugins/&quot;</tt>, the directory
   <tt>&quot;/usr/lib/plugins/grantlee/5.0&quot;</tt> would be searched for plugins. The search
   stops when a plugin matching a particular name is found.
@@ -158,9 +158,9 @@ namespace KTextTemplate
 
   <tt>custom_plugin_library.cpp</tt> is the C++ file where you implement the KTextTemplate::TagLibraryInterface to return custom tags and filters.
 
-  Note that the <tt>PLUGIN_INSTALL_DIR</tt> given to the install command should contain the version number of %Grantlee used to create the custom library. For example, <tt>/usr/share/my_app/plugins/grantlee/5.0/</tt>.
+  Note that the <tt>PLUGIN_INSTALL_DIR</tt> given to the install command should contain the version number of %KTextTemplate used to create the custom library. For example, <tt>/usr/share/my_app/plugins/grantlee/5.0/</tt>.
 
-  In C++ code, it is necessary to either instruct the KTextTemplate::Engine about the location of the plugins or to configure your QCoreApplication::libraryPaths by another standard method. Note that it is possible to define custom versions of built in tags and filters by putting your own plugin library in the path before the path to the default %Grantlee plugins.
+  In C++ code, it is necessary to either instruct the KTextTemplate::Engine about the location of the plugins or to configure your QCoreApplication::libraryPaths by another standard method. Note that it is possible to define custom versions of built in tags and filters by putting your own plugin library in the path before the path to the default %KTextTemplate plugins.
 
   For example, if your custom plugin library contained a custom implementation of the @gr_tag{for} tag:
   @code
@@ -170,7 +170,7 @@ namespace KTextTemplate
         );
   @endcode
 
-  Note that neither the path to the custom libarary nor the path to the %Grantlee default library should contain the version number when specified in C++ code with the Engine. The version is only specified when installing the plugin in CMake.
+  Note that neither the path to the custom libarary nor the path to the %KTextTemplate default library should contain the version number when specified in C++ code with the Engine. The version is only specified when installing the plugin in CMake.
 
   Custom tags and filters implemented in Javascript can also be deployed on the file system, or, like template files, can also be deployed in %Qt Resource files. In that case, the version should be specified in the -root argument in CMake.
 
@@ -192,7 +192,7 @@ namespace KTextTemplate
 
   @section building_grantlee Building Grantlee
 
-  It is possible to build only parts of %Grantlee if your application is a QCoreApplication that depends only on QtCore
+  It is possible to build only parts of %KTextTemplate if your application is a QCoreApplication that depends only on QtCore
 
   The appropriate options may be specified in the cmake gui, or on the command line using the <tt>BUILD_TEXTDOCUMENT</tt> or <tt>BUILD_TEMPLATES</tt> CMake options.
 
@@ -201,14 +201,14 @@ namespace KTextTemplate
     cmake .. -DBUILD_TEXTDOCUMENT=OFF -DBUILD_TESTING=OFF
   @endcode
 
-  Similarly, it is possible to build only the core of the %Grantlee Template library without the plugins. This may be useful for specialized applications, but as the unit tests depend on the plugins, the tests would need to be deactivated in this case too:
+  Similarly, it is possible to build only the core of the %KTextTemplate Template library without the plugins. This may be useful for specialized applications, but as the unit tests depend on the plugins, the tests would need to be deactivated in this case too:
 
   @code
     mkdir build && cd build
     cmake .. -DBUILD_TEXTDOCUMENT=OFF -DBUILD_TESTING=OFF -DBUILD_MAIN_PLUGINS=OFF
   @endcode
 
-  By default, %Grantlee depends on the QtQml library in order to implement Javascript support. This support is only enabled if the QtQml library is found.
+  By default, %KTextTemplate depends on the QtQml library in order to implement Javascript support. This support is only enabled if the QtQml library is found.
 
   <center>
   <b>

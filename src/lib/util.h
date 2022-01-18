@@ -27,7 +27,7 @@
 
 #include <QtCore/QVariant>
 
-/// @file util.h Utility functions used throughout %Grantlee.
+/// @file util.h Utility functions used throughout %KTextTemplate.
 
 namespace KTextTemplate
 {

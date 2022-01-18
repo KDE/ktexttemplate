@@ -31,7 +31,7 @@ namespace KTextTemplate
 {
 
 /**
-  Types of errors that can occur while using %Grantlee
+  Types of errors that can occur while using %KTextTemplate
 */
 enum Error {
   NoError,

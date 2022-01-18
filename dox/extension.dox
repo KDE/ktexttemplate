@@ -37,7 +37,7 @@ namespace KTextTemplate
     // Renders: Seeing double MikeMike?
   @endcode
 
-  The argument to doFilter is a QVariant, so it may contain any of the types supported by %Grantlee.
+  The argument to doFilter is a QVariant, so it may contain any of the types supported by %KTextTemplate.
 
   @code
     /// Outputs its input n times.
@@ -76,7 +76,7 @@ namespace KTextTemplate
 
   @section autoescaping Autoescaping and safe-ness
 
-  When implementing filters, it is necessary to consider whether string output from the template should be escaped by %Grantlee when rendering the template. %Grantlee features an autoescaping feature which ensures that a string which should only be escaped once is not escaped two or more times.
+  When implementing filters, it is necessary to consider whether string output from the template should be escaped by %KTextTemplate when rendering the template. %KTextTemplate features an autoescaping feature which ensures that a string which should only be escaped once is not escaped two or more times.
 
   @see @ref templates_safestring
 
@@ -89,7 +89,7 @@ namespace KTextTemplate
 
   A tag can really do anything with a template. To create your own tag, create a concrete subclass of KTextTemplate::AbstractNodeFactory and implement the AbstractNodeFactory::getNode method, and create a concrete subclass of KTextTemplate::Node and implement the Node::render method.
 
-  @note If you are familiar with Django you will recognise that defining a tag in Django involves creating a Node subclass (like %Grantlee), and a factory function where %Grantlee requires a factory class. This is because functions in python are objects, just like classes are, and dynamic typing allows easy creation of lists of those factory functions. In %Grantlee with statically-typed C++, we need to group the factories by interface (i.e, the KTextTemplate::AbstractNodeFactory interface).
+  @note If you are familiar with Django you will recognise that defining a tag in Django involves creating a Node subclass (like %KTextTemplate), and a factory function where %KTextTemplate requires a factory class. This is because functions in python are objects, just like classes are, and dynamic typing allows easy creation of lists of those factory functions. In %KTextTemplate with statically-typed C++, we need to group the factories by interface (i.e, the KTextTemplate::AbstractNodeFactory interface).
 
   Tags can take arguments, advance the parser, create nodes, and generally have broad control over the parsing and rendering stages.
 
@@ -205,7 +205,7 @@ namespace KTextTemplate
 
   @section cpp_libraries C++ Libraries
 
-  As already mentioned, it is neccessary to create a QtPlugin library to make your tags and filters available to %Grantlee. You need to implement TagLibraryInterface to return your custom node factories and filters. See the existing libraries in your %Grantlee distribution for full examples.
+  As already mentioned, it is neccessary to create a QtPlugin library to make your tags and filters available to %KTextTemplate. You need to implement TagLibraryInterface to return your custom node factories and filters. See the existing libraries in your %KTextTemplate distribution for full examples.
 
   @code
     #include <grantlee/taglibraryinterface.h>

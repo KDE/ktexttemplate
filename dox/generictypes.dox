@@ -7,12 +7,12 @@ namespace KTextTemplate
 
   @section generic_types Generic type support
 
-  %Grantlee offers powerful support for using any type or container in a QVariant as part of the Context.
+  %KTextTemplate offers powerful support for using any type or container in a QVariant as part of the Context.
   %Qt introspection based on Q_PROPERTY is the most convenient way to access properties on QObject derived type or types decorated with the <tt>Q_GADGET</tt> macro.
   However, sometimes it is necessary to use classes which do can't have Q_PROPERTY macros (perhaps because they are defined in third-party headers)
   and where it would not be practical to create QObject/<tt>Q_GADGET</tt> wrappers around all related classes.
 
-  In such cases the metatype can be registered with %Grantlee and an introspection method can be written.
+  In such cases the metatype can be registered with %KTextTemplate and an introspection method can be written.
 
   @code
     // Non-QObject
@@ -53,7 +53,7 @@ namespace KTextTemplate
 
     void someInitializer()
     {
-      // Register the Person type with the %Grantlee introspection system.
+      // Register the Person type with the %KTextTemplate introspection system.
       KTextTemplate::registerMetaType<Person>();
     }
 
@@ -100,7 +100,7 @@ namespace KTextTemplate
 
   @section generic_containers Generic container support
 
-  %Grantlee supports most %Qt and STL containers by default if they are registered with the QMetaType system as shown in @ref generic_types.
+  %KTextTemplate supports most %Qt and STL containers by default if they are registered with the QMetaType system as shown in @ref generic_types.
   Where a container does not have built in support it can easily be added (See @ref third_party_containers).
 
   The following containers have built in support:
@@ -158,7 +158,7 @@ namespace KTextTemplate
   is not possible for example.
 
   Note also that containers of pointers to QObject derived types can be stored in containers, and they do not need to be explicitly
-  registered with %Grantlee. Where the class has sufficient <tt>Q_PROPERTY</tt>s defined, the introspection method described above with
+  registered with %KTextTemplate. Where the class has sufficient <tt>Q_PROPERTY</tt>s defined, the introspection method described above with
   <tt>GRANTLEE_BEGIN_LOOKUP</tt> and <tt>GRANTLEE_END_LOOKUP</tt> is also not necessary. Note also that any type or container can be used through a <tt>Q_PROPERTY</tt>.
 
   @code
@@ -291,7 +291,7 @@ namespace KTextTemplate
 
   @section third_party_containers Third party containers
 
-  To support another, non-built in container it is necessary to use some macros to register it with %Grantlee.
+  To support another, non-built in container it is necessary to use some macros to register it with %KTextTemplate.
 
   For a sequential container, <tt>Q_DECLARE_SEQUENTIAL_CONTAINER_METATYPE</tt>,
   and <tt>Q_DECLARE_ASSOCIATIVE_CONTAINER_METATYPE</tt> are needed.
@@ -365,7 +365,7 @@ namespace KTextTemplate
 
   If you have QSharedPointer&lt;PersonObject&gt; where <tt>PersonObject</tt> is derived from QObject it will be automatically
   introspected just like a QObject* is without requiring the <tt>GRANTLEE_BEGIN_LOOKUP</tt> and <tt>GRANTLEE_END_LOOKUP</tt> macros,
-  the <tt>Q_DECLARE_METATYPE</tt> macro, or registration with the %Grantlee metatype system. All of the access registration
+  the <tt>Q_DECLARE_METATYPE</tt> macro, or registration with the %KTextTemplate metatype system. All of the access registration
   is handled by %Qt.
 
   @code

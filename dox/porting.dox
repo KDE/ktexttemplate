@@ -6,15 +6,15 @@ namespace KTextTemplate
 
   @page porting_from_qt4 Porting from Qt4-based Grantlee
 
-  Several porting steps are necessary when porting code from %Grantlee 0.5 to
-  %Grantlee 5.0 and later.
+  Several porting steps are necessary when porting code from %KTextTemplate 0.5 to
+  %KTextTemplate 5.0 and later.
 
   @section buildsystem_changes Buildsystem changes
 
   @subsection grantlee_add_plugin_removed grantlee_add_plugin Removed
 
   The <tt>grantlee_add_plugin</tt> CMake macro has been removed. Users should
-  now use the CMake command <tt>add_library(MODULE)</tt>, link to the %Grantlee
+  now use the CMake command <tt>add_library(MODULE)</tt>, link to the %KTextTemplate
   Templates library, and use the <tt>ktexttemplate_adjust_plugin_name</tt> macro
   with the created target.
 
@@ -32,12 +32,12 @@ namespace KTextTemplate
   @subsection use_imported_targets Use IMPORTED targets
 
   The CMake <a href="http://www.cmake.org/cmake/help/latest/manual/cmake-packages.7.html">packages</a>
-  shipped with %Grantlee contain
+  shipped with %KTextTemplate contain
   <a href="http://www.cmake.org/cmake/help/latest/manual/cmake-buildsystem.7.html#imported-targets">IMPORTED targets</a>
   which should be used with the <tt>target_link_libraries</tt> command. Variables such
   as <tt>Grantlee_TEMPLATES_LIBRARIES</tt> are no longer provided.
 
-  Idiomatic use of %Grantlee in the buildsystem is now similar to:
+  Idiomatic use of %KTextTemplate in the buildsystem is now similar to:
 
   @verbatim
   find_package(KF6TextTemplate REQUIRED)
@@ -50,14 +50,14 @@ namespace KTextTemplate
 
   @subsection package_numbered CMake Package name changed
 
-  The previous major release of %Grantlee shipped a CMake package findable
+  The previous major release of %KTextTemplate shipped a CMake package findable
   with
 
   @verbatim
   find_package(Grantlee REQUIRED)
   @endverbatim
 
-  For %Grantlee 5.0 the package was renamed to include the major version
+  For %KTextTemplate 5.0 the package was renamed to include the major version
   number:
 
   @verbatim

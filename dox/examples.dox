@@ -20,7 +20,7 @@ namespace KTextTemplate
 
   @section codegen_example Codegen
 
-  The codegen example shows how to use %Grantlee for code generation in multiple languages. The application can be used to generate classes in C++, python and ruby based on the content of the dialog. The user can define properties, which are generated appropriately to the language. For C++ it uses the <tt>Q_PROPERTY</tt> macro and creates an accessor a mutator and a notify signal. It can also be used to generate methods with arguments of any type in each language.
+  The codegen example shows how to use %KTextTemplate for code generation in multiple languages. The application can be used to generate classes in C++, python and ruby based on the content of the dialog. The user can define properties, which are generated appropriately to the language. For C++ it uses the <tt>Q_PROPERTY</tt> macro and creates an accessor a mutator and a notify signal. It can also be used to generate methods with arguments of any type in each language.
 
   <center><b>
   @image html codegen.png "The property and method configuration UI"
@@ -33,7 +33,7 @@ namespace KTextTemplate
 
   @section contacts_example Contacts
 
-  The contacts application demostrates the use of the internationalization and localization features in %Grantlee. The user can select several contacts, whose details are formatted in templates for display in different themes. All strings in the templates are translatable, and the numbers, dates and currencies can be localized. The Contacts example can be used with the %Qt or the KDE localization systems.
+  The contacts application demostrates the use of the internationalization and localization features in %KTextTemplate. The user can select several contacts, whose details are formatted in templates for display in different themes. All strings in the templates are translatable, and the numbers, dates and currencies can be localized. The Contacts example can be used with the %Qt or the KDE localization systems.
 
   <center><b>
   @image html contacts_multi_lang_tables.png "A theme showing selected contacts in localized tables"
@@ -47,7 +47,7 @@ namespace KTextTemplate
 
   @section htmlapps_example Html application framework
 
-  The htmlapps example demonstrates how string templates can form part of a larger platform for html based applications. The application consists of a an extensible set of templates containing html applications, a %Grantlee plugin to extract data from rss feeds, and various infrastructure to handle local and remote network requests and render the result in WebKit.
+  The htmlapps example demonstrates how string templates can form part of a larger platform for html based applications. The application consists of a an extensible set of templates containing html applications, a %KTextTemplate plugin to extract data from rss feeds, and various infrastructure to handle local and remote network requests and render the result in WebKit.
 
   Several html applications are part of the example, such as capabilities for showing weather information, flickr feeds, identica microblogging etc.
 
@@ -69,7 +69,7 @@ namespace KTextTemplate
 
   @section kdepim KDE PIM 4.6
 
-  KDE PIM started using %Grantlee in its 4.6.0 release. The applications KJots and KAddressBook already use KTextTemplate::Templates to render content for user consumption.
+  KDE PIM started using %KTextTemplate in its 4.6.0 release. The applications KJots and KAddressBook already use KTextTemplate::Templates to render content for user consumption.
 
 */
 

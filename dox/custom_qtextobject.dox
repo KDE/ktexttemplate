@@ -7,7 +7,7 @@ namespace KTextTemplate
 
   It is possible using the QTextObjectInterface API to construct QTextDocument instances containing custom text objects. If processing a QTextDocument
   containing custom objects through the MarkupDirector and AbstractMarkupBuilder classes, it is necessary to implement support for the custom types
-  in %Grantlee.
+  in %KTextTemplate.
 
   In this example, we create a builder with a new method <tt>addAudioTag</tt>. As it may be desired to implement multiple builders
   with support for the <tt>addAudioTag</tt> method, it makes sense to put that call into an interface.
@@ -125,7 +125,7 @@ namespace KTextTemplate
     [1] http://www.example.com/mysound.ogg
   @endverbatim
 
-  The textedit example in the %Grantlee source distribution implements this feature.
+  The textedit example in the %KTextTemplate source distribution implements this feature.
 */
 
 }

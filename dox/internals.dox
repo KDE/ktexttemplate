@@ -5,7 +5,7 @@ namespace KTextTemplate
 /**
   @page internals Internals
 
-  @note This page is intended only to be informative for new contributors to %Grantlee or people who are really interested in this kind of thing. These are implementation details and are likely to change without notice.
+  @note This page is intended only to be informative for new contributors to %KTextTemplate or people who are really interested in this kind of thing. These are implementation details and are likely to change without notice.
 
   @section how_works How Grantlee works.
 

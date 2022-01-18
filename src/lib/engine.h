@@ -33,7 +33,7 @@ class EnginePrivate;
 /// @headerfile engine.h grantlee/engine.h
 
 /**
-  @brief **%KTextTemplate::Engine** is the main entry point for creating %Grantlee
+  @brief **%KTextTemplate::Engine** is the main entry point for creating %KTextTemplate
   Templates.
 
   The **%KTextTemplate::Engine** is responsible for configuring and creating Template
@@ -59,7 +59,7 @@ class EnginePrivate;
   name by loading the templates with the @ref loadByName method, or by defining
   the content in the @ref newTemplate method.
 
-  By default the builtin tags and filters distributed with %Grantlee are
+  By default the builtin tags and filters distributed with %KTextTemplate are
   available in all templates without using the @gr_tag{load} tag in the
   template. These pre-loaded libraries may be configured if appropriate to the
   application. For example, an application which defines its own tags and

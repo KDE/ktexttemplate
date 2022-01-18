@@ -1,5 +1,5 @@
 /*
-  This file is part of the Grantlee template system.
+  This file is part of the KTextTemplate library
 
   Copyright (c) 2011 Stephen Kelly <steveire@gmail.com>
 

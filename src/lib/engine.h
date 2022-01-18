@@ -18,8 +18,8 @@
 
 */
 
-#ifndef GRANTLEE_ENGINE_H
-#define GRANTLEE_ENGINE_H
+#ifndef KTEXTTEMPLATE_ENGINE_H
+#define KTEXTTEMPLATE_ENGINE_H
 
 #include "template.h"
 #include "templateloader.h"

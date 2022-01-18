@@ -155,7 +155,7 @@ private:
 void TestDefaultTags::initTestCase()
 {
   m_engine = new Engine(this);
-  m_engine->setPluginPaths({QStringLiteral(GRANTLEE_PLUGIN_PATH)});
+  m_engine->setPluginPaths({QStringLiteral(KTEXTTEMPLATE_PLUGIN_PATH)});
 
   auto loader1 = QSharedPointer<FakeTemplateLoader>(new FakeTemplateLoader());
 

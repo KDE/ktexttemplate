@@ -18,8 +18,8 @@
 
 */
 
-#ifndef GRANTLEE_EXCEPTION_H
-#define GRANTLEE_EXCEPTION_H
+#ifndef KTEXTTEMPLATE_EXCEPTION_H
+#define KTEXTTEMPLATE_EXCEPTION_H
 
 #include "ktexttemplate_export.h"
 

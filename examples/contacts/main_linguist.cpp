@@ -28,7 +28,7 @@
 
 #include "grantlee_paths.h"
 
-#define TEMPLATE_DIR GRANTLEE_TEMPLATE_PATH "/linguist/"
+#define TEMPLATE_DIR KTEXTTEMPLATE_TEMPLATE_PATH "/linguist/"
 
 static QSharedPointer<KTextTemplate::AbstractLocalizer> getLocalizer()
 {

@@ -30,7 +30,7 @@
 
 #include <QtCore/QLoggingCategory>
 
-Q_LOGGING_CATEGORY(GRANTLEE_TEMPLATE, "grantlee.template")
+Q_LOGGING_CATEGORY(KTEXTTEMPLATE_TEMPLATE, "grantlee.template")
 
 using namespace KTextTemplate;
 
@@ -66,7 +66,7 @@ void TemplateImpl::setContent(const QString &templateString)
     d->m_nodeList = d->compileString(templateString);
     d->setError(NoError, QString());
   } catch (KTextTemplate::Exception &e) {
-    qCWarning(GRANTLEE_TEMPLATE) << e.what();
+    qCWarning(KTEXTTEMPLATE_TEMPLATE) << e.what();
     d->setError(e.errorCode(), e.what());
   }
 }
@@ -92,7 +92,7 @@ OutputStream *TemplateImpl::render(OutputStream *stream, Context *c) const
     d->m_nodeList.render(stream, c);
     d->setError(NoError, QString());
   } catch (KTextTemplate::Exception &e) {
-    qCWarning(GRANTLEE_TEMPLATE) << e.what();
+    qCWarning(KTEXTTEMPLATE_TEMPLATE) << e.what();
     d->setError(e.errorCode(), e.what());
   }
 

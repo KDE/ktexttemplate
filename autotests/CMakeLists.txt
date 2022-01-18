@@ -2,7 +2,7 @@ find_package(Qt6Test 6.0.0 REQUIRED)
 
 set( EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_BINARY_DIR} )
 
-set( GRANTLEE_PLUGIN_PATH "${CMAKE_BINARY_DIR}/" )
+set( KTEXTTEMPLATE_PLUGIN_PATH "${CMAKE_BINARY_DIR}/" )
 
 configure_file(grantlee_paths.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/grantlee_paths.h)
 

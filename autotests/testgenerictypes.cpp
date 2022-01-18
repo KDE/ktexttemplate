@@ -108,17 +108,17 @@ int qHash(const Person &p) { return p.uid; }
 Q_DECLARE_METATYPE(Person)
 Q_DECLARE_METATYPE(PersonGadget)
 
-GRANTLEE_BEGIN_LOOKUP(Person)
+KTEXTTEMPLATE_BEGIN_LOOKUP(Person)
 if (property == QStringLiteral("name"))
   return QString::fromStdString(object.name);
 if (property == QStringLiteral("age"))
   return object.age;
-GRANTLEE_END_LOOKUP
+KTEXTTEMPLATE_END_LOOKUP
 
-GRANTLEE_BEGIN_LOOKUP(PersonGadget)
+KTEXTTEMPLATE_BEGIN_LOOKUP(PersonGadget)
 if (property == QStringLiteral("age"))
   return object.m_age;
-GRANTLEE_END_LOOKUP
+KTEXTTEMPLATE_END_LOOKUP
 
 class PersonObject : public QObject
 {
@@ -150,7 +150,7 @@ void TestGenericTypes::testGenericClassType()
 {
   KTextTemplate::Engine engine;
 
-  engine.setPluginPaths({QStringLiteral(GRANTLEE_PLUGIN_PATH)});
+  engine.setPluginPaths({QStringLiteral(KTEXTTEMPLATE_PLUGIN_PATH)});
 
   auto t1 = engine.newTemplate(
       QStringLiteral(
@@ -216,7 +216,7 @@ template <typename Container> void testSequentialIteration(KTextTemplate::Contex
 {
   KTextTemplate::Engine engine;
 
-  engine.setPluginPaths({QStringLiteral(GRANTLEE_PLUGIN_PATH)});
+  engine.setPluginPaths({QStringLiteral(KTEXTTEMPLATE_PLUGIN_PATH)});
 
   {
     KTextTemplate::Template t1 = engine.newTemplate(
@@ -231,7 +231,7 @@ template <typename Container> void testSequentialIndexing(KTextTemplate::Context
 {
   KTextTemplate::Engine engine;
 
-  engine.setPluginPaths({QStringLiteral(GRANTLEE_PLUGIN_PATH)});
+  engine.setPluginPaths({QStringLiteral(KTEXTTEMPLATE_PLUGIN_PATH)});
 
   {
     KTextTemplate::Template t1 = engine.newTemplate(
@@ -259,7 +259,7 @@ template <typename T> struct SequentialContainerTester<QSet<T>> {
   {
     KTextTemplate::Engine engine;
 
-    engine.setPluginPaths({QStringLiteral(GRANTLEE_PLUGIN_PATH)});
+    engine.setPluginPaths({QStringLiteral(KTEXTTEMPLATE_PLUGIN_PATH)});
 
     KTextTemplate::Template t1 = engine.newTemplate(
         QStringLiteral(
@@ -313,7 +313,7 @@ void testAssociativeValues(KTextTemplate::Context &c, bool unordered = {})
 {
   KTextTemplate::Engine engine;
 
-  engine.setPluginPaths({QStringLiteral(GRANTLEE_PLUGIN_PATH)});
+  engine.setPluginPaths({QStringLiteral(KTEXTTEMPLATE_PLUGIN_PATH)});
 
   {
     KTextTemplate::Template t1 = engine.newTemplate(
@@ -338,7 +338,7 @@ void testAssociativeItems(KTextTemplate::Context &c, bool unordered)
 {
   KTextTemplate::Engine engine;
 
-  engine.setPluginPaths({QStringLiteral(GRANTLEE_PLUGIN_PATH)});
+  engine.setPluginPaths({QStringLiteral(KTEXTTEMPLATE_PLUGIN_PATH)});
 
   {
     KTextTemplate::Template t1 = engine.newTemplate(
@@ -362,7 +362,7 @@ void doTestAssociativeContainer_Variant(bool unordered = {})
 {
   KTextTemplate::Engine engine;
 
-  engine.setPluginPaths({QStringLiteral(GRANTLEE_PLUGIN_PATH)});
+  engine.setPluginPaths({QStringLiteral(KTEXTTEMPLATE_PLUGIN_PATH)});
 
   KTextTemplate::Context c;
 
@@ -461,7 +461,7 @@ void doTestAssociativeContainer_Type(bool unordered = {})
 {
   KTextTemplate::Engine engine;
 
-  engine.setPluginPaths({QStringLiteral(GRANTLEE_PLUGIN_PATH)});
+  engine.setPluginPaths({QStringLiteral(KTEXTTEMPLATE_PLUGIN_PATH)});
 
   KTextTemplate::Context c;
 
@@ -475,7 +475,7 @@ void doTestAssociativeContainer_Type_Number(bool unordered = {})
 {
   KTextTemplate::Engine engine;
 
-  engine.setPluginPaths({QStringLiteral(GRANTLEE_PLUGIN_PATH)});
+  engine.setPluginPaths({QStringLiteral(KTEXTTEMPLATE_PLUGIN_PATH)});
 
   KTextTemplate::Context c;
 
@@ -546,7 +546,7 @@ void TestGenericTypes::testSharedPointer()
 {
   KTextTemplate::Engine engine;
 
-  engine.setPluginPaths({QStringLiteral(GRANTLEE_PLUGIN_PATH)});
+  engine.setPluginPaths({QStringLiteral(KTEXTTEMPLATE_PLUGIN_PATH)});
 
   auto t1 = engine.newTemplate(QStringLiteral("{{ p.name }} {{ p.age }}"),
                                QStringLiteral("template1"));
@@ -564,7 +564,7 @@ void TestGenericTypes::testThirdPartySharedPointer()
 {
   KTextTemplate::Engine engine;
 
-  engine.setPluginPaths({QStringLiteral(GRANTLEE_PLUGIN_PATH)});
+  engine.setPluginPaths({QStringLiteral(KTEXTTEMPLATE_PLUGIN_PATH)});
 
   auto t1 = engine.newTemplate(QStringLiteral("{{ p.name }} {{ p.age }}"),
                                QStringLiteral("template1"));
@@ -622,7 +622,7 @@ void TestGenericTypes::testNestedContainers()
 {
   KTextTemplate::Engine engine;
 
-  engine.setPluginPaths({QStringLiteral(GRANTLEE_PLUGIN_PATH)});
+  engine.setPluginPaths({QStringLiteral(KTEXTTEMPLATE_PLUGIN_PATH)});
 
   KTextTemplate::Context c;
   c.insert(QStringLiteral("stack"), QVariant::fromValue(getMapStack()));
@@ -685,7 +685,7 @@ void TestGenericTypes::testCustomQObjectDerived()
 {
   KTextTemplate::Engine engine;
 
-  engine.setPluginPaths({QStringLiteral(GRANTLEE_PLUGIN_PATH)});
+  engine.setPluginPaths({QStringLiteral(KTEXTTEMPLATE_PLUGIN_PATH)});
 
   auto customObject = new CustomObject(this);
   customObject->setProperty("someProp", QStringLiteral("propValue"));
@@ -729,11 +729,11 @@ struct RegisteredNotListType {
 
 Q_DECLARE_METATYPE(RegisteredNotListType)
 
-GRANTLEE_BEGIN_LOOKUP(RegisteredNotListType)
+KTEXTTEMPLATE_BEGIN_LOOKUP(RegisteredNotListType)
 Q_UNUSED(object)
 if (property == QStringLiteral("property"))
   return 42;
-GRANTLEE_END_LOOKUP
+KTEXTTEMPLATE_END_LOOKUP
 
 static QVariantList dummy(const UnregisteredType &) { return QVariantList{42}; }
 
@@ -777,12 +777,12 @@ void TestGenericTypes::testUnregistered()
 
 Q_DECLARE_METATYPE(Person *)
 
-GRANTLEE_BEGIN_LOOKUP_PTR(Person)
+KTEXTTEMPLATE_BEGIN_LOOKUP_PTR(Person)
 if (property == QStringLiteral("name"))
   return QString::fromStdString(object->name);
 if (property == QStringLiteral("age"))
   return object->age;
-GRANTLEE_END_LOOKUP
+KTEXTTEMPLATE_END_LOOKUP
 
 void TestGenericTypes::testPointerNonQObject()
 {
@@ -819,7 +819,7 @@ void TestGenericTypes::testQGadget()
 void TestGenericTypes::testGadgetMetaType()
 {
   KTextTemplate::Engine engine;
-  engine.setPluginPaths({QStringLiteral(GRANTLEE_PLUGIN_PATH)});
+  engine.setPluginPaths({QStringLiteral(KTEXTTEMPLATE_PLUGIN_PATH)});
 
   auto t1 = engine.newTemplate(
       QStringLiteral("Person: \nName: {{p.name}}\nAge: {{p.age}}"),
@@ -878,7 +878,7 @@ void TestGenericTypes::propertyMacroTypes()
 
   qRegisterMetaType<QList<CustomGadget>>();
 
-  engine.setPluginPaths({QStringLiteral(GRANTLEE_PLUGIN_PATH)});
+  engine.setPluginPaths({QStringLiteral(KTEXTTEMPLATE_PLUGIN_PATH)});
 
   auto objectWithProperties = new ObjectWithProperties(this);
 

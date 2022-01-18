@@ -41,7 +41,7 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent)
 
   QSharedPointer<KTextTemplate::FileSystemTemplateLoader> loader(
       new KTextTemplate::FileSystemTemplateLoader);
-  loader->setTemplateDirs(QStringList() << GRANTLEE_TEMPLATE_PATH);
+  loader->setTemplateDirs(QStringList() << KTEXTTEMPLATE_TEMPLATE_PATH);
   engine->addTemplateLoader(loader);
 
   wv->page()->setNetworkAccessManager(new LocalRequestManager(engine, this));

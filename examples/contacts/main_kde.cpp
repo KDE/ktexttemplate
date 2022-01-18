@@ -28,7 +28,7 @@
 
 #include "grantlee_paths.h"
 
-#define TEMPLATE_DIR GRANTLEE_TEMPLATE_PATH "/gettext/"
+#define TEMPLATE_DIR KTEXTTEMPLATE_TEMPLATE_PATH "/gettext/"
 
 int main(int argc, char **argv)
 {

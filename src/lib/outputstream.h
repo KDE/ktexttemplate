@@ -18,8 +18,8 @@
 
 */
 
-#ifndef GRANTLEE_OUTPUTSTREAM_H
-#define GRANTLEE_OUTPUTSTREAM_H
+#ifndef KTEXTTEMPLATE_OUTPUTSTREAM_H
+#define KTEXTTEMPLATE_OUTPUTSTREAM_H
 
 #include "ktexttemplate_export.h"
 

@@ -107,7 +107,7 @@ if (Qt6Qml_FOUND)
 endif()
 
 if (BUILD_TESTING)
-  set(GRANTLEE_TESTS_EXPORT "KTEXTTEMPLATE_EXPORT")
+  set(KTEXTTEMPLATE_TESTS_EXPORT "KTEXTTEMPLATE_EXPORT")
 endif()
 
 configure_file(grantlee_test_export.h.in "${CMAKE_CURRENT_BINARY_DIR}/grantlee_test_export.h")

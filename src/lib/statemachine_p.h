@@ -18,8 +18,8 @@
 
 */
 
-#ifndef GRANTLEE_STATEMACHINE_P_H
-#define GRANTLEE_STATEMACHINE_P_H
+#ifndef KTEXTTEMPLATE_STATEMACHINE_P_H
+#define KTEXTTEMPLATE_STATEMACHINE_P_H
 
 #include <QtCore/QString>
 #include <QtCore/QVector>

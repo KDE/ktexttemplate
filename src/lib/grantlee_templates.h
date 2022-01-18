@@ -18,8 +18,8 @@
 
 */
 
-#ifndef GRANTLEE_TEMPLATES_H
-#define GRANTLEE_TEMPLATES_H
+#ifndef KTEXTTEMPLATE_TEMPLATES_H
+#define KTEXTTEMPLATE_TEMPLATES_H
 
 #include "grantlee/abstractlocalizer.h"
 #include "grantlee/cachingloaderdecorator.h"

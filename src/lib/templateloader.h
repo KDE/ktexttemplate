@@ -18,8 +18,8 @@
 
 */
 
-#ifndef GRANTLEE_TEMPLATELOADER_H
-#define GRANTLEE_TEMPLATELOADER_H
+#ifndef KTEXTTEMPLATE_TEMPLATELOADER_H
+#define KTEXTTEMPLATE_TEMPLATELOADER_H
 
 #include "ktexttemplate_export.h"
 #include "template.h"

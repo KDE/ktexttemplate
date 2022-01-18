@@ -404,7 +404,7 @@ void TestBuiltinSyntax::testRenderAfterError()
 {
 
   Engine engine;
-  engine.setPluginPaths({QStringLiteral(GRANTLEE_PLUGIN_PATH)});
+  engine.setPluginPaths({QStringLiteral(KTEXTTEMPLATE_PLUGIN_PATH)});
 
   QSharedPointer<InMemoryTemplateLoader> loader(new InMemoryTemplateLoader);
   loader->setTemplate(QStringLiteral("template1"),
@@ -442,7 +442,7 @@ void TestBuiltinSyntax::initTestCase()
 Engine *TestBuiltinSyntax::getEngine()
 {
   auto engine = new Engine(this);
-  engine->setPluginPaths({QStringLiteral(GRANTLEE_PLUGIN_PATH)});
+  engine->setPluginPaths({QStringLiteral(KTEXTTEMPLATE_PLUGIN_PATH)});
   return engine;
 }
 

@@ -20,8 +20,8 @@
 
 // krazy:excludeall=dpointer
 
-#ifndef GRANTLEE_FILTER_H
-#define GRANTLEE_FILTER_H
+#ifndef KTEXTTEMPLATE_FILTER_H
+#define KTEXTTEMPLATE_FILTER_H
 
 #include "ktexttemplate_export.h"
 #include "outputstream.h"

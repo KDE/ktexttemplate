@@ -59,7 +59,7 @@ public:
     auto cLocale = QLocale::c();
     cLocale.setNumberOptions(QLocale::OmitGroupSeparator);
     cLocalizer.reset(new QtLocalizer(cLocale));
-    m_engine->setPluginPaths({QStringLiteral(GRANTLEE_PLUGIN_PATH)});
+    m_engine->setPluginPaths({QStringLiteral(KTEXTTEMPLATE_PLUGIN_PATH)});
     INIT_LOCALIZER(cLocalizer)
     INIT_LOCALIZER(deLocalizer)
     INIT_LOCALIZER(frLocalizer)

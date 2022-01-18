@@ -44,12 +44,12 @@ namespace KTextTemplate
     Q_DECLARE_METATYPE(Person)
 
     // Read-only introspection of Person object.
-    GRANTLEE_BEGIN_LOOKUP(Person)
+    KTEXTTEMPLATE_BEGIN_LOOKUP(Person)
       if ( property == "name" )
         return object.name();
       else if ( property == "age" )
         return object.age();
-    GRANTLEE_END_LOOKUP
+    KTEXTTEMPLATE_END_LOOKUP
 
     void someInitializer()
     {
@@ -94,7 +94,7 @@ namespace KTextTemplate
   There are several necessary steps and consequences.
   @li The type must be registered as a QMetaType with <tt>Q_DECLARE_METATYPE</tt>. Note that this is not needed for QObject derived types.
   @li All containers are supported. (See @ref generic_containers)
-  @li The <tt>GRANTLEE_BEGIN_LOOKUP</tt> and <tt>GRANTLEE_END_LOOKUP</tt> macros help to define the introspection of the type. Between them is the definition of a method with the signature <tt>QVariant&nbsp;getProperty(const&nbsp;Type&nbsp;&object,&nbsp;const&nbsp;QString&nbsp;&property)</tt>.
+  @li The <tt>KTEXTTEMPLATE_BEGIN_LOOKUP</tt> and <tt>KTEXTTEMPLATE_END_LOOKUP</tt> macros help to define the introspection of the type. Between them is the definition of a method with the signature <tt>QVariant&nbsp;getProperty(const&nbsp;Type&nbsp;&object,&nbsp;const&nbsp;QString&nbsp;&property)</tt>.
   @li KTextTemplate::registerMetaType must be called at some point in the program before attempting to use the type in a Context.
   @li The Context is created and used as normal.
 
@@ -159,7 +159,7 @@ namespace KTextTemplate
 
   Note also that containers of pointers to QObject derived types can be stored in containers, and they do not need to be explicitly
   registered with %KTextTemplate. Where the class has sufficient <tt>Q_PROPERTY</tt>s defined, the introspection method described above with
-  <tt>GRANTLEE_BEGIN_LOOKUP</tt> and <tt>GRANTLEE_END_LOOKUP</tt> is also not necessary. Note also that any type or container can be used through a <tt>Q_PROPERTY</tt>.
+  <tt>KTEXTTEMPLATE_BEGIN_LOOKUP</tt> and <tt>KTEXTTEMPLATE_END_LOOKUP</tt> is also not necessary. Note also that any type or container can be used through a <tt>Q_PROPERTY</tt>.
 
   @code
     class PersonObject : public QObject
@@ -329,7 +329,7 @@ namespace KTextTemplate
 
   @section smart_pointers Smart Pointers
 
-  Shared pointer types containing a custom type should be introspected as normal using <tt>GRANTLEE_BEGIN_LOOKUP</tt> and <tt>GRANTLEE_END_LOOKUP</tt>
+  Shared pointer types containing a custom type should be introspected as normal using <tt>KTEXTTEMPLATE_BEGIN_LOOKUP</tt> and <tt>KTEXTTEMPLATE_END_LOOKUP</tt>
 
   @code
     Q_DECLARE_METATYPE(QSharedPointer<Person>)
@@ -339,24 +339,24 @@ namespace KTextTemplate
       KTextTemplate::registerMetaType<QSharedPointer<Person> >();
     }
 
-    GRANTLEE_BEGIN_LOOKUP(QSharedPointer<Person>)
+    KTEXTTEMPLATE_BEGIN_LOOKUP(QSharedPointer<Person>)
       if (property == "name")
         return object->name();
-    GRANTLEE_END_LOOKUP
+    KTEXTTEMPLATE_END_LOOKUP
   @endcode
 
   Note that if only shared pointers to the type is in your introspectable API you only need to define the property access for the
-  shared pointer. In the case above, there is no need to use <tt>Q_DECLARE_METATYPE</tt> or <tt>GRANTLEE_BEGIN_LOOKUP</tt> with <tt>Person</tt> or <tt>Person*</tt>.
+  shared pointer. In the case above, there is no need to use <tt>Q_DECLARE_METATYPE</tt> or <tt>KTEXTTEMPLATE_BEGIN_LOOKUP</tt> with <tt>Person</tt> or <tt>Person*</tt>.
 
   This is of course true of any smart pointer:
 
   @code
     Q_DECLARE_METATYPE(boost::shared_ptr<Person>)
 
-    GRANTLEE_BEGIN_LOOKUP(boost::shared_ptr<Person>)
+    KTEXTTEMPLATE_BEGIN_LOOKUP(boost::shared_ptr<Person>)
       if (property == "name")
         return object->name();
-    GRANTLEE_END_LOOKUP
+    KTEXTTEMPLATE_END_LOOKUP
   @endcode
 
   QSharedPointers containing QObject derived types get special treatment.
@@ -364,7 +364,7 @@ namespace KTextTemplate
   QObjects are automatically introspected for their <tt>Q_PROPERTY</tt>s (See @ref custom_objects).
 
   If you have QSharedPointer&lt;PersonObject&gt; where <tt>PersonObject</tt> is derived from QObject it will be automatically
-  introspected just like a QObject* is without requiring the <tt>GRANTLEE_BEGIN_LOOKUP</tt> and <tt>GRANTLEE_END_LOOKUP</tt> macros,
+  introspected just like a QObject* is without requiring the <tt>KTEXTTEMPLATE_BEGIN_LOOKUP</tt> and <tt>KTEXTTEMPLATE_END_LOOKUP</tt> macros,
   the <tt>Q_DECLARE_METATYPE</tt> macro, or registration with the %KTextTemplate metatype system. All of the access registration
   is handled by %Qt.
 

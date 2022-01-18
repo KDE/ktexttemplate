@@ -47,7 +47,7 @@ Engine::Engine(QObject *parent)
                             << QStringLiteral("grantlee_defaultfilters");
 
   d_ptr->m_pluginDirs = QCoreApplication::libraryPaths();
-  d_ptr->m_pluginDirs << QString::fromLocal8Bit(GRANTLEE_PLUGIN_PATH);
+  d_ptr->m_pluginDirs << QString::fromLocal8Bit(KTEXTTEMPLATE_PLUGIN_PATH);
 }
 
 Engine::~Engine()
@@ -151,8 +151,8 @@ void Engine::loadDefaultLibraries()
 // so we new the library directly.
 // https://bugs.webkit.org/show_bug.cgi?id=38193
 #if 0
-    d->loadCppLibrary( s_scriptableLibName, GRANTLEE_VERSION_MINOR );
-    PluginPointer<TagLibraryInterface> library = d->loadCppLibrary( s_scriptableLibName, GRANTLEE_VERSION_MINOR );
+    d->loadCppLibrary( s_scriptableLibName, KTEXTTEMPLATE_VERSION_MINOR );
+    PluginPointer<TagLibraryInterface> library = d->loadCppLibrary( s_scriptableLibName, KTEXTTEMPLATE_VERSION_MINOR );
     if ( !library )
       throw KTextTemplate::Exception( TagSyntaxError, QStringLiteral("Could not load scriptable tags library") );
 #endif
@@ -167,8 +167,8 @@ void Engine::loadDefaultLibraries()
     if (d->m_libraries.contains(libName))
       continue;
 
-    uint minorVersion = GRANTLEE_VERSION_MINOR;
-    while (acceptableVersion<GRANTLEE_MIN_PLUGIN_VERSION>(minorVersion)) {
+    uint minorVersion = KTEXTTEMPLATE_VERSION_MINOR;
+    while (acceptableVersion<KTEXTTEMPLATE_MIN_PLUGIN_VERSION>(minorVersion)) {
 #ifdef QT_QML_LIB
       // Although we don't use scripted libaries here, we need to
       // recognize them being first in the search path and not load a
@@ -203,8 +203,8 @@ TagLibraryInterface *Engine::loadLibrary(const QString &name)
   if (d->m_libraries.contains(name))
     return d->m_libraries.value(name).data();
 
-  uint minorVersion = GRANTLEE_VERSION_MINOR;
-  while (acceptableVersion<GRANTLEE_MIN_PLUGIN_VERSION>(minorVersion)) {
+  uint minorVersion = KTEXTTEMPLATE_VERSION_MINOR;
+  while (acceptableVersion<KTEXTTEMPLATE_MIN_PLUGIN_VERSION>(minorVersion)) {
     auto library = d->loadLibrary(name, minorVersion);
     if (library)
       return library;
@@ -247,9 +247,10 @@ QString EnginePrivate::getScriptLibraryName(const QString &name,
                                             uint minorVersion) const
 {
   auto pluginIndex = 0;
-  const QString prefix
-      = QStringLiteral("/grantlee/") + QString::number(GRANTLEE_VERSION_MAJOR)
-        + QLatin1Char('.') + QString::number(minorVersion) + QLatin1Char('/');
+  const QString prefix = QStringLiteral("/grantlee/")
+                         + QString::number(KTEXTTEMPLATE_VERSION_MAJOR)
+                         + QLatin1Char('.') + QString::number(minorVersion)
+                         + QLatin1Char('/');
   while (m_pluginDirs.size() > pluginIndex) {
     const auto nextDir = m_pluginDirs.at(pluginIndex++);
     const QString libFileName = nextDir + prefix + name + QStringLiteral(".qs");
@@ -318,7 +319,7 @@ EnginePrivate::loadCppLibrary(const QString &name, uint minorVersion)
     const auto nextDir = m_pluginDirs.at(pluginIndex++);
     const QString pluginDirString
         = nextDir + QStringLiteral("/grantlee/")
-          + QString::number(GRANTLEE_VERSION_MAJOR) + QLatin1Char('.')
+          + QString::number(KTEXTTEMPLATE_VERSION_MAJOR) + QLatin1Char('.')
           + QString::number(minorVersion) + QLatin1Char('/');
 
     const QDir pluginDir(pluginDirString);

@@ -70,7 +70,7 @@ MainWindow::MainWindow(QWidget *parent, Qt::WindowFlags flags)
           SLOT(generateOutput()));
 
   m_engine = new KTextTemplate::Engine(this);
-  m_engine->setPluginPaths(QStringList() << GRANTLEE_PLUGIN_PATH
+  m_engine->setPluginPaths(QStringList() << KTEXTTEMPLATE_PLUGIN_PATH
                                          << ":/plugins");
   m_engine->addDefaultLibrary("grantlee_scriptabletags");
   m_engine->setSmartTrimEnabled(true);

@@ -18,8 +18,8 @@
 
 */
 
-#ifndef GRANTLEE_TAGS_P_H
-#define GRANTLEE_TAGS_P_H
+#ifndef KTEXTTEMPLATE_TAGS_P_H
+#define KTEXTTEMPLATE_TAGS_P_H
 
 namespace KTextTemplate
 {

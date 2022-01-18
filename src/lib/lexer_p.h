@@ -18,8 +18,8 @@
 
 */
 
-#ifndef GRANTLEE_LEXER_P_H
-#define GRANTLEE_LEXER_P_H
+#ifndef KTEXTTEMPLATE_LEXER_P_H
+#define KTEXTTEMPLATE_LEXER_P_H
 
 #include "textprocessingmachine_p.h"
 #include "token.h"

@@ -18,8 +18,8 @@
 
 */
 
-#ifndef GRANTLEE_NODE_H
-#define GRANTLEE_NODE_H
+#ifndef KTEXTTEMPLATE_NODE_H
+#define KTEXTTEMPLATE_NODE_H
 
 // krazy:excludeall=dpointer
 

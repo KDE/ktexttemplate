@@ -18,8 +18,8 @@
 
 */
 
-#ifndef GRANTLEE_SAFESTRING_H
-#define GRANTLEE_SAFESTRING_H
+#ifndef KTEXTTEMPLATE_SAFESTRING_H
+#define KTEXTTEMPLATE_SAFESTRING_H
 
 #include "ktexttemplate_export.h"
 

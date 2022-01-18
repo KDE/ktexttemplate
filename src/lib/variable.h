@@ -18,8 +18,8 @@
 
 */
 
-#ifndef GRANTLEE_VARIABLE_H
-#define GRANTLEE_VARIABLE_H
+#ifndef KTEXTTEMPLATE_VARIABLE_H
+#define KTEXTTEMPLATE_VARIABLE_H
 
 #include "ktexttemplate_export.h"
 

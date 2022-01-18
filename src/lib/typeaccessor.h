@@ -18,8 +18,8 @@
 
 */
 
-#ifndef GRANTLEE_TYPEACCESSOR_H
-#define GRANTLEE_TYPEACCESSOR_H
+#ifndef KTEXTTEMPLATE_TYPEACCESSOR_H
+#define KTEXTTEMPLATE_TYPEACCESSOR_H
 
 #include "ktexttemplate_export.h"
 

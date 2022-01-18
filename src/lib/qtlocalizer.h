@@ -18,8 +18,8 @@
 
 */
 
-#ifndef GRANTLEE_QTLOCALIZER_P_H
-#define GRANTLEE_QTLOCALIZER_P_H
+#ifndef KTEXTTEMPLATE_QTLOCALIZER_P_H
+#define KTEXTTEMPLATE_QTLOCALIZER_P_H
 
 #include "abstractlocalizer.h"
 

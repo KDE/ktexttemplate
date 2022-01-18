@@ -18,8 +18,8 @@
 
 */
 
-#ifndef GRANTLEE_ENGINE_P_H
-#define GRANTLEE_ENGINE_P_H
+#ifndef KTEXTTEMPLATE_ENGINE_P_H
+#define KTEXTTEMPLATE_ENGINE_P_H
 
 #include "engine.h"
 #include "filter.h"

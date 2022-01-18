@@ -18,8 +18,8 @@
 
 */
 
-#ifndef GRANTLEE_PARSER_H
-#define GRANTLEE_PARSER_H
+#ifndef KTEXTTEMPLATE_PARSER_H
+#define KTEXTTEMPLATE_PARSER_H
 
 #include "filter.h"
 #include "node.h"

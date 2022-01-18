@@ -68,7 +68,7 @@ void TestScriptableTagsSyntax::initTestCase()
   auto appDirPath
       = QFileInfo(QCoreApplication::applicationDirPath()).absoluteDir().path();
   m_engine->setPluginPaths({
-      QStringLiteral(GRANTLEE_PLUGIN_PATH),
+      QStringLiteral(KTEXTTEMPLATE_PLUGIN_PATH),
       QStringLiteral(":/plugins/") // For scripteddefaults.qs
   });
   m_engine->addDefaultLibrary(QStringLiteral("grantlee_scriptabletags"));

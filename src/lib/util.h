@@ -18,8 +18,8 @@
 
 */
 
-#ifndef GRANTLEE_UTIL_P_H
-#define GRANTLEE_UTIL_P_H
+#ifndef KTEXTTEMPLATE_UTIL_P_H
+#define KTEXTTEMPLATE_UTIL_P_H
 
 #include "context.h"
 #include "ktexttemplate_export.h"

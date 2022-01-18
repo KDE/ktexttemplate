@@ -18,8 +18,8 @@
 
 */
 
-#ifndef GRANTLEE_CONTEXT_H
-#define GRANTLEE_CONTEXT_H
+#ifndef KTEXTTEMPLATE_CONTEXT_H
+#define KTEXTTEMPLATE_CONTEXT_H
 
 #include "abstractlocalizer.h"
 #include "ktexttemplate_export.h"

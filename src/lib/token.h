@@ -18,8 +18,8 @@
 
 */
 
-#ifndef GRANTLEE_TOKEN_H
-#define GRANTLEE_TOKEN_H
+#ifndef KTEXTTEMPLATE_TOKEN_H
+#define KTEXTTEMPLATE_TOKEN_H
 
 #include <QtCore/QString>
 

@@ -18,8 +18,8 @@
 
 */
 
-#ifndef GRANTLEE_RENDERCONTEXT_H
-#define GRANTLEE_RENDERCONTEXT_H
+#ifndef KTEXTTEMPLATE_RENDERCONTEXT_H
+#define KTEXTTEMPLATE_RENDERCONTEXT_H
 
 #include "ktexttemplate_export.h"
 

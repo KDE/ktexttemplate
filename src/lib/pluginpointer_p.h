@@ -18,8 +18,8 @@
 
 */
 
-#ifndef GRANTLEE_PLUGINPOINTER_H
-#define GRANTLEE_PLUGINPOINTER_H
+#ifndef KTEXTTEMPLATE_PLUGINPOINTER_H
+#define KTEXTTEMPLATE_PLUGINPOINTER_H
 
 #include <QtCore/QPluginLoader>
 #include <QtCore/QSharedPointer>

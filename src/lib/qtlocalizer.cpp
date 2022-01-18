@@ -28,7 +28,7 @@
 
 #include <QtCore/QLoggingCategory>
 
-Q_LOGGING_CATEGORY(GRANTLEE_LOCALIZER, "grantlee.localizer")
+Q_LOGGING_CATEGORY(KTEXTTEMPLATE_LOCALIZER, "grantlee.localizer")
 
 struct Locale {
   explicit Locale(const QLocale &_locale) : locale(_locale) {}
@@ -67,7 +67,7 @@ class QtLocalizerPrivate
   {
     Q_ASSERT(!m_locales.isEmpty());
     if (m_locales.isEmpty()) {
-      qCWarning(GRANTLEE_LOCALIZER) << "Invalid Locale";
+      qCWarning(KTEXTTEMPLATE_LOCALIZER) << "Invalid Locale";
       return {};
     }
     return m_locales.last()->locale;

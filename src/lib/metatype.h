@@ -19,8 +19,8 @@
 
 */
 
-#ifndef GRANTLEE_METATYPE_H
-#define GRANTLEE_METATYPE_H
+#ifndef KTEXTTEMPLATE_METATYPE_H
+#define KTEXTTEMPLATE_METATYPE_H
 
 #include "ktexttemplate_export.h"
 
@@ -159,10 +159,10 @@ struct InternalRegisterType<RealType *, HandleAs *> {
 
     // define some introspectable API for SomeType
 
-    GRANTLEE_BEGIN_LOOKUP(SomeType)
+    KTEXTTEMPLATE_BEGIN_LOOKUP(SomeType)
       if (property == "someProp")
         return object.someProp();
-    GRANTLEE_END_LOOKUP
+    KTEXTTEMPLATE_END_LOOKUP
 
 
     class OtherType : public SomeType
@@ -210,7 +210,7 @@ template <typename Type> int registerMetaType()
 
   @see @ref generic_types
  */
-#define GRANTLEE_BEGIN_LOOKUP(Type)                                            \
+#define KTEXTTEMPLATE_BEGIN_LOOKUP(Type)                                            \
   namespace KTextTemplate                                                           \
   {                                                                            \
   template <>                                                                  \
@@ -223,7 +223,7 @@ template <typename Type> int registerMetaType()
 
   @see @ref generic_types
  */
-#define GRANTLEE_BEGIN_LOOKUP_PTR(Type)                                        \
+#define KTEXTTEMPLATE_BEGIN_LOOKUP_PTR(Type)                                        \
   namespace KTextTemplate                                                           \
   {                                                                            \
   template <>                                                                  \
@@ -236,9 +236,9 @@ template <typename Type> int registerMetaType()
 
   @see @ref generic_types
  */
-#define GRANTLEE_END_LOOKUP                                                    \
+#define KTEXTTEMPLATE_END_LOOKUP                                                    \
   return QVariant();                                                           \
   }                                                                            \
   }
 
-#endif // #define GRANTLEE_METATYPE_H
+#endif // #define KTEXTTEMPLATE_METATYPE_H

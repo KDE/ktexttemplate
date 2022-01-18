@@ -82,7 +82,7 @@ void TestFilters::initTestCase()
   auto appDirPath
       = QFileInfo(QCoreApplication::applicationDirPath()).absoluteDir().path();
   m_engine->setPluginPaths({
-      QStringLiteral(GRANTLEE_PLUGIN_PATH),
+      QStringLiteral(KTEXTTEMPLATE_PLUGIN_PATH),
       appDirPath + QStringLiteral("/tests/") // For testtags.qs
   });
 }

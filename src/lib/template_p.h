@@ -18,8 +18,8 @@
 
 */
 
-#ifndef GRANTLEE_TEMPLATE_P_H
-#define GRANTLEE_TEMPLATE_P_H
+#ifndef KTEXTTEMPLATE_TEMPLATE_P_H
+#define KTEXTTEMPLATE_TEMPLATE_P_H
 
 #include "engine.h"
 #include "template.h"

@@ -80,7 +80,7 @@ void TestLoaderTags::initTestCase()
   auto appDirPath
       = QFileInfo(QCoreApplication::applicationDirPath()).absoluteDir().path();
   m_engine->setPluginPaths({
-      QStringLiteral(GRANTLEE_PLUGIN_PATH),
+      QStringLiteral(KTEXTTEMPLATE_PLUGIN_PATH),
       QStringLiteral(":/plugins/") // For testtags.qs
   });
 #ifdef HAVE_QTQML_LIB
@@ -97,7 +97,7 @@ void TestLoaderTags::testTemplateFromQrc()
   auto loader = QSharedPointer<KTextTemplate::FileSystemTemplateLoader>::create();
   loader->setTemplateDirs({QStringLiteral(":/templates/")});
   engine.addTemplateLoader(loader);
-  engine.setPluginPaths({QStringLiteral(GRANTLEE_PLUGIN_PATH)});
+  engine.setPluginPaths({QStringLiteral(KTEXTTEMPLATE_PLUGIN_PATH)});
 
   auto t = engine.loadByName(QStringLiteral("resourcetemplate1.html"));
 

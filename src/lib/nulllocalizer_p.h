@@ -18,8 +18,8 @@
 
 */
 
-#ifndef GRANTLEE_NULLLOCALIZER_P_H
-#define GRANTLEE_NULLLOCALIZER_P_H
+#ifndef KTEXTTEMPLATE_NULLLOCALIZER_P_H
+#define KTEXTTEMPLATE_NULLLOCALIZER_P_H
 
 #include "grantlee_test_export.h"
 
@@ -28,7 +28,7 @@
 namespace KTextTemplate
 {
 
-class GRANTLEE_TESTS_EXPORT NullLocalizer : public AbstractLocalizer
+class KTEXTTEMPLATE_TESTS_EXPORT NullLocalizer : public AbstractLocalizer
 {
 public:
   NullLocalizer();

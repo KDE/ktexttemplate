@@ -255,7 +255,7 @@ void testContainer(const QString &stringTemplate,
 {
   KTextTemplate::Engine engine;
 
-  engine.setPluginPaths({QStringLiteral(GRANTLEE_PLUGIN_PATH)});
+  engine.setPluginPaths({QStringLiteral(KTEXTTEMPLATE_PLUGIN_PATH)});
 
   KTextTemplate::Context c;
   c.insert(QStringLiteral("container"), containerVariant);

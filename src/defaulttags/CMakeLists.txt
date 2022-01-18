@@ -30,7 +30,7 @@ target_compile_features(grantlee_defaulttags PRIVATE
   cxx_auto_type
   cxx_variadic_templates
 )
-grantlee_adjust_plugin_name(grantlee_defaulttags)
+ktexttemplate_adjust_plugin_name(grantlee_defaulttags)
 
 install(TARGETS grantlee_defaulttags 
   EXPORT grantlee_targets

@@ -55,7 +55,7 @@ add_library(template_test_builtins STATIC coverageobject.cpp
 target_link_libraries(template_test_builtins Qt6::Test)
 target_compile_features(template_test_builtins PUBLIC cxx_auto_type)
 
-macro(grantlee_templates_unit_tests)
+macro(ktexttemplate_templates_unit_tests)
   foreach(_testname ${ARGN})
     add_executable(${_testname}_exec
                   ${_testname}.cpp
@@ -71,7 +71,7 @@ macro(grantlee_templates_unit_tests)
   endforeach(_testname)
 endmacro()
 
-grantlee_templates_unit_tests(
+ktexttemplate_templates_unit_tests(
   testsafestring
   testbuiltins
   testloadertags
@@ -83,13 +83,13 @@ grantlee_templates_unit_tests(
 )
 
 if (Qt6Qml_FOUND)
-  grantlee_templates_unit_tests(
+  ktexttemplate_templates_unit_tests(
     testscriptabletags
   )
 endif()
 
 if (Qt6LinguistTools_FOUND)
-  grantlee_templates_unit_tests(
+  ktexttemplate_templates_unit_tests(
     testinternationalization
   )
   if ("x${CMAKE_CXX_COMPILER_ID}x" MATCHES "xMSVCx")

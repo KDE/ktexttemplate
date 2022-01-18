@@ -15,7 +15,7 @@ namespace Grantlee
 
   The <tt>grantlee_add_plugin</tt> CMake macro has been removed. Users should
   now use the CMake command <tt>add_library(MODULE)</tt>, link to the %Grantlee
-  Templates library, and use the <tt>grantlee_adjust_plugin_name</tt> macro
+  Templates library, and use the <tt>ktexttemplate_adjust_plugin_name</tt> macro
   with the created target.
 
   @subsection use_file_removed Grantlee_USE_FILE removed

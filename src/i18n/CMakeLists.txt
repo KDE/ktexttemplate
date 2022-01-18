@@ -17,7 +17,7 @@ target_link_libraries(grantlee_i18ntags PRIVATE
 target_compile_features(grantlee_i18ntags PRIVATE
   cxx_auto_type
 )
-grantlee_adjust_plugin_name(grantlee_i18ntags)
+ktexttemplate_adjust_plugin_name(grantlee_i18ntags)
 
 install(TARGETS grantlee_i18ntags 
   EXPORT grantlee_targets

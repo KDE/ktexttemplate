@@ -16,7 +16,7 @@ target_link_libraries(grantlee_defaultfilters PRIVATE
 target_compile_features(grantlee_defaultfilters PRIVATE
   cxx_auto_type
 )
-grantlee_adjust_plugin_name(grantlee_defaultfilters)
+ktexttemplate_adjust_plugin_name(grantlee_defaultfilters)
 
 install(TARGETS grantlee_defaultfilters
   EXPORT grantlee_targets

@@ -72,7 +72,7 @@ MainWindow::MainWindow(QWidget *parent, Qt::WindowFlags flags)
   m_engine = new KTextTemplate::Engine(this);
   m_engine->setPluginPaths(QStringList() << KTEXTTEMPLATE_PLUGIN_PATH
                                          << ":/plugins");
-  m_engine->addDefaultLibrary("grantlee_scriptabletags");
+  m_engine->addDefaultLibrary("ktexttemplate_scriptabletags");
   m_engine->setSmartTrimEnabled(true);
 
   m_loader = QSharedPointer<KTextTemplate::FileSystemTemplateLoader>(

@@ -37,14 +37,14 @@
 
 using namespace KTextTemplate;
 
-static const char s_scriptableLibName[] = "grantlee_scriptabletags";
+static const char s_scriptableLibName[] = "ktexttemplate_scriptabletags";
 
 Engine::Engine(QObject *parent)
     : QObject(parent), d_ptr(new EnginePrivate(this))
 {
-  d_ptr->m_defaultLibraries << QStringLiteral("grantlee_defaulttags")
-                            << QStringLiteral("grantlee_loadertags")
-                            << QStringLiteral("grantlee_defaultfilters");
+  d_ptr->m_defaultLibraries << QStringLiteral("ktexttemplate_defaulttags")
+                            << QStringLiteral("ktexttemplate_loadertags")
+                            << QStringLiteral("ktexttemplate_defaultfilters");
 
   d_ptr->m_pluginDirs = QCoreApplication::libraryPaths();
   d_ptr->m_pluginDirs << QString::fromLocal8Bit(KTEXTTEMPLATE_PLUGIN_PATH);

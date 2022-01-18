@@ -1,4 +1,4 @@
-add_library(grantlee_defaulttags MODULE
+add_library(ktexttemplate_defaulttags MODULE
   defaulttags.cpp
   autoescape.cpp
   comment.cpp
@@ -20,19 +20,19 @@ add_library(grantlee_defaulttags MODULE
   widthratio.cpp
   with.cpp
 )
-set_property(TARGET grantlee_defaulttags PROPERTY
+set_property(TARGET ktexttemplate_defaulttags PROPERTY
   EXPORT_NAME defaulttags
 )
-target_link_libraries(grantlee_defaulttags PRIVATE
+target_link_libraries(ktexttemplate_defaulttags PRIVATE
   KF6::TextTemplate
 )
-target_compile_features(grantlee_defaulttags PRIVATE
+target_compile_features(ktexttemplate_defaulttags PRIVATE
   cxx_auto_type
   cxx_variadic_templates
 )
-ktexttemplate_adjust_plugin_name(grantlee_defaulttags)
+ktexttemplate_adjust_plugin_name(ktexttemplate_defaulttags)
 
-install(TARGETS grantlee_defaulttags 
+install(TARGETS ktexttemplate_defaulttags 
   EXPORT grantlee_targets
   LIBRARY DESTINATION ${PLUGIN_INSTALL_DIR}
   COMPONENT Templates

@@ -131,8 +131,8 @@ MainWindow::MainWindow(const QString &templateDir, QWidget *parent,
 void MainWindow::delayedInit()
 {
   m_engine = new KTextTemplate::Engine(this);
-  m_engine->addDefaultLibrary("grantlee_i18n");
-  m_engine->addDefaultLibrary("grantlee_scriptabletags");
+  m_engine->addDefaultLibrary("ktexttemplate_i18n");
+  m_engine->addDefaultLibrary("ktexttemplate_scriptabletags");
 
   initLocalizer();
 

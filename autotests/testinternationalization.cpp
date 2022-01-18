@@ -80,7 +80,7 @@ public:
       Q_ASSERT(result);
       frLocalizer->installTranslator(frTranslator, QStringLiteral("fr_FR"));
     }
-    m_engine->addDefaultLibrary(QStringLiteral("grantlee_i18ntags"));
+    m_engine->addDefaultLibrary(QStringLiteral("ktexttemplate_i18ntags"));
   }
 
 private Q_SLOTS:

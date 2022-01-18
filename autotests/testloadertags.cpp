@@ -84,7 +84,7 @@ void TestLoaderTags::initTestCase()
       QStringLiteral(":/plugins/") // For testtags.qs
   });
 #ifdef HAVE_QTQML_LIB
-  m_engine->addDefaultLibrary(QStringLiteral("grantlee_scriptabletags"));
+  m_engine->addDefaultLibrary(QStringLiteral("ktexttemplate_scriptabletags"));
 #endif
 }
 

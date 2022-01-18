@@ -71,7 +71,7 @@ void TestScriptableTagsSyntax::initTestCase()
       QStringLiteral(KTEXTTEMPLATE_PLUGIN_PATH),
       QStringLiteral(":/plugins/") // For scripteddefaults.qs
   });
-  m_engine->addDefaultLibrary(QStringLiteral("grantlee_scriptabletags"));
+  m_engine->addDefaultLibrary(QStringLiteral("ktexttemplate_scriptabletags"));
 }
 
 void TestScriptableTagsSyntax::cleanupTestCase() { delete m_engine; }

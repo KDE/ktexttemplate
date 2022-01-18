@@ -26,7 +26,7 @@
 
 TemplateReply::TemplateReply(const QNetworkRequest &req,
                              const QNetworkAccessManager::Operation op,
-                             Grantlee::Template t, Grantlee::Context c,
+                             KTextTemplate::Template t, KTextTemplate::Context c,
                              QObject *parent)
     : QNetworkReply(parent), m_t(t), m_c(c), m_buffer(new QBuffer(this))
 {
@@ -53,7 +53,7 @@ bool TemplateReply::open(QIODevice::OpenMode mode)
   m_buffer->open(QIODevice::ReadWrite);
   QString s;
   QTextStream ts(&s);
-  Grantlee::OutputStream stream(&ts);
+  KTextTemplate::OutputStream stream(&ts);
   m_t->render(&stream, &m_c);
   setHeader(QNetworkRequest::ContentTypeHeader, "text/html;charset=utf-8");
   m_buffer->write(s.toUtf8());

@@ -30,7 +30,7 @@
 
 /// @file
 
-namespace Grantlee
+namespace KTextTemplate
 {
 
 /// @headerfile metatype.h grantlee/metatype.h
@@ -94,7 +94,7 @@ namespace
 template <typename RealType, typename HandleAs> struct LookupTrait {
   static QVariant doLookUp(const QVariant &object, const QString &property)
   {
-    typedef typename Grantlee::TypeAccessor<RealType> Accessor;
+    typedef typename KTextTemplate::TypeAccessor<RealType> Accessor;
     return Accessor::lookUp(object.value<RealType>(), property);
   }
 };
@@ -103,7 +103,7 @@ template <typename RealType, typename HandleAs>
 struct LookupTrait<RealType &, HandleAs &> {
   static QVariant doLookUp(const QVariant &object, const QString &property)
   {
-    typedef typename Grantlee::TypeAccessor<HandleAs &> Accessor;
+    typedef typename KTextTemplate::TypeAccessor<HandleAs &> Accessor;
     return Accessor::lookUp(object.value<HandleAs>(), property);
   }
 };
@@ -203,7 +203,7 @@ template <typename Type> int registerMetaType()
 }
 
 #endif
-} // namespace Grantlee
+} // namespace KTextTemplate
 
 /**
   Top boundary of a lookup function for Type.
@@ -211,7 +211,7 @@ template <typename Type> int registerMetaType()
   @see @ref generic_types
  */
 #define GRANTLEE_BEGIN_LOOKUP(Type)                                            \
-  namespace Grantlee                                                           \
+  namespace KTextTemplate                                                           \
   {                                                                            \
   template <>                                                                  \
   inline QVariant TypeAccessor<Type &>::lookUp(const Type &object,             \
@@ -224,7 +224,7 @@ template <typename Type> int registerMetaType()
   @see @ref generic_types
  */
 #define GRANTLEE_BEGIN_LOOKUP_PTR(Type)                                        \
-  namespace Grantlee                                                           \
+  namespace KTextTemplate                                                           \
   {                                                                            \
   template <>                                                                  \
   inline QVariant TypeAccessor<Type *>::lookUp(const Type *const object,       \

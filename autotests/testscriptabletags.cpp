@@ -35,9 +35,9 @@
 
 using Dict = QHash<QString, QVariant>;
 
-Q_DECLARE_METATYPE(Grantlee::Error)
+Q_DECLARE_METATYPE(KTextTemplate::Error)
 
-using namespace Grantlee;
+using namespace KTextTemplate;
 
 class TestScriptableTagsSyntax : public CoverageObject
 {
@@ -81,7 +81,7 @@ void TestScriptableTagsSyntax::doTest()
   QFETCH(QString, input);
   QFETCH(Dict, dict);
   QFETCH(QString, output);
-  QFETCH(Grantlee::Error, error);
+  QFETCH(KTextTemplate::Error, error);
 
   auto t = m_engine->newTemplate(input, QLatin1String(QTest::currentDataTag()));
 
@@ -118,7 +118,7 @@ void TestScriptableTagsSyntax::testBasicSyntax_data()
   QTest::addColumn<QString>("input");
   QTest::addColumn<Dict>("dict");
   QTest::addColumn<QString>("output");
-  QTest::addColumn<Grantlee::Error>("error");
+  QTest::addColumn<KTextTemplate::Error>("error");
 
   Dict dict;
 
@@ -197,7 +197,7 @@ void TestScriptableTagsSyntax::testResolve_data()
   QTest::addColumn<QString>("input");
   QTest::addColumn<Dict>("dict");
   QTest::addColumn<QString>("output");
-  QTest::addColumn<Grantlee::Error>("error");
+  QTest::addColumn<KTextTemplate::Error>("error");
 
   Dict dict;
   dict.insert(QStringLiteral("boo"), QStringLiteral("Far"));

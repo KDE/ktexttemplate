@@ -25,7 +25,7 @@
 
 #include "grantlee_templates_export.h"
 
-namespace Grantlee
+namespace KTextTemplate
 {
 
 class CachingLoaderDecoratorPrivate;
@@ -36,14 +36,14 @@ class CachingLoaderDecoratorPrivate;
   @brief Implements a loader decorator which caches compiled Template objects.
 
   The **%CachingLoaderDecorator** can be used with any implementation of
-  Grantlee::AbstractTemplateLoader.
+  KTextTemplate::AbstractTemplateLoader.
 
   @code
-    auto loader = QSharedPointer<Grantlee::FileSystemTemplateLoader>::create();
+    auto loader = QSharedPointer<KTextTemplate::FileSystemTemplateLoader>::create();
     loader->setTemplateDirs({"/path/one", "/path/two"});
 
     auto cache =
-        QSharedPointer<Grantlee::CachingLoaderDecorator>::create( loader );
+        QSharedPointer<KTextTemplate::CachingLoaderDecorator>::create( loader );
     m_engine->addTemplateLoader( cache );
   @endcode
 
@@ -86,7 +86,7 @@ public:
   QPair<QString, QString> getMediaUri(const QString &fileName) const override;
 
   Template loadByName(const QString &name,
-                      const Grantlee::Engine *engine) const override;
+                      const KTextTemplate::Engine *engine) const override;
 
   /**
     Clears the Templates objects cached in the decorator.

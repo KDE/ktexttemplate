@@ -27,7 +27,7 @@
 #include <QWebView>
 #include <grantlee/templateloader.h>
 
-namespace Grantlee
+namespace KTextTemplate
 {
 class Engine;
 }
@@ -49,7 +49,7 @@ private Q_SLOTS:
   void delayedInit();
 
 protected:
-  QSharedPointer<Grantlee::AbstractLocalizer> m_localizer;
+  QSharedPointer<KTextTemplate::AbstractLocalizer> m_localizer;
 
 private:
   QListWidget *m_list;
@@ -57,8 +57,8 @@ private:
   QComboBox *m_combo;
   QString m_templateDir;
 
-  Grantlee::Engine *m_engine;
-  QSharedPointer<Grantlee::FileSystemTemplateLoader> m_templateLoader;
+  KTextTemplate::Engine *m_engine;
+  QSharedPointer<KTextTemplate::FileSystemTemplateLoader> m_templateLoader;
 };
 
 template <typename T> class AppMainWindow : public MainWindow
@@ -73,7 +73,7 @@ public:
 protected:
   virtual void initLocalizer()
   {
-    m_localizer = QSharedPointer<Grantlee::AbstractLocalizer>(new T);
+    m_localizer = QSharedPointer<KTextTemplate::AbstractLocalizer>(new T);
   }
 };
 

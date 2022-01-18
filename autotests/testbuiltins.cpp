@@ -37,9 +37,9 @@
 
 using Dict = QHash<QString, QVariant>;
 
-Q_DECLARE_METATYPE(Grantlee::Error)
+Q_DECLARE_METATYPE(KTextTemplate::Error)
 
-using namespace Grantlee;
+using namespace KTextTemplate;
 
 /**
   For use with tests.
@@ -260,12 +260,12 @@ private:
 void TestBuiltinSyntax::testObjects()
 {
   {
-    auto loader = QSharedPointer<Grantlee::FileSystemTemplateLoader>::create();
+    auto loader = QSharedPointer<KTextTemplate::FileSystemTemplateLoader>::create();
     loader->setTemplateDirs(
         {QStringLiteral("/path/one"), QStringLiteral("/path/two")});
 
     auto cache
-        = QSharedPointer<Grantlee::CachingLoaderDecorator>::create(loader);
+        = QSharedPointer<KTextTemplate::CachingLoaderDecorator>::create(loader);
   }
 
   Context c1, c2;
@@ -453,7 +453,7 @@ void TestBuiltinSyntax::doTest()
   QFETCH(QString, input);
   QFETCH(Dict, dict);
   QFETCH(QString, output);
-  QFETCH(Grantlee::Error, error);
+  QFETCH(KTextTemplate::Error, error);
 
   auto t = m_engine->newTemplate(input, QLatin1String(QTest::currentDataTag()));
 
@@ -487,7 +487,7 @@ void TestBuiltinSyntax::testBasicSyntax_data()
   QTest::addColumn<QString>("input");
   QTest::addColumn<Dict>("dict");
   QTest::addColumn<QString>("output");
-  QTest::addColumn<Grantlee::Error>("error");
+  QTest::addColumn<KTextTemplate::Error>("error");
 
   Dict dict;
 
@@ -724,7 +724,7 @@ void TestBuiltinSyntax::testEnums_data()
   QTest::addColumn<QString>("input");
   QTest::addColumn<Dict>("dict");
   QTest::addColumn<QString>("output");
-  QTest::addColumn<Grantlee::Error>("error");
+  QTest::addColumn<KTextTemplate::Error>("error");
 
   Dict dict;
 
@@ -1118,7 +1118,7 @@ void TestBuiltinSyntax::testListIndex_data()
   QTest::addColumn<QString>("input");
   QTest::addColumn<Dict>("dict");
   QTest::addColumn<QString>("output");
-  QTest::addColumn<Grantlee::Error>("error");
+  QTest::addColumn<KTextTemplate::Error>("error");
 
   Dict dict;
 
@@ -1177,7 +1177,7 @@ void TestBuiltinSyntax::testFilterSyntax_data()
   QTest::addColumn<QString>("input");
   QTest::addColumn<Dict>("dict");
   QTest::addColumn<QString>("output");
-  QTest::addColumn<Grantlee::Error>("error");
+  QTest::addColumn<KTextTemplate::Error>("error");
 
   Dict dict;
 
@@ -1297,7 +1297,7 @@ void TestBuiltinSyntax::testCommentSyntax_data()
   QTest::addColumn<QString>("input");
   QTest::addColumn<Dict>("dict");
   QTest::addColumn<QString>("output");
-  QTest::addColumn<Grantlee::Error>("error");
+  QTest::addColumn<KTextTemplate::Error>("error");
 
   Dict dict;
 
@@ -1337,7 +1337,7 @@ void TestBuiltinSyntax::testMultiline_data()
   QTest::addColumn<QString>("input");
   QTest::addColumn<Dict>("dict");
   QTest::addColumn<QString>("output");
-  QTest::addColumn<Grantlee::Error>("error");
+  QTest::addColumn<KTextTemplate::Error>("error");
 
   Dict dict;
 
@@ -1351,7 +1351,7 @@ void TestBuiltinSyntax::testEscaping_data()
   QTest::addColumn<QString>("input");
   QTest::addColumn<Dict>("dict");
   QTest::addColumn<QString>("output");
-  QTest::addColumn<Grantlee::Error>("error");
+  QTest::addColumn<KTextTemplate::Error>("error");
 
   Dict dict;
 
@@ -1579,7 +1579,7 @@ void TestBuiltinSyntax::testTypeAccessorsUnordered()
   QFETCH(QString, input);
   QFETCH(Dict, dict);
   QFETCH(QStringList, output);
-  QFETCH(Grantlee::Error, error);
+  QFETCH(KTextTemplate::Error, error);
 
   auto t = m_engine->newTemplate(input, QLatin1String(QTest::currentDataTag()));
 
@@ -1610,7 +1610,7 @@ void TestBuiltinSyntax::testTypeAccessorsUnordered_data()
   QTest::addColumn<QString>("input");
   QTest::addColumn<Dict>("dict");
   QTest::addColumn<QStringList>("output");
-  QTest::addColumn<Grantlee::Error>("error");
+  QTest::addColumn<KTextTemplate::Error>("error");
 
   Dict dict;
 
@@ -1648,7 +1648,7 @@ void TestBuiltinSyntax::testTypeAccessors_data()
   QTest::addColumn<QString>("input");
   QTest::addColumn<Dict>("dict");
   QTest::addColumn<QString>("output");
-  QTest::addColumn<Grantlee::Error>("error");
+  QTest::addColumn<KTextTemplate::Error>("error");
 
   Dict dict;
 
@@ -1936,7 +1936,7 @@ void TestBuiltinSyntax::testDynamicProperties_data()
   QTest::addColumn<QString>("input");
   QTest::addColumn<Dict>("dict");
   QTest::addColumn<QString>("output");
-  QTest::addColumn<Grantlee::Error>("error");
+  QTest::addColumn<KTextTemplate::Error>("error");
 
   Dict dict;
 

@@ -28,7 +28,7 @@
 
 class QPluginLoader;
 
-namespace Grantlee
+namespace KTextTemplate
 {
 
 class ScriptableTagLibrary;

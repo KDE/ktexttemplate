@@ -25,7 +25,7 @@
 
 #include <QtCore/QVariant>
 
-namespace Grantlee
+namespace KTextTemplate
 {
 class Context;
 
@@ -40,7 +40,7 @@ class VariablePrivate;
 
   When processing a template tag in a AbstractNodeFactory implementation, it
   will sometimes make sense to process arguments to the tag as
-  Grantlee::Variables. Note that usually they should be processed as
+  KTextTemplate::Variables. Note that usually they should be processed as
   FilterExpression objects instead.
 
   Arguments to the tag can be used to construct Variables, which may then be

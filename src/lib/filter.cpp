@@ -20,11 +20,14 @@
 
 #include "filter.h"
 
-using namespace Grantlee;
+using namespace KTextTemplate;
 
 Filter::~Filter() = default;
 
-void Filter::setStream(Grantlee::OutputStream *stream) { m_stream = stream; }
+void Filter::setStream(KTextTemplate::OutputStream *stream)
+{
+  m_stream = stream;
+}
 
 SafeString Filter::escape(const QString &input) const
 {

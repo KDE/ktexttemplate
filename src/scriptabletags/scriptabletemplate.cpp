@@ -24,7 +24,8 @@
 #include "engine.h"
 #include "node.h"
 
-ScriptableTemplate::ScriptableTemplate(Grantlee::Template t, QObject *parent)
+ScriptableTemplate::ScriptableTemplate(KTextTemplate::Template t,
+                                       QObject *parent)
     : QObject(parent), m_template(t)
 {
 }

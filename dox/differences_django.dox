@@ -1,5 +1,5 @@
 
-namespace Grantlee
+namespace KTextTemplate
 {
 
 /**
@@ -16,7 +16,7 @@ namespace Grantlee
 
   Django uses PHP datetime string format for the @gr_tag{now} tag, whereas %Grantlee uses QDateTime format.
 
-  The Django autoescape system is based on marking a string object as safe. In %Qt, this is not directly possible, so a wrapper class, Grantlee::SafeString is provided with several convenient operator overloads. This has (hopefully) minimal impact on plugin writers.
+  The Django autoescape system is based on marking a string object as safe. In %Qt, this is not directly possible, so a wrapper class, KTextTemplate::SafeString is provided with several convenient operator overloads. This has (hopefully) minimal impact on plugin writers.
 
   Django performs string escaping on the assumption that the output string is HTML. In %Grantlee it is possible to implement escaping for other markups and text outputs by reimplementing OutputStream::escape.
 

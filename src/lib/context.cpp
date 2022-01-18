@@ -26,9 +26,9 @@
 
 #include <QtCore/QStringList>
 
-using namespace Grantlee;
+using namespace KTextTemplate;
 
-namespace Grantlee
+namespace KTextTemplate
 {
 class ContextPrivate
 {
@@ -106,9 +106,9 @@ QVariant Context::lookup(const QString &str) const
     if (it != h.constEnd()) {
       auto var = it.value();
       // If the user passed a string into the context, turn it into a
-      // Grantlee::SafeString.
+      // KTextTemplate::SafeString.
       if (var.userType() == qMetaTypeId<QString>()) {
-        var = QVariant::fromValue<Grantlee::SafeString>(
+        var = QVariant::fromValue<KTextTemplate::SafeString>(
             getSafeString(var.value<QString>()));
       }
       return var;

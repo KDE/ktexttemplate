@@ -38,7 +38,7 @@ Node *TemplateTagNodeFactory::getNode(const QString &tagContent,
   );
   expr.takeAt(0);
   if (expr.isEmpty()) {
-    throw Grantlee::Exception(
+    throw KTextTemplate::Exception(
         TagSyntaxError,
         QStringLiteral("'templatetag' statement takes one argument"));
   }
@@ -46,8 +46,8 @@ Node *TemplateTagNodeFactory::getNode(const QString &tagContent,
   auto name = expr.first();
 
   if (!TemplateTagNode::isKeyword(name)) {
-    throw Grantlee::Exception(TagSyntaxError,
-                              QStringLiteral("Not a template tag"));
+    throw KTextTemplate::Exception(TagSyntaxError,
+                                   QStringLiteral("Not a template tag"));
   }
 
   return new TemplateTagNode(name, p);

@@ -28,9 +28,10 @@
 #include "parser.h"
 #include "util.h"
 
-using ArgFilter = QPair<QSharedPointer<Grantlee::Filter>, Grantlee::Variable>;
+using ArgFilter
+    = QPair<QSharedPointer<KTextTemplate::Filter>, KTextTemplate::Variable>;
 
-namespace Grantlee
+namespace KTextTemplate
 {
 
 class FilterExpressionPrivate
@@ -46,7 +47,7 @@ class FilterExpressionPrivate
 };
 }
 
-using namespace Grantlee;
+using namespace KTextTemplate;
 
 static const char FILTER_SEPARATOR = '|';
 static const char FILTER_ARGUMENT_SEPARATOR = ':';
@@ -113,7 +114,7 @@ FilterExpression::FilterExpression(const QString &varString, Parser *parser)
       const auto ssSize = subString.size();
 
       if (pos != lastPos) {
-        throw Grantlee::Exception(
+        throw KTextTemplate::Exception(
             TagSyntaxError,
             QStringLiteral("Could not parse some characters: \"%1\"")
                 .arg(varString.mid(lastPos, pos)));
@@ -132,7 +133,7 @@ FilterExpression::FilterExpression(const QString &varString, Parser *parser)
         if (d->m_filters.isEmpty()
             || d->m_filters.at(d->m_filters.size() - 1).second.isValid()) {
           const auto remainder = varString.right(varString.size() - lastPos);
-          throw Grantlee::Exception(
+          throw KTextTemplate::Exception(
               TagSyntaxError,
               QStringLiteral("Could not parse the remainder, %1 from %2")
                   .arg(remainder, varString));
@@ -140,7 +141,7 @@ FilterExpression::FilterExpression(const QString &varString, Parser *parser)
         subString = subString.right(ssSize - 1);
         const auto lastFilter = d->m_filters.size();
         if (subString.startsWith(QLatin1Char(FILTER_SEPARATOR)))
-          throw Grantlee::Exception(
+          throw KTextTemplate::Exception(
               EmptyVariableError,
               QStringLiteral("Missing argument to filter: %1")
                   .arg(d->m_filterNames[lastFilter - 1]));
@@ -157,7 +158,7 @@ FilterExpression::FilterExpression(const QString &varString, Parser *parser)
 
     const auto remainder = varString.right(varString.size() - lastPos);
     if (!remainder.isEmpty()) {
-      throw Grantlee::Exception(
+      throw KTextTemplate::Exception(
           TagSyntaxError,
           QStringLiteral("Could not parse the remainder, %1 from %2")
               .arg(remainder, varString));
@@ -216,11 +217,11 @@ QVariant FilterExpression::resolve(OutputStream *stream, Context *c) const
     auto arg = argVar.resolve(c);
 
     if (arg.isValid()) {
-      Grantlee::SafeString argString;
-      if (arg.userType() == qMetaTypeId<Grantlee::SafeString>()) {
-        argString = arg.value<Grantlee::SafeString>();
+      KTextTemplate::SafeString argString;
+      if (arg.userType() == qMetaTypeId<KTextTemplate::SafeString>()) {
+        argString = arg.value<KTextTemplate::SafeString>();
       } else if (arg.userType() == qMetaTypeId<QString>()) {
-        argString = Grantlee::SafeString(arg.value<QString>());
+        argString = KTextTemplate::SafeString(arg.value<QString>());
       }
       if (argVar.isConstant()) {
         argString = markSafe(argString);
@@ -234,7 +235,7 @@ QVariant FilterExpression::resolve(OutputStream *stream, Context *c) const
 
     var = filter->doFilter(var, arg, c->autoEscape());
 
-    if (var.userType() == qMetaTypeId<Grantlee::SafeString>()
+    if (var.userType() == qMetaTypeId<KTextTemplate::SafeString>()
         || var.userType() == qMetaTypeId<QString>()) {
       if (filter->isSafe() && varString.isSafe()) {
         var = markSafe(getSafeString(var));

@@ -23,12 +23,12 @@
 
 #include "node.h"
 
-namespace Grantlee
+namespace KTextTemplate
 {
 class Parser;
 }
 
-using namespace Grantlee;
+using namespace KTextTemplate;
 
 class IncludeNodeFactory : public AbstractNodeFactory
 {

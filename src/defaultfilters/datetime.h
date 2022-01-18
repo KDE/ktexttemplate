@@ -23,7 +23,7 @@
 
 #include "filter.h"
 
-using namespace Grantlee;
+using namespace KTextTemplate;
 
 class DateFilter : public Filter
 {

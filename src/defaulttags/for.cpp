@@ -33,7 +33,7 @@ Node *ForNodeFactory::getNode(const QString &tagContent, Parser *p) const
   auto expr = smartSplit(tagContent);
 
   if (expr.size() < 4) {
-    throw Grantlee::Exception(
+    throw KTextTemplate::Exception(
         TagSyntaxError,
         QStringLiteral("'for' statements should have at least four words: %1")
             .arg(tagContent));
@@ -49,7 +49,7 @@ Node *ForNodeFactory::getNode(const QString &tagContent, Parser *p) const
   }
 
   if (expr.at(expr.size() - 2) != QStringLiteral("in")) {
-    throw Grantlee::Exception(
+    throw KTextTemplate::Exception(
         TagSyntaxError,
         QStringLiteral("'for' statements should use the form 'for x in y': %1")
             .arg(tagContent));
@@ -67,7 +67,7 @@ Node *ForNodeFactory::getNode(const QString &tagContent, Parser *p) const
 
   for (const QString &var : qAsConst(vars)) {
     if (var.isEmpty())
-      throw Grantlee::Exception(
+      throw KTextTemplate::Exception(
           TagSyntaxError,
           QStringLiteral("'for' tag received invalid argument"));
   }

@@ -25,7 +25,7 @@
 
 #include "filter.h"
 
-using namespace Grantlee;
+using namespace KTextTemplate;
 
 class JoinFilter : public Filter
 {

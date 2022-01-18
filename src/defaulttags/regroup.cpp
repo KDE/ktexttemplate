@@ -31,18 +31,18 @@ Node *RegroupNodeFactory::getNode(const QString &tagContent, Parser *p) const
   auto expr = tagContent.split(QLatin1Char(' '));
 
   if (expr.size() != 6) {
-    throw Grantlee::Exception(
+    throw KTextTemplate::Exception(
         TagSyntaxError, QStringLiteral("widthratio takes five arguments"));
   }
   FilterExpression target(expr.at(1), p);
   if (expr.at(2) != QStringLiteral("by")) {
-    throw Grantlee::Exception(TagSyntaxError,
-                              QStringLiteral("second argument must be 'by'"));
+    throw KTextTemplate::Exception(
+        TagSyntaxError, QStringLiteral("second argument must be 'by'"));
   }
 
   if (expr.at(4) != QStringLiteral("as")) {
-    throw Grantlee::Exception(TagSyntaxError,
-                              QStringLiteral("fourth argument must be 'as'"));
+    throw KTextTemplate::Exception(
+        TagSyntaxError, QStringLiteral("fourth argument must be 'as'"));
   }
 
   FilterExpression expression(

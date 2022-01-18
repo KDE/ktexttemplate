@@ -33,9 +33,9 @@
 
 using Dict = QHash<QString, QVariant>;
 
-Q_DECLARE_METATYPE(Grantlee::Error)
+Q_DECLARE_METATYPE(KTextTemplate::Error)
 
-using namespace Grantlee;
+using namespace KTextTemplate;
 
 class TestCachingLoader : public CoverageObject
 {
@@ -57,8 +57,8 @@ void TestCachingLoader::testRenderAfterError()
   loader->setTemplate(QStringLiteral("main"),
                       QStringLiteral("{% include template_var %}"));
 
-  QSharedPointer<Grantlee::CachingLoaderDecorator> cache(
-      new Grantlee::CachingLoaderDecorator(loader));
+  QSharedPointer<KTextTemplate::CachingLoaderDecorator> cache(
+      new KTextTemplate::CachingLoaderDecorator(loader));
 
   engine.addTemplateLoader(cache);
 

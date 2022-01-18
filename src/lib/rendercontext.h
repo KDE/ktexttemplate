@@ -27,7 +27,7 @@
 
 /// @headerfile rendercontext.h grantlee/rendercontext.h
 
-namespace Grantlee
+namespace KTextTemplate
 {
 
 class ContextPrivate;

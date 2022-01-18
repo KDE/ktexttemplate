@@ -28,17 +28,17 @@
 #include "extends.h"
 #include "include.h"
 
-namespace Grantlee
+namespace KTextTemplate
 {
 class Parser;
 }
 
-using namespace Grantlee;
+using namespace KTextTemplate;
 
 class LoaderTagLibrary : public QObject, public TagLibraryInterface
 {
   Q_OBJECT
-  Q_INTERFACES(Grantlee::TagLibraryInterface)
+  Q_INTERFACES(KTextTemplate::TagLibraryInterface)
   Q_PLUGIN_METADATA(IID "org.grantlee.TagLibraryInterface")
 public:
   LoaderTagLibrary() {}

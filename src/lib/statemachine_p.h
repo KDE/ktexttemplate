@@ -24,7 +24,7 @@
 #include <QtCore/QString>
 #include <QtCore/QVector>
 
-namespace Grantlee
+namespace KTextTemplate
 {
 
 template <typename TransitionInterface> class State

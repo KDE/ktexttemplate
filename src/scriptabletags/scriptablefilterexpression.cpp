@@ -26,7 +26,7 @@
 #include "scriptablesafestring.h"
 #include "util.h"
 
-using namespace Grantlee;
+using namespace KTextTemplate;
 
 ScriptableFilterExpression::ScriptableFilterExpression(QObject *parent)
     : QObject(parent), m_engine(nullptr)
@@ -40,7 +40,7 @@ ScriptableFilterExpression::ScriptableFilterExpression(QJSEngine *engine,
 }
 
 void ScriptableFilterExpression::init(const QString &content,
-                                      Grantlee::Parser *parser)
+                                      KTextTemplate::Parser *parser)
 {
   m_filterExpression = FilterExpression(content, parser);
 }
@@ -49,7 +49,7 @@ QVariant ScriptableFilterExpression::resolve(ScriptableContext *c)
 {
   auto var = m_filterExpression.resolve(c->context());
 
-  if (Grantlee::isSafeString(var)) {
+  if (KTextTemplate::isSafeString(var)) {
     auto ssObj = new ScriptableSafeString(m_engine);
     ssObj->setContent(getSafeString(var));
     return m_engine->newQObject(ssObj).toVariant();
@@ -66,6 +66,6 @@ bool ScriptableFilterExpression::equals(ScriptableFilterExpression *other,
                                         ScriptableContext *scriptableC)
 {
   auto c = scriptableC->context();
-  return Grantlee::equals(m_filterExpression.resolve(c),
-                          other->m_filterExpression.resolve(c));
+  return KTextTemplate::equals(m_filterExpression.resolve(c),
+                               other->m_filterExpression.resolve(c));
 }

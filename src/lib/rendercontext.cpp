@@ -22,9 +22,9 @@
 
 #include "node.h"
 
-using namespace Grantlee;
+using namespace KTextTemplate;
 
-namespace Grantlee
+namespace KTextTemplate
 {
 
 class RenderContextPrivate

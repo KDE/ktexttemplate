@@ -28,18 +28,21 @@
 #include <QtCore/QDebug>
 #include <QtCore/QSequentialIterable>
 
-using namespace Grantlee;
+using namespace KTextTemplate;
 
 Q_GLOBAL_STATIC(CustomTypeRegistry, customTypes)
 
-void Grantlee::MetaType::internalLock() { return customTypes()->mutex.lock(); }
+void KTextTemplate::MetaType::internalLock()
+{
+  return customTypes()->mutex.lock();
+}
 
-void Grantlee::MetaType::internalUnlock()
+void KTextTemplate::MetaType::internalUnlock()
 {
   return customTypes()->mutex.unlock();
 }
 
-void Grantlee::MetaType::registerLookUpOperator(int id, LookupFunction f)
+void KTextTemplate::MetaType::registerLookUpOperator(int id, LookupFunction f)
 {
   Q_ASSERT(id > 0);
   Q_ASSERT(f);
@@ -108,8 +111,8 @@ static QVariant doQobjectLookUp(const QObject *const object,
   return object->property(property.toUtf8().constData());
 }
 
-QVariant Grantlee::MetaType::lookup(const QVariant &object,
-                                    const QString &property)
+QVariant KTextTemplate::MetaType::lookup(const QVariant &object,
+                                         const QString &property)
 {
   if (object.canConvert<QObject *>()) {
     return doQobjectLookUp(object.value<QObject *>(), property);
@@ -217,7 +220,7 @@ QVariant Grantlee::MetaType::lookup(const QVariant &object,
   return customTypes()->lookup(object, property);
 }
 
-bool Grantlee::MetaType::lookupAlreadyRegistered(int id)
+bool KTextTemplate::MetaType::lookupAlreadyRegistered(int id)
 {
   return customTypes()->lookupAlreadyRegistered(id);
 }

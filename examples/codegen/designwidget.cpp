@@ -129,9 +129,9 @@ void DesignWidget::setArgsRootIndex(const QModelIndex &index)
       m_argsModel->mapFromSource(index.sibling(index.row(), 0)));
 }
 
-Grantlee::Context DesignWidget::getContext()
+KTextTemplate::Context DesignWidget::getContext()
 {
-  Grantlee::Context c;
+  KTextTemplate::Context c;
   c.insert("pimpl", ui.pimpl_check->isChecked());
   c.insert("className", ui.className_edit->text());
   c.insert("author", ui.author_edit->text());

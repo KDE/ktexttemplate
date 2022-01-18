@@ -23,7 +23,7 @@
 
 #include "statemachine_p.h"
 
-namespace Grantlee
+namespace KTextTemplate
 {
 
 struct CharTransitionInterface {

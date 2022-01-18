@@ -26,7 +26,7 @@
 #include <QtCore/QSharedPointer>
 #include <QtCore/QTextStream>
 
-namespace Grantlee
+namespace KTextTemplate
 {
 
 class SafeString;
@@ -58,7 +58,7 @@ class SafeString;
   overriden to return an **%OutputStream** with the same escaping behaviour.
 
   @code
-    class NoEscapeStream : public Grantlee::OutputStream
+    class NoEscapeStream : public KTextTemplate::OutputStream
     {
     public:
       // ...
@@ -118,7 +118,7 @@ public:
     Returns @p after escaping it, unless @p input is "safe", in which case,
     @p input is returned unmodified.
   */
-  QString conditionalEscape(const Grantlee::SafeString &input) const;
+  QString conditionalEscape(const KTextTemplate::SafeString &input) const;
 
   /**
     Writes @p input to the stream after escaping it.

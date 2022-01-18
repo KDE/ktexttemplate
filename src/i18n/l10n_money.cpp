@@ -34,7 +34,7 @@ Node *L10nMoneyNodeFactory::getNode(const QString &tagContent, Parser *p) const
   auto expr = smartSplit(tagContent);
 
   if (expr.size() < 2)
-    throw Grantlee::Exception(
+    throw KTextTemplate::Exception(
         TagSyntaxError,
         QStringLiteral("Error: l10n_money tag takes at least one argument"));
 
@@ -50,14 +50,14 @@ Node *L10nMoneyNodeFactory::getNode(const QString &tagContent, Parser *p) const
 
 L10nMoneyVarNodeFactory::L10nMoneyVarNodeFactory() = default;
 
-Grantlee::Node *L10nMoneyVarNodeFactory::getNode(const QString &tagContent,
-                                                 Parser *p) const
+KTextTemplate::Node *L10nMoneyVarNodeFactory::getNode(const QString &tagContent,
+                                                      Parser *p) const
 {
 
   auto expr = smartSplit(tagContent);
 
   if (expr.size() < 4)
-    throw Grantlee::Exception(
+    throw KTextTemplate::Exception(
         TagSyntaxError,
         QStringLiteral("Error: l10n_money tag takes at least three arguments"));
 

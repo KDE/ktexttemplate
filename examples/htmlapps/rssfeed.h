@@ -24,92 +24,92 @@
 #include <grantlee/filter.h>
 #include <grantlee/node.h>
 
-namespace Grantlee
+namespace KTextTemplate
 {
 class Parser;
 class OutputStream;
 class Context;
 }
 
-class RssFeedNodeFactory : public Grantlee::AbstractNodeFactory
+class RssFeedNodeFactory : public KTextTemplate::AbstractNodeFactory
 {
   Q_OBJECT
 public:
   RssFeedNodeFactory(QObject *parent = 0);
 
-  virtual Grantlee::Node *getNode(const QString &tagContent,
-                                  Grantlee::Parser *p) const;
+  virtual KTextTemplate::Node *getNode(const QString &tagContent,
+                                  KTextTemplate::Parser *p) const;
 };
 
-class RssFeedNode : public Grantlee::Node
+class RssFeedNode : public KTextTemplate::Node
 {
   Q_OBJECT
 public:
-  RssFeedNode(const Grantlee::FilterExpression &url,
-              const Grantlee::FilterExpression &query, QObject *parent = 0);
+  RssFeedNode(const KTextTemplate::FilterExpression &url,
+              const KTextTemplate::FilterExpression &query, QObject *parent = 0);
 
   void setChildNodes(QList<Node *> childNodes);
 
-  virtual void render(Grantlee::OutputStream *stream,
-                      Grantlee::Context *c) const;
+  virtual void render(KTextTemplate::OutputStream *stream,
+                      KTextTemplate::Context *c) const;
 
 private:
-  Grantlee::FilterExpression m_url;
-  Grantlee::FilterExpression m_query;
+  KTextTemplate::FilterExpression m_url;
+  KTextTemplate::FilterExpression m_query;
   QList<Node *> m_childNodes;
 };
 
-class XmlRoleNodeFactory : public Grantlee::AbstractNodeFactory
+class XmlRoleNodeFactory : public KTextTemplate::AbstractNodeFactory
 {
   Q_OBJECT
 public:
   XmlRoleNodeFactory(QObject *parent = 0);
 
-  virtual Grantlee::Node *getNode(const QString &tagContent,
-                                  Grantlee::Parser *p) const;
+  virtual KTextTemplate::Node *getNode(const QString &tagContent,
+                                  KTextTemplate::Parser *p) const;
 };
 
-class XmlRoleNode : public Grantlee::Node
+class XmlRoleNode : public KTextTemplate::Node
 {
   Q_OBJECT
 public:
-  XmlRoleNode(const Grantlee::FilterExpression &query, QObject *parent = 0);
+  XmlRoleNode(const KTextTemplate::FilterExpression &query, QObject *parent = 0);
 
-  virtual void render(Grantlee::OutputStream *stream,
-                      Grantlee::Context *c) const;
+  virtual void render(KTextTemplate::OutputStream *stream,
+                      KTextTemplate::Context *c) const;
 
 private:
-  Grantlee::FilterExpression m_name;
-  Grantlee::FilterExpression m_query;
+  KTextTemplate::FilterExpression m_name;
+  KTextTemplate::FilterExpression m_query;
   int m_count;
 };
 
-class XmlNamespaceNodeFactory : public Grantlee::AbstractNodeFactory
+class XmlNamespaceNodeFactory : public KTextTemplate::AbstractNodeFactory
 {
   Q_OBJECT
 public:
   XmlNamespaceNodeFactory(QObject *parent = 0);
 
-  virtual Grantlee::Node *getNode(const QString &tagContent,
-                                  Grantlee::Parser *p) const;
+  virtual KTextTemplate::Node *getNode(const QString &tagContent,
+                                  KTextTemplate::Parser *p) const;
 };
 
-class XmlNamespaceNode : public Grantlee::Node
+class XmlNamespaceNode : public KTextTemplate::Node
 {
   Q_OBJECT
 public:
-  XmlNamespaceNode(const Grantlee::FilterExpression &query, const QString &name,
+  XmlNamespaceNode(const KTextTemplate::FilterExpression &query, const QString &name,
                    QObject *parent = 0);
 
-  virtual void render(Grantlee::OutputStream *stream,
-                      Grantlee::Context *c) const;
+  virtual void render(KTextTemplate::OutputStream *stream,
+                      KTextTemplate::Context *c) const;
 
 private:
   QString m_name;
-  Grantlee::FilterExpression m_query;
+  KTextTemplate::FilterExpression m_query;
 };
 
-class ResizeFilter : public Grantlee::Filter
+class ResizeFilter : public KTextTemplate::Filter
 {
 public:
   QVariant doFilter(const QVariant &input,

@@ -30,10 +30,10 @@
 
 #define TEMPLATE_DIR GRANTLEE_TEMPLATE_PATH "/linguist/"
 
-static QSharedPointer<Grantlee::AbstractLocalizer> getLocalizer()
+static QSharedPointer<KTextTemplate::AbstractLocalizer> getLocalizer()
 {
-  QSharedPointer<Grantlee::QtLocalizer> localizer
-      = QSharedPointer<Grantlee::QtLocalizer>(new Grantlee::QtLocalizer);
+  QSharedPointer<KTextTemplate::QtLocalizer> localizer
+      = QSharedPointer<KTextTemplate::QtLocalizer>(new KTextTemplate::QtLocalizer);
   localizer->setAppTranslatorPrefix("contacts_");
   localizer->setAppTranslatorPath(qApp->applicationDirPath());
 
@@ -57,10 +57,10 @@ static QSharedPointer<Grantlee::AbstractLocalizer> getLocalizer()
     localizer->installTranslator(myappTranslator, localeName);
   }
 
-  return localizer.staticCast<Grantlee::AbstractLocalizer>();
+  return localizer.staticCast<KTextTemplate::AbstractLocalizer>();
 }
 
-template <> void AppMainWindow<Grantlee::QtLocalizer>::initLocalizer()
+template <> void AppMainWindow<KTextTemplate::QtLocalizer>::initLocalizer()
 {
   m_localizer = getLocalizer();
 }
@@ -69,7 +69,7 @@ int main(int argc, char *argv[])
 {
   QApplication app(argc, argv);
 
-  AppMainWindow<Grantlee::QtLocalizer> win(TEMPLATE_DIR);
+  AppMainWindow<KTextTemplate::QtLocalizer> win(TEMPLATE_DIR);
   win.show();
 
   return app.exec();

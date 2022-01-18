@@ -36,7 +36,7 @@
 #include <QtCore/QSet>
 #include <QtCore/QVector>
 
-namespace Grantlee
+namespace KTextTemplate
 {
 
 class Engine;
@@ -120,7 +120,7 @@ protected:
     This is only relevant to developing template tags.
   */
   void streamValueInContext(OutputStream *stream, const QVariant &input,
-                            Grantlee::Context *c) const;
+                            KTextTemplate::Context *c) const;
 
   /**
     Returns a raw pointer to the Template this **%Node** is in.
@@ -149,7 +149,7 @@ private:
 
   @see @ref tags_with_end_tags
 */
-class GRANTLEE_TEMPLATES_EXPORT NodeList : public QList<Grantlee::Node *>
+class GRANTLEE_TEMPLATES_EXPORT NodeList : public QList<KTextTemplate::Node *>
 {
 public:
   /**
@@ -167,7 +167,7 @@ public:
   /**
     Convenience constructor
   */
-  /* implicit */ NodeList(const QList<Grantlee::Node *> &list);
+  /* implicit */ NodeList(const QList<KTextTemplate::Node *> &list);
 
   /**
     Destructor.
@@ -177,12 +177,12 @@ public:
   /**
     Appends @p node to the end of this **%NodeList**.
   */
-  void append(Grantlee::Node *node);
+  void append(KTextTemplate::Node *node);
 
   /**
     Appends @p nodeList to the end of this **%NodeList**.
   */
-  void append(const QList<Grantlee::Node *> &nodeList);
+  void append(const QList<KTextTemplate::Node *> &nodeList);
 
   /**
     Returns true if this **%NodeList** contains non-text nodes.
@@ -195,9 +195,9 @@ public:
   template <typename T> QList<T> findChildren()
   {
     QList<T> children;
-    QList<Grantlee::Node *>::const_iterator it;
-    const QList<Grantlee::Node *>::const_iterator first = constBegin();
-    const QList<Grantlee::Node *>::const_iterator last = constEnd();
+    QList<KTextTemplate::Node *>::const_iterator it;
+    const QList<KTextTemplate::Node *>::const_iterator first = constBegin();
+    const QList<KTextTemplate::Node *>::const_iterator last = constEnd();
     for (it = first; it != last; ++it) {
       T object = qobject_cast<T>(*it);
       if (object) {

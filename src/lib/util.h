@@ -29,7 +29,7 @@
 
 /// @file util.h Utility functions used throughout %Grantlee.
 
-namespace Grantlee
+namespace KTextTemplate
 {
 
 /**
@@ -50,19 +50,19 @@ GRANTLEE_TEMPLATES_EXPORT QString unescapeStringLiteral(const QString &input);
 /**
   Marks the @p input as safe.
 */
-GRANTLEE_TEMPLATES_EXPORT Grantlee::SafeString
-markSafe(const Grantlee::SafeString &input);
+GRANTLEE_TEMPLATES_EXPORT KTextTemplate::SafeString
+markSafe(const KTextTemplate::SafeString &input);
 
 /**
   Marks the @p input as requiring escaping.
 */
-GRANTLEE_TEMPLATES_EXPORT Grantlee::SafeString
-markForEscaping(const Grantlee::SafeString &input);
+GRANTLEE_TEMPLATES_EXPORT KTextTemplate::SafeString
+markForEscaping(const KTextTemplate::SafeString &input);
 
 /**
   Retrieves and returns a SafeString from the @p input.
 */
-GRANTLEE_TEMPLATES_EXPORT Grantlee::SafeString
+GRANTLEE_TEMPLATES_EXPORT KTextTemplate::SafeString
 getSafeString(const QVariant &input);
 
 /**
@@ -103,7 +103,7 @@ calcFileSize(qreal size, int unitSystem = 10, qreal multiplier = 1.0);
   Returns the @p list as a formatted string. This is for debugging purposes
   only.
 */
-GRANTLEE_TEMPLATES_EXPORT Grantlee::SafeString
+GRANTLEE_TEMPLATES_EXPORT KTextTemplate::SafeString
 toString(const QVariantList &list);
 #endif
 }

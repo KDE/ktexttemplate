@@ -28,7 +28,7 @@
 #include <QtCore/QSharedPointer>
 #include <QtCore/QStringList>
 
-namespace Grantlee
+namespace KTextTemplate
 {
 class Context;
 class Engine;
@@ -48,7 +48,7 @@ class TemplatePrivate;
 /**
   @brief The **%Template** class is a tree of nodes which may be rendered.
 
-  All Templates are created through the Grantlee::Engine class.
+  All Templates are created through the KTextTemplate::Engine class.
   A **%Template** is created by parsing some text markup passed into the Engine,
   or by reading it from a file.
 

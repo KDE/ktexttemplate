@@ -23,7 +23,7 @@
 
 #include "node.h"
 
-using namespace Grantlee;
+using namespace KTextTemplate;
 
 class ForNodeFactory : public AbstractNodeFactory
 {

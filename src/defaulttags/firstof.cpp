@@ -33,7 +33,7 @@ Node *FirstOfNodeFactory::getNode(const QString &tagContent, Parser *p) const
   const auto tagName = expr.takeAt(0);
 
   if (expr.isEmpty()) {
-    throw Grantlee::Exception(
+    throw KTextTemplate::Exception(
         TagSyntaxError,
         QStringLiteral("%1 expects at least one argument").arg(tagName));
   }

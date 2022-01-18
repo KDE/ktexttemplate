@@ -130,14 +130,14 @@ MainWindow::MainWindow(const QString &templateDir, QWidget *parent,
 
 void MainWindow::delayedInit()
 {
-  m_engine = new Grantlee::Engine(this);
+  m_engine = new KTextTemplate::Engine(this);
   m_engine->addDefaultLibrary("grantlee_i18n");
   m_engine->addDefaultLibrary("grantlee_scriptabletags");
 
   initLocalizer();
 
-  m_templateLoader = QSharedPointer<Grantlee::FileSystemTemplateLoader>(
-      new Grantlee::FileSystemTemplateLoader(m_localizer));
+  m_templateLoader = QSharedPointer<KTextTemplate::FileSystemTemplateLoader>(
+      new KTextTemplate::FileSystemTemplateLoader(m_localizer));
   m_templateLoader->setTemplateDirs(QStringList() << m_templateDir);
 
   m_engine->addTemplateLoader(m_templateLoader);
@@ -155,14 +155,14 @@ void MainWindow::render() const
         static_cast<QObject *>(static_cast<Contact *>(item)));
 
   m_templateLoader->setTheme(m_combo->currentText());
-  Grantlee::Template t = m_engine->loadByName("main.html");
+  KTextTemplate::Template t = m_engine->loadByName("main.html");
 
   if (t->error()) {
     qDebug() << t->errorString();
     return;
   }
 
-  Grantlee::Context c;
+  KTextTemplate::Context c;
   c.setLocalizer(m_localizer);
   c.insert("contacts", contacts);
 

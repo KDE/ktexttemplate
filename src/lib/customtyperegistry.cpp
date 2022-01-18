@@ -31,7 +31,7 @@
 
 Q_LOGGING_CATEGORY(GRANTLEE_CUSTOMTYPE, "grantlee.customtype")
 
-using namespace Grantlee;
+using namespace KTextTemplate;
 
 CustomTypeRegistry::CustomTypeRegistry()
 {

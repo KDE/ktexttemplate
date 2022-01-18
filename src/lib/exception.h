@@ -27,7 +27,7 @@
 
 #include <exception>
 
-namespace Grantlee
+namespace KTextTemplate
 {
 
 /**
@@ -72,7 +72,7 @@ enum Error {
     QStringList tagContents = smartSplit( tagContent );
 
     if ( tagContents.size() != 2 )
-      throw Grantlee::Exception( TagSyntaxError,
+      throw KTextTemplate::Exception( TagSyntaxError,
         "Error: Include tag takes exactly one argument" );
 
     // The item at index 0 in the list is the tag name, "include"

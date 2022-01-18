@@ -36,11 +36,11 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent)
 
   QWebView *wv = new QWebView;
 
-  Grantlee::Engine *engine = new Grantlee::Engine(this);
+  KTextTemplate::Engine *engine = new KTextTemplate::Engine(this);
   engine->addDefaultLibrary("customplugin");
 
-  QSharedPointer<Grantlee::FileSystemTemplateLoader> loader(
-      new Grantlee::FileSystemTemplateLoader);
+  QSharedPointer<KTextTemplate::FileSystemTemplateLoader> loader(
+      new KTextTemplate::FileSystemTemplateLoader);
   loader->setTemplateDirs(QStringList() << GRANTLEE_TEMPLATE_PATH);
   engine->addTemplateLoader(loader);
 

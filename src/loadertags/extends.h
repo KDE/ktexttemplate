@@ -24,14 +24,14 @@
 #include "node.h"
 #include "template.h"
 
-namespace Grantlee
+namespace KTextTemplate
 {
 class Parser;
 }
 
 class BlockNode;
 
-using namespace Grantlee;
+using namespace KTextTemplate;
 
 class ExtendsNodeFactory : public AbstractNodeFactory
 {

@@ -36,16 +36,16 @@
 
   'const QString &' should not become 'const QString &amp;'
 */
-class NoEscapeOutputStream : public Grantlee::OutputStream
+class NoEscapeOutputStream : public KTextTemplate::OutputStream
 {
 public:
-  NoEscapeOutputStream() : Grantlee::OutputStream() {}
+  NoEscapeOutputStream() : KTextTemplate::OutputStream() {}
 
   NoEscapeOutputStream(QTextStream *stream) : OutputStream(stream) {}
 
-  virtual QSharedPointer<Grantlee::OutputStream> clone() const
+  virtual QSharedPointer<KTextTemplate::OutputStream> clone() const
   {
-    return QSharedPointer<Grantlee::OutputStream>(new NoEscapeOutputStream);
+    return QSharedPointer<KTextTemplate::OutputStream>(new NoEscapeOutputStream);
   }
 
   virtual QString escape(const QString &input) const { return input; }
@@ -69,14 +69,14 @@ MainWindow::MainWindow(QWidget *parent, Qt::WindowFlags flags)
   connect(m_designWidget, SIGNAL(generateClicked(bool)),
           SLOT(generateOutput()));
 
-  m_engine = new Grantlee::Engine(this);
+  m_engine = new KTextTemplate::Engine(this);
   m_engine->setPluginPaths(QStringList() << GRANTLEE_PLUGIN_PATH
                                          << ":/plugins");
   m_engine->addDefaultLibrary("grantlee_scriptabletags");
   m_engine->setSmartTrimEnabled(true);
 
-  m_loader = QSharedPointer<Grantlee::FileSystemTemplateLoader>(
-      new Grantlee::FileSystemTemplateLoader);
+  m_loader = QSharedPointer<KTextTemplate::FileSystemTemplateLoader>(
+      new KTextTemplate::FileSystemTemplateLoader);
   m_loader->setTemplateDirs(QStringList() << ":/templates");
   m_engine->addTemplateLoader(m_loader);
   m_engine->addDefaultLibrary("custom_tags");
@@ -94,7 +94,7 @@ void MainWindow::generateOutput()
   if (outputType == "cpp")
     return generateCpp();
 
-  Grantlee::Template classTemplate
+  KTextTemplate::Template classTemplate
       = m_engine->loadByName("class." + outputType);
 
   if (classTemplate->error()) {
@@ -102,7 +102,7 @@ void MainWindow::generateOutput()
     return;
   }
 
-  Grantlee::Context c = m_designWidget->getContext();
+  KTextTemplate::Context c = m_designWidget->getContext();
 
   QString output;
   QTextStream textStream(&output);
@@ -115,14 +115,14 @@ void MainWindow::generateOutput()
 
 void MainWindow::generateCpp()
 {
-  Grantlee::Template headerTemplate = m_engine->loadByName("header.h");
+  KTextTemplate::Template headerTemplate = m_engine->loadByName("header.h");
 
   if (headerTemplate->error()) {
     createOutputTab("Header", headerTemplate->errorString());
     return;
   }
 
-  Grantlee::Context c = m_designWidget->getContext();
+  KTextTemplate::Context c = m_designWidget->getContext();
 
   QString output;
   QTextStream textStream(&output);
@@ -137,7 +137,7 @@ void MainWindow::generateCpp()
 
   output.clear();
 
-  Grantlee::Template implementationTemplate
+  KTextTemplate::Template implementationTemplate
       = m_engine->loadByName("implementation.cpp");
 
   if (implementationTemplate->error()) {
@@ -154,14 +154,14 @@ void MainWindow::generateCpp()
   output.clear();
 
   if (c.lookup("pimpl").toBool()) {
-    Grantlee::Template privateHeaderTemplate
+    KTextTemplate::Template privateHeaderTemplate
         = m_engine->loadByName("private_header.h");
 
     if (privateHeaderTemplate->error()) {
       createOutputTab("Private Header", privateHeaderTemplate->errorString());
       return;
     }
-    c.insert("className", Grantlee::getSafeString(c.lookup("className"))
+    c.insert("className", KTextTemplate::getSafeString(c.lookup("className"))
                               + QString("Private"));
     c.insert("baseClass", QVariant());
     privateHeaderTemplate->render(&stream, &c);

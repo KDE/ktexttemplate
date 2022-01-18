@@ -25,7 +25,7 @@
 
 #include <QtCore/QHash>
 
-namespace Grantlee
+namespace KTextTemplate
 {
 class AbstractNodeFactory;
 class Engine;
@@ -45,7 +45,7 @@ class Filter;
     class MyTagLibrary : public QObject, public TagLibraryInterface
     {
       Q_OBJECT
-      Q_INTERFACES( Grantlee::TagLibraryInterface )
+      Q_INTERFACES( KTextTemplate::TagLibraryInterface )
     public:
       MyTagLibrary( QObject *parent = {} )
           : QObject( parent ) {
@@ -103,7 +103,7 @@ public:
 };
 }
 
-Q_DECLARE_INTERFACE(Grantlee::TagLibraryInterface,
+Q_DECLARE_INTERFACE(KTextTemplate::TagLibraryInterface,
                     "org.grantlee.TagLibraryInterface/1.0")
 
 #endif

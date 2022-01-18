@@ -24,7 +24,7 @@
 #include "template.h"
 #include "templateloader.h"
 
-namespace Grantlee
+namespace KTextTemplate
 {
 class TagLibraryInterface;
 
@@ -33,10 +33,10 @@ class EnginePrivate;
 /// @headerfile engine.h grantlee/engine.h
 
 /**
-  @brief **%Grantlee::Engine** is the main entry point for creating %Grantlee
+  @brief **%KTextTemplate::Engine** is the main entry point for creating %Grantlee
   Templates.
 
-  The **%Grantlee::Engine** is responsible for configuring and creating Template
+  The **%KTextTemplate::Engine** is responsible for configuring and creating Template
   objects.  In typical use, one or more AbstractTemplateLoader objects will be
   added to the Engine to load template objects, and plugin directories will be
   set to enable finding template tags and filters.

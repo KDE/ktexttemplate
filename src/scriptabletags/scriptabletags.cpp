@@ -43,7 +43,7 @@
 
 Q_DECLARE_METATYPE(Token)
 
-using namespace Grantlee;
+using namespace KTextTemplate;
 
 QJSValue ScriptableHelperFunctions::markSafeFunction(QJSValue inputValue)
 {
@@ -201,7 +201,7 @@ bool ScriptableTagLibrary::evaluateScript(const QString &name)
 
   QJSValue result = m_scriptEngine->evaluate(fileContent);
   if (result.isError())
-    throw Grantlee::Exception(TagSyntaxError, result.toString());
+    throw KTextTemplate::Exception(TagSyntaxError, result.toString());
 
   return true;
 }

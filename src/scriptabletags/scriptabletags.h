@@ -28,7 +28,7 @@
 
 class QJSEngine;
 
-namespace Grantlee
+namespace KTextTemplate
 {
 class Engine;
 class Parser;
@@ -58,7 +58,7 @@ public:
 class ScriptableTagLibrary : public QObject, public TagLibraryInterface
 {
   Q_OBJECT
-  Q_INTERFACES(Grantlee::TagLibraryInterface)
+  Q_INTERFACES(KTextTemplate::TagLibraryInterface)
   Q_PLUGIN_METADATA(IID "org.grantlee.TagLibraryInterface")
 public:
   ScriptableTagLibrary(QObject *parent = {});

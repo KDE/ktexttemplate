@@ -26,14 +26,14 @@
 
 #include <QtCore/QMutex>
 
-namespace Grantlee
+namespace KTextTemplate
 {
 
 struct CustomTypeInfo {
 public:
   CustomTypeInfo() : lookupFunction(nullptr) {}
 
-  Grantlee::MetaType::LookupFunction lookupFunction;
+  KTextTemplate::MetaType::LookupFunction lookupFunction;
 };
 
 struct CustomTypeRegistry {

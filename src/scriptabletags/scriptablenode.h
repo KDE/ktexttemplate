@@ -27,13 +27,13 @@
 
 class QJSEngine;
 
-namespace Grantlee
+namespace KTextTemplate
 {
 class Context;
 class Engine;
 }
 
-using namespace Grantlee;
+using namespace KTextTemplate;
 
 class ScriptableNode : public Node
 {
@@ -63,7 +63,7 @@ public:
   ScriptableNodeFactory(QObject *parent = {});
   void setScriptEngine(QJSEngine *engine);
 
-  void setEngine(Grantlee::Engine *engine) override;
+  void setEngine(KTextTemplate::Engine *engine) override;
   void setFactory(const QJSValue &factoryMethod);
 
   Node *getNode(const QString &tagContent, Parser *p = {}) const override;

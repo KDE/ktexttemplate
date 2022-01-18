@@ -298,17 +298,17 @@ struct DictSortLessThan {
     case QMetaType::QObjectStar:
       return l.value<QObject *>() < r.value<QObject *>();
     }
-    if (l.userType() == qMetaTypeId<Grantlee::SafeString>()) {
-      if (r.userType() == qMetaTypeId<Grantlee::SafeString>()) {
-        return l.value<Grantlee::SafeString>().get()
-               < r.value<Grantlee::SafeString>().get();
+    if (l.userType() == qMetaTypeId<KTextTemplate::SafeString>()) {
+      if (r.userType() == qMetaTypeId<KTextTemplate::SafeString>()) {
+        return l.value<KTextTemplate::SafeString>().get()
+               < r.value<KTextTemplate::SafeString>().get();
       }
       if (r.userType() == qMetaTypeId<QString>()) {
-        return l.value<Grantlee::SafeString>().get() < r.value<QString>();
+        return l.value<KTextTemplate::SafeString>().get() < r.value<QString>();
       }
-    } else if (r.userType() == qMetaTypeId<Grantlee::SafeString>()) {
+    } else if (r.userType() == qMetaTypeId<KTextTemplate::SafeString>()) {
       if (l.userType() == qMetaTypeId<QString>()) {
-        return l.value<QString>() < r.value<Grantlee::SafeString>().get();
+        return l.value<QString>() < r.value<KTextTemplate::SafeString>().get();
       }
     } else if (l.userType() == qMetaTypeId<QString>()) {
       if (r.userType() == qMetaTypeId<QString>()) {

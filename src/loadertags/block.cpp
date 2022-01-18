@@ -48,8 +48,8 @@ Node *BlockNodeFactory::getNode(const QString &tagContent, Parser *p) const
   );
 
   if (expr.size() != 2) {
-    throw Grantlee::Exception(TagSyntaxError,
-                              QStringLiteral("block tag takes one argument"));
+    throw KTextTemplate::Exception(
+        TagSyntaxError, QStringLiteral("block tag takes one argument"));
   }
 
   const auto blockName = expr.at(1);
@@ -64,7 +64,7 @@ Node *BlockNodeFactory::getNode(const QString &tagContent, Parser *p) const
       const auto blockNodeName = item.value<QString>();
 
       if (blockNodeName == blockName) {
-        throw Grantlee::Exception(
+        throw KTextTemplate::Exception(
             TagSyntaxError,
             QStringLiteral("'block' tag with name '%1' appears more than once.")
                 .arg(blockName));
@@ -95,7 +95,7 @@ Node *BlockNodeFactory::getNode(const QString &tagContent, Parser *p) const
 BlockNode::BlockNode(const QString &name, QObject *parent)
     : Node(parent), m_name(name), m_stream(nullptr)
 {
-  qRegisterMetaType<Grantlee::SafeString>("Grantlee::SafeString");
+  qRegisterMetaType<KTextTemplate::SafeString>("KTextTemplate::SafeString");
 }
 
 BlockNode::~BlockNode() = default;

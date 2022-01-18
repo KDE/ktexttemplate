@@ -34,7 +34,7 @@ Node *WithLocaleNodeFactory::getNode(const QString &tagContent, Parser *p) const
   auto expr = smartSplit(tagContent);
 
   if (expr.size() != 2) {
-    throw Grantlee::Exception(
+    throw KTextTemplate::Exception(
         TagSyntaxError,
         QStringLiteral(
             "%1 expected format is for example 'with_locale \"de_DE\"'")
@@ -64,7 +64,8 @@ void WithLocaleNode::setNodeList(const NodeList &nodeList)
 
 void WithLocaleNode::render(OutputStream *stream, Context *c) const
 {
-  const QString name = Grantlee::getSafeString(m_localeName.resolve(c)).get();
+  const QString name
+      = KTextTemplate::getSafeString(m_localeName.resolve(c)).get();
 
   c->push();
   c->localizer()->pushLocale(name);

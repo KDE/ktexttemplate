@@ -253,11 +253,11 @@ void testContainer(const QString &stringTemplate,
                    const QVariant &containerVariant,
                    const QStringList &expectedResults, bool unordered)
 {
-  Grantlee::Engine engine;
+  KTextTemplate::Engine engine;
 
   engine.setPluginPaths({QStringLiteral(GRANTLEE_PLUGIN_PATH)});
 
-  Grantlee::Context c;
+  KTextTemplate::Context c;
   c.insert(QStringLiteral("container"), containerVariant);
 
   auto t1 = engine.newTemplate(stringTemplate, QStringLiteral("template1"));

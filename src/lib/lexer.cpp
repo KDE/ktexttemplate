@@ -20,7 +20,7 @@
 
 #include "lexer_p.h"
 
-using namespace Grantlee;
+using namespace KTextTemplate;
 
 using TextProcessingState = State<TextProcessingMachine::Type>;
 using TextProcessingTransition = TextProcessingMachine::Transition;

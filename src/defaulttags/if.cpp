@@ -63,7 +63,7 @@ Node *IfNodeFactory::getNode(const QString &tagContent, Parser *p) const
 
   auto commandName = expr.takeAt(0);
   if (expr.size() <= 0) {
-    throw Grantlee::Exception(
+    throw KTextTemplate::Exception(
         TagSyntaxError,
         QStringLiteral("'%1' statement requires at least one argument")
             .arg(commandName));
@@ -89,8 +89,8 @@ void IfNode::render(OutputStream *stream, Context *c) const
     bool match = false;
     if (pair.first) {
       try {
-        match = Grantlee::variantIsTrue(pair.first->evaluate(c));
-      } catch (const Grantlee::Exception &) {
+        match = KTextTemplate::variantIsTrue(pair.first->evaluate(c));
+      } catch (const KTextTemplate::Exception &) {
       }
     } else {
       match = true;

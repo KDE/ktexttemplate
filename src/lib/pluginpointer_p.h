@@ -24,7 +24,7 @@
 #include <QtCore/QPluginLoader>
 #include <QtCore/QSharedPointer>
 
-namespace Grantlee
+namespace KTextTemplate
 {
 
 /**

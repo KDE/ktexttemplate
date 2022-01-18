@@ -44,7 +44,7 @@ QVariant ScriptableVariable::resolve(ScriptableContext *c)
 {
   auto var = m_variable.resolve(c->context());
 
-  if (Grantlee::isSafeString(var)) {
+  if (KTextTemplate::isSafeString(var)) {
     auto ssObj = new ScriptableSafeString(m_engine);
     ssObj->setContent(getSafeString(var));
     return m_engine->newQObject(ssObj).toVariant();

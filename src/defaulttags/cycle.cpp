@@ -34,7 +34,7 @@ Node *CycleNodeFactory::getNode(const QString &tagContent, Parser *p) const
   auto expr = smartSplit(tagContent);
 
   if (expr.size() < 2) {
-    throw Grantlee::Exception(
+    throw KTextTemplate::Exception(
         TagSyntaxError,
         QStringLiteral("%1 expects at least one argument").arg(expr.first()));
   }
@@ -53,15 +53,15 @@ Node *CycleNodeFactory::getNode(const QString &tagContent, Parser *p) const
     auto name = expr.at(1);
     auto cycleNodes = p->property(_namedCycleNodes);
     if (cycleNodes.userType() != qMetaTypeId<QVariantHash>()) {
-      throw Grantlee::Exception(
+      throw KTextTemplate::Exception(
           TagSyntaxError,
           QStringLiteral("No named cycles in template. '%1' is not defined")
               .arg(name));
     }
     auto hash = cycleNodes.value<QVariantHash>();
     if (!hash.contains(name)) {
-      throw Grantlee::Exception(TagSyntaxError,
-                                QStringLiteral("Node not found: %1").arg(name));
+      throw KTextTemplate::Exception(
+          TagSyntaxError, QStringLiteral("Node not found: %1").arg(name));
     }
     auto nodeVariant = hash.value(name);
     Q_ASSERT(nodeVariant.canConvert<Node *>());

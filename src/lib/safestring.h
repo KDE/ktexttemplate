@@ -26,7 +26,7 @@
 #include <QtCore/QString>
 #include <QtCore/QVariant>
 
-namespace Grantlee
+namespace KTextTemplate
 {
 
 /// @headerfile safestring.h grantlee/safestring.h
@@ -431,6 +431,6 @@ private:
 };
 }
 
-Q_DECLARE_METATYPE(Grantlee::SafeString)
+Q_DECLARE_METATYPE(KTextTemplate::SafeString)
 
 #endif

@@ -24,12 +24,12 @@
 #include <QtCore/QObject>
 #include <QtCore/QVariant>
 
-namespace Grantlee
+namespace KTextTemplate
 {
 class Context;
 }
 
-using namespace Grantlee;
+using namespace KTextTemplate;
 
 class ScriptableContext : public QObject
 {

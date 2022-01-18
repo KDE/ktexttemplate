@@ -1,5 +1,5 @@
 
-namespace Grantlee
+namespace KTextTemplate
 {
 /**
   @page using_and_deploying Using %Grantlee in your application
@@ -156,11 +156,11 @@ namespace Grantlee
 
   In this case, <tt>my_custom_plugin</tt> is a name used for the plugin in the CMake environment. It is used to install the custom library in the CMake <tt>install</tt> command.
 
-  <tt>custom_plugin_library.cpp</tt> is the C++ file where you implement the Grantlee::TagLibraryInterface to return custom tags and filters.
+  <tt>custom_plugin_library.cpp</tt> is the C++ file where you implement the KTextTemplate::TagLibraryInterface to return custom tags and filters.
 
   Note that the <tt>PLUGIN_INSTALL_DIR</tt> given to the install command should contain the version number of %Grantlee used to create the custom library. For example, <tt>/usr/share/my_app/plugins/grantlee/5.0/</tt>.
 
-  In C++ code, it is necessary to either instruct the Grantlee::Engine about the location of the plugins or to configure your QCoreApplication::libraryPaths by another standard method. Note that it is possible to define custom versions of built in tags and filters by putting your own plugin library in the path before the path to the default %Grantlee plugins.
+  In C++ code, it is necessary to either instruct the KTextTemplate::Engine about the location of the plugins or to configure your QCoreApplication::libraryPaths by another standard method. Note that it is possible to define custom versions of built in tags and filters by putting your own plugin library in the path before the path to the default %Grantlee plugins.
 
   For example, if your custom plugin library contained a custom implementation of the @gr_tag{for} tag:
   @code

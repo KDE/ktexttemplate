@@ -20,7 +20,7 @@
 
 #include "cachingloaderdecorator.h"
 
-namespace Grantlee
+namespace KTextTemplate
 {
 
 class CachingLoaderDecoratorPrivate
@@ -41,7 +41,7 @@ public:
 };
 }
 
-using namespace Grantlee;
+using namespace KTextTemplate;
 
 CachingLoaderDecorator::CachingLoaderDecorator(
     QSharedPointer<AbstractTemplateLoader> loader)
@@ -84,7 +84,7 @@ CachingLoaderDecorator::getMediaUri(const QString &fileName) const
 
 Template
 CachingLoaderDecorator::loadByName(const QString &name,
-                                   const Grantlee::Engine *engine) const
+                                   const KTextTemplate::Engine *engine) const
 {
   Q_D(const CachingLoaderDecorator);
   const auto it = d->m_cache.constFind(name);

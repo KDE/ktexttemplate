@@ -26,7 +26,7 @@
 
 #include <QtCore/QVariantHash>
 
-namespace Grantlee
+namespace KTextTemplate
 {
 
 class RenderContext;

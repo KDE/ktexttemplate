@@ -36,7 +36,7 @@ Version History
 * Drop old names 'grantlee_core' and 'grantlee_gui' in favor of 'Templates' and 'Textdocument' respectively.
 * Rely on modern CMake features such as IMPORTED targets and usage requirements.
 * Bump Grantlee CMake requirement to 2.8.12.
-* Make the virtual Grantlee::Node::render method const.
+* Make the virtual KTextTemplate::Node::render method const.
 * Merge LocalizedFilesystemTemplateLoader into FilesystemTemplateLoader.
 * Remove typedefs for QSharedPointers from APIs.
 

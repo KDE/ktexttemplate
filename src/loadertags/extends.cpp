@@ -30,7 +30,7 @@
 #include "template.h"
 #include "util.h"
 
-using namespace Grantlee;
+using namespace KTextTemplate;
 
 ExtendsNodeFactory::ExtendsNodeFactory(QObject *parent)
     : AbstractNodeFactory(parent)
@@ -42,7 +42,7 @@ Node *ExtendsNodeFactory::getNode(const QString &tagContent, Parser *p) const
   const auto expr = smartSplit(tagContent);
 
   if (expr.size() != 2)
-    throw Grantlee::Exception(
+    throw KTextTemplate::Exception(
         TagSyntaxError,
         QStringLiteral("Error: Include tag takes only one argument"));
 
@@ -53,14 +53,14 @@ Node *ExtendsNodeFactory::getNode(const QString &tagContent, Parser *p) const
   auto t = qobject_cast<TemplateImpl *>(p->parent());
 
   if (!t)
-    throw Grantlee::Exception(
+    throw KTextTemplate::Exception(
         TagSyntaxError, QStringLiteral("Extends tag is not in a template."));
 
   const auto nodeList = p->parse(t);
   n->setNodeList(nodeList);
 
   if (t->findChildren<ExtendsNode *>().size() > 1) {
-    throw Grantlee::Exception(
+    throw KTextTemplate::Exception(
         TagSyntaxError,
         QStringLiteral("Extends tag may only appear once in a template."));
   }
@@ -100,7 +100,7 @@ void ExtendsNode::setNodeList(const NodeList &list)
 Template ExtendsNode::getParent(Context *c) const
 {
   const auto parentVar = m_filterExpression.resolve(c);
-  if (parentVar.userType() == qMetaTypeId<Grantlee::Template>()) {
+  if (parentVar.userType() == qMetaTypeId<KTextTemplate::Template>()) {
     return parentVar.value<Template>();
   }
 
@@ -111,12 +111,12 @@ Template ExtendsNode::getParent(Context *c) const
   const auto t = ti->engine()->loadByName(parentName);
 
   if (!t)
-    throw Grantlee::Exception(
+    throw KTextTemplate::Exception(
         TagSyntaxError,
         QStringLiteral("Template not found %1").arg(parentName));
 
   if (t->error())
-    throw Grantlee::Exception(t->error(), t->errorString());
+    throw KTextTemplate::Exception(t->error(), t->errorString());
 
   return t;
 }
@@ -126,8 +126,8 @@ void ExtendsNode::render(OutputStream *stream, Context *c) const
   const auto parentTemplate = getParent(c);
 
   if (!parentTemplate) {
-    throw Grantlee::Exception(TagSyntaxError,
-                              QStringLiteral("Cannot load template."));
+    throw KTextTemplate::Exception(TagSyntaxError,
+                                   QStringLiteral("Cannot load template."));
   }
 
   QVariant &variant = c->renderContext()->data(nullptr);

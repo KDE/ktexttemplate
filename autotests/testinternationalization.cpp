@@ -29,7 +29,7 @@
 #include <QtCore/QTranslator>
 #include <QtTest/QTest>
 
-using namespace Grantlee;
+using namespace KTextTemplate;
 
 #if QT_VERSION < QT_VERSION_CHECK(5, 12, 0)
 #define FR_THOUSAND_SEPARATOR "\u00A0"
@@ -115,7 +115,7 @@ private:
   const QSharedPointer<QtLocalizer> en_GBLocalizer;
   const QSharedPointer<QtLocalizer> en_USLocalizer;
 
-  Grantlee::Engine *m_engine;
+  KTextTemplate::Engine *m_engine;
 };
 
 void TestInternationalization::initTestCase() { Q_INIT_RESOURCE(testresource); }
@@ -126,7 +126,7 @@ void TestInternationalization::testContext()
   QVERIFY(c.localizer());
   c.setLocalizer(cLocalizer);
   QVERIFY(c.localizer());
-  c.setLocalizer(QSharedPointer<Grantlee::AbstractLocalizer>());
+  c.setLocalizer(QSharedPointer<KTextTemplate::AbstractLocalizer>());
   QVERIFY(c.localizer());
 }
 

@@ -36,7 +36,7 @@ Node *LoadNodeFactory::getNode(const QString &tagContent, Parser *p) const
   );
 
   if (expr.size() <= 1) {
-    throw Grantlee::Exception(
+    throw KTextTemplate::Exception(
         TagSyntaxError,
         QStringLiteral("%1 expects at least one argument").arg(expr.first()));
   }

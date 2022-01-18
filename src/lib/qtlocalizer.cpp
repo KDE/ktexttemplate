@@ -45,7 +45,7 @@ struct Locale {
   QVector<QTranslator *> themeTranslators;
 };
 
-namespace Grantlee
+namespace KTextTemplate
 {
 
 class QtLocalizerPrivate
@@ -87,7 +87,7 @@ class QtLocalizerPrivate
 };
 }
 
-using namespace Grantlee;
+using namespace KTextTemplate;
 
 static void replacePercentN(QString *result, int n)
 {

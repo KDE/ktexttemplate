@@ -22,7 +22,7 @@
 
 ScriptableSafeString::ScriptableSafeString(QObject *parent) : QObject(parent) {}
 
-void ScriptableSafeString::setContent(const Grantlee::SafeString &content)
+void ScriptableSafeString::setContent(const KTextTemplate::SafeString &content)
 {
   m_safeString = content;
 }
@@ -33,8 +33,8 @@ bool ScriptableSafeString::isSafe() const { return m_safeString.isSafe(); }
 
 void ScriptableSafeString::setSafety(bool safeness)
 {
-  m_safeString.setSafety(safeness ? Grantlee::SafeString::IsSafe
-                                  : Grantlee::SafeString::IsNotSafe);
+  m_safeString.setSafety(safeness ? KTextTemplate::SafeString::IsSafe
+                                  : KTextTemplate::SafeString::IsNotSafe);
 }
 
 QString ScriptableSafeString::rawString() { return m_safeString; }

@@ -22,7 +22,7 @@
 
 #include "safestring.h"
 
-using namespace Grantlee;
+using namespace KTextTemplate;
 
 OutputStream::OutputStream() : m_stream(nullptr) {}
 
@@ -56,12 +56,13 @@ QString OutputStream::escape(const QString &input) const
   return rich;
 }
 
-QString OutputStream::escape(const Grantlee::SafeString &input) const
+QString OutputStream::escape(const KTextTemplate::SafeString &input) const
 {
   return escape(input.get());
 }
 
-QString OutputStream::conditionalEscape(const Grantlee::SafeString &input) const
+QString
+OutputStream::conditionalEscape(const KTextTemplate::SafeString &input) const
 {
   if (!input.isSafe())
     return escape(input.get());
@@ -80,7 +81,7 @@ OutputStream &OutputStream::operator<<(const QString &input)
   return *this;
 }
 
-OutputStream &OutputStream::operator<<(const Grantlee::SafeString &input)
+OutputStream &OutputStream::operator<<(const KTextTemplate::SafeString &input)
 {
   if (m_stream) {
     if (input.needsEscape())
@@ -91,7 +92,8 @@ OutputStream &OutputStream::operator<<(const Grantlee::SafeString &input)
   return *this;
 }
 /*
-OutputStream& OutputStream::operator<<(const Grantlee::OutputStream::Escape& e)
+OutputStream& OutputStream::operator<<(const
+KTextTemplate::OutputStream::Escape& e)
 {
   ( *m_stream ) << escape( e.m_content );
   return *this;
@@ -104,14 +106,14 @@ OutputStream &OutputStream::operator<<(QTextStream *stream)
   return *this;
 }
 /*
-Grantlee::OutputStream::MarkSafe::MarkSafe(const QString& input)
+KTextTemplate::OutputStream::MarkSafe::MarkSafe(const QString& input)
   : m_safe( false ), m_content( input )
 {
 
 }
 
-Grantlee::OutputStream::MarkSafe::MarkSafe(const Grantlee::SafeString& input)
-  : m_safe( input.isSafe() ), m_content( input.get() )
+KTextTemplate::OutputStream::MarkSafe::MarkSafe(const KTextTemplate::SafeString&
+input) : m_safe( input.isSafe() ), m_content( input.get() )
 {
 
 }

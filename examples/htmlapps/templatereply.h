@@ -33,8 +33,8 @@ class TemplateReply : public QNetworkReply
   Q_OBJECT
 public:
   TemplateReply(const QNetworkRequest &req,
-                const QNetworkAccessManager::Operation op, Grantlee::Template t,
-                Grantlee::Context c, QObject *parent = 0);
+                const QNetworkAccessManager::Operation op, KTextTemplate::Template t,
+                KTextTemplate::Context c, QObject *parent = 0);
 
   virtual void abort();
   virtual qint64 readData(char *data, qint64 maxlen);
@@ -52,8 +52,8 @@ public:
   virtual bool open(OpenMode mode);
 
 private:
-  Grantlee::Template m_t;
-  Grantlee::Context m_c;
+  KTextTemplate::Template m_t;
+  KTextTemplate::Context m_c;
   QBuffer *m_buffer;
 };
 

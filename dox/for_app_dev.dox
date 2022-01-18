@@ -1,4 +1,4 @@
-namespace Grantlee
+namespace KTextTemplate
 {
 
 /**
@@ -21,21 +21,21 @@ namespace Grantlee
   Rendering templates is very easy in application code. A single Template may be rendered multiple times with different Context objects.
 
   @code
-    auto engine = new Grantlee::Engine( this );
+    auto engine = new KTextTemplate::Engine( this );
     auto t = engine->newTemplate("My name is {{ name }}.", "my_template_name");
     QVariantHash mapping;
     mapping.insert("name", "Grainne");
-    Grantlee::Context c(mapping);
+    KTextTemplate::Context c(mapping);
 
     t->render(&c); // Returns "My name is Grainne."
 
     mapping.insert("name", "Henry");
-    c = Grantlee::Context(mapping);
+    c = KTextTemplate::Context(mapping);
 
     t->render(&c); // Returns "My name is Henry."
   @endcode
 
-  Usually, applications do not create a Template directly, but instead use a Grantlee::Engine to load external files. This allows artists to define the template without needing to recompile.
+  Usually, applications do not create a Template directly, but instead use a KTextTemplate::Engine to load external files. This allows artists to define the template without needing to recompile.
 
   @code
     auto t = engine->loadByName("template.html");
@@ -198,7 +198,7 @@ namespace Grantlee
 
   @subsection generic_variables
 
-  An alternative to writing wrapper QObject classes with <tt>Q_PROPERTY</tt> macros is to use the Grantlee::MetaType system to provide introspection
+  An alternative to writing wrapper QObject classes with <tt>Q_PROPERTY</tt> macros is to use the KTextTemplate::MetaType system to provide introspection
   for any type or any container. This subject is treated in detail in @ref generic_types_and_templates
 
   @subsection enumerator_variables Enumerators

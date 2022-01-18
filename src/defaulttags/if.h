@@ -25,7 +25,7 @@
 
 #include <QtCore/QSharedPointer>
 
-using namespace Grantlee;
+using namespace KTextTemplate;
 
 class IfNodeFactory : public AbstractNodeFactory
 {

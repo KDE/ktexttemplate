@@ -35,7 +35,7 @@
 #include <QtCore/QPluginLoader>
 #include <QtCore/QTextStream>
 
-using namespace Grantlee;
+using namespace KTextTemplate;
 
 static const char s_scriptableLibName[] = "grantlee_scriptabletags";
 
@@ -154,7 +154,7 @@ void Engine::loadDefaultLibraries()
     d->loadCppLibrary( s_scriptableLibName, GRANTLEE_VERSION_MINOR );
     PluginPointer<TagLibraryInterface> library = d->loadCppLibrary( s_scriptableLibName, GRANTLEE_VERSION_MINOR );
     if ( !library )
-      throw Grantlee::Exception( TagSyntaxError, QStringLiteral("Could not load scriptable tags library") );
+      throw KTextTemplate::Exception( TagSyntaxError, QStringLiteral("Could not load scriptable tags library") );
 #endif
   }
 #endif
@@ -212,7 +212,7 @@ TagLibraryInterface *Engine::loadLibrary(const QString &name)
       break;
     minorVersion--;
   }
-  throw Grantlee::Exception(
+  throw KTextTemplate::Exception(
       TagSyntaxError,
       QStringLiteral("Plugin library '%1' not found.").arg(name));
   return nullptr;

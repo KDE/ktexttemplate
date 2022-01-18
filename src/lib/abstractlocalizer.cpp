@@ -24,7 +24,7 @@
 
 #include <QtCore/QDateTime>
 
-using namespace Grantlee;
+using namespace KTextTemplate;
 
 AbstractLocalizer::AbstractLocalizer() = default;
 

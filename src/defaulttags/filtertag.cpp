@@ -27,8 +27,8 @@
 
 FilterNodeFactory::FilterNodeFactory() = default;
 
-Grantlee::Node *FilterNodeFactory::getNode(const QString &tagContent,
-                                           Grantlee::Parser *p) const
+KTextTemplate::Node *FilterNodeFactory::getNode(const QString &tagContent,
+                                                KTextTemplate::Parser *p) const
 {
   auto expr = tagContent.split(QLatin1Char(' '),
 #if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)
@@ -46,7 +46,7 @@ Grantlee::Node *FilterNodeFactory::getNode(const QString &tagContent,
   auto filters = fe.filters();
   if (filters.contains(QStringLiteral("safe"))
       || filters.contains(QStringLiteral("escape"))) {
-    throw Grantlee::Exception(
+    throw KTextTemplate::Exception(
         TagSyntaxError, QStringLiteral("Use the \"autoescape\" tag instead."));
   }
 

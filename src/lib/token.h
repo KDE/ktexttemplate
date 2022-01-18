@@ -23,7 +23,7 @@
 
 #include <QtCore/QString>
 
-namespace Grantlee
+namespace KTextTemplate
 {
 
 /**
@@ -52,6 +52,6 @@ struct Token {
 };
 }
 
-Q_DECLARE_TYPEINFO(Grantlee::Token, Q_MOVABLE_TYPE);
+Q_DECLARE_TYPEINFO(KTextTemplate::Token, Q_MOVABLE_TYPE);
 
 #endif

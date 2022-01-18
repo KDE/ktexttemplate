@@ -32,7 +32,7 @@ Node *IfEqualNodeFactory::do_getNode(const QString &tagContent, Parser *p,
   auto expr = smartSplit(tagContent);
 
   if (expr.size() != 3) {
-    throw Grantlee::Exception(
+    throw KTextTemplate::Exception(
         TagSyntaxError,
         QStringLiteral("%1 tag takes two arguments.").arg(expr.first()));
   }

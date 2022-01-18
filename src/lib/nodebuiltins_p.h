@@ -23,7 +23,7 @@
 
 #include "node.h"
 
-namespace Grantlee
+namespace KTextTemplate
 {
 
 /**

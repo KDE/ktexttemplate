@@ -30,7 +30,7 @@
 #include "node.h"
 #include "util.h"
 
-namespace Grantlee
+namespace KTextTemplate
 {
 class Parser;
 }
@@ -40,7 +40,7 @@ class IfToken;
 class IfParser
 {
 public:
-  IfParser(Grantlee::Parser *parser, const QStringList &args);
+  IfParser(KTextTemplate::Parser *parser, const QStringList &args);
 
   QSharedPointer<IfToken> parse();
 
@@ -52,7 +52,7 @@ private:
   QSharedPointer<IfToken> consumeToken();
 
 private:
-  Grantlee::Parser *mParser;
+  KTextTemplate::Parser *mParser;
   QVector<QSharedPointer<IfToken>> mParseNodes;
   int mPos = 0;
   QSharedPointer<IfToken> mCurrentToken;
@@ -60,20 +60,20 @@ private:
 
 static bool contains(const QVariant &needle, const QVariant &var)
 {
-  if (Grantlee::isSafeString(var)) {
-    return Grantlee::getSafeString(var).get().contains(
-        Grantlee::getSafeString(needle));
+  if (KTextTemplate::isSafeString(var)) {
+    return KTextTemplate::getSafeString(var).get().contains(
+        KTextTemplate::getSafeString(needle));
   } else if (var.canConvert<QVariantList>()) {
     auto container = var.value<QVariantList>();
-    if (Grantlee::isSafeString(needle)) {
-      return container.contains(Grantlee::getSafeString(needle).get());
+    if (KTextTemplate::isSafeString(needle)) {
+      return container.contains(KTextTemplate::getSafeString(needle).get());
     }
     return container.contains(needle);
   }
   if (var.canConvert<QVariantHash>()) {
     auto container = var.value<QVariantHash>();
-    if (Grantlee::isSafeString(needle)) {
-      return container.contains(Grantlee::getSafeString(needle).get());
+    if (KTextTemplate::isSafeString(needle)) {
+      return container.contains(KTextTemplate::getSafeString(needle).get());
     }
     return container.contains(needle.toString());
   }
@@ -114,7 +114,7 @@ public:
     mOpCode = opCode;
   }
 
-  IfToken(const Grantlee::FilterExpression &fe) : mFe(fe)
+  IfToken(const KTextTemplate::FilterExpression &fe) : mFe(fe)
   {
     mLbp = 0;
     mTokenName = QStringLiteral("literal");
@@ -124,14 +124,14 @@ public:
   void nud(IfParser *parser);
   void led(QSharedPointer<IfToken> left, IfParser *parser);
 
-  QVariant evaluate(Grantlee::Context *c) const;
+  QVariant evaluate(KTextTemplate::Context *c) const;
 
   int lbp() const { return mLbp; }
 
   int mLbp;
   QString mTokenName;
 
-  Grantlee::FilterExpression mFe;
+  KTextTemplate::FilterExpression mFe;
   ArgsType mArgs;
 
   OpCode mOpCode;
@@ -152,8 +152,8 @@ void IfToken::nud(IfParser *parser)
     return;
   }
 
-  throw Grantlee::Exception(
-      Grantlee::TagSyntaxError,
+  throw KTextTemplate::Exception(
+      KTextTemplate::TagSyntaxError,
       QStringLiteral("Not expecting '%1' in this position in if tag.")
           .arg(mTokenName));
 }
@@ -178,13 +178,13 @@ void IfToken::led(QSharedPointer<IfToken> left, IfParser *parser)
     return;
   }
 
-  throw Grantlee::Exception(
-      Grantlee::TagSyntaxError,
+  throw KTextTemplate::Exception(
+      KTextTemplate::TagSyntaxError,
       QStringLiteral("Not expecting '%1' as infix operator in if tag.")
           .arg(mTokenName));
 }
 
-IfParser::IfParser(Grantlee::Parser *parser, const QStringList &args)
+IfParser::IfParser(KTextTemplate::Parser *parser, const QStringList &args)
     : mParser(parser)
 {
   mParseNodes.reserve(args.size());
@@ -238,8 +238,8 @@ QSharedPointer<IfToken> IfParser::parse()
   auto r = expression();
 
   if (mCurrentToken->mOpCode != IfToken::Sentinal) {
-    throw Grantlee::Exception(
-        Grantlee::TagSyntaxError,
+    throw KTextTemplate::Exception(
+        KTextTemplate::TagSyntaxError,
         QStringLiteral("Unused '%1' at end of if expression.")
             .arg(mCurrentToken->tokenName()));
   }
@@ -283,32 +283,32 @@ QSharedPointer<IfToken> IfParser::createNode(const QString &content) const
     return QSharedPointer<IfToken>::create(8, content, IfToken::NotCode);
   }
   return QSharedPointer<IfToken>::create(
-      Grantlee::FilterExpression(content, mParser));
+      KTextTemplate::FilterExpression(content, mParser));
 }
 
-QVariant IfToken::evaluate(Grantlee::Context *c) const
+QVariant IfToken::evaluate(KTextTemplate::Context *c) const
 {
   try {
     switch (mOpCode) {
     case Literal:
       return mFe.resolve(c);
     case OrCode:
-      return Grantlee::variantIsTrue(mArgs.first->evaluate(c))
-             || Grantlee::variantIsTrue(mArgs.second->evaluate(c));
+      return KTextTemplate::variantIsTrue(mArgs.first->evaluate(c))
+             || KTextTemplate::variantIsTrue(mArgs.second->evaluate(c));
     case AndCode:
-      return Grantlee::variantIsTrue(mArgs.first->evaluate(c))
-             && Grantlee::variantIsTrue(mArgs.second->evaluate(c));
+      return KTextTemplate::variantIsTrue(mArgs.first->evaluate(c))
+             && KTextTemplate::variantIsTrue(mArgs.second->evaluate(c));
     case NotCode:
-      return !Grantlee::variantIsTrue(mArgs.first->evaluate(c));
+      return !KTextTemplate::variantIsTrue(mArgs.first->evaluate(c));
     case InCode:
       return contains(mArgs.first->evaluate(c), mArgs.second->evaluate(c));
     case NotInCode:
       return !contains(mArgs.first->evaluate(c), mArgs.second->evaluate(c));
     case EqCode:
-      return Grantlee::equals(mArgs.first->evaluate(c),
+      return KTextTemplate::equals(mArgs.first->evaluate(c),
                               mArgs.second->evaluate(c));
     case NeqCode:
-      return !Grantlee::equals(mArgs.first->evaluate(c),
+      return !KTextTemplate::equals(mArgs.first->evaluate(c),
                                mArgs.second->evaluate(c));
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     case GtCode:
@@ -345,7 +345,7 @@ QVariant IfToken::evaluate(Grantlee::Context *c) const
       Q_ASSERT(!"Invalid OpCode");
       return QVariant();
     }
-  } catch (const Grantlee::Exception &) {
+  } catch (const KTextTemplate::Exception &) {
     return false;
   }
 }

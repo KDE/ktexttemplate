@@ -26,7 +26,7 @@
 
 #include <QList>
 
-namespace Grantlee
+namespace KTextTemplate
 {
 
 class Lexer

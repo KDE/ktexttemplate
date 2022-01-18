@@ -36,7 +36,7 @@ class DesignWidget : public QWidget
 public:
   DesignWidget(QWidget *parent = 0, Qt::WindowFlags f = 0);
 
-  Grantlee::Context getContext();
+  KTextTemplate::Context getContext();
 
   QString outputType() const;
 

@@ -45,7 +45,7 @@ Node *WithNodeFactory::getNode(const QString &tagContent, Parser *p) const
     }
 
     if (!newSyntax) {
-      throw Grantlee::Exception(
+      throw KTextTemplate::Exception(
           TagSyntaxError,
           QStringLiteral(
               "%1 expected format is 'name=value' or 'value as name'")

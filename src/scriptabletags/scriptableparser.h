@@ -25,12 +25,12 @@
 #include <QtCore/QStringList>
 #include <QtQml/QJSValue>
 
-namespace Grantlee
+namespace KTextTemplate
 {
 class Parser;
 }
 
-using namespace Grantlee;
+using namespace KTextTemplate;
 
 class ScriptableParser : public QObject
 {

@@ -27,9 +27,9 @@
 
 #include <QtCore/QRegularExpressionMatchIterator>
 
-using namespace Grantlee;
+using namespace KTextTemplate;
 
-namespace Grantlee
+namespace KTextTemplate
 {
 
 class NodePrivate
@@ -88,7 +88,7 @@ Node::~Node() { delete d_ptr; }
 void Node::streamValueInContext(OutputStream *stream, const QVariant &input,
                                 Context *c) const
 {
-  Grantlee::SafeString inputString;
+  KTextTemplate::SafeString inputString;
   if (input.userType() == qMetaTypeId<QVariantList>()) {
     inputString = toString(input.value<QVariantList>());
   } else if (input.userType() == qMetaTypeId<MetaEnumVariable>()) {
@@ -125,16 +125,16 @@ NodeList &NodeList::operator=(const NodeList &list)
   if (&list == this) {
     return *this;
   }
-  static_cast<QList<Grantlee::Node *> &>(*this)
-      = static_cast<QList<Grantlee::Node *>>(list);
+  static_cast<QList<KTextTemplate::Node *> &>(*this)
+      = static_cast<QList<KTextTemplate::Node *>>(list);
   m_containsNonText = list.m_containsNonText;
   return *this;
 }
 
-NodeList::NodeList(const QList<Grantlee::Node *> &list)
-    : QList<Grantlee::Node *>(list), m_containsNonText(false)
+NodeList::NodeList(const QList<KTextTemplate::Node *> &list)
+    : QList<KTextTemplate::Node *>(list), m_containsNonText(false)
 {
-  for (Grantlee::Node *node : list) {
+  for (KTextTemplate::Node *node : list) {
     auto textNode = qobject_cast<TextNode *>(node);
     if (!textNode) {
       m_containsNonText = true;
@@ -145,7 +145,7 @@ NodeList::NodeList(const QList<Grantlee::Node *> &list)
 
 NodeList::~NodeList() = default;
 
-void NodeList::append(Grantlee::Node *node)
+void NodeList::append(KTextTemplate::Node *node)
 {
   if (!m_containsNonText) {
     auto textNode = qobject_cast<TextNode *>(node);
@@ -153,13 +153,13 @@ void NodeList::append(Grantlee::Node *node)
       m_containsNonText = true;
   }
 
-  QList<Grantlee::Node *>::append(node);
+  QList<KTextTemplate::Node *>::append(node);
 }
 
-void NodeList::append(const QList<Grantlee::Node *> &nodeList)
+void NodeList::append(const QList<KTextTemplate::Node *> &nodeList)
 {
   if (!m_containsNonText) {
-    for (Grantlee::Node *node : nodeList) {
+    for (KTextTemplate::Node *node : nodeList) {
       auto textNode = qobject_cast<TextNode *>(node);
       if (!textNode) {
         m_containsNonText = true;
@@ -168,7 +168,7 @@ void NodeList::append(const QList<Grantlee::Node *> &nodeList)
     }
   }
 
-  QList<Grantlee::Node *>::append(nodeList);
+  QList<KTextTemplate::Node *>::append(nodeList);
 }
 
 bool NodeList::containsNonText() const { return m_containsNonText; }

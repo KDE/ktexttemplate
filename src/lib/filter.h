@@ -31,7 +31,7 @@
 #include <QtCore/QStringList>
 #include <QtCore/QVariant>
 
-namespace Grantlee
+namespace KTextTemplate
 {
 
 /// @headerfile filter.h grantlee/filter.h

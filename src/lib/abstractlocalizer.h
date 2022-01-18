@@ -29,7 +29,7 @@
 
 class QDateTime;
 
-namespace Grantlee
+namespace KTextTemplate
 {
 
 /**

@@ -25,7 +25,7 @@
 
 #include "abstractlocalizer.h"
 
-namespace Grantlee
+namespace KTextTemplate
 {
 
 class GRANTLEE_TESTS_EXPORT NullLocalizer : public AbstractLocalizer

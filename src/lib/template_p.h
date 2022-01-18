@@ -26,7 +26,7 @@
 
 #include <QtCore/QPointer>
 
-namespace Grantlee
+namespace KTextTemplate
 {
 
 class Engine;
@@ -51,7 +51,7 @@ class TemplatePrivate
   bool m_smartTrim;
   QPointer<const Engine> m_engine;
 
-  friend class Grantlee::Engine;
+  friend class KTextTemplate::Engine;
   friend class Parser;
 };
 }

@@ -38,8 +38,8 @@ Node *NowNodeFactory::getNode(const QString &tagContent, Parser *p) const
   );
 
   if (expr.size() != 3) {
-    throw Grantlee::Exception(TagSyntaxError,
-                              QStringLiteral("now tag takes one argument"));
+    throw KTextTemplate::Exception(
+        TagSyntaxError, QStringLiteral("now tag takes one argument"));
   }
 
   auto formatString = expr.at(1);

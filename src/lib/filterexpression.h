@@ -25,7 +25,7 @@
 
 #include "grantlee_templates_export.h"
 
-namespace Grantlee
+namespace KTextTemplate
 {
 class Filter;
 class OutputStream;
@@ -128,7 +128,7 @@ public:
     Constructs a filter expression from the string @p varString. The Parser @p
     parser is used to retrieve filters.
   */
-  FilterExpression(const QString &varString, Grantlee::Parser *parser);
+  FilterExpression(const QString &varString, KTextTemplate::Parser *parser);
 
   /**
     Copy constructor.

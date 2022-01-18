@@ -27,7 +27,7 @@
 
 #include <QtCore/QStringList>
 
-namespace Grantlee
+namespace KTextTemplate
 {
 class TemplateImpl;
 

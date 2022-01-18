@@ -132,10 +132,10 @@ BookWindow::BookWindow()
 
   connect(ui.exportButton, SIGNAL(pressed()), SLOT(renderBooks()));
 
-  m_engine = new Grantlee::Engine();
-  QSharedPointer<Grantlee::FileSystemTemplateLoader> loader
-      = QSharedPointer<Grantlee::FileSystemTemplateLoader>(
-          new Grantlee::FileSystemTemplateLoader());
+  m_engine = new KTextTemplate::Engine();
+  QSharedPointer<KTextTemplate::FileSystemTemplateLoader> loader
+      = QSharedPointer<KTextTemplate::FileSystemTemplateLoader>(
+          new KTextTemplate::FileSystemTemplateLoader());
   loader->setTemplateDirs(QStringList() << GRANTLEE_TEMPLATE_PATH);
   m_engine->addTemplateLoader(loader);
 
@@ -167,9 +167,9 @@ void BookWindow::renderBooks() const
 
   QString themeName = ui.exportTheme->currentText();
 
-  Grantlee::Context c(mapping);
+  KTextTemplate::Context c(mapping);
 
-  Grantlee::Template t = m_engine->loadByName(themeName + ".html");
+  KTextTemplate::Template t = m_engine->loadByName(themeName + ".html");
   if (!t) {
     QMessageBox::critical(
         const_cast<BookWindow *>(this), "Unable to load template",

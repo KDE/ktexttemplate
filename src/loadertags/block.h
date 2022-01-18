@@ -23,12 +23,12 @@
 
 #include "node.h"
 
-namespace Grantlee
+namespace KTextTemplate
 {
 class Parser;
 }
 
-using namespace Grantlee;
+using namespace KTextTemplate;
 
 class BlockNodeFactory : public AbstractNodeFactory
 {
@@ -42,7 +42,7 @@ public:
 class BlockNode : public Node
 {
   Q_OBJECT
-  Q_PROPERTY(Grantlee::SafeString super READ getSuper)
+  Q_PROPERTY(KTextTemplate::SafeString super READ getSuper)
 public:
   BlockNode(const QString &blockName, QObject *parent = {});
   ~BlockNode() override;

@@ -1,5 +1,5 @@
 
-namespace Grantlee
+namespace KTextTemplate
 {
 
 /**
@@ -62,14 +62,14 @@ namespace Grantlee
 
   @section textedit_example Textedit application example
 
-  The textedit application example is a modified version of the same example which is bundled with %Qt. The example shows how a custom type can be used in a text document and processed with the Grantlee::Textdocument library. It further demostrates how to add theming to the output using the Grantlee::Templates library.
+  The textedit application example is a modified version of the same example which is bundled with %Qt. The example shows how a custom type can be used in a text document and processed with the KTextTemplate::Textdocument library. It further demostrates how to add theming to the output using the KTextTemplate::Templates library.
 
   @subsection textedit_blogs Related blog article
-  <a href="http://steveire.wordpress.com/2010/04/05/grantleerichtextbuilders/">Grantlee::RichTextBuilders</a>
+  <a href="http://steveire.wordpress.com/2010/04/05/grantleerichtextbuilders/">KTextTemplate::RichTextBuilders</a>
 
   @section kdepim KDE PIM 4.6
 
-  KDE PIM started using %Grantlee in its 4.6.0 release. The applications KJots and KAddressBook already use Grantlee::Templates to render content for user consumption.
+  KDE PIM started using %Grantlee in its 4.6.0 release. The applications KJots and KAddressBook already use KTextTemplate::Templates to render content for user consumption.
 
 */
 

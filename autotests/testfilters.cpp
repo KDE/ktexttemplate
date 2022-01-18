@@ -35,9 +35,9 @@
 
 using Dict = QHash<QString, QVariant>;
 
-Q_DECLARE_METATYPE(Grantlee::Error)
+Q_DECLARE_METATYPE(KTextTemplate::Error)
 
-using namespace Grantlee;
+using namespace KTextTemplate;
 
 class TestFilters : public CoverageObject
 {
@@ -94,7 +94,7 @@ void TestFilters::doTest()
   QFETCH(QString, input);
   QFETCH(Dict, dict);
   QFETCH(QString, output);
-  QFETCH(Grantlee::Error, error);
+  QFETCH(KTextTemplate::Error, error);
 
   auto t = m_engine->newTemplate(input, QLatin1String(QTest::currentDataTag()));
 
@@ -122,7 +122,7 @@ void TestFilters::testDateBasedFilters_data()
   QTest::addColumn<QString>("input");
   QTest::addColumn<Dict>("dict");
   QTest::addColumn<QString>("output");
-  QTest::addColumn<Grantlee::Error>("error");
+  QTest::addColumn<KTextTemplate::Error>("error");
 
   Dict dict;
   auto now = QDateTime::currentDateTimeUtc();
@@ -389,7 +389,7 @@ void TestFilters::testStringFilters_data()
   QTest::addColumn<QString>("input");
   QTest::addColumn<Dict>("dict");
   QTest::addColumn<QString>("output");
-  QTest::addColumn<Grantlee::Error>("error");
+  QTest::addColumn<KTextTemplate::Error>("error");
 
   Dict dict;
 
@@ -1082,7 +1082,7 @@ void TestFilters::testListFilters_data()
   QTest::addColumn<QString>("input");
   QTest::addColumn<Dict>("dict");
   QTest::addColumn<QString>("output");
-  QTest::addColumn<Grantlee::Error>("error");
+  QTest::addColumn<KTextTemplate::Error>("error");
 
   Dict dict;
 
@@ -1338,7 +1338,7 @@ void TestFilters::testListFilters_data()
   QTest::newRow("join05") << "{{ a|join:var }}" << dict
                           << QStringLiteral("alpha &amp; beta &amp; me")
                           << NoError;
-  dict.insert(QStringLiteral("var"), Grantlee::markSafe(QStringLiteral(" & ")));
+  dict.insert(QStringLiteral("var"), KTextTemplate::markSafe(QStringLiteral(" & ")));
   QTest::newRow("join06") << "{{ a|join:var }}" << dict
                           << QStringLiteral("alpha & beta &amp; me") << NoError;
   dict.insert(QStringLiteral("a"), QVariantList{QStringLiteral("Alpha"),
@@ -1350,7 +1350,7 @@ void TestFilters::testListFilters_data()
 
   dict.insert(QStringLiteral("a"), QVariantList{QStringLiteral("Alpha"),
                                                 QStringLiteral("Beta & Me")});
-  dict.insert(QStringLiteral("var"), Grantlee::markSafe(QStringLiteral(" & ")));
+  dict.insert(QStringLiteral("var"), KTextTemplate::markSafe(QStringLiteral(" & ")));
   QTest::newRow("join08") << "{{ a|join:var|lower }}" << dict
                           << QStringLiteral("alpha & beta &amp; me") << NoError;
 
@@ -1468,7 +1468,7 @@ void TestFilters::testLogicFilters_data()
   QTest::addColumn<QString>("input");
   QTest::addColumn<Dict>("dict");
   QTest::addColumn<QString>("output");
-  QTest::addColumn<Grantlee::Error>("error");
+  QTest::addColumn<KTextTemplate::Error>("error");
 
   Dict dict;
 
@@ -1511,7 +1511,7 @@ void TestFilters::testMiscFilters_data()
   QTest::addColumn<QString>("input");
   QTest::addColumn<Dict>("dict");
   QTest::addColumn<QString>("output");
-  QTest::addColumn<Grantlee::Error>("error");
+  QTest::addColumn<KTextTemplate::Error>("error");
 
   Dict dict;
 
@@ -1620,7 +1620,7 @@ void TestFilters::testIntegerFilters_data()
   QTest::addColumn<QString>("input");
   QTest::addColumn<Dict>("dict");
   QTest::addColumn<QString>("output");
-  QTest::addColumn<Grantlee::Error>("error");
+  QTest::addColumn<KTextTemplate::Error>("error");
 
   Dict dict;
 

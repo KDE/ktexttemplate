@@ -34,9 +34,9 @@
 
 using Dict = QHash<QString, QVariant>;
 
-Q_DECLARE_METATYPE(Grantlee::Error)
+Q_DECLARE_METATYPE(KTextTemplate::Error)
 
-using namespace Grantlee;
+using namespace KTextTemplate;
 
 class TestLoaderTags : public CoverageObject
 {
@@ -94,7 +94,7 @@ void TestLoaderTags::testTemplateFromQrc()
 {
   Engine engine;
 
-  auto loader = QSharedPointer<Grantlee::FileSystemTemplateLoader>::create();
+  auto loader = QSharedPointer<KTextTemplate::FileSystemTemplateLoader>::create();
   loader->setTemplateDirs({QStringLiteral(":/templates/")});
   engine.addTemplateLoader(loader);
   engine.setPluginPaths({QStringLiteral(GRANTLEE_PLUGIN_PATH)});
@@ -127,7 +127,7 @@ void TestLoaderTags::doTest()
   QFETCH(QString, input);
   QFETCH(Dict, dict);
   QFETCH(QString, output);
-  QFETCH(Grantlee::Error, error);
+  QFETCH(KTextTemplate::Error, error);
 
   auto t = m_engine->newTemplate(input, QLatin1String(QTest::currentDataTag()));
 
@@ -162,7 +162,7 @@ void TestLoaderTags::testIncludeTag_data()
   QTest::addColumn<QString>("input");
   QTest::addColumn<Dict>("dict");
   QTest::addColumn<QString>("output");
-  QTest::addColumn<Grantlee::Error>("error");
+  QTest::addColumn<KTextTemplate::Error>("error");
 
   Dict dict;
 
@@ -211,7 +211,7 @@ void TestLoaderTags::testExtendsTag_data()
   QTest::addColumn<QString>("input");
   QTest::addColumn<Dict>("dict");
   QTest::addColumn<QString>("output");
-  QTest::addColumn<Grantlee::Error>("error");
+  QTest::addColumn<KTextTemplate::Error>("error");
 
   Dict dict;
   // Basic test
@@ -546,7 +546,7 @@ void TestLoaderTags::testBlockTagErrors_data()
   QTest::addColumn<QString>("input");
   QTest::addColumn<Dict>("dict");
   QTest::addColumn<QString>("output");
-  QTest::addColumn<Grantlee::Error>("error");
+  QTest::addColumn<KTextTemplate::Error>("error");
 
   Dict dict;
 
@@ -565,7 +565,7 @@ void TestLoaderTags::testIncludeAndExtendsTag_data()
   QTest::addColumn<QString>("input");
   QTest::addColumn<Dict>("dict");
   QTest::addColumn<QString>("output");
-  QTest::addColumn<Grantlee::Error>("error");
+  QTest::addColumn<KTextTemplate::Error>("error");
 
   Dict dict;
 

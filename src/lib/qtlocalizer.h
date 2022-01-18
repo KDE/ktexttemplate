@@ -25,7 +25,7 @@
 
 class QTranslator;
 
-namespace Grantlee
+namespace KTextTemplate
 {
 
 class QtLocalizerPrivate;

@@ -29,7 +29,7 @@ class QStringList;
 
 class KDELocalizerPrivate;
 
-class KDELocalizer : public Grantlee::AbstractLocalizer
+class KDELocalizer : public KTextTemplate::AbstractLocalizer
 {
 public:
   KDELocalizer(KLocale *locale = 0);

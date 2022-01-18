@@ -95,7 +95,7 @@ Node *ScriptableNodeFactory::getNode(const QString &tagContent, Parser *p) const
 
   auto scriptNode = factory.callWithInstance(factory, args);
   if (scriptNode.isError())
-    throw Grantlee::Exception(TagSyntaxError, scriptNode.toString());
+    throw KTextTemplate::Exception(TagSyntaxError, scriptNode.toString());
 
   auto node = qjsvalue_cast<Node *>(scriptNode);
   node->setParent(p);

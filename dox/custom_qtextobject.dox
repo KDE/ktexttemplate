@@ -1,5 +1,5 @@
 
-namespace Grantlee
+namespace KTextTemplate
 {
 
 /**
@@ -13,7 +13,7 @@ namespace Grantlee
   with support for the <tt>addAudioTag</tt> method, it makes sense to put that call into an interface.
 
   @code
-    class AbstractAudioBuilder : virtual public Grantlee::AbstractMarkupBuilder
+    class AbstractAudioBuilder : virtual public KTextTemplate::AbstractMarkupBuilder
     {
     public:
       virtual void addAudioTag( const QString &source ) = 0;
@@ -26,7 +26,7 @@ namespace Grantlee
   Customized builders inheriting from an existing builder and the new interface can then be created.
 
   @code
-    class AudioTextHtmlBuilder : public Grantlee::TextHTMLBuilder, public AbstractAudioBuilder
+    class AudioTextHtmlBuilder : public KTextTemplate::TextHTMLBuilder, public AbstractAudioBuilder
     {
     public:
       AudioTextHtmlBuilder();
@@ -34,7 +34,7 @@ namespace Grantlee
       void addAudioTag( const QString &source ) override;
     };
 
-    class AudioPlainTextBuilder : public Grantlee::PlainTextMarkupBuilder, public AbstractAudioBuilder
+    class AudioPlainTextBuilder : public KTextTemplate::PlainTextMarkupBuilder, public AbstractAudioBuilder
     {
     public:
       AudioPlainTextBuilder();
@@ -63,7 +63,7 @@ namespace Grantlee
   to instruct the builder to create appropriate output for the type.
 
   @code
-    class AudioTextDocumentDirector : public Grantlee::MarkupDirector
+    class AudioTextDocumentDirector : public KTextTemplate::MarkupDirector
     {
     public:
 
@@ -76,7 +76,7 @@ namespace Grantlee
     };
   @endcode
 
-  We create a subclass of Grantlee::MarkupDirector to take our new <tt>AbstractAudioBuilder</tt> interface and implement the <tt>processCustomFragment</tt> method to handle QTextFragments with our custom format type. The name of the audio file referenced in the document is then extracted and used as a parameter in the <tt>addAudioTag</tt> method.
+  We create a subclass of KTextTemplate::MarkupDirector to take our new <tt>AbstractAudioBuilder</tt> interface and implement the <tt>processCustomFragment</tt> method to handle QTextFragments with our custom format type. The name of the audio file referenced in the document is then extracted and used as a parameter in the <tt>addAudioTag</tt> method.
 
   @code
     AudioTextDocumentDirector::AudioTextDocumentDirector(AbstractAudioBuilder* builder)
@@ -88,7 +88,7 @@ namespace Grantlee
     void AudioTextDocumentDirector::processCustomFragment(const QTextFragment& fragment, const QTextDocument* doc)
     {
       if ( fragment.charFormat().objectType() != AudioType )
-        return Grantlee::MarkupDirector::processCustomFragment( fragment, doc );
+        return KTextTemplate::MarkupDirector::processCustomFragment( fragment, doc );
 
       QString name = fragment.charFormat().property( AudioProperty ).toString();
 

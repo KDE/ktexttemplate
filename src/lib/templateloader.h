@@ -26,7 +26,7 @@
 
 #include <QtCore/QSharedPointer>
 
-namespace Grantlee
+namespace KTextTemplate
 {
 
 class AbstractLocalizer;
@@ -41,7 +41,7 @@ class AbstractLocalizer;
 
   The interface of this class should not be called directly from applications.
   TemplateLoaders will typically be created, configured and added to the
-  Grantlee::Engine which will call the appropriate API.
+  KTextTemplate::Engine which will call the appropriate API.
 
   @author Stephen Kelly <steveire@gmail.com>
 */
@@ -190,7 +190,7 @@ private:
   simple uses of %Grantlee.
 
   Templates can be made available using the @ref setTemplate method, and will
-  then be retrieved by the Grantlee::Engine as appropriate.
+  then be retrieved by the KTextTemplate::Engine as appropriate.
 */
 class GRANTLEE_TEMPLATES_EXPORT InMemoryTemplateLoader
     : public AbstractTemplateLoader

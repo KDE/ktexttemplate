@@ -24,7 +24,7 @@
 
 #include <QtQml/QJSEngine>
 
-ScriptableParser::ScriptableParser(Grantlee::Parser *p, QJSEngine *engine)
+ScriptableParser::ScriptableParser(KTextTemplate::Parser *p, QJSEngine *engine)
     : QObject(engine), m_p(p), m_engine(engine)
 {
 }

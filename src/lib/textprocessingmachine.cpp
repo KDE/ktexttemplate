@@ -20,7 +20,7 @@
 
 #include "textprocessingmachine_p.h"
 
-using namespace Grantlee;
+using namespace KTextTemplate;
 
 void TextProcessingMachine::processCharacter(QString::const_iterator character)
 {

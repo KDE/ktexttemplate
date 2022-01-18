@@ -22,7 +22,7 @@
 
 #include <QtCore/QDateTime>
 
-using namespace Grantlee;
+using namespace KTextTemplate;
 
 NullLocalizer::NullLocalizer() = default;
 

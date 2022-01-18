@@ -25,7 +25,7 @@
 
 #include "safestring.h"
 
-using namespace Grantlee;
+using namespace KTextTemplate;
 
 class ScriptableSafeString : public QObject
 {

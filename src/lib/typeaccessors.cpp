@@ -27,7 +27,7 @@
 #include <QtCore/QStringList>
 #include <QtCore/QVariant>
 
-namespace Grantlee
+namespace KTextTemplate
 {
 
 static QRegularExpression getIsTitleRE()
@@ -45,9 +45,8 @@ static QRegularExpression getTitleRE()
 }
 
 template <>
-QVariant
-TypeAccessor<Grantlee::SafeString &>::lookUp(const Grantlee::SafeString &object,
-                                             const QString &property)
+QVariant TypeAccessor<KTextTemplate::SafeString &>::lookUp(
+    const KTextTemplate::SafeString &object, const QString &property)
 {
   if (property == QStringLiteral("capitalize")) {
     const QString &s = object.get();

@@ -27,7 +27,7 @@
 #include "scriptablecontext.h"
 #include "variable.h"
 
-using namespace Grantlee;
+using namespace KTextTemplate;
 
 class ScriptableVariable : public QObject
 {

@@ -25,7 +25,7 @@
 
 #include <QtCore/QStringList>
 
-QString Grantlee::unescapeStringLiteral(const QString &input)
+QString KTextTemplate::unescapeStringLiteral(const QString &input)
 {
   return input.mid(1, input.size() - 2)
       .replace(QStringLiteral("\\\'"), QChar::fromLatin1('\''))
@@ -33,7 +33,7 @@ QString Grantlee::unescapeStringLiteral(const QString &input)
       .replace(QStringLiteral("\\\\"), QChar::fromLatin1('\\'));
 }
 
-bool Grantlee::variantIsTrue(const QVariant &variant)
+bool KTextTemplate::variantIsTrue(const QVariant &variant)
 {
 
   if (!variant.isValid())
@@ -84,15 +84,16 @@ bool Grantlee::variantIsTrue(const QVariant &variant)
   return !getSafeString(variant).get().isEmpty();
 }
 
-Grantlee::SafeString Grantlee::markSafe(const Grantlee::SafeString &input)
+KTextTemplate::SafeString
+KTextTemplate::markSafe(const KTextTemplate::SafeString &input)
 {
   auto sret = input;
-  sret.setSafety(Grantlee::SafeString::IsSafe);
+  sret.setSafety(KTextTemplate::SafeString::IsSafe);
   return sret;
 }
 
-Grantlee::SafeString
-Grantlee::markForEscaping(const Grantlee::SafeString &input)
+KTextTemplate::SafeString
+KTextTemplate::markForEscaping(const KTextTemplate::SafeString &input)
 {
   auto temp = input;
   if (input.isSafe() || input.needsEscape())
@@ -102,38 +103,38 @@ Grantlee::markForEscaping(const Grantlee::SafeString &input)
   return temp;
 }
 
-Grantlee::SafeString Grantlee::getSafeString(const QVariant &input)
+KTextTemplate::SafeString KTextTemplate::getSafeString(const QVariant &input)
 {
-  if (input.userType() == qMetaTypeId<Grantlee::SafeString>()) {
-    return input.value<Grantlee::SafeString>();
+  if (input.userType() == qMetaTypeId<KTextTemplate::SafeString>()) {
+    return input.value<KTextTemplate::SafeString>();
   }
   return input.value<QString>();
 }
 
-bool Grantlee::isSafeString(const QVariant &input)
+bool KTextTemplate::isSafeString(const QVariant &input)
 {
   const auto type = input.userType();
-  return ((type == qMetaTypeId<Grantlee::SafeString>())
+  return ((type == qMetaTypeId<KTextTemplate::SafeString>())
           || type == QMetaType::QString);
 }
 
 static QList<int> getPrimitives()
 {
   QList<int> primitives;
-  primitives << qMetaTypeId<Grantlee::SafeString>() << QMetaType::QString
+  primitives << qMetaTypeId<KTextTemplate::SafeString>() << QMetaType::QString
              << QMetaType::Bool << QMetaType::Int << QMetaType::Double
              << QMetaType::Float << QMetaType::QDate << QMetaType::QTime
              << QMetaType::QDateTime;
   return primitives;
 }
 
-bool Grantlee::supportedOutputType(const QVariant &input)
+bool KTextTemplate::supportedOutputType(const QVariant &input)
 {
   static const auto primitives = getPrimitives();
   return primitives.contains(input.userType());
 }
 
-bool Grantlee::equals(const QVariant &lhs, const QVariant &rhs)
+bool KTextTemplate::equals(const QVariant &lhs, const QVariant &rhs)
 {
 
   // TODO: Redesign...
@@ -141,16 +142,16 @@ bool Grantlee::equals(const QVariant &lhs, const QVariant &rhs)
   // QVariant doesn't use operator== to compare its held data, so we do it
   // manually instead for SafeString.
   auto equal = false;
-  if (lhs.userType() == qMetaTypeId<Grantlee::SafeString>()) {
-    if (rhs.userType() == qMetaTypeId<Grantlee::SafeString>()) {
-      equal = (lhs.value<Grantlee::SafeString>()
-               == rhs.value<Grantlee::SafeString>());
+  if (lhs.userType() == qMetaTypeId<KTextTemplate::SafeString>()) {
+    if (rhs.userType() == qMetaTypeId<KTextTemplate::SafeString>()) {
+      equal = (lhs.value<KTextTemplate::SafeString>()
+               == rhs.value<KTextTemplate::SafeString>());
     } else if (rhs.userType() == QMetaType::QString) {
-      equal = (lhs.value<Grantlee::SafeString>() == rhs.value<QString>());
+      equal = (lhs.value<KTextTemplate::SafeString>() == rhs.value<QString>());
     }
-  } else if (rhs.userType() == qMetaTypeId<Grantlee::SafeString>()
+  } else if (rhs.userType() == qMetaTypeId<KTextTemplate::SafeString>()
              && lhs.userType() == QMetaType::QString) {
-    equal = (rhs.value<Grantlee::SafeString>() == lhs.value<QString>());
+    equal = (rhs.value<KTextTemplate::SafeString>() == lhs.value<QString>());
   } else if (rhs.userType() == qMetaTypeId<MetaEnumVariable>()) {
     if (lhs.userType() == qMetaTypeId<MetaEnumVariable>()) {
       equal = (rhs.value<MetaEnumVariable>() == lhs.value<MetaEnumVariable>());
@@ -167,8 +168,8 @@ bool Grantlee::equals(const QVariant &lhs, const QVariant &rhs)
   return equal;
 }
 
-std::pair<qreal, QString> Grantlee::calcFileSize(qreal size, int unitSystem,
-                                                 qreal multiplier)
+std::pair<qreal, QString>
+KTextTemplate::calcFileSize(qreal size, int unitSystem, qreal multiplier)
 {
   std::pair<qreal, QString> ret;
 
@@ -241,7 +242,7 @@ std::pair<qreal, QString> Grantlee::calcFileSize(qreal size, int unitSystem,
   return ret;
 }
 
-Grantlee::SafeString Grantlee::toString(const QVariantList &list)
+KTextTemplate::SafeString KTextTemplate::toString(const QVariantList &list)
 {
   QString output(QLatin1Char('['));
   auto it = list.constBegin();

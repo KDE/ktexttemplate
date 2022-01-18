@@ -36,9 +36,9 @@ using Table = QList<QVariantList>;
 using Dict = QHash<QString, QVariant>;
 using StringPair = QPair<QString, QString>;
 
-Q_DECLARE_METATYPE(Grantlee::Error)
+Q_DECLARE_METATYPE(KTextTemplate::Error)
 
-class FakeTemplateLoader : public Grantlee::InMemoryTemplateLoader
+class FakeTemplateLoader : public KTextTemplate::InMemoryTemplateLoader
 {
 public:
   FakeTemplateLoader()
@@ -70,7 +70,7 @@ public:
   Q_ENUMS(Animals)
 };
 
-using namespace Grantlee;
+using namespace KTextTemplate;
 
 class TestDefaultTags : public CoverageObject
 {
@@ -169,7 +169,7 @@ void TestDefaultTags::doTest()
   QFETCH(QString, input);
   QFETCH(Dict, dict);
   QFETCH(QString, output);
-  QFETCH(Grantlee::Error, error);
+  QFETCH(KTextTemplate::Error, error);
 
   auto t = m_engine->newTemplate(input, QLatin1String(QTest::currentDataTag()));
 
@@ -210,7 +210,7 @@ void TestDefaultTags::testCommentTag_data()
   QTest::addColumn<QString>("input");
   QTest::addColumn<Dict>("dict");
   QTest::addColumn<QString>("output");
-  QTest::addColumn<Grantlee::Error>("error");
+  QTest::addColumn<KTextTemplate::Error>("error");
 
   Dict dict;
 
@@ -241,7 +241,7 @@ void TestDefaultTags::testFirstOfTag_data()
   QTest::addColumn<QString>("input");
   QTest::addColumn<Dict>("dict");
   QTest::addColumn<QString>("output");
-  QTest::addColumn<Grantlee::Error>("error");
+  QTest::addColumn<KTextTemplate::Error>("error");
 
   Dict dict;
   dict.insert(QStringLiteral("a"), 0);
@@ -328,7 +328,7 @@ void TestDefaultTags::testIfTag_data()
   QTest::addColumn<QString>("input");
   QTest::addColumn<Dict>("dict");
   QTest::addColumn<QString>("output");
-  QTest::addColumn<Grantlee::Error>("error");
+  QTest::addColumn<KTextTemplate::Error>("error");
 
   Dict dict;
 
@@ -1111,7 +1111,7 @@ void TestDefaultTags::testForTag_data()
   QTest::addColumn<QString>("input");
   QTest::addColumn<Dict>("dict");
   QTest::addColumn<QString>("output");
-  QTest::addColumn<Grantlee::Error>("error");
+  QTest::addColumn<KTextTemplate::Error>("error");
 
   Dict dict;
 
@@ -1318,7 +1318,7 @@ void TestDefaultTags::testIfEqualTag_data()
   QTest::addColumn<QString>("input");
   QTest::addColumn<Dict>("dict");
   QTest::addColumn<QString>("output");
-  QTest::addColumn<Grantlee::Error>("error");
+  QTest::addColumn<KTextTemplate::Error>("error");
 
   Dict dict;
 
@@ -1549,7 +1549,7 @@ void TestDefaultTags::testIfNotEqualTag_data()
   QTest::addColumn<QString>("input");
   QTest::addColumn<Dict>("dict");
   QTest::addColumn<QString>("output");
-  QTest::addColumn<Grantlee::Error>("error");
+  QTest::addColumn<KTextTemplate::Error>("error");
 
   Dict dict;
 
@@ -1580,7 +1580,7 @@ void TestDefaultTags::testTemplateTagTag_data()
   QTest::addColumn<QString>("input");
   QTest::addColumn<Dict>("dict");
   QTest::addColumn<QString>("output");
-  QTest::addColumn<Grantlee::Error>("error");
+  QTest::addColumn<KTextTemplate::Error>("error");
 
   Dict dict;
 
@@ -1625,7 +1625,7 @@ void TestDefaultTags::testWithTag_data()
   QTest::addColumn<QString>("input");
   QTest::addColumn<Dict>("dict");
   QTest::addColumn<QString>("output");
-  QTest::addColumn<Grantlee::Error>("error");
+  QTest::addColumn<KTextTemplate::Error>("error");
 
   Dict dict;
 
@@ -1661,7 +1661,7 @@ void TestDefaultTags::testCycleTag_data()
   QTest::addColumn<QString>("input");
   QTest::addColumn<Dict>("dict");
   QTest::addColumn<QString>("output");
-  QTest::addColumn<Grantlee::Error>("error");
+  QTest::addColumn<KTextTemplate::Error>("error");
 
   Dict dict;
 
@@ -1756,7 +1756,7 @@ void TestDefaultTags::testWidthRatioTag_data()
   QTest::addColumn<QString>("input");
   QTest::addColumn<Dict>("dict");
   QTest::addColumn<QString>("output");
-  QTest::addColumn<Grantlee::Error>("error");
+  QTest::addColumn<KTextTemplate::Error>("error");
 
   Dict dict;
 
@@ -1829,7 +1829,7 @@ void TestDefaultTags::testFilterTag_data()
   QTest::addColumn<QString>("input");
   QTest::addColumn<Dict>("dict");
   QTest::addColumn<QString>("output");
-  QTest::addColumn<Grantlee::Error>("error");
+  QTest::addColumn<KTextTemplate::Error>("error");
 
   Dict dict;
 
@@ -1854,7 +1854,7 @@ void TestDefaultTags::testNowTag_data()
   QTest::addColumn<QString>("input");
   QTest::addColumn<Dict>("dict");
   QTest::addColumn<QString>("output");
-  QTest::addColumn<Grantlee::Error>("error");
+  QTest::addColumn<KTextTemplate::Error>("error");
 
   Dict dict;
 
@@ -1875,7 +1875,7 @@ void TestDefaultTags::testSpacelessTag_data()
   QTest::addColumn<QString>("input");
   QTest::addColumn<Dict>("dict");
   QTest::addColumn<QString>("output");
-  QTest::addColumn<Grantlee::Error>("error");
+  QTest::addColumn<KTextTemplate::Error>("error");
 
   Dict dict;
 
@@ -1911,7 +1911,7 @@ void TestDefaultTags::testRegroupTag_data()
   QTest::addColumn<QString>("input");
   QTest::addColumn<Dict>("dict");
   QTest::addColumn<QString>("output");
-  QTest::addColumn<Grantlee::Error>("error");
+  QTest::addColumn<KTextTemplate::Error>("error");
 
   Dict dict;
 
@@ -2045,7 +2045,7 @@ void TestDefaultTags::testIfChangedTag_data()
   QTest::addColumn<QString>("input");
   QTest::addColumn<Dict>("dict");
   QTest::addColumn<QString>("output");
-  QTest::addColumn<Grantlee::Error>("error");
+  QTest::addColumn<KTextTemplate::Error>("error");
 
   Dict dict;
 
@@ -2233,7 +2233,7 @@ void TestDefaultTags::testAutoescapeTag_data()
   QTest::addColumn<QString>("input");
   QTest::addColumn<Dict>("dict");
   QTest::addColumn<QString>("output");
-  QTest::addColumn<Grantlee::Error>("error");
+  QTest::addColumn<KTextTemplate::Error>("error");
 
   Dict dict;
 
@@ -2320,7 +2320,7 @@ void TestDefaultTags::testMediaFinderTag_data()
   QTest::addColumn<QString>("input");
   QTest::addColumn<Dict>("dict");
   QTest::addColumn<QString>("output");
-  QTest::addColumn<Grantlee::Error>("error");
+  QTest::addColumn<KTextTemplate::Error>("error");
 
   Dict dict;
   QTest::newRow("media_finder-tag01")
@@ -2389,7 +2389,7 @@ void TestDefaultTags::testRangeTag_data()
   QTest::addColumn<QString>("input");
   QTest::addColumn<Dict>("dict");
   QTest::addColumn<QString>("output");
-  QTest::addColumn<Grantlee::Error>("error");
+  QTest::addColumn<KTextTemplate::Error>("error");
 
   Dict dict;
 
@@ -2428,7 +2428,7 @@ void TestDefaultTags::testDebugTag_data()
   QTest::addColumn<QString>("input");
   QTest::addColumn<Dict>("dict");
   QTest::addColumn<QString>("output");
-  QTest::addColumn<Grantlee::Error>("error");
+  QTest::addColumn<KTextTemplate::Error>("error");
 
   Dict dict;
 
@@ -2448,7 +2448,7 @@ void TestDefaultTags::testLoadTag_data()
   QTest::addColumn<QString>("input");
   QTest::addColumn<Dict>("dict");
   QTest::addColumn<QString>("output");
-  QTest::addColumn<Grantlee::Error>("error");
+  QTest::addColumn<KTextTemplate::Error>("error");
 
   Dict dict;
 

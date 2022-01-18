@@ -29,13 +29,13 @@
 
 MediaFinderNodeFactory::MediaFinderNodeFactory() = default;
 
-Grantlee::Node *MediaFinderNodeFactory::getNode(const QString &tagContent,
-                                                Parser *p) const
+KTextTemplate::Node *MediaFinderNodeFactory::getNode(const QString &tagContent,
+                                                     Parser *p) const
 {
   auto expr = smartSplit(tagContent);
 
   if (expr.size() <= 1) {
-    throw Grantlee::Exception(
+    throw KTextTemplate::Exception(
         TagSyntaxError,
         QStringLiteral("'media_finder' tag requires at least one argument"));
   }

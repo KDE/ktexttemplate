@@ -21,7 +21,7 @@
 #ifndef GRANTLEE_TAGS_P_H
 #define GRANTLEE_TAGS_P_H
 
-namespace Grantlee
+namespace KTextTemplate
 {
 
 static const char BLOCK_TAG_START[] = "{%";

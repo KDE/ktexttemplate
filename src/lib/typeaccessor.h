@@ -27,7 +27,7 @@
 
 /// @file
 
-namespace Grantlee
+namespace KTextTemplate
 {
 
 #ifndef Q_QDOC

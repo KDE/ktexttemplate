@@ -20,7 +20,7 @@
 
 #include "nodebuiltins_p.h"
 
-using namespace Grantlee;
+using namespace KTextTemplate;
 
 TextNode::TextNode(const QString &content, QObject *parent)
     : Node(parent), m_content(content)

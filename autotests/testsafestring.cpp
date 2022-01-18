@@ -28,7 +28,7 @@
 #include "outputstream.h"
 #include "safestring.h"
 
-using namespace Grantlee;
+using namespace KTextTemplate;
 
 class TestSafeString : public CoverageObject
 {

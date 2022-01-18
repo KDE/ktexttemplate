@@ -27,7 +27,7 @@
 
 class DesignWidget;
 
-namespace Grantlee
+namespace KTextTemplate
 {
 class Engine;
 }
@@ -49,8 +49,8 @@ private:
 
 private:
   DesignWidget *m_designWidget;
-  Grantlee::Engine *m_engine;
-  QSharedPointer<Grantlee::FileSystemTemplateLoader> m_loader;
+  KTextTemplate::Engine *m_engine;
+  QSharedPointer<KTextTemplate::FileSystemTemplateLoader> m_loader;
   QTabWidget *m_tabWidget;
 };
 

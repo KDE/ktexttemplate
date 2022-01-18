@@ -26,12 +26,12 @@
 #include "scriptablecontext.h"
 #include "template.h"
 
-namespace Grantlee
+namespace KTextTemplate
 {
 class Node;
 }
 
-using namespace Grantlee;
+using namespace KTextTemplate;
 
 class ScriptableTemplate : public QObject
 {

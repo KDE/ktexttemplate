@@ -28,11 +28,11 @@
 #include <QtCore/QFile>
 #include <QtCore/QFileInfo>
 
-using namespace Grantlee;
+using namespace KTextTemplate;
 
 AbstractTemplateLoader::~AbstractTemplateLoader() = default;
 
-namespace Grantlee
+namespace KTextTemplate
 {
 class FileSystemTemplateLoaderPrivate
 {
@@ -212,7 +212,7 @@ Template InMemoryTemplateLoader::loadByName(const QString &name,
   if (it != m_namedTemplates.constEnd()) {
     return engine->newTemplate(it.value(), name);
   }
-  throw Grantlee::Exception(
+  throw KTextTemplate::Exception(
       TagSyntaxError,
       QStringLiteral("Couldn't load template %1. Template does not exist.")
           .arg(name));

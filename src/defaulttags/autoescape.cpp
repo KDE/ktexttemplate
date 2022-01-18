@@ -40,7 +40,7 @@ Node *AutoescapeNodeFactory::getNode(const QString &tagContent, Parser *p) const
   );
 
   if (expr.size() != 2) {
-    throw Grantlee::Exception(
+    throw KTextTemplate::Exception(
         TagSyntaxError, QStringLiteral("autoescape takes two arguments."));
   }
 
@@ -51,8 +51,8 @@ Node *AutoescapeNodeFactory::getNode(const QString &tagContent, Parser *p) const
   else if (strState == QStringLiteral("off"))
     state = AutoescapeNode::Off;
   else {
-    throw Grantlee::Exception(TagSyntaxError,
-                              QStringLiteral("argument must be 'on' or 'off'"));
+    throw KTextTemplate::Exception(
+        TagSyntaxError, QStringLiteral("argument must be 'on' or 'off'"));
   }
 
   auto n = new AutoescapeNode(state, p);

@@ -30,9 +30,9 @@
 #include <QtCore/QMetaEnum>
 #include <QtCore/QStringList>
 
-using namespace Grantlee;
+using namespace KTextTemplate;
 
-namespace Grantlee
+namespace KTextTemplate
 {
 
 class VariablePrivate
@@ -84,7 +84,7 @@ Variable::Variable(const QString &var) : d_ptr(new VariablePrivate(this))
   }
   if (localVar.endsWith(QLatin1Char('.'))) {
     delete d_ptr;
-    throw Grantlee::Exception(
+    throw KTextTemplate::Exception(
         TagSyntaxError,
         QStringLiteral("Variable may not end with a dot: %1").arg(localVar));
   }
@@ -110,12 +110,12 @@ Variable::Variable(const QString &var) : d_ptr(new VariablePrivate(this))
                || localVar.endsWith(QLatin1Char('"')));
       const auto unesc = unescapeStringLiteral(localVar);
       const auto ss = markSafe(unesc);
-      d->m_literal = QVariant::fromValue<Grantlee::SafeString>(ss);
+      d->m_literal = QVariant::fromValue<KTextTemplate::SafeString>(ss);
     } else {
       if (localVar.contains(QStringLiteral("._"))
           || (localVar.startsWith(QLatin1Char('_')))) {
         delete d_ptr;
-        throw Grantlee::Exception(
+        throw KTextTemplate::Exception(
             TagSyntaxError,
             QStringLiteral(
                 "Variables and attributes may not begin with underscores: %1")

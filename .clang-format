@@ -1,8 +1,0 @@
-BasedOnStyle: llvm
-AccessModifierOffset: -2
-BreakBeforeBinaryOperators: true
-ColumnLimit: 80
-Standard: Cpp11
-IndentWidth: 2
-BreakBeforeBraces: Linux
-FixNamespaceComments: false

@@ -60,7 +60,7 @@ qch_version_string=`echo $name_fragment | sed 's/\.//g'`
 echo "Creating Docs"
 make docs
 sed -i 's/at your option, any later version.<\/p>/at your option, any later version.<\/p>\
-<p>A version of this documentation suitable for viewing in Qt Assistant is available <a href\=\"http:\/\/www.grantlee.org\/grantlee-'${qch_version_string}'.qch\">here<\/a>.<\/p>/' apidox/index.html
+<p>A version of this documentation suitable for viewing in Qt Assistant is available <a href\=\"http:\/\/www.kde.org\/grantlee-'${qch_version_string}'.qch\">here<\/a>.<\/p>/' apidox/index.html
 
 tar -czf $oldDir/apidox.tar.gz apidox
 

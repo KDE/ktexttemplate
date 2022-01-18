@@ -32,7 +32,7 @@ the core design of Django is reused in Grantlee.
 
 Part of the design of both template systems is that application developers can
 extend the syntax by implementing their own tags and filters. For details of how
-to do that, see the [API documentation](http://www.grantlee.org/apidox/extension.html).
+to do that, see the [API documentation](http://www.kde.org/apidox/extension.html).
 
 Installation
 ------------

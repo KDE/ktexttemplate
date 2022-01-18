@@ -612,11 +612,11 @@ void TestFilters::testStringFilters_data()
       << dict << QStringLiteral(".foo a&lt;b bar. .baz a<b bat.") << NoError;
 
   dict.clear();
-  dict.insert(QStringLiteral("path"), QStringLiteral("www.grantlee.org"));
+  dict.insert(QStringLiteral("path"), QStringLiteral("www.kde.org"));
   QTest::newRow("filter-stringformat04")
       << "{% with path|stringformat:\"<a href=\\\"%1\\\">%1</a>\"|safe as "
          "result %}{{ result }}{% endwith %}"
-      << dict << "<a href=\"www.grantlee.org\">www.grantlee.org</a>" << NoError;
+      << dict << "<a href=\"www.kde.org\">www.kde.org</a>" << NoError;
 
   dict.clear();
   dict.insert(QStringLiteral("a"), QStringLiteral("JOE\'S CRAB SHACK"));

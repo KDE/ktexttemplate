@@ -164,7 +164,7 @@ Template FileSystemTemplateLoader::loadByName(const QString &fileName,
   return engine->newTemplate(fileContent, fileName);
 }
 
-QPair<QString, QString>
+std::pair<QString, QString>
 FileSystemTemplateLoader::getMediaUri(const QString &fileName) const
 {
   Q_D(const FileSystemTemplateLoader);
@@ -187,7 +187,7 @@ FileSystemTemplateLoader::getMediaUri(const QString &fileName) const
     if (file.exists()) {
       auto path = fi.absoluteFilePath();
       path.chop(fileName.size());
-      return qMakePair(path, fileName);
+      return std::make_pair(path, fileName);
     }
     ++i;
   }
@@ -218,7 +218,7 @@ Template InMemoryTemplateLoader::loadByName(const QString &name,
           .arg(name));
 }
 
-QPair<QString, QString>
+std::pair<QString, QString>
 InMemoryTemplateLoader::getMediaUri(const QString &fileName) const
 {
   Q_UNUSED(fileName)

@@ -75,7 +75,7 @@ bool CachingLoaderDecorator::isEmpty() const
   return d->m_cache.isEmpty();
 }
 
-QPair<QString, QString>
+std::pair<QString, QString>
 CachingLoaderDecorator::getMediaUri(const QString &fileName) const
 {
   Q_D(const CachingLoaderDecorator);

@@ -83,7 +83,7 @@ public:
 
   bool canLoadTemplate(const QString &name) const override;
 
-  QPair<QString, QString> getMediaUri(const QString &fileName) const override;
+  std::pair<QString, QString> getMediaUri(const QString &fileName) const override;
 
   Template loadByName(const QString &name,
                       const KTextTemplate::Engine *engine) const override;

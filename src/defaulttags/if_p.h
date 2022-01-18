@@ -21,7 +21,6 @@
 #ifndef IF_P_H
 #define IF_P_H
 
-#include <QtCore/QPair>
 #include <QtCore/QStringList>
 #include <QtCore/QVector>
 

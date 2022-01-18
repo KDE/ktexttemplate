@@ -71,11 +71,11 @@ void Engine::addTemplateLoader(QSharedPointer<AbstractTemplateLoader> loader)
   d->m_loaders << loader;
 }
 
-QPair<QString, QString> Engine::mediaUri(const QString &fileName) const
+std::pair<QString, QString> Engine::mediaUri(const QString &fileName) const
 {
   Q_D(const Engine);
 
-  QPair<QString, QString> uri;
+  std::pair<QString, QString> uri;
   for (auto &loader : d->m_loaders) {
     uri = loader->getMediaUri(fileName);
     if (!uri.second.isEmpty())

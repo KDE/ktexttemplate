@@ -48,7 +48,7 @@ class ContextPrivate
   QList<QVariantHash> m_variantHashStack;
   bool m_autoescape;
   bool m_mutating;
-  QList<QPair<QString, QString>> m_externalMedia;
+  QList<std::pair<QString, QString>> m_externalMedia;
   Context::UrlType m_urlType;
   QString m_relativeMediaPath;
   RenderContext *const m_renderContext;
@@ -170,10 +170,10 @@ void Context::addExternalMedia(const QString &absolutePart,
                                const QString &relativePart)
 {
   Q_D(Context);
-  d->m_externalMedia.append(qMakePair(absolutePart, relativePart));
+  d->m_externalMedia.append(std::make_pair(absolutePart, relativePart));
 }
 
-QList<QPair<QString, QString>> Context::externalMedia() const
+QList<std::pair<QString, QString>> Context::externalMedia() const
 {
   Q_D(const Context);
   return d->m_externalMedia;

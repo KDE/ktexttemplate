@@ -34,7 +34,7 @@
 
 using Table = QList<QVariantList>;
 using Dict = QHash<QString, QVariant>;
-using StringPair = QPair<QString, QString>;
+using StringPair = std::pair<QString, QString>;
 
 Q_DECLARE_METATYPE(KTextTemplate::Error)
 
@@ -48,10 +48,10 @@ public:
                     << QStringLiteral("this&that.png");
   }
 
-  QPair<QString, QString> getMediaUri(const QString &fileName) const override
+  std::pair<QString, QString> getMediaUri(const QString &fileName) const override
   {
     if (m_existingMedia.contains(fileName))
-      return qMakePair(QStringLiteral("/path/to/"), fileName);
+      return std::make_pair(QStringLiteral("/path/to/"), fileName);
     return {};
   }
 
@@ -2460,16 +2460,16 @@ void TestDefaultTags::testUrlTypes_data()
 {
   QTest::addColumn<QString>("input");
   QTest::addColumn<Dict>("dict");
-  QTest::addColumn<QPair<QString, QString>>("output");
+  QTest::addColumn<std::pair<QString, QString>>("output");
 
   Dict dict;
   QTest::newRow("url-types01")
       << "{% media_finder \"existing_image.png\" %}" << dict
-      << qMakePair(QStringLiteral("file:///path/to/"),
+      << std::make_pair(QStringLiteral("file:///path/to/"),
                    QStringLiteral("existing_image.png"));
 
   QTest::newRow("url-types02") << "{% media_finder \"does_not_exist.png\" %}"
-                               << dict << qMakePair(QString(), QString());
+                               << dict << std::make_pair(QString(), QString());
 
   dict.insert(QStringLiteral("existing_img"),
               QStringLiteral("existing_image.png"));
@@ -2478,12 +2478,12 @@ void TestDefaultTags::testUrlTypes_data()
 
   QTest::newRow("url-types03")
       << QStringLiteral("{% media_finder existing_img %}") << dict
-      << qMakePair(QStringLiteral("file:///path/to/"),
+      << std::make_pair(QStringLiteral("file:///path/to/"),
                    QStringLiteral("existing_image.png"));
 
   QTest::newRow("url-types04")
       << QStringLiteral("{% media_finder nonexisting_img %}") << dict
-      << qMakePair(QString(), QString());
+      << std::make_pair(QString(), QString());
 }
 
 void TestDefaultTags::testUrlTypes()

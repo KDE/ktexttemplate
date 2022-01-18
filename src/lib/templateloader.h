@@ -63,7 +63,7 @@ public:
   /**
     Return a complete URI for media identified by fileName.
   */
-  virtual QPair<QString, QString>
+  virtual std::pair<QString, QString>
   getMediaUri(const QString &fileName) const = 0;
 
   /**
@@ -153,7 +153,7 @@ public:
 
   bool canLoadTemplate(const QString &name) const override;
 
-  QPair<QString, QString> getMediaUri(const QString &fileName) const override;
+  std::pair<QString, QString> getMediaUri(const QString &fileName) const override;
 
   /**
     Sets the theme of this loader to @p themeName
@@ -203,7 +203,7 @@ public:
 
   bool canLoadTemplate(const QString &name) const override;
 
-  QPair<QString, QString> getMediaUri(const QString &fileName) const override;
+  std::pair<QString, QString> getMediaUri(const QString &fileName) const override;
 
   /**
     Add a template content to this Loader.

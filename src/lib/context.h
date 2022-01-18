@@ -233,7 +233,7 @@ public:
   /**
     Returns the external media encountered in the Template while rendering.
   */
-  QList<QPair<QString, QString>> externalMedia() const;
+  QList<std::pair<QString, QString>> externalMedia() const;
 
   /**
     The type of urls to external media that should be put in the template.

@@ -58,33 +58,34 @@ QVariant CapFirstFilter::doFilter(const QVariant &input,
 
 EscapeJsFilter::EscapeJsFilter() = default;
 
-static QList<QPair<QString, QString>> getJsEscapes()
+static QList<std::pair<QString, QString>> getJsEscapes()
 {
-  QList<QPair<QString, QString>> jsEscapes;
-  jsEscapes << QPair<QString, QString>(QChar::fromLatin1('\\'),
-                                       QStringLiteral("\\u005C"))
-            << QPair<QString, QString>(QChar::fromLatin1('\''),
-                                       QStringLiteral("\\u0027"))
-            << QPair<QString, QString>(QChar::fromLatin1('\"'),
-                                       QStringLiteral("\\u0022"))
-            << QPair<QString, QString>(QChar::fromLatin1('>'),
-                                       QStringLiteral("\\u003E"))
-            << QPair<QString, QString>(QChar::fromLatin1('<'),
-                                       QStringLiteral("\\u003C"))
-            << QPair<QString, QString>(QChar::fromLatin1('&'),
-                                       QStringLiteral("\\u0026"))
-            << QPair<QString, QString>(QChar::fromLatin1('='),
-                                       QStringLiteral("\\u003D"))
-            << QPair<QString, QString>(QChar::fromLatin1('-'),
-                                       QStringLiteral("\\u002D"))
-            << QPair<QString, QString>(QChar::fromLatin1(';'),
-                                       QStringLiteral("\\u003B"))
-            << QPair<QString, QString>(QChar(0x2028), QStringLiteral("\\u2028"))
-            << QPair<QString, QString>(QChar(0x2029),
-                                       QStringLiteral("\\u2029"));
+  QList<std::pair<QString, QString>> jsEscapes;
+  jsEscapes << std::pair<QString, QString>(QChar::fromLatin1('\\'),
+                                           QStringLiteral("\\u005C"))
+            << std::pair<QString, QString>(QChar::fromLatin1('\''),
+                                           QStringLiteral("\\u0027"))
+            << std::pair<QString, QString>(QChar::fromLatin1('\"'),
+                                           QStringLiteral("\\u0022"))
+            << std::pair<QString, QString>(QChar::fromLatin1('>'),
+                                           QStringLiteral("\\u003E"))
+            << std::pair<QString, QString>(QChar::fromLatin1('<'),
+                                           QStringLiteral("\\u003C"))
+            << std::pair<QString, QString>(QChar::fromLatin1('&'),
+                                           QStringLiteral("\\u0026"))
+            << std::pair<QString, QString>(QChar::fromLatin1('='),
+                                           QStringLiteral("\\u003D"))
+            << std::pair<QString, QString>(QChar::fromLatin1('-'),
+                                           QStringLiteral("\\u002D"))
+            << std::pair<QString, QString>(QChar::fromLatin1(';'),
+                                           QStringLiteral("\\u003B"))
+            << std::pair<QString, QString>(QChar(0x2028),
+                                           QStringLiteral("\\u2028"))
+            << std::pair<QString, QString>(QChar(0x2029),
+                                           QStringLiteral("\\u2029"));
 
   for (auto i = 0; i < 32; ++i) {
-    jsEscapes << QPair<QString, QString>(
+    jsEscapes << std::pair<QString, QString>(
         QChar(i),
         QStringLiteral("\\u00")
             + QStringLiteral("%1").arg(i, 2, 16, QLatin1Char('0')).toUpper());

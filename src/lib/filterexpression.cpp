@@ -29,7 +29,7 @@
 #include "util.h"
 
 using ArgFilter
-    = QPair<QSharedPointer<KTextTemplate::Filter>, KTextTemplate::Variable>;
+    = std::pair<QSharedPointer<KTextTemplate::Filter>, KTextTemplate::Variable>;
 
 namespace KTextTemplate
 {
@@ -127,7 +127,7 @@ FilterExpression::FilterExpression(const QString &varString, Parser *parser)
         Q_ASSERT(f);
 
         d->m_filterNames << subString;
-        d->m_filters << qMakePair(f, Variable());
+        d->m_filters << std::make_pair(f, Variable());
 
       } else if (subString.startsWith(QLatin1Char(FILTER_ARGUMENT_SEPARATOR))) {
         if (d->m_filters.isEmpty()

@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(codegen_grantlee)
+project(codegen_ktexttemplate)
 
 find_package(KF6TextTemplate REQUIRED)
 

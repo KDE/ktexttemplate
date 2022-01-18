@@ -25,7 +25,7 @@
 
 #include "ui_designwidget.h"
 
-#include <grantlee/context.h>
+#include <KTextTemplate/context.h>
 
 class ArgsModel;
 class MethodModel;

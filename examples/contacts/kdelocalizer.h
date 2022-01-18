@@ -21,7 +21,7 @@
 #ifndef KDE_lOCALIZER_H
 #define KDE_lOCALIZER_H
 
-#include <grantlee/abstractlocalizer.h>
+#include <KTextTemplate/abstractlocalizer.h>
 
 class KLocale;
 

@@ -152,7 +152,7 @@ install(FILES
   token.h
   util.h
   variable.h
-  DESTINATION include/grantlee COMPONENT Templates
+  DESTINATION include/KTextTemplate COMPONENT Templates
 )
 
 install(FILES

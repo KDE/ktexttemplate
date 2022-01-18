@@ -29,7 +29,7 @@
 namespace KTextTemplate
 {
 
-/// @headerfile safestring.h grantlee/safestring.h
+/// @headerfile safestring.h KTextTemplate/safestring.h
 
 /**
   @brief A QString wrapper class for containing whether a string is safe or

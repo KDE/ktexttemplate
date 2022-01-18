@@ -21,8 +21,8 @@
 #ifndef RSS_FEED_H
 #define RSS_FEED_H
 
-#include <grantlee/filter.h>
-#include <grantlee/node.h>
+#include <KTextTemplate/filter.h>
+#include <KTextTemplate/node.h>
 
 namespace KTextTemplate
 {

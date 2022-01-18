@@ -31,7 +31,7 @@ class AbstractNodeFactory;
 class Engine;
 class Filter;
 
-/// @headerfile taglibraryinterface.h grantlee/taglibraryinterface.h
+/// @headerfile taglibraryinterface.h KTextTemplate/taglibraryinterface.h
 
 /**
   @brief The **%TagLibraryInterface** returns available tags and filters from

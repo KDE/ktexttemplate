@@ -30,7 +30,7 @@ namespace KTextTemplate
 
 class CachingLoaderDecoratorPrivate;
 
-/// @headerfile cachingloaderdecorator.h grantlee/cachingloaderdecorator.h
+/// @headerfile cachingloaderdecorator.h KTextTemplate/cachingloaderdecorator.h
 
 /**
   @brief Implements a loader decorator which caches compiled Template objects.

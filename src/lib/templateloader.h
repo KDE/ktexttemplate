@@ -31,7 +31,7 @@ namespace KTextTemplate
 
 class AbstractLocalizer;
 
-/// @headerfile templateloader.h grantlee/templateloader.h
+/// @headerfile templateloader.h KTextTemplate/templateloader.h
 
 /**
   @brief An retrieval interface to a storage location for Template objects.
@@ -72,7 +72,7 @@ public:
   virtual bool canLoadTemplate(const QString &name) const = 0;
 };
 
-/// @headerfile templateloader.h grantlee/templateloader.h
+/// @headerfile templateloader.h KTextTemplate/templateloader.h
 
 class FileSystemTemplateLoaderPrivate;
 
@@ -180,7 +180,7 @@ private:
   FileSystemTemplateLoaderPrivate *const d_ptr;
 };
 
-/// @headerfile templateloader.h grantlee/templateloader.h
+/// @headerfile templateloader.h KTextTemplate/templateloader.h
 
 /**
   @brief The **%InMemoryTemplateLoader** loads Templates set dynamically in

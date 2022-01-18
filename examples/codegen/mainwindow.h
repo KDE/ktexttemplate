@@ -23,7 +23,7 @@
 
 #include <QMainWindow>
 
-#include <grantlee/templateloader.h>
+#include <KTextTemplate/templateloader.h>
 
 class DesignWidget;
 

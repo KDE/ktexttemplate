@@ -34,7 +34,7 @@ struct Token;
 
 class FilterExpressionPrivate;
 
-/// @headerfile filterexpression.h grantlee/filterexpression.h
+/// @headerfile filterexpression.h KTextTemplate/filterexpression.h
 
 /**
   @brief A **%FilterExpression** object represents a filter expression in a

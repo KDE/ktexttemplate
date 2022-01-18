@@ -208,7 +208,7 @@ namespace KTextTemplate
   As already mentioned, it is neccessary to create a QtPlugin library to make your tags and filters available to %KTextTemplate. You need to implement TagLibraryInterface to return your custom node factories and filters. See the existing libraries in your %KTextTemplate distribution for full examples.
 
   @code
-    #include <grantlee/taglibraryinterface.h>
+    #include <KTextTemplate/taglibraryinterface.h>
 
     #include "mytag.h"
     #include "myfilter.h"

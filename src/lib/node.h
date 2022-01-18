@@ -45,7 +45,7 @@ class TemplateImpl;
 
 class NodePrivate;
 
-/// @headerfile node.h grantlee/node.h
+/// @headerfile node.h KTextTemplate/node.h
 
 /**
   @brief Base class for all nodes.
@@ -132,7 +132,7 @@ private:
   NodePrivate *const d_ptr;
 };
 
-/// @headerfile node.h grantlee/node.h
+/// @headerfile node.h KTextTemplate/node.h
 
 /**
   @brief A list of Nodes with some convenience API for rendering them.
@@ -219,7 +219,7 @@ private:
 
 class AbstractNodeFactoryPrivate;
 
-/// @headerfile node.h grantlee/node.h
+/// @headerfile node.h KTextTemplate/node.h
 
 /**
   @brief Base class for all NodeFactories

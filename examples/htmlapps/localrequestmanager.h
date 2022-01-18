@@ -23,7 +23,7 @@
 
 #include <QtNetwork/QNetworkAccessManager>
 
-#include <grantlee/engine.h>
+#include <KTextTemplate/engine.h>
 
 class LocalRequestManager : public QNetworkAccessManager
 {

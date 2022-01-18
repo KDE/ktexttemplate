@@ -34,7 +34,7 @@
 namespace KTextTemplate
 {
 
-/// @headerfile filter.h grantlee/filter.h
+/// @headerfile filter.h KTextTemplate/filter.h
 
 /**
   @brief Base class for all filters.

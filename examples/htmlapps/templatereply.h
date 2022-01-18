@@ -25,8 +25,8 @@
 #include <QtNetwork/QNetworkReply>
 #include <QtNetwork/QNetworkRequest>
 
-#include <grantlee/context.h>
-#include <grantlee/template.h>
+#include <KTextTemplate/context.h>
+#include <KTextTemplate/template.h>
 
 class TemplateReply : public QNetworkReply
 {

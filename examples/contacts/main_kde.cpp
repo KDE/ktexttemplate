@@ -26,7 +26,7 @@
 #include <kapplication.h>
 #include <kcmdlineargs.h>
 
-#include "grantlee_paths.h"
+#include "ktexttemplate_paths.h"
 
 #define TEMPLATE_DIR KTEXTTEMPLATE_TEMPLATE_PATH "/gettext/"
 

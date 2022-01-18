@@ -29,8 +29,8 @@
 #include <QDir>
 #include <QTimer>
 
-#include "grantlee_paths.h"
-#include "grantlee_templates.h"
+#include "ktexttemplate_paths.h"
+#include "ktexttemplate.h"
 
 static const struct {
   const char *name;

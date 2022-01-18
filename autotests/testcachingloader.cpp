@@ -27,7 +27,7 @@
 #include "coverageobject.h"
 #include "engine.h"
 #include "filterexpression.h"
-#include "grantlee_paths.h"
+#include "ktexttemplate_paths.h"
 #include "template.h"
 #include <metaenumvariable_p.h>
 

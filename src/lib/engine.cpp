@@ -22,8 +22,8 @@
 #include "engine_p.h"
 
 #include "exception.h"
-#include "grantlee_config_p.h"
-#include "grantlee_version.h"
+#include "ktexttemplate_config_p.h"
+#include "ktexttemplate_version.h"
 #ifdef QT_QML_LIB
 #include "scriptabletags.h"
 #endif

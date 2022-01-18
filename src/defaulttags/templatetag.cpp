@@ -21,7 +21,7 @@
 #include "templatetag.h"
 
 #include "../lib/exception.h"
-#include "grantlee_tags_p.h"
+#include "ktexttemplate_tags_p.h"
 #include "parser.h"
 
 TemplateTagNodeFactory::TemplateTagNodeFactory() = default;

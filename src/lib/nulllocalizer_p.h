@@ -21,7 +21,7 @@
 #ifndef KTEXTTEMPLATE_NULLLOCALIZER_P_H
 #define KTEXTTEMPLATE_NULLLOCALIZER_P_H
 
-#include "grantlee_test_export.h"
+#include "ktexttemplate_test_export.h"
 
 #include "abstractlocalizer.h"
 

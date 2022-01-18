@@ -1,9 +1,9 @@
 
-configure_file(grantlee_version.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/grantlee_version.h)
+configure_file(ktexttemplate_version.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/ktexttemplate_version.h)
 
 set(KTextTemplate_PLUGIN_INSTALL_DIR ${CMAKE_INSTALL_PREFIX}/${LIB_INSTALL_DIR} )
 
-configure_file(grantlee_config_p.h.cmake  ${CMAKE_CURRENT_BINARY_DIR}/grantlee_config_p.h)
+configure_file(ktexttemplate_config_p.h.cmake  ${CMAKE_CURRENT_BINARY_DIR}/ktexttemplate_config_p.h)
 
 set_source_files_properties(taglibraryinterface.h PROPERTIES
   SKIP_AUTOMOC TRUE
@@ -38,8 +38,8 @@ add_library(KTextTemplate SHARED
   customtyperegistry_p.h
   engine_p.h
   exception.h
-  grantlee_tags_p.h
-  grantlee_templates.h
+  ktexttemplate_tags_p.h
+  ktexttemplate.h
   lexer_p.h
   metaenumvariable_p.h
   nodebuiltins_p.h
@@ -110,7 +110,7 @@ if (BUILD_TESTING)
   set(KTEXTTEMPLATE_TESTS_EXPORT "KTEXTTEMPLATE_EXPORT")
 endif()
 
-configure_file(grantlee_test_export.h.in "${CMAKE_CURRENT_BINARY_DIR}/grantlee_test_export.h")
+configure_file(ktexttemplate_test_export.h.in "${CMAKE_CURRENT_BINARY_DIR}/ktexttemplate_test_export.h")
 
 target_link_libraries(KTextTemplate
   PUBLIC Qt6::Core
@@ -137,7 +137,7 @@ install(FILES
   filter.h
   filterexpression.h
   ${CMAKE_CURRENT_BINARY_DIR}/ktexttemplate_export.h
-  ${CMAKE_CURRENT_BINARY_DIR}/grantlee_version.h
+  ${CMAKE_CURRENT_BINARY_DIR}/ktexttemplate_version.h
   metatype.h
   node.h
   outputstream.h
@@ -156,6 +156,6 @@ install(FILES
 )
 
 install(FILES
-  grantlee_templates.h
+  ktexttemplate.h
   DESTINATION include COMPONENT Templates
 )

@@ -20,7 +20,7 @@
 
 #include "rssfeed.h"
 
-#include <grantlee_templates.h>
+#include <ktexttemplate.h>
 
 #include <QAbstractXmlNodeModel>
 #include <QXmlNodeModelIndex>

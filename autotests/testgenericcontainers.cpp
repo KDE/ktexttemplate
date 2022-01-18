@@ -21,7 +21,7 @@
 #define MINIMAL_CONTAINER_TESTS
 
 #include "engine.h"
-#include "grantlee_paths.h"
+#include "ktexttemplate_paths.h"
 #include "metatype.h"
 #include "test_macros.h"
 

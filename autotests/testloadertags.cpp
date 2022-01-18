@@ -29,7 +29,7 @@
 #include "context.h"
 #include "coverageobject.h"
 #include "engine.h"
-#include "grantlee_paths.h"
+#include "ktexttemplate_paths.h"
 #include "template.h"
 
 using Dict = QHash<QString, QVariant>;

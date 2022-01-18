@@ -26,8 +26,8 @@
 
 #include <QDebug>
 
-#include "grantlee_paths.h"
-#include "grantlee_templates.h"
+#include "ktexttemplate_paths.h"
+#include "ktexttemplate.h"
 
 #include "designwidget.h"
 

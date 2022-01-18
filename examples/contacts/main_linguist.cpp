@@ -24,9 +24,9 @@
 #include <QLibraryInfo>
 #include <QTranslator>
 
-#include <grantlee_templates.h>
+#include <ktexttemplate.h>
 
-#include "grantlee_paths.h"
+#include "ktexttemplate_paths.h"
 
 #define TEMPLATE_DIR KTEXTTEMPLATE_TEMPLATE_PATH "/linguist/"
 

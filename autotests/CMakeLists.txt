@@ -4,7 +4,7 @@ set( EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_BINARY_DIR} )
 
 set( KTEXTTEMPLATE_PLUGIN_PATH "${CMAKE_BINARY_DIR}/" )
 
-configure_file(grantlee_paths.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/grantlee_paths.h)
+configure_file(ktexttemplate_paths.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/ktexttemplate_paths.h)
 
 find_package(Qt6LinguistTools QUIET)
 if (Qt6LinguistTools_FOUND)

@@ -23,7 +23,7 @@
 #include "engine.h"
 #include "exception.h"
 #include "filter.h"
-#include "grantlee_version.h"
+#include "ktexttemplate_version.h"
 #include "nodebuiltins_p.h"
 #include "taglibraryinterface.h"
 #include "template.h"

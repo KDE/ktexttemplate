@@ -44,14 +44,14 @@
 #include "bookwindow.h"
 #include "bookdelegate.h"
 #include "bookwrapper.h"
-#include "grantlee_paths.h"
+#include "ktexttemplate_paths.h"
 #include "initdb.h"
 
 #include <QDataWidgetMapper>
 #include <QInputDialog>
 #include <QMessageBox>
 
-#include <grantlee_templates.h>
+#include <ktexttemplate.h>
 
 BookWindow::BookWindow()
 {

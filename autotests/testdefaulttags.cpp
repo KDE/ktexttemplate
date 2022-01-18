@@ -27,7 +27,7 @@
 #include "context.h"
 #include "coverageobject.h"
 #include "engine.h"
-#include "grantlee_paths.h"
+#include "ktexttemplate_paths.h"
 #include "metatype.h"
 #include "template.h"
 #include "util.h"

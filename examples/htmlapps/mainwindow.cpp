@@ -24,8 +24,8 @@
 #include <QWebView>
 #include <QtCore/QDebug>
 
-#include "grantlee_paths.h"
-#include <grantlee_templates.h>
+#include "ktexttemplate_paths.h"
+#include <ktexttemplate.h>
 
 #include "localrequestmanager.h"
 #include <QCoreApplication>

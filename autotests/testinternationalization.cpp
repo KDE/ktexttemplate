@@ -19,7 +19,7 @@
 */
 
 #include "engine.h"
-#include "grantlee_paths.h"
+#include "ktexttemplate_paths.h"
 #include "nulllocalizer_p.h"
 #include "qtlocalizer.h"
 #include "util.h"

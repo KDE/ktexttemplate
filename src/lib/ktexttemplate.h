@@ -28,7 +28,7 @@
 #include "grantlee/exception.h"
 #include "grantlee/filter.h"
 #include "grantlee/filterexpression.h"
-#include "grantlee/grantlee_version.h"
+#include "grantlee/ktexttemplate_version.h"
 #include "grantlee/metatype.h"
 #include "grantlee/node.h"
 #include "grantlee/outputstream.h"

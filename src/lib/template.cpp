@@ -30,7 +30,7 @@
 
 #include <QtCore/QLoggingCategory>
 
-Q_LOGGING_CATEGORY(KTEXTTEMPLATE_TEMPLATE, "grantlee.template")
+Q_LOGGING_CATEGORY(KTEXTTEMPLATE_TEMPLATE, "KTextTemplate.template")
 
 using namespace KTextTemplate;
 

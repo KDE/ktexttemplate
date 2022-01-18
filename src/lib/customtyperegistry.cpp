@@ -29,7 +29,7 @@
 #include <QtCore/QStack>
 #include <QtCore/QStringList>
 
-Q_LOGGING_CATEGORY(KTEXTTEMPLATE_CUSTOMTYPE, "grantlee.customtype")
+Q_LOGGING_CATEGORY(KTEXTTEMPLATE_CUSTOMTYPE, "KTextTemplate.customtype")
 
 using namespace KTextTemplate;
 

@@ -28,7 +28,7 @@
 
 #include <QtCore/QLoggingCategory>
 
-Q_LOGGING_CATEGORY(KTEXTTEMPLATE_LOCALIZER, "grantlee.localizer")
+Q_LOGGING_CATEGORY(KTEXTTEMPLATE_LOCALIZER, "KTextTemplate.localizer")
 
 struct Locale {
   explicit Locale(const QLocale &_locale) : locale(_locale) {}

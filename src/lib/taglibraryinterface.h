@@ -104,6 +104,6 @@ public:
 }
 
 Q_DECLARE_INTERFACE(KTextTemplate::TagLibraryInterface,
-                    "org.grantlee.TagLibraryInterface/1.0")
+                    "org.kde.KTextTemplate.TagLibraryInterface/1.0")
 
 #endif

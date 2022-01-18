@@ -55,7 +55,7 @@ class DefaultTagLibrary : public QObject, public TagLibraryInterface
 {
   Q_OBJECT
   Q_INTERFACES(KTextTemplate::TagLibraryInterface)
-  Q_PLUGIN_METADATA(IID "org.grantlee.TagLibraryInterface")
+  Q_PLUGIN_METADATA(IID "org.kde.KTextTemplate.TagLibraryInterface")
 public:
   DefaultTagLibrary(QObject *parent = {}) : QObject(parent) {}
 

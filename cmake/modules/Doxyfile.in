@@ -161,7 +161,7 @@ FORMULA_FONTSIZE       = 10
 # configuration options related to the Qt Docs output
 #---------------------------------------------------------------------------
 GENERATE_QHP       = @GENERATE_QHP@
-QHP_NAMESPACE      = "org.grantlee.@KTextTemplate_VERSION_MAJOR@@KTextTemplate_VERSION_MINOR@@KTextTemplate_VERSION_PATCH@"
+QHP_NAMESPACE      = "org.kde.KTextTemplate.@KTextTemplate_VERSION_MAJOR@@KTextTemplate_VERSION_MINOR@@KTextTemplate_VERSION_PATCH@"
 QHP_VIRTUAL_FOLDER = "grantlee-@KTextTemplate_MAJOR_MINOR_VERSION_STRING@"
 QCH_FILE           = @CMAKE_BINARY_DIR@/"grantlee-@KTextTemplate_VERSION_MAJOR@@KTextTemplate_VERSION_MINOR@@KTextTemplate_VERSION_PATCH@.qch"
 QHG_LOCATION       = "qhelpgenerator"

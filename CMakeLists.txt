@@ -94,7 +94,7 @@ else()
     find_package(Qt5Qml 5.2.0)
 endif()
 
-add_subdirectory(templates)
+add_subdirectory(src)
 
 set(CMAKECONFIG_INSTALL_DIR "${LIB_INSTALL_DIR}/cmake/Grantlee${Grantlee5_VERSION_MAJOR}" )
 

@@ -96,7 +96,7 @@ if (Qt5Qml_FOUND OR Qt6Qml_FOUND)
     )
 
   foreach(file ${scriptabletags_FILES})
-    list(APPEND scriptabletags_SRCS ${CMAKE_SOURCE_DIR}/templates/scriptabletags/${file})
+    list(APPEND scriptabletags_SRCS ${CMAKE_SOURCE_DIR}/src/scriptabletags/${file})
   endforeach()
 
   target_sources(Grantlee_Templates PRIVATE ${scriptabletags_SRCS})

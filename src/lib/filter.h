@@ -23,7 +23,7 @@
 #ifndef GRANTLEE_FILTER_H
 #define GRANTLEE_FILTER_H
 
-#include "grantlee_templates_export.h"
+#include "ktexttemplate_export.h"
 #include "outputstream.h"
 #include "safestring.h"
 
@@ -56,7 +56,7 @@ namespace KTextTemplate
 
   @author Stephen Kelly <steveire@gmail.com>
 */
-class GRANTLEE_TEMPLATES_EXPORT Filter
+class KTEXTTEMPLATE_EXPORT Filter
 {
 public:
   /**

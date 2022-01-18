@@ -24,7 +24,7 @@ set_property(TARGET grantlee_defaulttags PROPERTY
   EXPORT_NAME defaulttags
 )
 target_link_libraries(grantlee_defaulttags PRIVATE
-  Grantlee5::Templates
+  KF6::TextTemplate
 )
 target_compile_features(grantlee_defaulttags PRIVATE
   cxx_auto_type

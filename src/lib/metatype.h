@@ -22,7 +22,7 @@
 #ifndef GRANTLEE_METATYPE_H
 #define GRANTLEE_METATYPE_H
 
-#include "grantlee_templates_export.h"
+#include "ktexttemplate_export.h"
 
 #include "typeaccessor.h"
 
@@ -47,7 +47,7 @@ namespace KTextTemplate
   @author Michael Jansen <kde@michael-jansen.biz>
   @author Stephen Kelly <steveire@gmail.com>
 */
-class GRANTLEE_TEMPLATES_EXPORT MetaType
+class KTEXTTEMPLATE_EXPORT MetaType
 {
 public:
   /**

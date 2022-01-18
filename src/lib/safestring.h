@@ -21,7 +21,7 @@
 #ifndef GRANTLEE_SAFESTRING_H
 #define GRANTLEE_SAFESTRING_H
 
-#include "grantlee_templates_export.h"
+#include "ktexttemplate_export.h"
 
 #include <QtCore/QString>
 #include <QtCore/QVariant>
@@ -88,7 +88,7 @@ namespace KTextTemplate
 
   @author Stephen Kelly <steveire@gmail.com>
 */
-class GRANTLEE_TEMPLATES_EXPORT SafeString
+class KTEXTTEMPLATE_EXPORT SafeString
 {
 public:
   /**
@@ -160,7 +160,7 @@ public:
     This class is largely an implementation detail. See the SafeString
     documentation for details.
   */
-  class GRANTLEE_TEMPLATES_EXPORT NestedString : public QString
+  class KTEXTTEMPLATE_EXPORT NestedString : public QString
   {
 #ifndef Q_QDOC
     friend class SafeString;

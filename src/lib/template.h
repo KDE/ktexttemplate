@@ -22,7 +22,7 @@
 #define GRANTLEE_TEMPLATE_H
 
 #include "exception.h"
-#include "grantlee_templates_export.h"
+#include "ktexttemplate_export.h"
 #include "node.h"
 
 #include <QtCore/QSharedPointer>
@@ -92,7 +92,7 @@ class TemplatePrivate;
 
   @author Stephen Kelly <steveire@gmail.com>
 */
-class GRANTLEE_TEMPLATES_EXPORT TemplateImpl : public QObject
+class KTEXTTEMPLATE_EXPORT TemplateImpl : public QObject
 {
   Q_OBJECT
 public:

@@ -23,7 +23,7 @@
 
 #include "templateloader.h"
 
-#include "grantlee_templates_export.h"
+#include "ktexttemplate_export.h"
 
 namespace KTextTemplate
 {
@@ -67,7 +67,7 @@ class CachingLoaderDecoratorPrivate;
 
   @author Stephen Kelly <steveire@gmail.com>
  */
-class GRANTLEE_TEMPLATES_EXPORT CachingLoaderDecorator
+class KTEXTTEMPLATE_EXPORT CachingLoaderDecorator
     : public AbstractTemplateLoader
 {
 public:

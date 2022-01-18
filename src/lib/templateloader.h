@@ -21,7 +21,7 @@
 #ifndef GRANTLEE_TEMPLATELOADER_H
 #define GRANTLEE_TEMPLATELOADER_H
 
-#include "grantlee_templates_export.h"
+#include "ktexttemplate_export.h"
 #include "template.h"
 
 #include <QtCore/QSharedPointer>
@@ -45,7 +45,7 @@ class AbstractLocalizer;
 
   @author Stephen Kelly <steveire@gmail.com>
 */
-class GRANTLEE_TEMPLATES_EXPORT AbstractTemplateLoader
+class KTEXTTEMPLATE_EXPORT AbstractTemplateLoader
 {
 public:
   /**
@@ -134,7 +134,7 @@ class FileSystemTemplateLoaderPrivate;
   @see @ref deploying_templates
 
 */
-class GRANTLEE_TEMPLATES_EXPORT FileSystemTemplateLoader
+class KTEXTTEMPLATE_EXPORT FileSystemTemplateLoader
     : public AbstractTemplateLoader
 {
 public:
@@ -192,7 +192,7 @@ private:
   Templates can be made available using the @ref setTemplate method, and will
   then be retrieved by the KTextTemplate::Engine as appropriate.
 */
-class GRANTLEE_TEMPLATES_EXPORT InMemoryTemplateLoader
+class KTEXTTEMPLATE_EXPORT InMemoryTemplateLoader
     : public AbstractTemplateLoader
 {
 public:

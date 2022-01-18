@@ -21,7 +21,7 @@
 #ifndef GRANTLEE_RENDERCONTEXT_H
 #define GRANTLEE_RENDERCONTEXT_H
 
-#include "grantlee_templates_export.h"
+#include "ktexttemplate_export.h"
 
 #include <QtCore/QVariantHash>
 
@@ -43,7 +43,7 @@ class RenderContextPrivate;
    of **%RenderContext** is available through Context::renderContext() for use
    with implementations of re-entrant template tags.
  */
-class GRANTLEE_TEMPLATES_EXPORT RenderContext
+class KTEXTTEMPLATE_EXPORT RenderContext
 {
 public:
   /**

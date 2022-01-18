@@ -21,7 +21,7 @@
 #ifndef GRANTLEE_VARIABLE_H
 #define GRANTLEE_VARIABLE_H
 
-#include "grantlee_templates_export.h"
+#include "ktexttemplate_export.h"
 
 #include <QtCore/QVariant>
 
@@ -49,7 +49,7 @@ class VariablePrivate;
 
   @author Stephen Kelly <steveire@gmail.com>
 */
-class GRANTLEE_TEMPLATES_EXPORT Variable
+class KTEXTTEMPLATE_EXPORT Variable
 {
 public:
   /**

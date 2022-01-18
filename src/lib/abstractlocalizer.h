@@ -21,7 +21,7 @@
 #ifndef GRANTLEE_ABSTRACTLOCALIZER_H
 #define GRANTLEE_ABSTRACTLOCALIZER_H
 
-#include "grantlee_templates_export.h"
+#include "ktexttemplate_export.h"
 
 #include <QtCore/QLocale>
 #include <QtCore/QSharedPointer>
@@ -40,7 +40,7 @@ namespace KTextTemplate
 
   @author Stephen Kelly <steveire@gmail.com>
 */
-class GRANTLEE_TEMPLATES_EXPORT AbstractLocalizer
+class KTEXTTEMPLATE_EXPORT AbstractLocalizer
 {
 public:
   /**

@@ -44,7 +44,7 @@ namespace KTextTemplate
 
   add_executable(main main.cpp)
   target_link_libraries(main
-    Grantlee5::Templates
+    KF6::TextTemplate
   )
   @endverbatim
 

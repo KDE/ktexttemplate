@@ -9,7 +9,7 @@ set_source_files_properties(taglibraryinterface.h PROPERTIES
   SKIP_AUTOMOC TRUE
 )
 
-add_library(Grantlee_Templates SHARED
+add_library(KTextTemplate SHARED
   abstractlocalizer.cpp
   cachingloaderdecorator.cpp
   customtyperegistry.cpp
@@ -52,12 +52,12 @@ add_library(Grantlee_Templates SHARED
   token.h
   typeaccessor.h
 )
-add_library(Grantlee5::Templates ALIAS Grantlee_Templates)
-generate_export_header(Grantlee_Templates)
-set_property(TARGET Grantlee_Templates PROPERTY
+add_library(KF6::TextTemplate ALIAS KTextTemplate)
+generate_export_header(KTextTemplate)
+set_property(TARGET KTextTemplate PROPERTY
   EXPORT_NAME Templates
 )
-target_compile_features(Grantlee_Templates
+target_compile_features(KTextTemplate
   PRIVATE
     cxx_auto_type
   PUBLIC
@@ -66,18 +66,18 @@ target_compile_features(Grantlee_Templates
 
 if (CMAKE_GENERATOR MATCHES "Visual Studio")
 
-  set_property(TARGET Grantlee_Templates PROPERTY DEBUG_POSTFIX "d")
+  set_property(TARGET KTextTemplate PROPERTY DEBUG_POSTFIX "d")
 
   foreach(cfg ${CMAKE_CONFIGURATION_TYPES})
     string(TOUPPER ${cfg} CFG)
-    set_target_properties(Grantlee_Templates
+    set_target_properties(KTextTemplate
       PROPERTIES
       LIBRARY_OUTPUT_DIRECTORY_${CFG} "${CMAKE_CURRENT_BINARY_DIR}"
       RUNTIME_OUTPUT_DIRECTORY_${CFG} "${CMAKE_CURRENT_BINARY_DIR}"
       )
   endforeach()
 endif()
-target_compile_definitions(Grantlee_Templates
+target_compile_definitions(KTextTemplate
   PRIVATE
     PLUGINS_PREFER_DEBUG_POSTFIX=$<CONFIG:Debug>
 )
@@ -99,29 +99,29 @@ if (Qt6Qml_FOUND)
     list(APPEND scriptabletags_SRCS ${CMAKE_SOURCE_DIR}/src/scriptabletags/${file})
   endforeach()
 
-  target_sources(Grantlee_Templates PRIVATE ${scriptabletags_SRCS})
-  target_include_directories(Grantlee_Templates PRIVATE ../scriptabletags)
-  target_link_libraries(Grantlee_Templates
+  target_sources(KTextTemplate PRIVATE ${scriptabletags_SRCS})
+  target_include_directories(KTextTemplate PRIVATE ../scriptabletags)
+  target_link_libraries(KTextTemplate
     PRIVATE Qt6::Qml
   )
 endif()
 
 if (BUILD_TESTING)
-  set(GRANTLEE_TESTS_EXPORT "GRANTLEE_TEMPLATES_EXPORT")
+  set(GRANTLEE_TESTS_EXPORT "KTEXTTEMPLATE_EXPORT")
 endif()
 
 configure_file(grantlee_test_export.h.in "${CMAKE_CURRENT_BINARY_DIR}/grantlee_test_export.h")
 
-target_link_libraries(Grantlee_Templates
+target_link_libraries(KTextTemplate
   PUBLIC Qt6::Core
 )
 
-set_target_properties(Grantlee_Templates PROPERTIES
+set_target_properties(KTextTemplate PROPERTIES
   VERSION    ${KTextTemplate_VERSION}
   SOVERSION  ${KTextTemplate_VERSION_MAJOR}
 )
 
-install(TARGETS Grantlee_Templates EXPORT grantlee_targets
+install(TARGETS KTextTemplate EXPORT grantlee_targets
   RUNTIME DESTINATION bin COMPONENT Templates
   LIBRARY DESTINATION ${LIB_INSTALL_DIR} COMPONENT Templates
   ARCHIVE DESTINATION ${LIB_INSTALL_DIR} COMPONENT Templates
@@ -136,7 +136,7 @@ install(FILES
   exception.h
   filter.h
   filterexpression.h
-  ${CMAKE_CURRENT_BINARY_DIR}/grantlee_templates_export.h
+  ${CMAKE_CURRENT_BINARY_DIR}/ktexttemplate_export.h
   ${CMAKE_CURRENT_BINARY_DIR}/grantlee_version.h
   metatype.h
   node.h

@@ -11,7 +11,7 @@ set_property(TARGET grantlee_defaultfilters PROPERTY
     EXPORT_NAME defaultfilters
 )
 target_link_libraries(grantlee_defaultfilters PRIVATE
-  Grantlee5::Templates
+  KF6::TextTemplate
 )
 target_compile_features(grantlee_defaultfilters PRIVATE
   cxx_auto_type

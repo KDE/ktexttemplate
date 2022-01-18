@@ -52,7 +52,7 @@ class QtLocalizerPrivate;
   @endcode
 
 */
-class GRANTLEE_TEMPLATES_EXPORT QtLocalizer : public AbstractLocalizer
+class KTEXTTEMPLATE_EXPORT QtLocalizer : public AbstractLocalizer
 {
 public:
   /**

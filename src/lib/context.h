@@ -22,7 +22,7 @@
 #define GRANTLEE_CONTEXT_H
 
 #include "abstractlocalizer.h"
-#include "grantlee_templates_export.h"
+#include "ktexttemplate_export.h"
 
 #include <QtCore/QVariantHash>
 
@@ -114,7 +114,7 @@ class ContextPrivate;
 
   @author Stephen Kelly <steveire@gmail.com>
 */
-class GRANTLEE_TEMPLATES_EXPORT Context
+class KTEXTTEMPLATE_EXPORT Context
 {
 public:
   /**

@@ -16,7 +16,7 @@ add_executable(contacts_linguist
 )
 target_link_libraries(
   contacts_linguist
-  Grantlee5::Templates
+  KF6::TextTemplate
 )
 
 find_package(Qt6WebKitWidgets REQUIRED)

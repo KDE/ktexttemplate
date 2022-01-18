@@ -21,7 +21,7 @@
 #ifndef GRANTLEE_EXCEPTION_H
 #define GRANTLEE_EXCEPTION_H
 
-#include "grantlee_templates_export.h"
+#include "ktexttemplate_export.h"
 
 #include <QtCore/QString>
 
@@ -81,7 +81,7 @@ enum Error {
 
   @author Stephen Kelly <steveire@gmail.com>
 */
-class GRANTLEE_TEMPLATES_EXPORT Exception
+class KTEXTTEMPLATE_EXPORT Exception
 {
 public:
   /**

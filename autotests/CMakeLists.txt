@@ -61,7 +61,7 @@ macro(ktexttemplate_templates_unit_tests)
                   ${_testname}.cpp
     )
     add_test(${_testname} ${_testname}_exec )
-    target_link_libraries(${_testname}_exec Grantlee5::Templates template_test_builtins)
+    target_link_libraries(${_testname}_exec KF6::TextTemplate template_test_builtins)
 
     if (Qt6Qml_FOUND)
       target_compile_definitions(${_testname}_exec PRIVATE HAVE_QTQML_LIB)

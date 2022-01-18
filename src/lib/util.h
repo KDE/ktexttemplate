@@ -22,7 +22,7 @@
 #define GRANTLEE_UTIL_P_H
 
 #include "context.h"
-#include "grantlee_templates_export.h"
+#include "ktexttemplate_export.h"
 #include "safestring.h"
 
 #include <QtCore/QVariant>
@@ -37,7 +37,7 @@ namespace KTextTemplate
 
   @see @ref truthiness
 */
-GRANTLEE_TEMPLATES_EXPORT bool variantIsTrue(const QVariant &variant);
+KTEXTTEMPLATE_EXPORT bool variantIsTrue(const QVariant &variant);
 
 /**
   Converts the @p input into its unescaped form.
@@ -45,30 +45,30 @@ GRANTLEE_TEMPLATES_EXPORT bool variantIsTrue(const QVariant &variant);
   Double slashes are converted to single slashes, \\&quot is converted to &quot
   etc.
 */
-GRANTLEE_TEMPLATES_EXPORT QString unescapeStringLiteral(const QString &input);
+KTEXTTEMPLATE_EXPORT QString unescapeStringLiteral(const QString &input);
 
 /**
   Marks the @p input as safe.
 */
-GRANTLEE_TEMPLATES_EXPORT KTextTemplate::SafeString
+KTEXTTEMPLATE_EXPORT KTextTemplate::SafeString
 markSafe(const KTextTemplate::SafeString &input);
 
 /**
   Marks the @p input as requiring escaping.
 */
-GRANTLEE_TEMPLATES_EXPORT KTextTemplate::SafeString
+KTEXTTEMPLATE_EXPORT KTextTemplate::SafeString
 markForEscaping(const KTextTemplate::SafeString &input);
 
 /**
   Retrieves and returns a SafeString from the @p input.
 */
-GRANTLEE_TEMPLATES_EXPORT KTextTemplate::SafeString
+KTEXTTEMPLATE_EXPORT KTextTemplate::SafeString
 getSafeString(const QVariant &input);
 
 /**
   Returns whether @p input contains a SafeString.
 */
-GRANTLEE_TEMPLATES_EXPORT bool isSafeString(const QVariant &input);
+KTEXTTEMPLATE_EXPORT bool isSafeString(const QVariant &input);
 
 /**
   Returns true if the type of @p input can be inserted into a rendered template
@@ -76,7 +76,7 @@ GRANTLEE_TEMPLATES_EXPORT bool isSafeString(const QVariant &input);
 
   Note that lists, hashes and QObject*s can not be.
 */
-GRANTLEE_TEMPLATES_EXPORT bool supportedOutputType(const QVariant &input);
+KTEXTTEMPLATE_EXPORT bool supportedOutputType(const QVariant &input);
 
 /**
   Compares @p lhs and @p rhs for equality. SafeStrings are compared as raw
@@ -84,7 +84,7 @@ GRANTLEE_TEMPLATES_EXPORT bool supportedOutputType(const QVariant &input);
 
   @see QVariant::operator==
 */
-GRANTLEE_TEMPLATES_EXPORT bool equals(const QVariant &lhs, const QVariant &rhs);
+KTEXTTEMPLATE_EXPORT bool equals(const QVariant &lhs, const QVariant &rhs);
 
 /**
   Converts @p size into the nearest file size unit like MB or MiB, based on the
@@ -94,7 +94,7 @@ GRANTLEE_TEMPLATES_EXPORT bool equals(const QVariant &lhs, const QVariant &rhs);
   size is for example given in @a KiB, use a multiplier of @a 1024. The returned
   pair will have the converted size as @a first and the unit as @a second.
 */
-GRANTLEE_TEMPLATES_EXPORT std::pair<qreal, QString>
+KTEXTTEMPLATE_EXPORT std::pair<qreal, QString>
 calcFileSize(qreal size, int unitSystem = 10, qreal multiplier = 1.0);
 
 #ifndef Q_QDOC
@@ -103,7 +103,7 @@ calcFileSize(qreal size, int unitSystem = 10, qreal multiplier = 1.0);
   Returns the @p list as a formatted string. This is for debugging purposes
   only.
 */
-GRANTLEE_TEMPLATES_EXPORT KTextTemplate::SafeString
+KTEXTTEMPLATE_EXPORT KTextTemplate::SafeString
 toString(const QVariantList &list);
 #endif
 }

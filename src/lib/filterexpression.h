@@ -23,7 +23,7 @@
 
 #include "variable.h"
 
-#include "grantlee_templates_export.h"
+#include "ktexttemplate_export.h"
 
 namespace KTextTemplate
 {
@@ -116,7 +116,7 @@ class FilterExpressionPrivate;
 
   @author Stephen Kelly <steveire@gmail.com>
 */
-class GRANTLEE_TEMPLATES_EXPORT FilterExpression
+class KTEXTTEMPLATE_EXPORT FilterExpression
 {
 public:
   /**

@@ -21,7 +21,7 @@
 #ifndef GRANTLEE_OUTPUTSTREAM_H
 #define GRANTLEE_OUTPUTSTREAM_H
 
-#include "grantlee_templates_export.h"
+#include "ktexttemplate_export.h"
 
 #include <QtCore/QSharedPointer>
 #include <QtCore/QTextStream>
@@ -77,7 +77,7 @@ class SafeString;
 
   @author Stephen Kelly <steveire@gmail.com>
 */
-class GRANTLEE_TEMPLATES_EXPORT OutputStream
+class KTEXTTEMPLATE_EXPORT OutputStream
 {
 public:
   /**

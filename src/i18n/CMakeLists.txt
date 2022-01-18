@@ -12,7 +12,7 @@ set_property(TARGET grantlee_i18ntags PROPERTY
   EXPORT_NAME i18ntags
 )
 target_link_libraries(grantlee_i18ntags PRIVATE
-  Grantlee5::Templates
+  KF6::TextTemplate
 )
 target_compile_features(grantlee_i18ntags PRIVATE
   cxx_auto_type

@@ -9,7 +9,7 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTORCC ON)
 
-get_property(KTextTemplate_PLUGIN_DIR TARGET Grantlee5::defaulttags PROPERTY LOCATION)
+get_property(KTextTemplate_PLUGIN_DIR TARGET KF6::defaulttags PROPERTY LOCATION)
 get_filename_component(KTextTemplate_PLUGIN_DIR ${KTextTemplate_PLUGIN_DIR} PATH)
 get_filename_component(KTextTemplate_PLUGIN_DIR ${KTextTemplate_PLUGIN_DIR} PATH)
 get_filename_component(KTextTemplate_PLUGIN_DIR ${KTextTemplate_PLUGIN_DIR} PATH)
@@ -29,7 +29,7 @@ add_executable(books
 
 target_link_libraries(
   books
-  Grantlee5::Templates
+  KF6::TextTemplate
 )
 
 target_link_libraries(books

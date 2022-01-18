@@ -7,7 +7,7 @@ find_package(KF6TextTemplate REQUIRED)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOMOC ON)
 
-get_property(KTextTemplate_PLUGIN_DIR TARGET Grantlee5::defaulttags PROPERTY LOCATION)
+get_property(KTextTemplate_PLUGIN_DIR TARGET KF6::defaulttags PROPERTY LOCATION)
 get_filename_component(KTextTemplate_PLUGIN_DIR ${KTextTemplate_PLUGIN_DIR} PATH)
 get_filename_component(KTextTemplate_PLUGIN_DIR ${KTextTemplate_PLUGIN_DIR} PATH)
 get_filename_component(KTextTemplate_PLUGIN_DIR ${KTextTemplate_PLUGIN_DIR} PATH)
@@ -23,7 +23,7 @@ ktexttemplate_adjust_plugin_name(customplugin)
 find_package(Qt5 REQUIRED XmlPatterns Network)
 
 target_link_libraries(customplugin
-  Grantlee5::Templates
+  KF6::TextTemplate
   Qt6::XmlPatterns
   Qt6::Network
 )
@@ -38,6 +38,6 @@ add_executable(htmlapps
 find_package(Qt5WebKitWidgets REQUIRED)
 
 target_link_libraries(htmlapps
-  Grantlee5::Templates
+  KF6::TextTemplate
   Qt6::WebKitWidgets
   )

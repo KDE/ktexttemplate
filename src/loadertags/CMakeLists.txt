@@ -21,7 +21,7 @@ target_compile_features(ktexttemplate_loadertags PRIVATE
 ktexttemplate_adjust_plugin_name(ktexttemplate_loadertags)
 
 install(TARGETS ktexttemplate_loadertags
-  EXPORT grantlee_targets
+  EXPORT ktexttemplate_targets
   LIBRARY DESTINATION ${PLUGIN_INSTALL_DIR}
   COMPONENT Templates
 )

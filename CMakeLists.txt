@@ -121,7 +121,7 @@ install(FILES
   COMPONENT Common
 )
 
-install(EXPORT grantlee_targets
+install(EXPORT ktexttemplate_targets
   DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
   NAMESPACE KF6TextTemplate::
   FILE KF6TextTemplateTargets.cmake

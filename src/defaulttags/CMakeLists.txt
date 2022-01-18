@@ -33,7 +33,7 @@ target_compile_features(ktexttemplate_defaulttags PRIVATE
 ktexttemplate_adjust_plugin_name(ktexttemplate_defaulttags)
 
 install(TARGETS ktexttemplate_defaulttags 
-  EXPORT grantlee_targets
+  EXPORT ktexttemplate_targets
   LIBRARY DESTINATION ${PLUGIN_INSTALL_DIR}
   COMPONENT Templates
 )

@@ -19,7 +19,7 @@ target_compile_features(ktexttemplate_defaultfilters PRIVATE
 ktexttemplate_adjust_plugin_name(ktexttemplate_defaultfilters)
 
 install(TARGETS ktexttemplate_defaultfilters
-  EXPORT grantlee_targets
+  EXPORT ktexttemplate_targets
   LIBRARY DESTINATION ${PLUGIN_INSTALL_DIR}
   COMPONENT Templates
 )

@@ -121,7 +121,7 @@ set_target_properties(KTextTemplate PROPERTIES
   SOVERSION  ${KTextTemplate_VERSION_MAJOR}
 )
 
-install(TARGETS KTextTemplate EXPORT grantlee_targets
+install(TARGETS KTextTemplate EXPORT ktexttemplate_targets
   RUNTIME DESTINATION bin COMPONENT Templates
   LIBRARY DESTINATION ${LIB_INSTALL_DIR} COMPONENT Templates
   ARCHIVE DESTINATION ${LIB_INSTALL_DIR} COMPONENT Templates

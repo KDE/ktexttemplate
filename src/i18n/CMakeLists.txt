@@ -20,7 +20,7 @@ target_compile_features(ktexttemplate_i18ntags PRIVATE
 ktexttemplate_adjust_plugin_name(ktexttemplate_i18ntags)
 
 install(TARGETS ktexttemplate_i18ntags 
-  EXPORT grantlee_targets
+  EXPORT ktexttemplate_targets
   LIBRARY DESTINATION ${PLUGIN_INSTALL_DIR}
   COMPONENT Templates
 )

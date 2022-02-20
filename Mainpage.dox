@@ -76,12 +76,6 @@ namespace KTextTemplate
   </table>
   <br />
 
-  <center>
-  <b>
-  @dotfile "moduledeps.dot" "Dependency Graph for KTextTemplate"
-  </b>
-  </center>
-
   @section start_community Community
 
   The %KTextTemplate project mailing list is kde-pim@kde.org.

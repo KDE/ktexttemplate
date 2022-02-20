@@ -210,20 +210,5 @@ namespace KTextTemplate
 
   By default, %KTextTemplate depends on the QtQml library in order to implement Javascript support. This support is only enabled if the QtQml library is found.
 
-  <center>
-  <b>
-  @dotfile "moduledeps.dot" "Dependency Graph for KTextTemplate"
-  </b>
-  </center>
-
-  To prevent CMake searching for that library, use the <tt>-DCMAKE_DISABLE_FIND_PACKAGE_Qt5Qml=ON</tt> argument to CMake.
-
-  <center>
-  <b>
-  @dotfile "moduledeps_no_qml.dot" "Dependency Graph for KTextTemplate without QtQml"
-  </b>
-  </center>
-
-
 */
 }

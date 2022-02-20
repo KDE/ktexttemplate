@@ -1,6 +1,6 @@
 
-The KTextTemplate Libraries
-===========================
+The KTextTemplate Library
+=========================
 
 * About KTextTemplate
 * Installation
@@ -10,11 +10,9 @@ The KTextTemplate Libraries
 About KTextTemplate
 -------------------
 
-KTextTemplate is a set of Free Software libraries written using the [Qt framework](http://code.qt.io).
-Currently two libraries are shipped with KTextTemplate: KTextTemplate Templates and KTextTemplate
-TextDocument.
+KTextTemplate is a Free Software library written using the [Qt framework](http://code.qt.io).
 
-The goal of KTextTemplate Templates is to make it easier for application developers to
+The goal of KTextTemplate is to make it easier for application developers to
 separate the structure of documents from the data they contain, opening the door
 for theming and advanced generation of other text such as code.
 

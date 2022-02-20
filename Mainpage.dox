@@ -1,13 +1,13 @@
 
-// Put this in the Grantlee namespace so that autolinks to classes work without needing a KTextTemplate:: prefix.
+// Put this in the KTextTemplate namespace so that autolinks to classes work without needing a KTextTemplate:: prefix.
 
 /**
-  @brief The Grantlee namespace holds all public %KTextTemplate API.
+  @brief The KTextTemplate namespace holds all public %KTextTemplate API.
 */
 namespace KTextTemplate
 {
 
-/** @mainpage The Grantlee Libraries
+/** @mainpage The KTextTemplate Libraries
 
   @section overview Overview
 
@@ -78,7 +78,7 @@ namespace KTextTemplate
 
   <center>
   <b>
-  @dotfile "moduledeps.dot" "Dependency Graph for Grantlee"
+  @dotfile "moduledeps.dot" "Dependency Graph for KTextTemplate"
   </b>
   </center>
 

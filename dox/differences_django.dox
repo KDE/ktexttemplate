@@ -4,7 +4,7 @@ namespace KTextTemplate
 
 /**
 
-  @page differences_django Differences between Django and Grantlee
+  @page differences_django Differences between Django and KTextTemplate
 
   There are several notable differences between Django and %KTextTemplate, which arise mostly due to different implementation languages and features of the %Qt framework.
 

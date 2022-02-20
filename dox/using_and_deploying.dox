@@ -16,7 +16,7 @@ namespace KTextTemplate
 
   Error handling etc is omitted for clarity. In order for the above to work as expected, it is necessary to configure the build system to find %KTextTemplate, and to configure %KTextTemplate to find templates and plugins.
 
-  @section finding_with_cmake Finding Grantlee with CMake
+  @section finding_with_cmake Finding KTextTemplate with CMake
 
   %KTextTemplate uses the <a href="http://www.cmake.org/">CMake</a> cross platform build system, and installs a cmake file called <tt>KF6TextTemplateConfig.cmake</tt>. This config file is automatically searched for by CMake and contains the information needed for other CMake based applications to find headers and link against %KTextTemplate libraries. See https://cmake.org/cmake/help/latest/manual/cmake-packages.7.html for more.
 
@@ -190,7 +190,7 @@ namespace KTextTemplate
 
   Note again that when specifying the path in the virtual filesystem, the version is omitted. User defined filter written in Javascript can also be located similiarly to templates from either the filesystem or the %Qt Resource virtual filesystem.
 
-  @section building_grantlee Building Grantlee
+  @section building_grantlee Building KTextTemplate
 
   It is possible to build only parts of %KTextTemplate if your application is a QCoreApplication that depends only on QtCore
 
@@ -212,7 +212,7 @@ namespace KTextTemplate
 
   <center>
   <b>
-  @dotfile "moduledeps.dot" "Dependency Graph for Grantlee"
+  @dotfile "moduledeps.dot" "Dependency Graph for KTextTemplate"
   </b>
   </center>
 
@@ -220,7 +220,7 @@ namespace KTextTemplate
 
   <center>
   <b>
-  @dotfile "moduledeps_no_qml.dot" "Dependency Graph for Grantlee without QtQml"
+  @dotfile "moduledeps_no_qml.dot" "Dependency Graph for KTextTemplate without QtQml"
   </b>
   </center>
 

@@ -68,7 +68,7 @@ namespace KTextTemplate
   It is additionally possible to insert any type of object or any container (not just QVariantHash and QVariantList) into the Context.
   @see @ref generic_types_and_templates.
 
-  @section extending_grantlee Extending Grantlee
+  @section extending_grantlee Extending KTextTemplate
 
   %KTextTemplate has 5 extension points.
 

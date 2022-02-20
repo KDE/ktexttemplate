@@ -37,7 +37,7 @@ namespace KTextTemplate
 
 #ifndef Q_QDOC
 /**
-  @brief The **%MetaType** is the interface to the Grantlee introspection
+  @brief The **%MetaType** is the interface to the KTextTemplate introspection
   system.
 
   The **%MetaType** class is used as part of the type registration system of

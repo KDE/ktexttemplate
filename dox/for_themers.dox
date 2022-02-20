@@ -3,7 +3,7 @@ namespace KTextTemplate
 
 /**
 
-  @page for_themers Grantlee for theme artists
+  @page for_themers KTextTemplate for theme artists
 
   The syntax of %KTextTemplate templates is the same as Django templates. This page is an introduction to the syntax, but any Django template introduction is also relevant. Here's some good ones:
 
@@ -12,7 +12,7 @@ namespace KTextTemplate
   - http://docs.djangoproject.com/en/dev/topics/templates/
 
 
-  @section template_syntax Syntax of Grantlee templates
+  @section template_syntax Syntax of KTextTemplate templates
 
   The syntax of %KTextTemplate templates contains four types of tokens - plain text, comments, variables and control tags.
 

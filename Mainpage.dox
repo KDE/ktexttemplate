@@ -84,12 +84,10 @@ namespace KTextTemplate
 
   @section start_community Community
 
-  The %KTextTemplate project mailing list is kde-pim@kde.org, and the IRC channel is \#grantlee on freenode.
+  The %KTextTemplate project mailing list is kde-pim@kde.org.
 
-  The source repository is located at https://github.com/steveire/grantlee
-
-  - Existing bugs https://bugs.kde.org/buglist.cgi?product=grantlee
-  - File new bug https://bugs.kde.org/enter_bug.cgi?product=grantlee
+  - Existing bugs https://bugs.kde.org/buglist.cgi?product=ktexttemplate
+  - File new bug https://bugs.kde.org/enter_bug.cgi?product=ktexttemplate
 
 */
 

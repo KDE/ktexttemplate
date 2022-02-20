@@ -135,14 +135,14 @@ ScriptableTagLibrary::ScriptableTagLibrary(QObject *parent)
           new ScriptableHelperFunctions(m_scriptEngine)))
 {
   m_scriptEngine->globalObject().setProperty(
-      QStringLiteral("internalGrantleeFunctions"), m_functions);
+      QStringLiteral("internalKTextTempateFunctions"), m_functions);
 
   // Make Node new-able
   m_scriptEngine->globalObject().setProperty(
       QStringLiteral("Node"),
       m_scriptEngine->evaluate(QStringLiteral(R"javascript(
             (function() {
-              return internalGrantleeFunctions.ScriptableNodeConstructor(
+              return internalKTextTempateFunctions.ScriptableNodeConstructor(
                 Array.prototype.slice.call(arguments));
             })
           )javascript")));

@@ -68,7 +68,7 @@ namespace KTextTemplate
   It is additionally possible to insert any type of object or any container (not just QVariantHash and QVariantList) into the Context.
   @see @ref generic_types_and_templates.
 
-  @section extending_grantlee Extending KTextTemplate
+  @section extending_ktexttemplate Extending KTextTemplate
 
   %KTextTemplate has 5 extension points.
 
@@ -132,7 +132,7 @@ namespace KTextTemplate
 
   @subsection custom_object_properties Custom Object Properties
 
-  The broad introspection features of Qt5 are relied upon by %KTextTemplate via the <tt>Q_PROPERTY</tt> macro.  Most types used with that macro may be accessed in %KTextTemplate templates without further code. 
+  The broad introspection features of Qt5 are relied upon by %KTextTemplate via the <tt>Q_PROPERTY</tt> macro.  Most types used with that macro may be accessed in %KTextTemplate templates without further code.
 
   We can define a <tt>Home</tt> type like this:
 

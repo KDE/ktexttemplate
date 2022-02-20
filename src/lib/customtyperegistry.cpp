@@ -35,7 +35,7 @@ using namespace KTextTemplate;
 
 CustomTypeRegistry::CustomTypeRegistry()
 {
-  // Grantlee Types
+  // KTextTemplate Types
   registerBuiltInMetatype<SafeString>();
   registerBuiltInMetatype<MetaEnumVariable>();
 }

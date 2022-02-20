@@ -11,11 +11,11 @@ namespace KTextTemplate
   The Books application from %Qt Demos is modified to export the available data to a rendered html file. The example shows a use of the <tt>extends</tt> tag to override some parts of a base template. The templates can be edited to change the exported content without any recompiling. The themer has broad control over how the data os rendered and can even alter the structure of the presented data.
 
   <center><b>
-  @image html grantlee_book_simple.png "A simple export of the data"
+  @image html ktexttemplate_book_simple.png "A simple export of the data"
   <br/>
-  @image html grantlee_book_coloured.png "A coloured export of the data showing the use of the &quot;<tt>cycle</tt>&quot; tag."
+  @image html ktexttemplate_book_coloured.png "A coloured export of the data showing the use of the &quot;<tt>cycle</tt>&quot; tag."
   <br/>
-  @image html grantlee_book_coloured_grouped.png "A restructured export of the data showing the use of the &quot;<tt>ifchanged</tt>&quot; tag."
+  @image html ktexttemplate_book_coloured_grouped.png "A restructured export of the data showing the use of the &quot;<tt>ifchanged</tt>&quot; tag."
   </b></center>
 
   @section codegen_example Codegen

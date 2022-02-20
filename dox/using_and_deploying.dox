@@ -166,7 +166,7 @@ namespace KTextTemplate
   @code
     auto engine = new Engine( this );
     engine->setPluginPaths(
-        QStringList{ path_to_custom_plugins, path_to_grantlee_defaults }
+        QStringList{ path_to_custom_plugins, path_to_ktexttemplate_defaults }
         );
   @endcode
 
@@ -190,7 +190,7 @@ namespace KTextTemplate
 
   Note again that when specifying the path in the virtual filesystem, the version is omitted. User defined filter written in Javascript can also be located similiarly to templates from either the filesystem or the %Qt Resource virtual filesystem.
 
-  @section building_grantlee Building KTextTemplate
+  @section building_ktexttemplate Building KTextTemplate
 
   It is possible to build only parts of %KTextTemplate if your application is a QCoreApplication that depends only on QtCore
 

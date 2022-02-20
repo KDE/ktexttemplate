@@ -162,8 +162,8 @@ FORMULA_FONTSIZE       = 10
 #---------------------------------------------------------------------------
 GENERATE_QHP       = @GENERATE_QHP@
 QHP_NAMESPACE      = "org.kde.KTextTemplate.@KTextTemplate_VERSION_MAJOR@@KTextTemplate_VERSION_MINOR@@KTextTemplate_VERSION_PATCH@"
-QHP_VIRTUAL_FOLDER = "grantlee-@KTextTemplate_MAJOR_MINOR_VERSION_STRING@"
-QCH_FILE           = @CMAKE_BINARY_DIR@/"grantlee-@KTextTemplate_VERSION_MAJOR@@KTextTemplate_VERSION_MINOR@@KTextTemplate_VERSION_PATCH@.qch"
+QHP_VIRTUAL_FOLDER = "ktexttemplate-@KTextTemplate_MAJOR_MINOR_VERSION_STRING@"
+QCH_FILE           = @CMAKE_BINARY_DIR@/"ktexttemplate-@KTextTemplate_VERSION_MAJOR@@KTextTemplate_VERSION_MINOR@@KTextTemplate_VERSION_PATCH@.qch"
 QHG_LOCATION       = "qhelpgenerator"
 #---------------------------------------------------------------------------
 # configuration options related to the LaTeX output

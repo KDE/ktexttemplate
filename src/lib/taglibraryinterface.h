@@ -24,6 +24,7 @@
 #include "outputstream.h"
 
 #include <QtCore/QHash>
+#include <QtPlugin>
 
 namespace KTextTemplate
 {

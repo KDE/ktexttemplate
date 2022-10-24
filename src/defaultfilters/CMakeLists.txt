@@ -6,6 +6,13 @@ add_library(ktexttemplate_defaultfilters MODULE
   logic.cpp
   misc.cpp
   stringfilters.cpp
+  defaultfilters.h
+  datetime.h
+  integers.h
+  lists.h
+  logic.h
+  misc.h
+  stringfilters.h
 )
 set_property(TARGET ktexttemplate_defaultfilters PROPERTY
     EXPORT_NAME defaultfilters

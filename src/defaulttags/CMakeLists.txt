@@ -19,6 +19,27 @@ add_library(ktexttemplate_defaulttags MODULE
   templatetag.cpp
   widthratio.cpp
   with.cpp
+
+  defaulttags.h
+  autoescape.h
+  comment.h
+  cycle.h
+  debug.h
+  filtertag.h
+  firstof.h
+  for.h
+  if.h
+  ifchanged.h
+  ifequal.h
+  load.h
+  mediafinder.h
+  now.h
+  range.h
+  regroup.h
+  spaceless.h
+  templatetag.h
+  widthratio.h
+  with.h
 )
 set_property(TARGET ktexttemplate_defaulttags PROPERTY
   EXPORT_NAME defaulttags

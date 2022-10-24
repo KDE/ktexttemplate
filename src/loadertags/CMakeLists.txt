@@ -8,6 +8,11 @@ add_library(ktexttemplate_loadertags MODULE
   block.cpp
   extends.cpp
   include.cpp
+  loadertags.h
+  blockcontext.h
+  block.h
+  extends.h
+  include.h
 )
 set_property(TARGET ktexttemplate_loadertags PROPERTY
   EXPORT_NAME loadertags

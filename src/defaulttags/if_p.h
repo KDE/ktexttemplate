@@ -309,16 +309,6 @@ QVariant IfToken::evaluate(KTextTemplate::Context *c) const
     case NeqCode:
       return !KTextTemplate::equals(mArgs.first->evaluate(c),
                                mArgs.second->evaluate(c));
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-    case GtCode:
-      return mArgs.first->evaluate(c) > mArgs.second->evaluate(c);
-    case GteCode:
-      return mArgs.first->evaluate(c) >= mArgs.second->evaluate(c);
-    case LtCode:
-      return mArgs.first->evaluate(c) < mArgs.second->evaluate(c);
-    case LteCode:
-      return mArgs.first->evaluate(c) <= mArgs.second->evaluate(c);
-#else
     case GtCode:
     case GteCode:
     case LtCode:
@@ -339,7 +329,6 @@ QVariant IfToken::evaluate(KTextTemplate::Context *c) const
       }
       return false;
     }
-#endif
     default:
       Q_ASSERT(!"Invalid OpCode");
       return QVariant();

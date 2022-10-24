@@ -24,9 +24,7 @@
 #include "util.h"
 #include "variable.h"
 
-#if QT_VERSION >= QT_VERSION_CHECK(5, 10, 0)
 #include <QtCore/QRandomGenerator>
-#endif
 #include <QtCore/QDateTime>
 #include <QtCore/QSequentialIterable>
 
@@ -142,16 +140,7 @@ QVariant RandomFilter::doFilter(const QVariant &input, const QVariant &argument,
   if (varList.isEmpty())
     return {};
 
-#if QT_VERSION >= QT_VERSION_CHECK(5, 10, 0)
   auto rnd = QRandomGenerator::global()->bounded((int)varList.size());
-#else
-#if QT_VERSION < QT_VERSION_CHECK(5, 8, 0)
-  qsrand(QDateTime::currentDateTimeUtc().toTime_t());
-#else
-  qsrand(QDateTime::currentDateTimeUtc().toSecsSinceEpoch());
-#endif
-  auto rnd = qrand() % varList.size();
-#endif
   return varList.at(rnd);
 }
 
@@ -197,11 +186,7 @@ QVariant MakeListFilter::doFilter(const QVariant &_input,
     QVariantList list;
     const auto strings
         = getSafeString(input).get().split(QString(),
-#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)
-                                           QString::SkipEmptyParts
-#else
                                            Qt::SkipEmptyParts
-#endif
         );
     list.reserve(strings.size());
     for (const auto &var : strings)

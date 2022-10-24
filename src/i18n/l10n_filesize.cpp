@@ -171,7 +171,6 @@ void L10nFileSizeNode::render(OutputStream *stream, Context *c) const
 
   QString resultString;
 
-#if (QT_VERSION >= QT_VERSION_CHECK(5, 10, 0))
   if (sizeMult > static_cast<qreal>(std::numeric_limits<qint64>::min())
       && sizeMult < static_cast<qreal>(std::numeric_limits<qint64>::max())) {
 
@@ -184,7 +183,6 @@ void L10nFileSizeNode::render(OutputStream *stream, Context *c) const
         = l.formattedDataSize(static_cast<qint64>(sizeMult), precision, format);
 
   } else {
-#endif
 
     const std::pair<qreal, QString> fspair
         = calcFileSize(size, unitSystem, multiplier);
@@ -198,9 +196,7 @@ void L10nFileSizeNode::render(OutputStream *stream, Context *c) const
                      + QChar(QChar::Space) + fspair.second;
     }
 
-#if (QT_VERSION >= QT_VERSION_CHECK(5, 10, 0))
   }
-#endif
 
   streamValueInContext(stream, resultString, c);
 }
@@ -280,7 +276,6 @@ void L10nFileSizeVarNode::render(OutputStream *stream, Context *c) const
 
   QString resultString;
 
-#if (QT_VERSION >= QT_VERSION_CHECK(5, 10, 0))
   if (sizeMult > static_cast<qreal>(std::numeric_limits<qint64>::min())
       && sizeMult < static_cast<qreal>(std::numeric_limits<qint64>::max())) {
 
@@ -293,7 +288,6 @@ void L10nFileSizeVarNode::render(OutputStream *stream, Context *c) const
         = l.formattedDataSize(static_cast<qint64>(sizeMult), precision, format);
 
   } else {
-#endif
 
     const std::pair<qreal, QString> fspair
         = calcFileSize(size, unitSystem, multiplier);
@@ -307,9 +301,7 @@ void L10nFileSizeVarNode::render(OutputStream *stream, Context *c) const
                      + QChar(QChar::Space) + fspair.second;
     }
 
-#if (QT_VERSION >= QT_VERSION_CHECK(5, 10, 0))
   }
-#endif
 
   c->insert(m_resultName, resultString);
 }

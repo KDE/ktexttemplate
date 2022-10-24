@@ -145,15 +145,6 @@ SafeString &SafeString::NestedString::append(const QString &str)
   return *m_safeString;
 }
 
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-SafeString &SafeString::NestedString::append(const QStringRef &ref)
-{
-  QString::append(ref);
-  m_safeString->m_safety = IsNotSafe;
-  return *m_safeString;
-}
-#endif
-
 SafeString &SafeString::NestedString::append(const QLatin1String &str)
 {
   QString::append(str);
@@ -642,38 +633,7 @@ SafeString SafeString::NestedString::simplified() const
   return {QString::simplified(), m_safeString->m_safety};
 }
 
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-QStringList
-SafeString::NestedString::split(const KTextTemplate::SafeString &sep,
-                                QString::SplitBehavior behavior,
-                                Qt::CaseSensitivity cs) const
-{
-  return QString::split(sep.get(), behavior, cs);
-}
 
-QStringList SafeString::NestedString::split(const QString &sep,
-                                            QString::SplitBehavior behavior,
-                                            Qt::CaseSensitivity cs) const
-{
-  return QString::split(sep, behavior, cs);
-}
-
-QStringList SafeString::NestedString::split(const QChar &sep,
-                                            QString::SplitBehavior behavior,
-                                            Qt::CaseSensitivity cs) const
-{
-  return QString::split(sep, behavior, cs);
-}
-
-QStringList
-SafeString::NestedString::split(const QRegularExpression &rx,
-                                QString::SplitBehavior behavior) const
-{
-  return QString::split(rx, behavior);
-}
-#endif
-
-#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
 QStringList
 SafeString::NestedString::split(const KTextTemplate::SafeString &sep,
                                 Qt::SplitBehavior behavior,
@@ -701,7 +661,6 @@ QStringList SafeString::NestedString::split(const QRegularExpression &rx,
 {
   return QString::split(rx, behavior);
 }
-#endif
 
 SafeString SafeString::NestedString::toLower() const
 {

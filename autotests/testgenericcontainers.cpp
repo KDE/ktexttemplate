@@ -26,9 +26,6 @@
 #include "test_macros.h"
 
 #include "coverageobject.h"
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-#include <QtCore/QLinkedList>
-#endif
 #include <QtCore/QQueue>
 #include <QtCore/QStack>
 #include <QtCore/QVariant>
@@ -80,11 +77,7 @@ template <> QVector<QDateTime> getItems<QDateTime>()
   items.reserve(3);
   for (auto i = 0; i < 3; ++i) {
     QDateTime d;
-#if QT_VERSION < QT_VERSION_CHECK(5, 8, 0)
-    d.setTime_t(0);
-#else
     d.setSecsSinceEpoch(0);
-#endif
     d = d.addDays(i);
     items.push_back(d);
   }
@@ -307,9 +300,6 @@ template <typename T> void doTestNonHashableContainers()
 {
   doTestSequentialContainer<QVector<T>>();
   doTestSequentialContainer<QList<T>>();
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-  doTestSequentialContainer<QLinkedList<T>>();
-#endif
   doTestSequentialContainer<QQueue<T>>();
   doTestSequentialContainer<QStack<T>>();
   doTestSequentialContainer<std::list<T>>();

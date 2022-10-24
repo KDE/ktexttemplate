@@ -25,9 +25,6 @@
 #include "template.h"
 #include "test_macros.h"
 
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-#include <QtCore/QLinkedList>
-#endif
 #include <QtCore/QMetaType>
 #include <QtCore/QQueue>
 #include <QtCore/QStack>
@@ -278,17 +275,6 @@ template <typename T> struct SequentialContainerTester<QSet<T>> {
   static void indexing(KTextTemplate::Context) {}
 };
 
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-template <typename T> struct SequentialContainerTester<QLinkedList<T>> {
-  static void iteration(KTextTemplate::Context &c)
-  {
-    testSequentialIteration<QLinkedList<T>>(c);
-  }
-
-  static void indexing(KTextTemplate::Context) {}
-};
-#endif
-
 template <typename T> struct SequentialContainerTester<std::list<T>> {
   static void iteration(KTextTemplate::Context &c)
   {
@@ -377,9 +363,6 @@ void TestGenericTypes::testSequentialContainer_Variant()
   doTestSequentialContainer_Variant<QVector<QVariant>>();
   doTestSequentialContainer_Variant<QStack<QVariant>>();
   doTestSequentialContainer_Variant<QQueue<QVariant>>();
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-  doTestSequentialContainer_Variant<QLinkedList<QVariant>>();
-#endif
 }
 
 void TestGenericTypes::testAssociativeContainer_Variant()
@@ -498,9 +481,6 @@ void TestGenericTypes::testSequentialContainer_Type()
   doTestSequentialContainer_Type<QVector<Person>>();
   doTestSequentialContainer_Type<QStack<Person>>();
   doTestSequentialContainer_Type<QQueue<Person>>();
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-  doTestSequentialContainer_Type<QLinkedList<Person>>();
-#endif
   doTestSequentialContainer_Type<QSet<Person>>();
   doTestSequentialContainer_Type<std::deque<Person>>();
   doTestSequentialContainer_Type<std::vector<Person>>();

@@ -59,11 +59,7 @@ QVariant CustomTypeRegistry::lookup(const QVariant &object,
     auto it = types.constFind(id);
     if (it == types.constEnd()) {
       qCWarning(KTEXTTEMPLATE_CUSTOMTYPE) << "Don't know how to handle metatype"
-#if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)
-                                          << QMetaType::typeName(id);
-#else
                                           << QMetaType(id).name();
-#endif
       // :TODO: Print out error message
       return {};
     }
@@ -71,11 +67,7 @@ QVariant CustomTypeRegistry::lookup(const QVariant &object,
     const CustomTypeInfo &info = it.value();
     if (!info.lookupFunction) {
       qCWarning(KTEXTTEMPLATE_CUSTOMTYPE) << "No lookup function for metatype"
-#if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)
-                                          << QMetaType::typeName(id);
-#else
                                           << QMetaType(id).name();
-#endif
       lf = nullptr;
       // :TODO: Print out error message
       return {};

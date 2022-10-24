@@ -26,7 +26,6 @@
 #include "pluginpointer_p.h"
 #include "taglibraryinterface.h"
 
-class QPluginLoader;
 
 namespace KTextTemplate
 {

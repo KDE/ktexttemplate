@@ -28,11 +28,6 @@
 #include "extends.h"
 #include "include.h"
 
-namespace KTextTemplate
-{
-class Parser;
-}
-
 using namespace KTextTemplate;
 
 class LoaderTagLibrary : public QObject, public TagLibraryInterface

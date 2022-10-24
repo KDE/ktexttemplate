@@ -29,7 +29,6 @@
 namespace KTextTemplate
 {
 class AbstractNodeFactory;
-class Engine;
 class Filter;
 
 /// @headerfile taglibraryinterface.h KTextTemplate/taglibraryinterface.h

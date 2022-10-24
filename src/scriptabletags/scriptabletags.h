@@ -31,7 +31,6 @@ class QJSEngine;
 namespace KTextTemplate
 {
 class Engine;
-class Parser;
 
 class ScriptableHelperFunctions : public QObject
 {

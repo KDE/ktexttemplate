@@ -44,11 +44,6 @@
 #include "node.h"
 #include "taglibraryinterface.h"
 
-namespace KTextTemplate
-{
-class Parser;
-}
-
 using namespace KTextTemplate;
 
 class DefaultTagLibrary : public QObject, public TagLibraryInterface

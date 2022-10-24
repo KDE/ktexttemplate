@@ -31,11 +31,6 @@
 #include "l10n_money.h"
 #include "with_locale.h"
 
-namespace KTextTemplate
-{
-class Parser;
-}
-
 using namespace KTextTemplate;
 
 class I18nTagLibrary : public QObject, public TagLibraryInterface

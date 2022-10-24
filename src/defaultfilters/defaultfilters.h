@@ -30,10 +30,6 @@
 
 #include "taglibraryinterface.h"
 
-namespace KTextTemplate
-{
-class Parser;
-}
 
 using namespace KTextTemplate;
 

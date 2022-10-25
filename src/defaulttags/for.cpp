@@ -61,7 +61,7 @@ Node *ForNodeFactory::getNode(const QString &tagContent, Parser *p) const
     );
   }
 
-  for (const QString &var : qAsConst(vars)) {
+  for (const QString &var : std::as_const(vars)) {
     if (var.isEmpty())
       throw KTextTemplate::Exception(
           TagSyntaxError,

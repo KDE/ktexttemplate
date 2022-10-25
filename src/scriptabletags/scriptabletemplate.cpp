@@ -40,7 +40,7 @@ QList<QObject *> ScriptableTemplate::nodeList() const
   auto nodeList = m_template->nodeList();
   QList<QObject *> objList;
 
-  for (auto n : qAsConst(nodeList)) {
+  for (auto n : std::as_const(nodeList)) {
     objList << n;
   }
   return objList;

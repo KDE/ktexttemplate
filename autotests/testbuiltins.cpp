@@ -180,7 +180,7 @@ public:
     }
 
     auto retString = input;
-    for (const auto &escape : qAsConst(jsEscapes)) {
+    for (const auto &escape : std::as_const(jsEscapes)) {
       retString = retString.replace(escape.first, escape.second);
     }
     return retString;

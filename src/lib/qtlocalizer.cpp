@@ -126,7 +126,7 @@ QString QtLocalizerPrivate::translate(const QString &input,
   }
 
   auto locale = m_locales.last();
-  for (QTranslator *translator : qAsConst(locale->themeTranslators)) {
+  for (QTranslator *translator : std::as_const(locale->themeTranslators)) {
     result = translator->translate("GR_FILENAME", input.toUtf8().constData(),
                                    context.toUtf8().constData(), count);
   }
@@ -137,7 +137,7 @@ QString QtLocalizerPrivate::translate(const QString &input,
       return QCoreApplication::translate("GR_FILENAME",
                                          input.toUtf8().constData(),
                                          context.toUtf8().constData(), count);
-    for (QTranslator *translator : qAsConst(translators)) {
+    for (QTranslator *translator : std::as_const(translators)) {
       result = translator->translate("GR_FILENAME", input.toUtf8().constData(),
                                      context.toUtf8().constData(), count);
       if (!result.isEmpty())

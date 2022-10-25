@@ -357,7 +357,7 @@ QVariant WordWrapFilter::doFilter(const QVariant &input,
     return {};
   auto output = partList.takeFirst();
   auto pos = output.size() - output.lastIndexOf(QLatin1Char('\n')) - 1;
-  for (const QString &part : qAsConst(partList)) {
+  for (const QString &part : std::as_const(partList)) {
     QStringList lines;
     if (part.contains(QLatin1Char('\n'))) {
       lines = part.split(QLatin1Char('\n'));

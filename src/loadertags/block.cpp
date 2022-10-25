@@ -24,7 +24,6 @@
 #include "exception.h"
 #include "parser.h"
 #include "rendercontext.h"
-#include "template.h"
 #include "util.h"
 
 static const char *const __loadedBlocks = "__loadedBlocks";

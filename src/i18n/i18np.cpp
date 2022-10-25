@@ -23,10 +23,8 @@
 #include <QtCore/QStringList>
 
 #include "abstractlocalizer.h"
-#include "engine.h"
 #include "exception.h"
 #include "parser.h"
-#include "template.h"
 
 #include <QtCore/QDebug>
 #include <complex>

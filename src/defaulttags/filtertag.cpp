@@ -23,7 +23,6 @@
 #include "../lib/exception.h"
 #include "filterexpression.h"
 #include "parser.h"
-#include "util.h"
 
 FilterNodeFactory::FilterNodeFactory() = default;
 

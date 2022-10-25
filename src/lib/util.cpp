@@ -21,7 +21,6 @@
 #include "util.h"
 
 #include "metaenumvariable_p.h"
-#include "metatype.h"
 
 #include <QtCore/QStringList>
 

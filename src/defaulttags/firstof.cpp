@@ -22,7 +22,6 @@
 
 #include "../lib/exception.h"
 #include "parser.h"
-#include "util.h"
 
 FirstOfNodeFactory::FirstOfNodeFactory() = default;
 

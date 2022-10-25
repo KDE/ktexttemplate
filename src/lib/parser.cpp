@@ -27,7 +27,6 @@
 #include "nodebuiltins_p.h"
 #include "taglibraryinterface.h"
 #include "template.h"
-#include "template_p.h"
 
 using namespace KTextTemplate;
 

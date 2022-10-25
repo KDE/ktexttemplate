@@ -22,8 +22,6 @@
 
 #include "exception.h"
 #include "parser.h"
-#include "template.h"
-#include "util.h"
 
 #include <QtCore/QFile>
 

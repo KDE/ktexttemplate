@@ -24,7 +24,6 @@
 
 #include "exception.h"
 #include "filter.h"
-#include "metatype.h"
 #include "parser.h"
 #include "util.h"
 

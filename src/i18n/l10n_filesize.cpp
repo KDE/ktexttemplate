@@ -20,10 +20,8 @@
 #include "l10n_filesize.h"
 
 #include "abstractlocalizer.h"
-#include "engine.h"
 #include "exception.h"
 #include "parser.h"
-#include "template.h"
 #include "util.h"
 
 #include <limits>

@@ -23,7 +23,6 @@
 #include "../lib/exception.h"
 #include "parser.h"
 #include "rendercontext.h"
-#include "util.h"
 
 static const char _namedCycleNodes[] = "_namedCycleNodes";
 

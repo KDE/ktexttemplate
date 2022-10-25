@@ -25,7 +25,6 @@
 #include <QtTest/QTest>
 
 #include "coverageobject.h"
-#include "outputstream.h"
 #include "safestring.h"
 
 using namespace KTextTemplate;

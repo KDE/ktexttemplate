@@ -22,8 +22,6 @@
 
 #include "engine.h"
 #include "ktexttemplate_paths.h"
-#include "metatype.h"
-#include "test_macros.h"
 
 #include "coverageobject.h"
 #include <QtCore/QQueue>

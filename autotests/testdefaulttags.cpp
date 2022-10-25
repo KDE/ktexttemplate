@@ -28,7 +28,6 @@
 #include "coverageobject.h"
 #include "engine.h"
 #include "ktexttemplate_paths.h"
-#include "metatype.h"
 #include "template.h"
 #include "util.h"
 

@@ -1,3 +1,4 @@
+set(KTextTemplate_INSTALL_INCLUDEDIR ${KDE_INSTALL_INCLUDEDIR_KF}/KTextTemplate) # visibility incluee path
 
 configure_file(ktexttemplate_version.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/ktexttemplate_version.h)
 
@@ -114,6 +115,10 @@ target_link_libraries(KTextTemplate
   PUBLIC Qt6::Core
 )
 
+target_include_directories(KTextTemplate
+    INTERFACE "$<INSTALL_INTERFACE:${KTextTemplate_INSTALL_INCLUDEDIR}>"
+)
+
 set_target_properties(KTextTemplate PROPERTIES
   VERSION    ${KTextTemplate_VERSION}
   SOVERSION  ${KTextTemplate_VERSION_MAJOR}
@@ -150,10 +155,12 @@ install(FILES
   token.h
   util.h
   variable.h
-  DESTINATION include/KTextTemplate COMPONENT Templates
+  DESTINATION "${KTextTemplate_INSTALL_INCLUDEDIR}/KTextTemplate" # C++ namespace (TODO: lowercase)
+  COMPONENT Templates
 )
 
 install(FILES
   ktexttemplate.h
-  DESTINATION include COMPONENT Templates
+  DESTINATION ${KTextTemplate_INSTALL_INCLUDEDIR}
+  COMPONENT Templates
 )

@@ -30,7 +30,7 @@ class TagLibraryInterface;
 
 class EnginePrivate;
 
-/// @headerfile engine.h KTextTemplate/engine.h
+/// @headerfile engine.h <KTextTemplate/Engine>
 
 /**
   @brief **%KTextTemplate::Engine** is the main entry point for creating %KTextTemplate

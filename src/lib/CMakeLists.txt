@@ -81,6 +81,33 @@ target_compile_definitions(KTextTemplate
     PLUGINS_PREFER_DEBUG_POSTFIX=$<CONFIG:Debug>
 )
 
+ecm_generate_headers(KTextTemplate_CamelCase_HEADERS
+    HEADER_NAMES
+        AbstractLocalizer
+        CachingLoaderDecorator
+        Context
+        Engine
+        Exception
+        Filter
+        FilterExpression
+        MetaType
+        Node,NodeList,AbstractNodeFactory
+        OutputStream
+        Parser
+        QtLocalizer
+        RenderContext
+        SafeString
+        TagLibraryInterface
+        Template
+        TemplateLoader,AbstractTemplateLoader,FileSystemTemplateLoader,InMemoryTemplateLoader
+        TypeAccessor
+        Token
+        Util
+        Variable
+    PREFIX KTextTemplate
+    REQUIRED_HEADERS KTextTemplate_HEADERS
+)
+
 if (Qt6Qml_FOUND)
   set(scriptabletags_FILES
     scriptablecontext.cpp
@@ -132,35 +159,21 @@ install(TARGETS KTextTemplate EXPORT ktexttemplate_targets
 )
 
 install(FILES
-  abstractlocalizer.h
-  cachingloaderdecorator.h
-  context.h
-  engine.h
-  exception.h
-  filter.h
-  filterexpression.h
+  ${KTextTemplate_HEADERS}
   ${CMAKE_CURRENT_BINARY_DIR}/ktexttemplate_export.h
   ${CMAKE_CURRENT_BINARY_DIR}/ktexttemplate_version.h
-  metatype.h
-  node.h
-  outputstream.h
-  parser.h
-  qtlocalizer.h
-  rendercontext.h
-  safestring.h
-  taglibraryinterface.h
-  template.h
-  templateloader.h
-  typeaccessor.h
-  token.h
-  util.h
-  variable.h
-  DESTINATION "${KTextTemplate_INSTALL_INCLUDEDIR}/KTextTemplate" # C++ namespace (TODO: lowercase)
+  DESTINATION "${KTextTemplate_INSTALL_INCLUDEDIR}/ktexttemplate" # lowercase C++ namespace
   COMPONENT Templates
 )
 
 install(FILES
   ktexttemplate.h
   DESTINATION ${KTextTemplate_INSTALL_INCLUDEDIR}
+  COMPONENT Templates
+)
+
+install(FILES
+  ${KTextTemplate_CamelCase_HEADERS}
+  DESTINATION "${KTextTemplate_INSTALL_INCLUDEDIR}/KTextTemplate" # C++ namespace
   COMPONENT Templates
 )

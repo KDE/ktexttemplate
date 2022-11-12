@@ -31,7 +31,7 @@ namespace KTextTemplate
 
 class AbstractLocalizer;
 
-/// @headerfile templateloader.h KTextTemplate/templateloader.h
+/// @headerfile templateloader.h <KTextTemplate/TemplateLoader>
 
 /**
   @brief An retrieval interface to a storage location for Template objects.

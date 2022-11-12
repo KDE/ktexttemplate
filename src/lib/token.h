@@ -38,7 +38,7 @@ enum TokenType {
   CommentToken   ///< The Token is a comment node.
 };
 
-/// @headerfile token.h KTextTemplate/token.h
+/// @headerfile token.h <KTextTemplate/Token>
 
 /**
   A token in a parse stream for a template.

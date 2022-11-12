@@ -21,7 +21,7 @@
 #ifndef CUSTOM_TAGS_H
 #define CUSTOM_TAGS_H
 
-#include <KTextTemplate/taglibraryinterface.h>
+#include <KTextTemplate/TagLibraryInterface>
 
 #include "rssfeed.h"
 

@@ -20,7 +20,7 @@
 
 #include "templatereply.h"
 
-#include <KTextTemplate/outputstream.h>
+#include <KTextTemplate/OutputStream>
 
 #include <QDebug>
 

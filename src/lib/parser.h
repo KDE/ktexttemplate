@@ -33,7 +33,7 @@ class TemplateImpl;
 
 class ParserPrivate;
 
-/// @headerfile parser.h KTextTemplate/parser.h
+/// @headerfile parser.h <KTextTemplate/Parser>
 
 /**
   @brief The **%Parser** class processes a string template into a tree of nodes.

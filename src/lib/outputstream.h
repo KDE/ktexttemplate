@@ -31,7 +31,7 @@ namespace KTextTemplate
 
 class SafeString;
 
-/// @headerfile outputstream.h KTextTemplate/outputstream.h
+/// @headerfile outputstream.h <KTextTemplate/OutputStream>
 
 /**
   @brief The **%OutputStream** class is used to render templates to a

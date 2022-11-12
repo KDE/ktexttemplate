@@ -33,7 +33,7 @@
 namespace KTextTemplate
 {
 
-/// @headerfile metatype.h KTextTemplate/metatype.h
+/// @headerfile metatype.h <KTextTemplate/MetaType>
 
 #ifndef Q_QDOC
 /**

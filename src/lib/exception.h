@@ -48,7 +48,7 @@ enum Error {
   CompileFunctionError
 };
 
-/// @headerfile exception.h KTextTemplate/exception.h
+/// @headerfile exception.h <KTextTemplate/Exception>
 
 /**
   @brief An exception for use when implementing template tags.

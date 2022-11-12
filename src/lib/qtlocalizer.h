@@ -30,6 +30,8 @@ namespace KTextTemplate
 
 class QtLocalizerPrivate;
 
+/// @headerfile qtlocalizer.h <KTextTemplate/QtLocalizer>
+
 /**
   @brief Provides internationalization based on QLocale and QTranslator.
 

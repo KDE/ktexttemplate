@@ -25,7 +25,7 @@
 
 #include <QListWidget>
 #include <QWebView>
-#include <KTextTemplate/templateloader.h>
+#include <KTextTemplate/TemplateLoader>
 
 namespace KTextTemplate
 {

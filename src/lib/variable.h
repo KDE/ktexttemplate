@@ -31,7 +31,7 @@ class Context;
 
 class VariablePrivate;
 
-/// @headerfile variable.h KTextTemplate/variable.h
+/// @headerfile variable.h <KTextTemplate/Variable>
 
 /**
   @brief A container for static variables defined in Templates.

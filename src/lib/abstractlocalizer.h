@@ -32,6 +32,8 @@ class QDateTime;
 namespace KTextTemplate
 {
 
+/// @headerfile abstractlocalizer.h <KTextTemplate/AbstractLocalizer>
+
 /**
   @brief Interface for implementing an internationalization system.
 

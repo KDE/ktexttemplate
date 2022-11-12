@@ -43,7 +43,7 @@ typedef QSharedPointer<TemplateImpl> Template;
 
 class TemplatePrivate;
 
-/// @headerfile template.h KTextTemplate/template.h
+/// @headerfile template.h <KTextTemplate/Template>
 
 /**
   @brief The **%Template** class is a tree of nodes which may be rendered.

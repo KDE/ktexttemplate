@@ -31,7 +31,7 @@ namespace KTextTemplate
 class AbstractNodeFactory;
 class Filter;
 
-/// @headerfile taglibraryinterface.h KTextTemplate/taglibraryinterface.h
+/// @headerfile taglibraryinterface.h <KTextTemplate/TagLibraryInterface>
 
 /**
   @brief The **%TagLibraryInterface** returns available tags and filters from

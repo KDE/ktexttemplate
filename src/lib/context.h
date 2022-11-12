@@ -33,7 +33,7 @@ class RenderContext;
 
 class ContextPrivate;
 
-/// @headerfile context.h KTextTemplate/context.h
+/// @headerfile context.h <KTextTemplate/Context>
 
 /**
   @brief The **%Context** class holds the context to render a Template with.

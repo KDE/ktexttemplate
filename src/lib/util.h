@@ -28,6 +28,7 @@
 #include <QVariant>
 
 /// @file util.h Utility functions used throughout %KTextTemplate.
+/// @headerfile util.h <KTextTemplate/Util>
 
 namespace KTextTemplate
 {

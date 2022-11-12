@@ -45,7 +45,7 @@ class TemplateImpl;
 
 class NodePrivate;
 
-/// @headerfile node.h KTextTemplate/node.h
+/// @headerfile node.h <KTextTemplate/Node>
 
 /**
   @brief Base class for all nodes.

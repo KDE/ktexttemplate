@@ -25,7 +25,7 @@
 
 #include <QVariantHash>
 
-/// @headerfile rendercontext.h KTextTemplate/rendercontext.h
+/// @headerfile rendercontext.h <KTextTemplate/RenderContext>
 
 namespace KTextTemplate
 {

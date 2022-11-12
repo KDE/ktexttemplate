@@ -28,7 +28,7 @@
 #include "parser.h"
 #include "rendercontext.h"
 
-#include <QtCore/QLoggingCategory>
+#include <QLoggingCategory>
 
 Q_LOGGING_CATEGORY(KTEXTTEMPLATE_TEMPLATE, "KTextTemplate.template")
 

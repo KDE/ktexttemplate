@@ -21,7 +21,7 @@
 #ifndef QTUNORDEREDMAP_H
 #define QTUNORDEREDMAP_H
 
-#include <QtCore/QHash>
+#include <QHash>
 
 #include <unordered_map>
 

@@ -27,8 +27,8 @@
 #include "metatype.h"
 #include "util.h"
 
-#include <QtCore/QMetaEnum>
-#include <QtCore/QStringList>
+#include <QMetaEnum>
+#include <QStringList>
 
 using namespace KTextTemplate;
 

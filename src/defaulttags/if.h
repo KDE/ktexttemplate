@@ -23,7 +23,7 @@
 
 #include "node.h"
 
-#include <QtCore/QSharedPointer>
+#include <QSharedPointer>
 
 using namespace KTextTemplate;
 

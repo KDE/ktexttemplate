@@ -21,7 +21,7 @@
 #ifndef SCRIPTABLE_SAFESTRING
 #define SCRIPTABLE_SAFESTRING
 
-#include <QtCore/QObject>
+#include <QObject>
 
 #include "safestring.h"
 

@@ -21,8 +21,8 @@
 #ifndef IF_P_H
 #define IF_P_H
 
-#include <QtCore/QStringList>
-#include <QtCore/QVector>
+#include <QStringList>
+#include <QVector>
 
 #include "../lib/exception.h"
 #include "filterexpression.h"

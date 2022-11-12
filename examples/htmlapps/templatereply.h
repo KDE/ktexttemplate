@@ -21,9 +21,9 @@
 #ifndef TEMPLATEREPLY_H
 #define TEMPLATEREPLY_H
 
-#include <QtCore/QBuffer>
-#include <QtNetwork/QNetworkReply>
-#include <QtNetwork/QNetworkRequest>
+#include <QBuffer>
+#include <QNetworkReply>
+#include <QNetworkRequest>
 
 #include <KTextTemplate/context.h>
 #include <KTextTemplate/template.h>

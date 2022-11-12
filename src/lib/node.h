@@ -29,12 +29,12 @@
 #include "outputstream.h"
 #include "safestring.h"
 
-#include <QtCore/QStringList>
+#include <QStringList>
 
 // Need these for inheriting from QList<T> to work
 // http://lists.trolltech.com/qt-interest/2008-01/thread00578-0.html
-#include <QtCore/QSet>
-#include <QtCore/QVector>
+#include <QSet>
+#include <QVector>
 
 namespace KTextTemplate
 {

@@ -5,7 +5,7 @@
 #include <QMetaObject>
 #include <QString>
 #include <QTest>
-#include <QtDebug>
+#include <QDebug>
 
 #include "ktexttemplate_paths.h"
 

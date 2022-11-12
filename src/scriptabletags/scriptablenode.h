@@ -21,7 +21,7 @@
 #ifndef SCRIPTABLE_NODE_H
 #define SCRIPTABLE_NODE_H
 
-#include <QtQml/QJSValue>
+#include <QJSValue>
 
 #include "node.h"
 

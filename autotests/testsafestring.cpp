@@ -21,8 +21,8 @@
 #ifndef SAFESTRINGTEST_H
 #define SAFESTRINGTEST_H
 
-#include <QtCore/QObject>
-#include <QtTest/QTest>
+#include <QObject>
+#include <QTest>
 
 #include "coverageobject.h"
 #include "safestring.h"

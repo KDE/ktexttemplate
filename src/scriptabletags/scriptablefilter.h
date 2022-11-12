@@ -21,7 +21,7 @@
 #ifndef SCRIPTABLE_FILTER_H
 #define SCRIPTABLE_FILTER_H
 
-#include <QtQml/QJSValue>
+#include <QJSValue>
 
 #include "filter.h"
 

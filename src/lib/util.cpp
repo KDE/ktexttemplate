@@ -22,7 +22,7 @@
 
 #include "metaenumvariable_p.h"
 
-#include <QtCore/QStringList>
+#include <QStringList>
 
 QString KTextTemplate::unescapeStringLiteral(const QString &input)
 {

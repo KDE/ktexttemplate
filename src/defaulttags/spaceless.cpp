@@ -20,7 +20,7 @@
 
 #include "spaceless.h"
 
-#include <QtCore/QRegularExpression>
+#include <QRegularExpression>
 
 #include "parser.h"
 #include "util.h"

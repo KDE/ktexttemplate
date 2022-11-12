@@ -18,9 +18,9 @@
 
 */
 
-#include <QtCore/QDebug>
-#include <QtCore/QFileInfo>
-#include <QtTest/QTest>
+#include <QDebug>
+#include <QFileInfo>
+#include <QTest>
 
 #include "cachingloaderdecorator.h"
 #include "context.h"

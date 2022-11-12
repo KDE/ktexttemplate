@@ -24,7 +24,7 @@
 
 #include "metatype.h"
 
-#include <QtCore/QMutex>
+#include <QMutex>
 
 namespace KTextTemplate
 {

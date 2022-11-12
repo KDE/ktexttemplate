@@ -21,9 +21,9 @@
 #ifndef SCRIPTABLE_PARSER_H
 #define SCRIPTABLE_PARSER_H
 
-#include <QtCore/QObject>
-#include <QtCore/QStringList>
-#include <QtQml/QJSValue>
+#include <QObject>
+#include <QStringList>
+#include <QJSValue>
 
 namespace KTextTemplate
 {

@@ -24,9 +24,9 @@
 #include "customtyperegistry_p.h"
 #include "metaenumvariable_p.h"
 
-#include <QtCore/QAssociativeIterable>
-#include <QtCore/QDebug>
-#include <QtCore/QSequentialIterable>
+#include <QAssociativeIterable>
+#include <QDebug>
+#include <QSequentialIterable>
 
 using namespace KTextTemplate;
 

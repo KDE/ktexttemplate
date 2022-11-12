@@ -21,8 +21,8 @@
 #ifndef DEFAULTTAGSTEST_H
 #define DEFAULTTAGSTEST_H
 
-#include <QtCore/QDebug>
-#include <QtTest/QTest>
+#include <QDebug>
+#include <QTest>
 
 #include "context.h"
 #include "coverageobject.h"

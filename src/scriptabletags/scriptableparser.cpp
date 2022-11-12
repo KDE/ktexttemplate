@@ -22,7 +22,7 @@
 
 #include "parser.h"
 
-#include <QtQml/QJSEngine>
+#include <QJSEngine>
 
 ScriptableParser::ScriptableParser(KTextTemplate::Parser *p, QJSEngine *engine)
     : QObject(engine), m_p(p), m_engine(engine)

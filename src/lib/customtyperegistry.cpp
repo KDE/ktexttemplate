@@ -24,10 +24,10 @@
 #include "metaenumvariable_p.h"
 #include "safestring.h"
 
-#include <QtCore/QLoggingCategory>
-#include <QtCore/QQueue>
-#include <QtCore/QStack>
-#include <QtCore/QStringList>
+#include <QLoggingCategory>
+#include <QQueue>
+#include <QStack>
+#include <QStringList>
 
 Q_LOGGING_CATEGORY(KTEXTTEMPLATE_CUSTOMTYPE, "KTextTemplate.customtype")
 

@@ -21,8 +21,8 @@
 #ifndef SCRIPTABLE_CONTEXT_H
 #define SCRIPTABLE_CONTEXT_H
 
-#include <QtCore/QObject>
-#include <QtCore/QVariant>
+#include <QObject>
+#include <QVariant>
 
 namespace KTextTemplate
 {

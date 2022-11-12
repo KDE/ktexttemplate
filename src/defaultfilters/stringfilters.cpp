@@ -22,8 +22,8 @@
 
 #include "util.h"
 
-#include <QtCore/QRegularExpression>
-#include <QtCore/QVariant>
+#include <QRegularExpression>
+#include <QVariant>
 
 QVariant AddSlashesFilter::doFilter(const QVariant &input,
                                     const QVariant &argument,

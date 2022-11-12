@@ -20,7 +20,7 @@
 
 #include "scriptablefilterexpression.h"
 
-#include <QtQml/QJSEngine>
+#include <QJSEngine>
 
 #include "parser.h"
 #include "scriptablesafestring.h"

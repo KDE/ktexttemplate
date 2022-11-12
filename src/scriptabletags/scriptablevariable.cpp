@@ -20,7 +20,7 @@
 
 #include "scriptablevariable.h"
 
-#include <QtQml/QJSEngine>
+#include <QJSEngine>
 
 #include "scriptablesafestring.h"
 #include "util.h"

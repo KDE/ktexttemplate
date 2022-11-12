@@ -22,7 +22,7 @@
 
 #include "parser.h"
 
-#include <QtCore/QDateTime>
+#include <QDateTime>
 
 IfChangedNodeFactory::IfChangedNodeFactory() = default;
 

@@ -22,7 +22,7 @@
 
 #include "util.h"
 
-#include <QtCore/QDateTime>
+#include <QDateTime>
 
 using namespace KTextTemplate;
 

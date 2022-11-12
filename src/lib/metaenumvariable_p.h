@@ -21,7 +21,7 @@
 #ifndef KTEXTTEMPLATE_METAENUMVARIABLE_P_H
 #define KTEXTTEMPLATE_METAENUMVARIABLE_P_H
 
-#include <QtCore/QMetaEnum>
+#include <QMetaEnum>
 
 struct MetaEnumVariable {
   MetaEnumVariable() : value(-1) {}

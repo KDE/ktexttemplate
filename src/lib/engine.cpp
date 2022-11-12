@@ -30,10 +30,10 @@
 #include "template_p.h"
 #include "templateloader.h"
 
-#include <QtCore/QCoreApplication>
-#include <QtCore/QDir>
-#include <QtCore/QPluginLoader>
-#include <QtCore/QTextStream>
+#include <QCoreApplication>
+#include <QDir>
+#include <QPluginLoader>
+#include <QTextStream>
 
 using namespace KTextTemplate;
 

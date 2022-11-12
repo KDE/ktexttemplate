@@ -21,8 +21,8 @@
 #ifndef BLOCKCONTEXT_H
 #define BLOCKCONTEXT_H
 
-#include <QtCore/QHash>
-#include <QtCore/QMetaType>
+#include <QHash>
+#include <QMetaType>
 
 class BlockNode;
 

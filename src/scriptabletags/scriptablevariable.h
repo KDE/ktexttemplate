@@ -21,8 +21,8 @@
 #ifndef SCRIPTABLE_VARIABLE_H
 #define SCRIPTABLE_VARIABLE_H
 
-#include <QtCore/QObject>
-#include <QtQml/QJSValue>
+#include <QObject>
+#include <QJSValue>
 
 #include "scriptablecontext.h"
 #include "variable.h"

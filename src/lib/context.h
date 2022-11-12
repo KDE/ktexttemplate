@@ -24,7 +24,7 @@
 #include "abstractlocalizer.h"
 #include "ktexttemplate_export.h"
 
-#include <QtCore/QVariantHash>
+#include <QVariantHash>
 
 namespace KTextTemplate
 {

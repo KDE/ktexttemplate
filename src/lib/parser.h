@@ -25,7 +25,7 @@
 #include "node.h"
 #include "token.h"
 
-#include <QtCore/QStringList>
+#include <QStringList>
 
 namespace KTextTemplate
 {

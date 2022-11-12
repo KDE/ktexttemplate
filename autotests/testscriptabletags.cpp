@@ -21,10 +21,10 @@
 #ifndef SCRIPTABLETAGSTEST_H
 #define SCRIPTABLETAGSTEST_H
 
-#include <QtCore/QDebug>
-#include <QtCore/QDir>
-#include <QtCore/QFileInfo>
-#include <QtTest/QTest>
+#include <QDebug>
+#include <QDir>
+#include <QFileInfo>
+#include <QTest>
 
 #include "context.h"
 #include "coverageobject.h"

@@ -20,7 +20,7 @@
 
 #include "safestring.h"
 
-#include <QtCore/QStringList>
+#include <QStringList>
 
 using namespace KTextTemplate;
 

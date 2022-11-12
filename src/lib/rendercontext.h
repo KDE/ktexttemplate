@@ -23,7 +23,7 @@
 
 #include "ktexttemplate_export.h"
 
-#include <QtCore/QVariantHash>
+#include <QVariantHash>
 
 /// @headerfile rendercontext.h KTextTemplate/rendercontext.h
 

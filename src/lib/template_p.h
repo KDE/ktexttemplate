@@ -24,7 +24,7 @@
 #include "engine.h"
 #include "template.h"
 
-#include <QtCore/QPointer>
+#include <QPointer>
 
 namespace KTextTemplate
 {

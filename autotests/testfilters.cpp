@@ -1,4 +1,4 @@
-﻿/*
+/*
   This file is part of the KTextTemplate library
 
   Copyright (c) 2009,2010 Stephen Kelly <steveire@gmail.com>
@@ -21,10 +21,10 @@
 #ifndef FILTERSTEST_H
 #define FILTERSTEST_H
 
-#include <QtCore/QDebug>
-#include <QtCore/QDir>
-#include <QtCore/QFileInfo>
-#include <QtTest/QTest>
+#include <QDebug>
+#include <QDir>
+#include <QFileInfo>
+#include <QTest>
 
 #include "context.h"
 #include "coverageobject.h"

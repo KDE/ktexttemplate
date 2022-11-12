@@ -23,7 +23,7 @@
 
 #include "ktexttemplate_export.h"
 
-#include <QtCore/QVariant>
+#include <QVariant>
 
 namespace KTextTemplate
 {

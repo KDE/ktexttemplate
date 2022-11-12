@@ -20,7 +20,7 @@
 
 #include "nulllocalizer_p.h"
 
-#include <QtCore/QDateTime>
+#include <QDateTime>
 
 using namespace KTextTemplate;
 

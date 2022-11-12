@@ -24,7 +24,7 @@
 #include "rendercontext.h"
 #include "util.h"
 
-#include <QtCore/QStringList>
+#include <QStringList>
 
 using namespace KTextTemplate;
 

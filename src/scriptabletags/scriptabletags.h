@@ -24,7 +24,7 @@
 #include "node.h"
 #include "taglibraryinterface.h"
 
-#include <QtQml/QJSValue>
+#include <QJSValue>
 
 class QJSEngine;
 

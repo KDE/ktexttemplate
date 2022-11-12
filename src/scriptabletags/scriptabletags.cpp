@@ -20,11 +20,11 @@
 
 #include "scriptabletags.h"
 
-#include <QtCore/QFile>
+#include <QFile>
 #include <QtPlugin>
 
-#include <QtQml/QJSEngine>
-#include <QtQml/QJSValueIterator>
+#include <QJSEngine>
+#include <QJSValueIterator>
 
 #include "nodebuiltins_p.h"
 

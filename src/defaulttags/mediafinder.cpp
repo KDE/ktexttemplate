@@ -25,7 +25,7 @@
 #include "parser.h"
 #include "util.h"
 
-#include <QtCore/QUrl>
+#include <QUrl>
 
 MediaFinderNodeFactory::MediaFinderNodeFactory() = default;
 

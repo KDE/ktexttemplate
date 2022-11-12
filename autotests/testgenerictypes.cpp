@@ -25,12 +25,12 @@
 #include "template.h"
 #include "test_macros.h"
 
-#include <QtCore/QMetaType>
-#include <QtCore/QQueue>
-#include <QtCore/QStack>
-#include <QtCore/QVariant>
-#include <QtCore/QVariantHash>
-#include <QtTest/QTest>
+#include <QMetaType>
+#include <QQueue>
+#include <QStack>
+#include <QVariant>
+#include <QVariantHash>
+#include <QTest>
 
 #include "coverageobject.h"
 #include <deque>

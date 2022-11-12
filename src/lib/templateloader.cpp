@@ -24,9 +24,9 @@
 #include "exception.h"
 #include "nulllocalizer_p.h"
 
-#include <QtCore/QDir>
-#include <QtCore/QFile>
-#include <QtCore/QFileInfo>
+#include <QDir>
+#include <QFile>
+#include <QFileInfo>
 
 using namespace KTextTemplate;
 

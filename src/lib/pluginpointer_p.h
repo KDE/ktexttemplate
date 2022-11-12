@@ -21,8 +21,8 @@
 #ifndef KTEXTTEMPLATE_PLUGINPOINTER_H
 #define KTEXTTEMPLATE_PLUGINPOINTER_H
 
-#include <QtCore/QPluginLoader>
-#include <QtCore/QSharedPointer>
+#include <QPluginLoader>
+#include <QSharedPointer>
 
 namespace KTextTemplate
 {

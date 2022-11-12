@@ -20,7 +20,7 @@
 
 #include "scriptablenode.h"
 
-#include <QtQml/QJSEngine>
+#include <QJSEngine>
 
 #include "context.h"
 #include "engine.h"

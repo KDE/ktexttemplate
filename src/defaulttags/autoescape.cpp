@@ -23,7 +23,7 @@
 #include "exception.h"
 #include "parser.h"
 
-#include <QtCore/QFile>
+#include <QFile>
 
 AutoescapeNodeFactory::AutoescapeNodeFactory() = default;
 

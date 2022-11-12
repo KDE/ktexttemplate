@@ -23,7 +23,7 @@
 
 #include "ktexttemplate_export.h"
 
-#include <QtCore/QString>
+#include <QString>
 
 #include <exception>
 

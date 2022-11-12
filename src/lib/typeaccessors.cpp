@@ -23,9 +23,9 @@
 #include "metaenumvariable_p.h"
 #include "safestring.h"
 
-#include <QtCore/QRegularExpression>
-#include <QtCore/QStringList>
-#include <QtCore/QVariant>
+#include <QRegularExpression>
+#include <QStringList>
+#include <QVariant>
 
 namespace KTextTemplate
 {

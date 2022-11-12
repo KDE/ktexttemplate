@@ -21,7 +21,7 @@
 #ifndef KTEXTTEMPLATE_TOKEN_H
 #define KTEXTTEMPLATE_TOKEN_H
 
-#include <QtCore/QString>
+#include <QString>
 
 namespace KTextTemplate
 {

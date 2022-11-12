@@ -23,7 +23,7 @@
 
 #include "outputstream.h"
 
-#include <QtCore/QHash>
+#include <QHash>
 #include <QtPlugin>
 
 namespace KTextTemplate

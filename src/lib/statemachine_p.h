@@ -21,8 +21,8 @@
 #ifndef KTEXTTEMPLATE_STATEMACHINE_P_H
 #define KTEXTTEMPLATE_STATEMACHINE_P_H
 
-#include <QtCore/QString>
-#include <QtCore/QVector>
+#include <QString>
+#include <QVector>
 
 namespace KTextTemplate
 {

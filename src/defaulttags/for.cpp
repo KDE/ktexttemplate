@@ -24,7 +24,7 @@
 #include "metaenumvariable_p.h"
 #include "parser.h"
 
-#include <QtCore/QSequentialIterable>
+#include <QSequentialIterable>
 
 ForNodeFactory::ForNodeFactory() = default;
 

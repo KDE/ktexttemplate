@@ -22,7 +22,7 @@
 
 #include "util.h"
 
-#include <QtCore/QDateTime>
+#include <QDateTime>
 
 QVariant timeSince(const QDateTime &early, const QDateTime &late)
 {

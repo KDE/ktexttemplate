@@ -20,13 +20,13 @@
 
 #include "qtlocalizer.h"
 
-#include <QtCore/QCoreApplication>
-#include <QtCore/QDateTime>
-#include <QtCore/QLibraryInfo>
-#include <QtCore/QTranslator>
-#include <QtCore/QVector>
+#include <QCoreApplication>
+#include <QDateTime>
+#include <QLibraryInfo>
+#include <QTranslator>
+#include <QVector>
 
-#include <QtCore/QLoggingCategory>
+#include <QLoggingCategory>
 
 Q_LOGGING_CATEGORY(KTEXTTEMPLATE_LOCALIZER, "KTextTemplate.localizer")
 

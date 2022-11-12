@@ -23,7 +23,7 @@
 #include "../lib/exception.h"
 #include "parser.h"
 
-#include <QtCore/QDateTime>
+#include <QDateTime>
 
 NowNodeFactory::NowNodeFactory() = default;
 

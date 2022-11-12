@@ -26,13 +26,13 @@
 #include <QXmlNodeModelIndex>
 #include <QXmlQuery>
 #include <QXmlResultItems>
-#include <QtCore/QBuffer>
-#include <QtCore/QDebug>
-#include <QtCore/QEventLoop>
-#include <QtCore/QFile>
-#include <QtNetwork/QNetworkAccessManager>
-#include <QtNetwork/QNetworkReply>
-#include <QtNetwork/QNetworkRequest>
+#include <QBuffer>
+#include <QDebug>
+#include <QEventLoop>
+#include <QFile>
+#include <QNetworkAccessManager>
+#include <QNetworkReply>
+#include <QNetworkRequest>
 
 Q_DECLARE_METATYPE(QXmlQuery)
 

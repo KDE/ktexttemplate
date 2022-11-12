@@ -1,4 +1,4 @@
-﻿/*
+/*
   This file is part of the KTextTemplate library
 
   Copyright (c) 2010 Stephen Kelly <steveire@gmail.com>
@@ -25,9 +25,9 @@
 #include "util.h"
 
 #include "coverageobject.h"
-#include <QtCore/QScopedPointer>
-#include <QtCore/QTranslator>
-#include <QtTest/QTest>
+#include <QScopedPointer>
+#include <QTranslator>
+#include <QTest>
 
 using namespace KTextTemplate;
 

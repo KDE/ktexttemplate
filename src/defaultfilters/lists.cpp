@@ -24,9 +24,9 @@
 #include "util.h"
 #include "variable.h"
 
-#include <QtCore/QRandomGenerator>
-#include <QtCore/QDateTime>
-#include <QtCore/QSequentialIterable>
+#include <QRandomGenerator>
+#include <QDateTime>
+#include <QSequentialIterable>
 
 QVariant JoinFilter::doFilter(const QVariant &input, const QVariant &argument,
                               bool autoescape) const

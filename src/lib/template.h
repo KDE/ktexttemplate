@@ -25,8 +25,8 @@
 #include "ktexttemplate_export.h"
 #include "node.h"
 
-#include <QtCore/QSharedPointer>
-#include <QtCore/QStringList>
+#include <QSharedPointer>
+#include <QStringList>
 
 namespace KTextTemplate
 {

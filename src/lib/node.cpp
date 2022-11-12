@@ -25,7 +25,7 @@
 #include "template.h"
 #include "util.h"
 
-#include <QtCore/QRegularExpressionMatchIterator>
+#include <QRegularExpressionMatchIterator>
 
 using namespace KTextTemplate;
 

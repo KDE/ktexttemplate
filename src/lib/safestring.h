@@ -23,8 +23,8 @@
 
 #include "ktexttemplate_export.h"
 
-#include <QtCore/QString>
-#include <QtCore/QVariant>
+#include <QString>
+#include <QVariant>
 
 namespace KTextTemplate
 {

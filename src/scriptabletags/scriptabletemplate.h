@@ -21,7 +21,7 @@
 #ifndef SCRIPTABLE_TEMPLATE_H
 #define SCRIPTABLE_TEMPLATE_H
 
-#include <QtCore/QObject>
+#include <QObject>
 
 #include "scriptablecontext.h"
 #include "template.h"

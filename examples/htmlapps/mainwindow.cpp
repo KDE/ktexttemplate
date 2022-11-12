@@ -22,7 +22,7 @@
 
 #include <QHBoxLayout>
 #include <QWebView>
-#include <QtCore/QDebug>
+#include <QDebug>
 
 #include "ktexttemplate_paths.h"
 #include <ktexttemplate.h>

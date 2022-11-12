@@ -23,7 +23,7 @@
 
 #include "util.h"
 
-#include <QtQml/QJSEngine>
+#include <QJSEngine>
 
 ScriptableFilter::ScriptableFilter(const QJSValue &filterObject,
                                    QJSEngine *engine)

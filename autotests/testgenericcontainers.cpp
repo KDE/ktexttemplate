@@ -24,10 +24,10 @@
 #include "ktexttemplate_paths.h"
 
 #include "coverageobject.h"
-#include <QtCore/QQueue>
-#include <QtCore/QStack>
-#include <QtCore/QVariant>
-#include <QtTest/QTest>
+#include <QQueue>
+#include <QStack>
+#include <QVariant>
+#include <QTest>
 
 class TestGenericContainers : public CoverageObject
 {

@@ -23,9 +23,9 @@
 
 #include "ktexttemplate_export.h"
 
-#include <QtCore/QLocale>
-#include <QtCore/QSharedPointer>
-#include <QtCore/QVariantList>
+#include <QLocale>
+#include <QSharedPointer>
+#include <QVariantList>
 
 class QDateTime;
 

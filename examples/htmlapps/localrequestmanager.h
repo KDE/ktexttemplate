@@ -21,7 +21,7 @@
 #ifndef LOCALREQUESTMANAGER_H
 #define LOCALREQUESTMANAGER_H
 
-#include <QtNetwork/QNetworkAccessManager>
+#include <QNetworkAccessManager>
 
 #include <KTextTemplate/engine.h>
 

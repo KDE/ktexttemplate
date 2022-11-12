@@ -20,7 +20,7 @@
 
 #include "filterexpression.h"
 
-#include <QtCore/QRegularExpression>
+#include <QRegularExpression>
 
 #include "exception.h"
 #include "filter.h"

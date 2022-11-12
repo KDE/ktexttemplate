@@ -27,7 +27,7 @@
 #include <kcurrencycode.h>
 #include <kstandarddirs.h>
 
-#include <QtCore/QStack>
+#include <QStack>
 
 class KDELocalizerPrivate
 {

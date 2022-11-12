@@ -1,4 +1,3 @@
-
 cmake_minimum_required(VERSION 3.16)
 
 set(KF_VERSION "5.100.0") # handled by release scripts
@@ -32,16 +31,10 @@ include(ECMAddQch)
 
 set(EXCLUDE_DEPRECATED_BEFORE_AND_AT 0 CACHE STRING "Control the range of deprecated API excluded from the build [default=0].")
 
-if (BUILD_TESTING)
-  enable_testing()
-endif()
-
 set(KTextTemplate_MODULE_DIR ${CMAKE_SOURCE_DIR}/cmake/modules)
 list(APPEND CMAKE_MODULE_PATH ${KTextTemplate_MODULE_DIR})
 
 include(GenerateExportHeader)
-set(CMAKE_CXX_VISIBILITY_PRESET hidden)
-set(CMAKE_VISIBILITY_INLINES_HIDDEN 1)
 
 if (CMAKE_GENERATOR STREQUAL "Unix Makefiles")
   # create coverage build type
@@ -57,32 +50,15 @@ if (CMAKE_GENERATOR STREQUAL "Unix Makefiles")
 endif()
 
 if (CMAKE_COMPILER_IS_GNUCXX)
-  set (CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -Wshadow -Wno-long-long -std=iso9899:1990 -Wundef -Wcast-align -Werror-implicit-function-declaration -Wchar-subscripts -Wall -W -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -fno-common")
-  set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wshadow -Wnon-virtual-dtor -Wno-long-long -Wundef -Wcast-align -Wchar-subscripts -Wall -W -Wpointer-arith -Wformat-security -fno-check-new -fno-common")
-
-  if (NOT APPLE)
-    set ( CMAKE_SHARED_LINKER_FLAGS "-Wl,--fatal-warnings -Wl,--no-undefined ${CMAKE_SHARED_LINKER_FLAGS}")
-    set ( CMAKE_MODULE_LINKER_FLAGS "-Wl,--fatal-warnings -Wl,--no-undefined ${CMAKE_MODULE_LINKER_FLAGS}")
-  endif ()
+  set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -Wshadow -std=iso9899:1990 -Werror-implicit-function-declaration")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wshadow -fno-check-new")
 endif()
 
 add_definitions(
-  -DQT_NO_CAST_TO_ASCII
-  -DQT_NO_CAST_FROM_ASCII
-  -DQT_NO_URL_CAST_FROM_STRING
-  -DQT_NO_CAST_FROM_BYTEARRAY
-  -DQT_NO_KEYWORDS
-  -DQT_USE_QSTRINGBUILDER
   -DQT_DISABLE_DEPRECATED_BEFORE=0x060200
 )
 
 kde_enable_exceptions()
-
-# Always include the source and build directories in the include path
-# to save doing so manually in every subdirectory.
-set(CMAKE_INCLUDE_CURRENT_DIR ON)
-set(CMAKE_INCLUDE_CURRENT_DIR_IN_INTERFACE ON)
-set(CMAKE_AUTOMOC ON)
 
 set(KTextTemplate_MIN_PLUGIN_VERSION 0)
 
@@ -92,10 +68,6 @@ set (LIB_SUFFIX "" CACHE STRING "Define suffix of library directory name (eg. '6
 
 set( LIB_INSTALL_DIR lib${LIB_SUFFIX} )
 set( PLUGIN_INSTALL_DIR ${LIB_INSTALL_DIR}/KTextTemplate/${KTextTemplate_MAJOR_MINOR_VERSION_STRING} )
-
-# set up RPATH/install_name_dir
-set( CMAKE_INSTALL_NAME_DIR ${CMAKE_INSTALL_PREFIX}/${LIB_INSTALL_DIR})
-set( CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 
 include("${KTextTemplate_MODULE_DIR}/KF6TextTemplateMacros.cmake")
 

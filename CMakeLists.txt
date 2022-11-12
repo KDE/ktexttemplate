@@ -27,6 +27,7 @@ set_package_properties(Qt6Qml PROPERTIES
     PURPOSE "Build Javascript binding for KTextDocument"
 )
 
+include(ECMDeprecationSettings)
 include(ECMAddQch)
 
 set(EXCLUDE_DEPRECATED_BEFORE_AND_AT 0 CACHE STRING "Control the range of deprecated API excluded from the build [default=0].")
@@ -54,8 +55,8 @@ if (CMAKE_COMPILER_IS_GNUCXX)
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wshadow -fno-check-new")
 endif()
 
-add_definitions(
-  -DQT_DISABLE_DEPRECATED_BEFORE=0x060200
+ecm_set_disabled_deprecation_versions(
+    QT 6.2
 )
 
 kde_enable_exceptions()

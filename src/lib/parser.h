@@ -119,7 +119,7 @@ public:
   void invalidBlockTag(const Token &token, const QString &command,
                        const QStringList &stopAt = {});
 
-#ifndef Q_QDOC
+#ifndef K_DOXYGEN
   /**
     @internal
 

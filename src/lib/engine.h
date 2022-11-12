@@ -231,7 +231,7 @@ public:
    */
   void setSmartTrimEnabled(bool enabled);
 
-#ifndef Q_QDOC
+#ifndef K_DOXYGEN
   /**
     @internal
 

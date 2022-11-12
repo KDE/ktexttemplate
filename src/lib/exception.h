@@ -95,7 +95,7 @@ public:
 
   virtual ~Exception() throw() {}
 
-#ifndef Q_QDOC
+#ifndef K_DOXYGEN
   /**
     @internal
 

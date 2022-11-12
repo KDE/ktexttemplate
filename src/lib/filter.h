@@ -64,7 +64,7 @@ public:
   */
   virtual ~Filter();
 
-#ifndef Q_QDOC
+#ifndef K_DOXYGEN
   /**
     FilterExpression makes it possible to access stream methods like escape
     while resolving.
@@ -108,7 +108,7 @@ public:
   virtual bool isSafe() const;
 
 private:
-#ifndef Q_QDOC
+#ifndef K_DOXYGEN
   OutputStream *m_stream;
 #endif
 };

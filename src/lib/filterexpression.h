@@ -183,7 +183,7 @@ public:
   */
   bool isValid() const;
 
-#ifndef Q_QDOC
+#ifndef K_DOXYGEN
   /**
     @internal
     Returns the list of filters in the **%FilterExpression**.

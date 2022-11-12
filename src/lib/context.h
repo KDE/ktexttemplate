@@ -137,7 +137,7 @@ public:
   */
   Context &operator=(const Context &other);
 
-#ifndef Q_QDOC
+#ifndef K_DOXYGEN
   /**
     @internal
 
@@ -188,7 +188,7 @@ public:
   */
   void pop();
 
-#ifndef Q_QDOC
+#ifndef K_DOXYGEN
   /**
     @internal Returns the context hash at depth @p depth.
   */

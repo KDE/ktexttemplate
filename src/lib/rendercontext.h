@@ -61,7 +61,7 @@ public:
    */
   ~RenderContext();
 
-#ifndef Q_QDOC
+#ifndef K_DOXYGEN
 private:
   RenderContext();
 

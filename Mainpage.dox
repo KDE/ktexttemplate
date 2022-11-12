@@ -7,11 +7,11 @@
 namespace KTextTemplate
 {
 
-/** @mainpage The KTextTemplate Libraries
+/** @mainpage The KTextTemplate Library
 
   @section overview Overview
 
-  %KTextTemplate is a Free Software, Open Source set of Qt based libraries used for text processing.
+  %KTextTemplate is a Free Software, Open Source Qt based library used for text processing.
 
   The text template is modelled after the [Django template system](https://docs.djangoproject.com/en/1.9/ref/templates/language/):
 
@@ -26,7 +26,6 @@ namespace KTextTemplate
   %KTextTemplate is covered by the GNU Lesser General Public Licence version 2.1 or, at your option, any later version.
 
   <table class="main_api" >
-    <tr><th class="library" colspan="3">%KTextTemplate Templates</th></tr>
     <tr><th class="section" >Application API</th><th class="section">%Plugin API</th><th class="section">Guides</th></tr>
     <tr><td>
       - AbstractLocalizer
@@ -62,16 +61,6 @@ namespace KTextTemplate
       - @ref internals
       - @ref generic_types_and_templates
       - @ref i18n_l10n
-      - @ref porting_from_qt4
-    </td></tr>
-      <tr><th class="library" colspan="3">%KTextTemplate TextDocument</th></tr>
-    <tr><td colspan="2">
-      - AbstractMarkupBuilder
-      - MarkupDirector
-      - TextHTMLBuilder
-      - PlainTextMarkupBuilder
-    </td><td>
-      - @ref custom_qtextobject
     </td></tr>
   </table>
   <br />
@@ -80,8 +69,8 @@ namespace KTextTemplate
 
   The %KTextTemplate project mailing list is kde-pim@kde.org.
 
-  - Existing bugs https://bugs.kde.org/buglist.cgi?product=ktexttemplate
-  - File new bug https://bugs.kde.org/enter_bug.cgi?product=ktexttemplate
+  - Existing bugs https://bugs.kde.org/buglist.cgi?product=frameworks-ktexttemplate
+  - File new bug https://bugs.kde.org/enter_bug.cgi?product=frameworks-ktexttemplate
 
 */
 

@@ -30,7 +30,7 @@
 namespace KTextTemplate
 {
 
-#ifndef Q_QDOC
+#ifndef K_DOXYGEN
 template <typename T> struct TypeAccessor {
   static QVariant lookUp(const T object, const QString &property);
 };

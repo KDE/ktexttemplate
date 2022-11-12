@@ -35,7 +35,7 @@ namespace KTextTemplate
 
 /// @headerfile metatype.h <KTextTemplate/MetaType>
 
-#ifndef Q_QDOC
+#ifndef K_DOXYGEN
 /**
   @brief The **%MetaType** is the interface to the KTextTemplate introspection
   system.
@@ -190,7 +190,7 @@ template <typename RealType, typename HandleAs> int registerMetaType()
   return id;
 }
 
-#ifndef Q_QDOC
+#ifndef K_DOXYGEN
 /**
   @internal
   Register a type so %KTextTemplate knows how to handle it.

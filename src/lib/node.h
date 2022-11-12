@@ -102,7 +102,7 @@ public:
   */
   virtual void render(OutputStream *stream, Context *c) const = 0;
 
-#ifndef Q_QDOC
+#ifndef K_DOXYGEN
   /**
     @internal
   */
@@ -333,7 +333,7 @@ public:
   */
   virtual Node *getNode(const QString &tagContent, Parser *p) const = 0;
 
-#ifndef Q_QDOC
+#ifndef K_DOXYGEN
   /**
     @internal
 

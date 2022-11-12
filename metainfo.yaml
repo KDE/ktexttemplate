@@ -1,5 +1,5 @@
 maintainer: skelly
-description: KTextTemplate
+description: Library to allow application developers to separate the structure of documents from the data they contain.
 tier: 1
 type: functional
 platforms:
@@ -11,6 +11,8 @@ platforms:
 portingAid: false
 deprecated: false
 release: false
+public_source_dirs:
+    - src/lib
 libraries:
  - qmake: KTextTemplate
    cmake: "KF5::TextTemplate"

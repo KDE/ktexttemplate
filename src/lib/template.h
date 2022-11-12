@@ -35,7 +35,7 @@ class Engine;
 class TemplateImpl;
 class OutputStream;
 
-#ifdef Q_QDOC
+#ifdef K_DOXYGEN
 #define TemplateImpl Template
 #else
 typedef QSharedPointer<TemplateImpl> Template;
@@ -108,7 +108,7 @@ public:
   */
   OutputStream *render(OutputStream *stream, Context *c) const;
 
-#ifndef Q_QDOC
+#ifndef K_DOXYGEN
   /**
     @internal
   */
@@ -135,7 +135,7 @@ public:
   */
   Engine const *engine() const;
 
-#ifndef Q_QDOC
+#ifndef K_DOXYGEN
 protected:
   TemplateImpl(Engine const *engine, QObject *parent = {});
   TemplateImpl(Engine const *engine, bool smartTrim, QObject *parent = {});
@@ -151,7 +151,7 @@ private:
 private:
   Q_DECLARE_PRIVATE(Template)
   TemplatePrivate *const d_ptr;
-#ifndef Q_QDOC
+#ifndef K_DOXYGEN
   friend class Engine;
   friend class Parser;
 #endif

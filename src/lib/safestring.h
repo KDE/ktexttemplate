@@ -129,7 +129,7 @@ public:
   */
   ~SafeString();
 
-#ifndef Q_QDOC
+#ifndef K_DOXYGEN
   /**
     Set whether the string should be escaped.
   */
@@ -146,7 +146,7 @@ public:
   */
   bool isSafe() const;
 
-#ifndef Q_QDOC
+#ifndef K_DOXYGEN
   /**
     Set whether the string is safe.
   */
@@ -162,7 +162,7 @@ public:
   */
   class KTEXTTEMPLATE_EXPORT NestedString : public QString
   {
-#ifndef Q_QDOC
+#ifndef K_DOXYGEN
     friend class SafeString;
     SafeString *m_safeString;
 
@@ -387,7 +387,7 @@ public:
   operator QVariant() const { return QVariant::fromValue(*this); }
 
 private:
-#ifndef Q_QDOC
+#ifndef K_DOXYGEN
   NestedString m_nestedString;
 #endif
   Safety m_safety;

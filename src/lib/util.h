@@ -98,7 +98,7 @@ KTEXTTEMPLATE_EXPORT bool equals(const QVariant &lhs, const QVariant &rhs);
 KTEXTTEMPLATE_EXPORT std::pair<qreal, QString>
 calcFileSize(qreal size, int unitSystem = 10, qreal multiplier = 1.0);
 
-#ifndef Q_QDOC
+#ifndef K_DOXYGEN
 /**
   @internal
   Returns the @p list as a formatted string. This is for debugging purposes

@@ -38,7 +38,7 @@ class DebugNode : public Node
 {
   Q_OBJECT
 public:
-  DebugNode(QObject *parent = {});
+  explicit DebugNode(QObject *parent = {});
 
   void render(OutputStream *stream, Context *c) const override;
 

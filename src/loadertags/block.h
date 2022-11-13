@@ -44,7 +44,7 @@ class BlockNode : public Node
   Q_OBJECT
   Q_PROPERTY(KTextTemplate::SafeString super READ getSuper)
 public:
-  BlockNode(const QString &blockName, QObject *parent = {});
+  explicit BlockNode(const QString &blockName, QObject *parent = {});
   ~BlockNode() override;
 
   void setNodeList(const NodeList &list) const;

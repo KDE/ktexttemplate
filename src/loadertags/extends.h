@@ -46,7 +46,7 @@ class ExtendsNode : public Node
 {
   Q_OBJECT
 public:
-  ExtendsNode(const FilterExpression &fe, QObject *parent = {});
+  explicit ExtendsNode(const FilterExpression &fe, QObject *parent = {});
   ~ExtendsNode() override;
 
   void setNodeList(const NodeList &list);

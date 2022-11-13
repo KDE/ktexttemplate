@@ -52,7 +52,7 @@ class DefaultTagLibrary : public QObject, public TagLibraryInterface
   Q_INTERFACES(KTextTemplate::TagLibraryInterface)
   Q_PLUGIN_METADATA(IID "org.kde.KTextTemplate.TagLibraryInterface")
 public:
-  DefaultTagLibrary(QObject *parent = {}) : QObject(parent) {}
+  explicit DefaultTagLibrary(QObject *parent = {}) : QObject(parent) {}
 
   QHash<QString, AbstractNodeFactory *> nodeFactories(const QString &name
                                                       = {}) override

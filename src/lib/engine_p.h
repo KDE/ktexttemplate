@@ -81,7 +81,7 @@ private:
 
 class EnginePrivate
 {
-  EnginePrivate(Engine *engine);
+  explicit EnginePrivate(Engine *engine);
 
   TagLibraryInterface *loadLibrary(const QString &name, uint minorVersion);
   QString getScriptLibraryName(const QString &name, uint minorVersion) const;

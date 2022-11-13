@@ -27,7 +27,6 @@
 #include "nodebuiltins_p.h"
 #include "parser.h"
 #include "rendercontext.h"
-#include "template.h"
 #include "util.h"
 
 using namespace KTextTemplate;

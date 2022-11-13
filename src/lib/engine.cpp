@@ -28,7 +28,6 @@
 #include "scriptabletags.h"
 #endif
 #include "template_p.h"
-#include "templateloader.h"
 
 #include <QCoreApplication>
 #include <QDir>

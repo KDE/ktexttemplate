@@ -23,7 +23,6 @@
 
 #include "context.h"
 #include "engine.h"
-#include "exception.h"
 #include "lexer_p.h"
 #include "parser.h"
 #include "rendercontext.h"

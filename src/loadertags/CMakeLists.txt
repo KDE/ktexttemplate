@@ -23,7 +23,7 @@ target_link_libraries(ktexttemplate_loadertags PRIVATE
 ktexttemplate_adjust_plugin_name(ktexttemplate_loadertags)
 
 install(TARGETS ktexttemplate_loadertags
-  EXPORT ktexttemplate_targets
+  EXPORT KF6TextTemplateTargets
   LIBRARY DESTINATION ${PLUGIN_INSTALL_DIR}
   COMPONENT Templates
 )

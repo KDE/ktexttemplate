@@ -50,7 +50,7 @@ target_link_libraries(ktexttemplate_defaulttags PRIVATE
 ktexttemplate_adjust_plugin_name(ktexttemplate_defaulttags)
 
 install(TARGETS ktexttemplate_defaulttags 
-  EXPORT ktexttemplate_targets
+  EXPORT KF6TextTemplateTargets
   LIBRARY DESTINATION ${PLUGIN_INSTALL_DIR}
   COMPONENT Templates
 )

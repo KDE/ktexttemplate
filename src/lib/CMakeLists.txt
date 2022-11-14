@@ -56,7 +56,7 @@ add_library(KTextTemplate SHARED
 add_library(KF6::TextTemplate ALIAS KTextTemplate)
 generate_export_header(KTextTemplate)
 set_property(TARGET KTextTemplate PROPERTY
-  EXPORT_NAME Templates
+  EXPORT_NAME TextTemplate
 )
 if (CMAKE_CXX_COMPILER_ID MATCHES GNU OR CMAKE_CXX_COMPILER_ID MATCHES Clang)
   # Lexer uses CRTP with some specializations overriding, but not all:
@@ -151,7 +151,7 @@ set_target_properties(KTextTemplate PROPERTIES
   SOVERSION  ${KTextTemplate_VERSION_MAJOR}
 )
 
-install(TARGETS KTextTemplate EXPORT ktexttemplate_targets
+install(TARGETS KTextTemplate EXPORT KF6TextTemplateTargets
   RUNTIME DESTINATION bin COMPONENT Templates
   LIBRARY DESTINATION ${LIB_INSTALL_DIR} COMPONENT Templates
   ARCHIVE DESTINATION ${LIB_INSTALL_DIR} COMPONENT Templates

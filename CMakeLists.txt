@@ -30,6 +30,7 @@ set_package_properties(Qt6Qml PROPERTIES
 include(ECMDeprecationSettings)
 include(ECMGenerateHeaders)
 include(ECMAddQch)
+include(CMakePackageConfigHelpers)
 
 option(BUILD_QCH "Build API documentation in QCH format (for e.g. Qt Assistant, Qt Creator & KDevelop)" OFF)
 add_feature_info(QCH ${BUILD_QCH} "API documentation in QCH format (for e.g. Qt Assistant, Qt Creator & KDevelop)")
@@ -94,13 +95,12 @@ if (BUILD_QCH)
     set(PACKAGE_INCLUDE_QCHTARGETS "include(\"\${CMAKE_CURRENT_LIST_DIR}/KF6TextTemplateQchTargets.cmake\")")
 endif()
 
-configure_file(
+configure_package_config_file(
   "${KTextTemplate_MODULE_DIR}/KF6TextTemplateConfig.cmake.in"
   "${CMAKE_BINARY_DIR}/KF6TextTemplateConfig.cmake"
-  @ONLY
+  INSTALL_DESTINATION  ${CMAKECONFIG_INSTALL_DIR}
 )
 
-include(CMakePackageConfigHelpers)
 write_basic_package_version_file("${CMAKE_BINARY_DIR}/KF6TextTemplateConfigVersion.cmake"
   VERSION ${KTextTemplate_VERSION}
   COMPATIBILITY AnyNewerVersion
@@ -109,21 +109,15 @@ write_basic_package_version_file("${CMAKE_BINARY_DIR}/KF6TextTemplateConfigVersi
 install(FILES
   "${CMAKE_BINARY_DIR}/KF6TextTemplateConfig.cmake"
   "${CMAKE_BINARY_DIR}/KF6TextTemplateConfigVersion.cmake"
-  DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
-  COMPONENT Common
-)
-
-install(FILES
   "${KTextTemplate_MODULE_DIR}/KF6TextTemplateMacros.cmake"
   DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
-  COMPONENT Common
+  COMPONENT Devel
 )
 
-install(EXPORT ktexttemplate_targets
+install(EXPORT KF6TextTemplateTargets
   DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
-  NAMESPACE KF6TextTemplate::
+  NAMESPACE KF6::
   FILE KF6TextTemplateTargets.cmake
-  COMPONENT Common
 )
 
 feature_summary(WHAT ALL   FATAL_ON_MISSING_REQUIRED_PACKAGES)

@@ -109,7 +109,7 @@ private:
   QVector<Transition *> m_transitions;
   QVector<State<TransitionInterface> *> m_children;
   State<TransitionInterface> *const m_parent;
-  Transition *m_endTransition;
+  Transition *m_endTransition = nullptr;
   State<TransitionInterface> *m_unconditionalTransition;
   QString m_stateName;
 };

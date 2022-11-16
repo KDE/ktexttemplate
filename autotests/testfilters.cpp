@@ -69,7 +69,7 @@ private:
   void doTest();
 
   QSharedPointer<InMemoryTemplateLoader> loader;
-  Engine *m_engine;
+  Engine *m_engine = nullptr;
 };
 
 void TestFilters::initTestCase()

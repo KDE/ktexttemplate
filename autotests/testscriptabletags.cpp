@@ -56,7 +56,7 @@ private Q_SLOTS:
 private:
   void doTest();
 
-  Engine *m_engine;
+  Engine *m_engine = nullptr;
 };
 
 void TestScriptableTagsSyntax::initTestCase()

@@ -32,7 +32,7 @@ namespace KTextTemplate
 class Lexer
 {
 public:
-  Lexer(const QString &templateString);
+  explicit Lexer(const QString &templateString);
   ~Lexer();
 
   enum TrimType { NoSmartTrim, SmartTrim };

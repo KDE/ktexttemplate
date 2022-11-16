@@ -40,7 +40,7 @@ public:
   // This allows returning 0 from a function returning a PluginType*
   PluginPointer(_Dummy * = {}) : m_plugin(nullptr) {}
 
-  PluginPointer(const QString &fileName) : m_object(nullptr), m_plugin(nullptr)
+  explicit PluginPointer(const QString &fileName) : m_object(nullptr), m_plugin(nullptr)
   {
     m_pluginLoader = QSharedPointer<QPluginLoader>(new QPluginLoader(fileName));
 

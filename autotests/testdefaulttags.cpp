@@ -62,7 +62,7 @@ class Zoo : public QObject
 {
   Q_OBJECT
 public:
-  Zoo(QObject *parent = {}) : QObject(parent) {}
+  explicit Zoo(QObject *parent = {}) : QObject(parent) {}
 
   enum Animals { Lions, Tigers, Bears };
 

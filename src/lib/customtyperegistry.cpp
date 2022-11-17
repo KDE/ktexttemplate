@@ -29,7 +29,7 @@
 #include <QStack>
 #include <QStringList>
 
-Q_LOGGING_CATEGORY(KTEXTTEMPLATE_CUSTOMTYPE, "KTextTemplate.customtype")
+Q_LOGGING_CATEGORY(KTEXTTEMPLATE_CUSTOMTYPE, "kf.texttemplate.customtyperegistry")
 
 using namespace KTextTemplate;
 

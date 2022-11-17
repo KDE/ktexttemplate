@@ -29,7 +29,7 @@
 
 #include <QLoggingCategory>
 
-Q_LOGGING_CATEGORY(KTEXTTEMPLATE_TEMPLATE, "KTextTemplate.template")
+Q_LOGGING_CATEGORY(KTEXTTEMPLATE_TEMPLATE, "kf.texttemplate")
 
 using namespace KTextTemplate;
 

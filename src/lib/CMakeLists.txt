@@ -151,12 +151,7 @@ set_target_properties(KTextTemplate PROPERTIES
   SOVERSION  ${KTextTemplate_VERSION_MAJOR}
 )
 
-install(TARGETS KTextTemplate EXPORT KF6TextTemplateTargets
-  RUNTIME DESTINATION bin COMPONENT Templates
-  LIBRARY DESTINATION ${LIB_INSTALL_DIR} COMPONENT Templates
-  ARCHIVE DESTINATION ${LIB_INSTALL_DIR} COMPONENT Templates
-  INCLUDES DESTINATION include
-)
+install(TARGETS KTextTemplate EXPORT KF6TextTemplateTargets ${KF_INSTALL_TARGETS_DEFAULT_ARGS})
 
 install(FILES
   ${KTextTemplate_HEADERS}

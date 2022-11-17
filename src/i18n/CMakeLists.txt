@@ -26,5 +26,5 @@ ktexttemplate_adjust_plugin_name(ktexttemplate_i18ntags)
 
 install(TARGETS ktexttemplate_i18ntags
   EXPORT KF6TextTemplateTargets
-  DESTINATION ${PLUGIN_INSTALL_DIR}
+  DESTINATION ${KTextTemplate_INSTALL_PLUGINDIR}
 )

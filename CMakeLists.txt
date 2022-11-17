@@ -70,10 +70,7 @@ set(KTextTemplate_MIN_PLUGIN_VERSION 0)
 
 set(KTextTemplate_MAJOR_MINOR_VERSION_STRING "${KTextTemplate_VERSION_MAJOR}.${KTextTemplate_VERSION_MINOR}" )
 
-set (LIB_SUFFIX "" CACHE STRING "Define suffix of library directory name (eg. '64')")
-
-set( LIB_INSTALL_DIR lib${LIB_SUFFIX} )
-set( PLUGIN_INSTALL_DIR ${LIB_INSTALL_DIR}/KTextTemplate/${KTextTemplate_MAJOR_MINOR_VERSION_STRING} )
+set( KTextTemplate_INSTALL_PLUGINDIR ${KDE_INSTALL_LIBDIR}/KTextTemplate/${KTextTemplate_MAJOR_MINOR_VERSION_STRING} )
 
 include("${KTextTemplate_MODULE_DIR}/KF6TextTemplateMacros.cmake")
 
@@ -83,7 +80,7 @@ if (BUILD_TESTING)
     add_subdirectory(autotests)
 endif()
 
-set(CMAKECONFIG_INSTALL_DIR "${LIB_INSTALL_DIR}/cmake/KF6TextTemplate" )
+set(CMAKECONFIG_INSTALL_DIR "${KDE_INSTALL_CMAKEPACKAGEDIR}/KF6TextTemplate" )
 
 if (BUILD_QCH)
     ecm_install_qch_export(

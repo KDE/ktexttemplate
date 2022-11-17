@@ -2,7 +2,7 @@ set(KTextTemplate_INSTALL_INCLUDEDIR ${KDE_INSTALL_INCLUDEDIR_KF}/KTextTemplate)
 
 configure_file(ktexttemplate_version.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/ktexttemplate_version.h)
 
-set(KTextTemplate_PLUGIN_INSTALL_DIR ${CMAKE_INSTALL_PREFIX}/${LIB_INSTALL_DIR} )
+set(@KTextTemplate_PLUGIN_PATH@ ${KDE_INSTALL_FULL_LIBDIR} )
 
 configure_file(ktexttemplate_config_p.h.cmake  ${CMAKE_CURRENT_BINARY_DIR}/ktexttemplate_config_p.h)
 

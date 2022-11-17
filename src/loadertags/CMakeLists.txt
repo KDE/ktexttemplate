@@ -24,5 +24,5 @@ ktexttemplate_adjust_plugin_name(ktexttemplate_loadertags)
 
 install(TARGETS ktexttemplate_loadertags
   EXPORT KF6TextTemplateTargets
-  DESTINATION ${PLUGIN_INSTALL_DIR}
+  DESTINATION ${KTextTemplate_INSTALL_PLUGINDIR}
 )

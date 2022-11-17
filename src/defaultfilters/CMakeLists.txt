@@ -24,5 +24,5 @@ ktexttemplate_adjust_plugin_name(ktexttemplate_defaultfilters)
 
 install(TARGETS ktexttemplate_defaultfilters
   EXPORT KF6TextTemplateTargets
-  DESTINATION ${PLUGIN_INSTALL_DIR}
+  DESTINATION ${KTextTemplate_INSTALL_PLUGINDIR}
 )

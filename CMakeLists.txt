@@ -27,6 +27,7 @@ set_package_properties(Qt6Qml PROPERTIES
     PURPOSE "Build Javascript binding for KTextDocument"
 )
 
+include(ECMQtDeclareLoggingCategory)
 include(ECMDeprecationSettings)
 include(ECMGenerateHeaders)
 include(ECMAddQch)

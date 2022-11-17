@@ -151,6 +151,27 @@ set_target_properties(KTextTemplate PROPERTIES
   SOVERSION  ${KTextTemplate_VERSION_MAJOR}
 )
 
+ecm_qt_export_logging_category(
+    IDENTIFIER KTEXTTEMPLATE_TEMPLATE
+    CATEGORY_NAME kf.texttemplate
+    DESCRIPTION "KTextTemplate"
+    EXPORT KTEXTTEMPLATE
+)
+
+ecm_qt_export_logging_category(
+    IDENTIFIER KTEXTTEMPLATE_LOCALIZER
+    CATEGORY_NAME kf.texttemplate.qtlocalizer
+    DESCRIPTION "QtLocalizer (KTextTemplate)"
+    EXPORT KTEXTTEMPLATE
+)
+
+ecm_qt_export_logging_category(
+    IDENTIFIER KTEXTTEMPLATE_CUSTOMTYPE
+    CATEGORY_NAME kf.texttemplate.customtyperegistry
+    DESCRIPTION "CustomTypeRegistry (KTextTemplate)"
+    EXPORT KTEXTTEMPLATE
+)
+
 install(TARGETS KTextTemplate EXPORT KF6TextTemplateTargets ${KF_INSTALL_TARGETS_DEFAULT_ARGS})
 
 install(FILES
@@ -171,6 +192,12 @@ install(FILES
   ${KTextTemplate_CamelCase_HEADERS}
   DESTINATION "${KTextTemplate_INSTALL_INCLUDEDIR}/KTextTemplate" # C++ namespace
   COMPONENT Templates
+)
+
+ecm_qt_install_logging_categories(
+    EXPORT KTEXTTEMPLATE
+    FILE ktexttemplate.categories
+    DESTINATION "${KDE_INSTALL_LOGGINGCATEGORIESDIR}"
 )
 
 if(BUILD_QCH)

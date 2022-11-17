@@ -81,11 +81,11 @@ public:
     return Test::characterTest(character);
   }
 
-  void onTransition() { return Action1::doAction(m_lexer); }
+  void onTransition() { Action1::doAction(m_lexer); }
 
-  void onEntry() { return Action1::doAction(m_lexer); }
+  void onEntry() { Action1::doAction(m_lexer); }
 
-  void onExit() { return Action2::doAction(m_lexer); }
+  void onExit() { Action2::doAction(m_lexer); }
 
 private:
   Lexer *const m_lexer;

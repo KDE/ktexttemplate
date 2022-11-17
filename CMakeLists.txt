@@ -43,19 +43,6 @@ list(APPEND CMAKE_MODULE_PATH ${KTextTemplate_MODULE_DIR})
 
 include(GenerateExportHeader)
 
-if (CMAKE_GENERATOR STREQUAL "Unix Makefiles")
-  # create coverage build type
-  set(CMAKE_CONFIGURATION_TYPES ${CMAKE_CONFIGURATION_TYPES} Coverage )
-  set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS
-                "Debug" "Release" "MinSizeRel" "RelWithDebInfo" "Coverage")
-endif()
-
-if (CMAKE_GENERATOR STREQUAL "Unix Makefiles")
-  set(CMAKE_CXX_FLAGS_COVERAGE "${CMAKE_CXX_FLAGS_RELEASE} -fprofile-arcs -ftest-coverage")
-  set(CMAKE_C_FLAGS_COVERAGE "${CMAKE_C_FLAGS_RELEASE} -fprofile-arcs -ftest-coverage")
-  set(CMAKE_SHARED_LINKER_FLAGS_COVERAGE "${CMAKE_SHARED_LINKER_FLAGS_RELEASE} -fprofile-arcs -ftest-coverage")
-endif()
-
 if (CMAKE_COMPILER_IS_GNUCXX)
   set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -Wshadow -std=iso9899:1990 -Werror-implicit-function-declaration")
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wshadow -fno-check-new")

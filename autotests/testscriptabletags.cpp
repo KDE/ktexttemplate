@@ -27,7 +27,6 @@
 #include <QTest>
 
 #include "context.h"
-#include "coverageobject.h"
 #include "engine.h"
 #include "ktexttemplate_paths.h"
 #include "template.h"
@@ -38,7 +37,7 @@ Q_DECLARE_METATYPE(KTextTemplate::Error)
 
 using namespace KTextTemplate;
 
-class TestScriptableTagsSyntax : public CoverageObject
+class TestScriptableTagsSyntax : public QObject
 {
   Q_OBJECT
 

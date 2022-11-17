@@ -48,8 +48,7 @@ set (_rcc_file "${CMAKE_CURRENT_BINARY_DIR}/testresource.qrc")
 
 qt6_add_resources(_testresource_rcc_src ${_rcc_file} OPTIONS -root "/" )
 
-add_library(template_test_builtins STATIC coverageobject.cpp
-  coverageobject.cpp
+add_library(template_test_builtins STATIC
   ${_testresource_rcc_src}
 )
 target_link_libraries(template_test_builtins Qt6::Test)
@@ -65,8 +64,6 @@ macro(ktexttemplate_templates_unit_tests)
     if (Qt6Qml_FOUND)
       target_compile_definitions(${_testname}_exec PRIVATE HAVE_QTQML_LIB)
     endif()
-
-    set_property(GLOBAL APPEND PROPERTY TEST_COVERAGE "${CMAKE_CURRENT_BINARY_DIR}/${_testname}_exec" )
   endforeach(_testname)
 endmacro()
 

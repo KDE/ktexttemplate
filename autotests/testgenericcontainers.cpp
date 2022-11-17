@@ -23,13 +23,12 @@
 #include "engine.h"
 #include "ktexttemplate_paths.h"
 
-#include "coverageobject.h"
 #include <QQueue>
 #include <QStack>
 #include <QVariant>
 #include <QTest>
 
-class TestGenericContainers : public CoverageObject
+class TestGenericContainers : public QObject
 {
   Q_OBJECT
 public:
@@ -40,7 +39,7 @@ private Q_SLOTS:
 };
 
 TestGenericContainers::TestGenericContainers(QObject *parent)
-    : CoverageObject(parent)
+    : QObject(parent)
 {
 }
 

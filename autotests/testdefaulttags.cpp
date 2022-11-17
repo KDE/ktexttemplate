@@ -25,7 +25,6 @@
 #include <QTest>
 
 #include "context.h"
-#include "coverageobject.h"
 #include "engine.h"
 #include "ktexttemplate_paths.h"
 #include "template.h"
@@ -71,7 +70,7 @@ public:
 
 using namespace KTextTemplate;
 
-class TestDefaultTags : public CoverageObject
+class TestDefaultTags : public QObject
 {
   Q_OBJECT
 

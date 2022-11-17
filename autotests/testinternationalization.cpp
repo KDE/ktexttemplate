@@ -24,7 +24,6 @@
 #include "qtlocalizer.h"
 #include "util.h"
 
-#include "coverageobject.h"
 #include <QScopedPointer>
 #include <QTranslator>
 #include <QTest>
@@ -37,12 +36,12 @@ using namespace KTextTemplate;
   localizer->setAppTranslatorPrefix(QStringLiteral("test_"));                  \
   localizer->setAppTranslatorPath(QStringLiteral(":/"));
 
-class TestInternationalization : public CoverageObject
+class TestInternationalization : public QObject
 {
   Q_OBJECT
 public:
   explicit TestInternationalization(QObject *parent = {})
-      : CoverageObject(parent), nullLocalizer(new NullLocalizer()),
+      : QObject(parent), nullLocalizer(new NullLocalizer()),
         deLocalizer(
             new QtLocalizer(QLocale(QLocale::German, QLocale::Germany))),
         frLocalizer(new QtLocalizer(QLocale(QLocale::French, QLocale::France))),

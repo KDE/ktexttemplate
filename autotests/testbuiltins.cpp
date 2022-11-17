@@ -27,7 +27,6 @@
 
 #include "cachingloaderdecorator.h"
 #include "context.h"
-#include "coverageobject.h"
 #include "engine.h"
 #include "filterexpression.h"
 #include "ktexttemplate_paths.h"
@@ -187,7 +186,7 @@ public:
   }
 };
 
-class TestBuiltinSyntax : public CoverageObject
+class TestBuiltinSyntax : public QObject
 {
   Q_OBJECT
 

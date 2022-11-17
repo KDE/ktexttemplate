@@ -24,7 +24,6 @@
 
 #include "cachingloaderdecorator.h"
 #include "context.h"
-#include "coverageobject.h"
 #include "engine.h"
 #include "ktexttemplate_paths.h"
 #include "template.h"
@@ -36,7 +35,7 @@ Q_DECLARE_METATYPE(KTextTemplate::Error)
 
 using namespace KTextTemplate;
 
-class TestCachingLoader : public CoverageObject
+class TestCachingLoader : public QObject
 {
   Q_OBJECT
 

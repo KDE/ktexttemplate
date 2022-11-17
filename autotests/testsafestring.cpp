@@ -24,12 +24,11 @@
 #include <QObject>
 #include <QTest>
 
-#include "coverageobject.h"
 #include "safestring.h"
 
 using namespace KTextTemplate;
 
-class TestSafeString : public CoverageObject
+class TestSafeString : public QObject
 {
   Q_OBJECT
 private Q_SLOTS:

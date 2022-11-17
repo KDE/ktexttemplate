@@ -32,7 +32,6 @@
 #include <QVariantHash>
 #include <QTest>
 
-#include "coverageobject.h"
 #include <deque>
 #include <string>
 
@@ -46,7 +45,7 @@ Q_DECLARE_SMART_POINTER_METATYPE(std::shared_ptr)
 
 Q_DECLARE_SEQUENTIAL_CONTAINER_METATYPE(std::deque)
 
-class TestGenericTypes : public CoverageObject
+class TestGenericTypes : public QObject
 {
   Q_OBJECT
 

@@ -346,9 +346,6 @@ EnginePrivate::loadCppLibrary(const QString &name, uint minorVersion)
     auto plugin = PluginPointer<TagLibraryInterface>(pluginPath);
 
     if (plugin) {
-#ifdef __COVERAGESCANNER__
-      __coveragescanner_register_library(pluginPath.toLatin1().data());
-#endif
       m_libraries.insert(name, plugin);
       return plugin;
     }

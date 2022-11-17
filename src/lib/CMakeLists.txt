@@ -156,13 +156,13 @@ install(TARGETS KTextTemplate EXPORT KF6TextTemplateTargets ${KF_INSTALL_TARGETS
 install(FILES
   ${KTextTemplate_HEADERS}
   ${CMAKE_CURRENT_BINARY_DIR}/ktexttemplate_export.h
-  ${CMAKE_CURRENT_BINARY_DIR}/ktexttemplate_version.h
   DESTINATION "${KTextTemplate_INSTALL_INCLUDEDIR}/ktexttemplate" # lowercase C++ namespace
   COMPONENT Templates
 )
 
 install(FILES
   ktexttemplate.h
+  ${CMAKE_CURRENT_BINARY_DIR}/ktexttemplate_version.h
   DESTINATION ${KTextTemplate_INSTALL_INCLUDEDIR}
   COMPONENT Templates
 )

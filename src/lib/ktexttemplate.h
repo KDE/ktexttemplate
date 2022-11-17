@@ -21,6 +21,8 @@
 #ifndef KTEXTTEMPLATE_TEMPLATES_H
 #define KTEXTTEMPLATE_TEMPLATES_H
 
+#include "ktexttemplate_version.h"
+
 #include "ktexttemplate/abstractlocalizer.h"
 #include "ktexttemplate/cachingloaderdecorator.h"
 #include "ktexttemplate/context.h"
@@ -28,7 +30,6 @@
 #include "ktexttemplate/exception.h"
 #include "ktexttemplate/filter.h"
 #include "ktexttemplate/filterexpression.h"
-#include "ktexttemplate/ktexttemplate_version.h"
 #include "ktexttemplate/metatype.h"
 #include "ktexttemplate/node.h"
 #include "ktexttemplate/outputstream.h"

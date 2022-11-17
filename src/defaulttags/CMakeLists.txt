@@ -51,6 +51,5 @@ ktexttemplate_adjust_plugin_name(ktexttemplate_defaulttags)
 
 install(TARGETS ktexttemplate_defaulttags 
   EXPORT KF6TextTemplateTargets
-  LIBRARY DESTINATION ${PLUGIN_INSTALL_DIR}
-  COMPONENT Templates
+  DESTINATION ${PLUGIN_INSTALL_DIR}
 )

@@ -1,7 +1,5 @@
 set(KTextTemplate_INSTALL_INCLUDEDIR ${KDE_INSTALL_INCLUDEDIR_KF}/KTextTemplate) # visibility incluee path
 
-configure_file(ktexttemplate_version.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/ktexttemplate_version.h)
-
 set(@KTextTemplate_PLUGIN_PATH@ ${KDE_INSTALL_FULL_LIBDIR} )
 
 configure_file(ktexttemplate_config_p.h.cmake  ${CMAKE_CURRENT_BINARY_DIR}/ktexttemplate_config_p.h)
@@ -147,8 +145,8 @@ target_include_directories(KTextTemplate
 )
 
 set_target_properties(KTextTemplate PROPERTIES
-  VERSION    ${KTextTemplate_VERSION}
-  SOVERSION  ${KTextTemplate_VERSION_MAJOR}
+  VERSION    ${KTEXTTEMPLATE_VERSION}
+  SOVERSION  ${KTEXTTEMPLATE_SOVERSION}
 )
 
 ecm_qt_export_logging_category(
@@ -183,7 +181,6 @@ install(FILES
 
 install(FILES
   ktexttemplate.h
-  ${CMAKE_CURRENT_BINARY_DIR}/ktexttemplate_version.h
   DESTINATION ${KTextTemplate_INSTALL_INCLUDEDIR}
   COMPONENT Templates
 )

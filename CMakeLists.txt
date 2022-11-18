@@ -54,11 +54,7 @@ ecm_set_disabled_deprecation_versions(
 
 kde_enable_exceptions()
 
-set(KTextTemplate_MIN_PLUGIN_VERSION 0)
-
-set(KTextTemplate_MAJOR_MINOR_VERSION_STRING "${KTextTemplate_VERSION_MAJOR}.${KTextTemplate_VERSION_MINOR}" )
-
-set( KTextTemplate_INSTALL_PLUGINDIR ${KDE_INSTALL_LIBDIR}/KTextTemplate/${KTextTemplate_MAJOR_MINOR_VERSION_STRING} )
+set( KTextTemplate_INSTALL_PLUGINDIR ${KDE_INSTALL_PLUGINDIR}/kf6/ktexttemplate )
 
 include("${KTextTemplate_MODULE_DIR}/KF6TextTemplateMacros.cmake")
 

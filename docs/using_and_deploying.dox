@@ -123,10 +123,10 @@ namespace KTextTemplate
     - The directories specified in the environment variable <tt>QT_PLUGIN_DIR</tt>.
     - The default plugin directory of your %KTextTemplate installation.
 
-  Each path has <tt>&quot;KTextTemplate/$version/&quot;</tt> appended to it, and the resulting
-  directory is searched for plugins. For example, if the version of %KTextTemplate is 5.0 and
+  Each path has <tt>&quot;kf6/ktexttemplate&quot;</tt> appended to it, and the resulting
+  directory is searched for plugins. For example, if
   QCoreApplication::libraryPaths() contains <tt>&quot;/usr/lib/plugins/&quot;</tt>, the directory
-  <tt>&quot;/usr/lib/plugins/KTextTemplate/5.0&quot;</tt> would be searched for plugins. The search
+  <tt>&quot;/usr/lib/plugins/kf6/ktexttemplate&quot;</tt> would be searched for plugins. The search
   stops when a plugin matching a particular name is found.
 
   The paths used to search for plugins can be overriden by using Engine::setPluginPaths. If you
@@ -158,7 +158,8 @@ namespace KTextTemplate
 
   <tt>custom_plugin_library.cpp</tt> is the C++ file where you implement the KTextTemplate::TagLibraryInterface to return custom tags and filters.
 
-  Note that the <tt>PLUGIN_INSTALL_DIR</tt> given to the install command should contain the version number of %KTextTemplate used to create the custom library. For example, <tt>/usr/share/my_app/plugins/KTextTemplate/5.0/</tt>.
+  Note that the <tt>PLUGIN_INSTALL_DIR</tt> given to the install command should point to the subdir specific
+  for the %KTextTemplate plugins. For example, <tt>/usr/share/my_app/plugins/kf6/ktexttemplate/</tt>.
 
   In C++ code, it is necessary to either instruct the KTextTemplate::Engine about the location of the plugins or to configure your QCoreApplication::libraryPaths by another standard method. Note that it is possible to define custom versions of built in tags and filters by putting your own plugin library in the path before the path to the default %KTextTemplate plugins.
 
@@ -170,16 +171,14 @@ namespace KTextTemplate
         );
   @endcode
 
-  Note that neither the path to the custom libarary nor the path to the %KTextTemplate default library should contain the version number when specified in C++ code with the Engine. The version is only specified when installing the plugin in CMake.
-
-  Custom tags and filters implemented in Javascript can also be deployed on the file system, or, like template files, can also be deployed in %Qt Resource files. In that case, the version should be specified in the -root argument in CMake.
+  Custom tags and filters implemented in Javascript can also be deployed on the file system, or, like template files, can also be deployed in %Qt Resource files. In that case, the plugin subdir should be specified in the -root argument in CMake.
 
   @code
     # CMake code:
     set (_rcc_file "my_qtscript_library.qrc")
     qt5_add_resources(_scripted_rcc_src
         ${_rcc_file}
-        OPTIONS -root "/plugins/KTextTemplate/${KTextTemplate_VERSION_MAJOR}.${KTextTemplate_VERSION_MINOR}"
+        OPTIONS -root "/plugins/kf6/ktexttemplate"
     )
 
     add_executable(my_app, ${my_app_srcs} ${_scripted_rcc_src})
@@ -188,7 +187,7 @@ namespace KTextTemplate
     engine->setPluginPaths( QStringList{ ":/plugins/" } );
   @endcode
 
-  Note again that when specifying the path in the virtual filesystem, the version is omitted. User defined filter written in Javascript can also be located similiarly to templates from either the filesystem or the %Qt Resource virtual filesystem.
+  Note again that when specifying the path in the virtual filesystem, the subdir is omitted. User defined filter written in Javascript can also be located similiarly to templates from either the filesystem or the %Qt Resource virtual filesystem.
 
   @section building_ktexttemplate Building KTextTemplate
 

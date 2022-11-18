@@ -128,13 +128,6 @@ void Engine::removeDefaultLibrary(const QString &libName)
   d->m_defaultLibraries.removeAll(libName);
 }
 
-template <uint v> bool acceptableVersion(uint minorVersion)
-{
-  return minorVersion >= v;
-}
-
-template <> bool acceptableVersion<0>(uint) { return true; }
-
 void Engine::loadDefaultLibraries()
 {
   Q_D(Engine);
@@ -150,8 +143,8 @@ void Engine::loadDefaultLibraries()
 // so we new the library directly.
 // https://bugs.webkit.org/show_bug.cgi?id=38193
 #if 0
-    d->loadCppLibrary( s_scriptableLibName, KTEXTTEMPLATE_VERSION_MINOR );
-    PluginPointer<TagLibraryInterface> library = d->loadCppLibrary( s_scriptableLibName, KTEXTTEMPLATE_VERSION_MINOR );
+    d->loadCppLibrary( s_scriptableLibName );
+    PluginPointer<TagLibraryInterface> library = d->loadCppLibrary( s_scriptableLibName );
     if ( !library )
       throw KTextTemplate::Exception( TagSyntaxError, QStringLiteral("Could not load scriptable tags library") );
 #endif
@@ -166,24 +159,19 @@ void Engine::loadDefaultLibraries()
     if (d->m_libraries.contains(libName))
       continue;
 
-    uint minorVersion = KTEXTTEMPLATE_VERSION_MINOR;
-    while (acceptableVersion<KTEXTTEMPLATE_MIN_PLUGIN_VERSION>(minorVersion)) {
 #ifdef QT_QML_LIB
-      // Although we don't use scripted libaries here, we need to
-      // recognize them being first in the search path and not load a
-      // c++ plugin of the same name in that case.
-      auto scriptableLibrary = d->loadScriptableLibrary(libName, minorVersion);
-      if (scriptableLibrary) {
-        scriptableLibrary->clear();
-        break;
-      }
+    // Although we don't use scripted libaries here, we need to
+    // recognize them being first in the search path and not load a
+    // c++ plugin of the same name in that case.
+    auto scriptableLibrary = d->loadScriptableLibrary(libName);
+    if (scriptableLibrary) {
+      scriptableLibrary->clear();
+      break;
+    }
 #endif
 
-      auto library = d->loadCppLibrary(libName, minorVersion);
-      if (minorVersion == 0)
-        break;
-      minorVersion--;
-      if (library)
+    auto library = d->loadCppLibrary(libName);
+    if (library) {
         break;
     }
   }
@@ -202,14 +190,9 @@ TagLibraryInterface *Engine::loadLibrary(const QString &name)
   if (d->m_libraries.contains(name))
     return d->m_libraries.value(name).data();
 
-  uint minorVersion = KTEXTTEMPLATE_VERSION_MINOR;
-  while (acceptableVersion<KTEXTTEMPLATE_MIN_PLUGIN_VERSION>(minorVersion)) {
-    auto library = d->loadLibrary(name, minorVersion);
-    if (library)
-      return library;
-    if (minorVersion == 0)
-      break;
-    minorVersion--;
+  auto library = d->loadLibrary(name);
+  if (library) {
+    return library;
   }
   throw KTextTemplate::Exception(
       TagSyntaxError,
@@ -217,18 +200,17 @@ TagLibraryInterface *Engine::loadLibrary(const QString &name)
   return nullptr;
 }
 
-TagLibraryInterface *EnginePrivate::loadLibrary(const QString &name,
-                                                uint minorVersion)
+TagLibraryInterface *EnginePrivate::loadLibrary(const QString &name)
 {
 #ifdef QT_QML_LIB
-  auto scriptableLibrary = loadScriptableLibrary(name, minorVersion);
+  auto scriptableLibrary = loadScriptableLibrary(name);
   if (scriptableLibrary)
     return scriptableLibrary;
 
 // else this is not a scriptable library.
 #endif
 
-  return loadCppLibrary(name, minorVersion).data();
+  return loadCppLibrary(name).data();
 }
 
 EnginePrivate::EnginePrivate(Engine *engine)
@@ -242,14 +224,10 @@ EnginePrivate::EnginePrivate(Engine *engine)
 {
 }
 
-QString EnginePrivate::getScriptLibraryName(const QString &name,
-                                            uint minorVersion) const
+QString EnginePrivate::getScriptLibraryName(const QString &name) const
 {
   auto pluginIndex = 0;
-  const QString prefix = QStringLiteral("/KTextTemplate/")
-                         + QString::number(KTEXTTEMPLATE_VERSION_MAJOR)
-                         + QLatin1Char('.') + QString::number(minorVersion)
-                         + QLatin1Char('/');
+  const QString prefix = QStringLiteral("/kf6/ktexttemplate/");
   while (m_pluginDirs.size() > pluginIndex) {
     const auto nextDir = m_pluginDirs.at(pluginIndex++);
     const QString libFileName = nextDir + prefix + name + QStringLiteral(".qs");
@@ -273,7 +251,7 @@ QString EnginePrivate::getScriptLibraryName(const QString &name,
 
 #ifdef QT_QML_LIB
 ScriptableLibraryContainer *
-EnginePrivate::loadScriptableLibrary(const QString &name, uint minorVersion)
+EnginePrivate::loadScriptableLibrary(const QString &name)
 {
   if (!m_scriptableTagLibrary)
     return nullptr;
@@ -283,7 +261,7 @@ EnginePrivate::loadScriptableLibrary(const QString &name, uint minorVersion)
     return 0;
 #endif
 
-  const auto libFileName = getScriptLibraryName(name, minorVersion);
+  const auto libFileName = getScriptLibraryName(name);
 
   if (libFileName.isEmpty())
     return nullptr;
@@ -310,16 +288,14 @@ EnginePrivate::loadScriptableLibrary(const QString &name, uint minorVersion)
 #endif
 
 PluginPointer<TagLibraryInterface>
-EnginePrivate::loadCppLibrary(const QString &name, uint minorVersion)
+EnginePrivate::loadCppLibrary(const QString &name)
 {
   auto pluginIndex = 0;
 
   while (m_pluginDirs.size() > pluginIndex) {
     const auto nextDir = m_pluginDirs.at(pluginIndex++);
     const QString pluginDirString
-        = nextDir + QStringLiteral("/KTextTemplate/")
-          + QString::number(KTEXTTEMPLATE_VERSION_MAJOR) + QLatin1Char('.')
-          + QString::number(minorVersion) + QLatin1Char('/');
+        = nextDir + QStringLiteral("/kf6/ktexttemplate/");
 
     const QDir pluginDir(pluginDirString);
 

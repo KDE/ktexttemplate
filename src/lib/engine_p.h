@@ -83,14 +83,12 @@ class EnginePrivate
 {
   explicit EnginePrivate(Engine *engine);
 
-  TagLibraryInterface *loadLibrary(const QString &name, uint minorVersion);
-  QString getScriptLibraryName(const QString &name, uint minorVersion) const;
+  TagLibraryInterface *loadLibrary(const QString &name);
+  QString getScriptLibraryName(const QString &name) const;
 #ifdef QT_QML_LIB
-  ScriptableLibraryContainer *loadScriptableLibrary(const QString &name,
-                                                    uint minorVersion);
+  ScriptableLibraryContainer *loadScriptableLibrary(const QString &name);
 #endif
-  PluginPointer<TagLibraryInterface> loadCppLibrary(const QString &name,
-                                                    uint minorVersion);
+  PluginPointer<TagLibraryInterface> loadCppLibrary(const QString &name);
 
   Q_DECLARE_PUBLIC(Engine)
   Engine *const q_ptr;

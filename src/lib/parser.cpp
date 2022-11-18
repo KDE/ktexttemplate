@@ -22,7 +22,6 @@
 
 #include "engine.h"
 #include "exception.h"
-#include "ktexttemplate_version.h"
 #include "nodebuiltins_p.h"
 #include "taglibraryinterface.h"
 #include "template.h"

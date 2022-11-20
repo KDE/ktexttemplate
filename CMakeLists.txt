@@ -17,6 +17,7 @@ set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
 include(KDEInstallDirs)
 include(KDEFrameworkCompilerSettings NO_POLICY_SCOPE)
 include(KDECMakeSettings)
+include(KDEGitCommitHooks)
 
 set(REQUIRED_QT_VERSION 6.2.0)
 find_package(Qt6Core ${REQUIRED_QT_VERSION} REQUIRED NO_MODULE)
@@ -109,5 +110,5 @@ install(FILES
   DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF}/KTextTemplate
   COMPONENT Devel
 )
-
+kde_configure_git_pre_commit_hook(CHECKS CLANG_FORMAT)
 feature_summary(WHAT ALL   FATAL_ON_MISSING_REQUIRED_PACKAGES)

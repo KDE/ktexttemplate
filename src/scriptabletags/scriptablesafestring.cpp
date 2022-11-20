@@ -20,21 +20,32 @@
 
 #include "scriptablesafestring.h"
 
-ScriptableSafeString::ScriptableSafeString(QObject *parent) : QObject(parent) {}
+ScriptableSafeString::ScriptableSafeString(QObject *parent)
+    : QObject(parent)
+{
+}
 
 void ScriptableSafeString::setContent(const KTextTemplate::SafeString &content)
 {
-  m_safeString = content;
+    m_safeString = content;
 }
 
-SafeString ScriptableSafeString::wrappedString() const { return m_safeString; }
+SafeString ScriptableSafeString::wrappedString() const
+{
+    return m_safeString;
+}
 
-bool ScriptableSafeString::isSafe() const { return m_safeString.isSafe(); }
+bool ScriptableSafeString::isSafe() const
+{
+    return m_safeString.isSafe();
+}
 
 void ScriptableSafeString::setSafety(bool safeness)
 {
-  m_safeString.setSafety(safeness ? KTextTemplate::SafeString::IsSafe
-                                  : KTextTemplate::SafeString::IsNotSafe);
+    m_safeString.setSafety(safeness ? KTextTemplate::SafeString::IsSafe : KTextTemplate::SafeString::IsNotSafe);
 }
 
-QString ScriptableSafeString::rawString() { return m_safeString; }
+QString ScriptableSafeString::rawString()
+{
+    return m_safeString;
+}

@@ -32,33 +32,33 @@ using namespace KTextTemplate;
 
 class IncludeNodeFactory : public AbstractNodeFactory
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  IncludeNodeFactory();
+    IncludeNodeFactory();
 
-  Node *getNode(const QString &tagContent, Parser *p) const override;
+    Node *getNode(const QString &tagContent, Parser *p) const override;
 };
 
 class IncludeNode : public Node
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  explicit IncludeNode(const FilterExpression &fe, QObject *parent = {});
-  void render(OutputStream *stream, Context *c) const override;
+    explicit IncludeNode(const FilterExpression &fe, QObject *parent = {});
+    void render(OutputStream *stream, Context *c) const override;
 
 private:
-  FilterExpression m_filterExpression;
+    FilterExpression m_filterExpression;
 };
 
 class ConstantIncludeNode : public Node
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  ConstantIncludeNode(const QString &filename, QObject *parent = {});
-  void render(OutputStream *stream, Context *c) const override;
+    ConstantIncludeNode(const QString &filename, QObject *parent = {});
+    void render(OutputStream *stream, Context *c) const override;
 
 private:
-  QString m_name;
+    QString m_name;
 };
 
 #endif

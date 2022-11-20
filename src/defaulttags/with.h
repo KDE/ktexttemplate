@@ -27,28 +27,26 @@ using namespace KTextTemplate;
 
 class WithNodeFactory : public AbstractNodeFactory
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  WithNodeFactory();
+    WithNodeFactory();
 
-  Node *getNode(const QString &tagContent, Parser *p) const override;
+    Node *getNode(const QString &tagContent, Parser *p) const override;
 };
 
 class WithNode : public Node
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  WithNode(
-      const std::vector<std::pair<QString, FilterExpression>> &namedExpressions,
-      QObject *parent = {});
+    WithNode(const std::vector<std::pair<QString, FilterExpression>> &namedExpressions, QObject *parent = {});
 
-  void setNodeList(const NodeList &nodeList);
+    void setNodeList(const NodeList &nodeList);
 
-  void render(OutputStream *stream, Context *c) const override;
+    void render(OutputStream *stream, Context *c) const override;
 
 private:
-  std::vector<std::pair<QString, FilterExpression>> m_namedExpressions;
-  NodeList m_list;
+    std::vector<std::pair<QString, FilterExpression>> m_namedExpressions;
+    NodeList m_list;
 };
 
 #endif

@@ -119,81 +119,81 @@ class FilterExpressionPrivate;
 class KTEXTTEMPLATE_EXPORT FilterExpression
 {
 public:
-  /**
-    Constructs an invalid **%FilterExpression**.
-  */
-  FilterExpression();
+    /**
+      Constructs an invalid **%FilterExpression**.
+    */
+    FilterExpression();
 
-  /**
-    Constructs a filter expression from the string @p varString. The Parser @p
-    parser is used to retrieve filters.
-  */
-  FilterExpression(const QString &varString, KTextTemplate::Parser *parser);
+    /**
+      Constructs a filter expression from the string @p varString. The Parser @p
+      parser is used to retrieve filters.
+    */
+    FilterExpression(const QString &varString, KTextTemplate::Parser *parser);
 
-  /**
-    Copy constructor.
-  */
-  FilterExpression(const FilterExpression &other);
+    /**
+      Copy constructor.
+    */
+    FilterExpression(const FilterExpression &other);
 
-  /**
-    Destructor.
-  */
-  ~FilterExpression();
+    /**
+      Destructor.
+    */
+    ~FilterExpression();
 
-  /**
-    Assignment operator.
-  */
-  FilterExpression &operator=(const FilterExpression &other);
+    /**
+      Assignment operator.
+    */
+    FilterExpression &operator=(const FilterExpression &other);
 
-  /**
-    Returns the initial variable in the **%FilterExpression**.
-  */
-  Variable variable() const;
+    /**
+      Returns the initial variable in the **%FilterExpression**.
+    */
+    Variable variable() const;
 
-  /**
-    Resolves the **%FilterExpression** in the Context @p c and writes it to the
-    stream @p stream.
-  */
-  QVariant resolve(OutputStream *stream, Context *c) const;
+    /**
+      Resolves the **%FilterExpression** in the Context @p c and writes it to the
+      stream @p stream.
+    */
+    QVariant resolve(OutputStream *stream, Context *c) const;
 
-  /**
-    Resolves the **%FilterExpression** in the Context @p c.
-  */
-  QVariant resolve(Context *c) const;
+    /**
+      Resolves the **%FilterExpression** in the Context @p c.
+    */
+    QVariant resolve(Context *c) const;
 
-  /**
-    Returns whether the Filter resolves to true in the Context @p c.
-    @see @ref truthiness
-  */
-  bool isTrue(Context *c) const;
+    /**
+      Returns whether the Filter resolves to true in the Context @p c.
+      @see @ref truthiness
+    */
+    bool isTrue(Context *c) const;
 
-  /**
-    Returns a list for the **%FilterExpression**.
+    /**
+      Returns a list for the **%FilterExpression**.
 
-    If the **%FilterExpression** can not be resolved to a list, an empty list
-    will be returned.
-  */
-  QVariantList toList(Context *c) const;
+      If the **%FilterExpression** can not be resolved to a list, an empty list
+      will be returned.
+    */
+    QVariantList toList(Context *c) const;
 
-  /**
-    Returns whether a filter expression is valid.
+    /**
+      Returns whether a filter expression is valid.
 
-    A **%FilterExpression** is valid if all filters in the expression exist and
-    the initial variable being filtered is valid.
-  */
-  bool isValid() const;
+      A **%FilterExpression** is valid if all filters in the expression exist and
+      the initial variable being filtered is valid.
+    */
+    bool isValid() const;
 
 #ifndef K_DOXYGEN
-  /**
-    @internal
-    Returns the list of filters in the **%FilterExpression**.
-  */
-  QStringList filters() const;
+    /**
+      @internal
+      Returns the list of filters in the **%FilterExpression**.
+    */
+    QStringList filters() const;
 #endif
 
 private:
-  Q_DECLARE_PRIVATE(FilterExpression)
-  FilterExpressionPrivate *const d_ptr;
+    Q_DECLARE_PRIVATE(FilterExpression)
+    FilterExpressionPrivate *const d_ptr;
 };
 }
 

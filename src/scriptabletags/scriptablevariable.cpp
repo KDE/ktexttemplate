@@ -26,33 +26,35 @@
 #include "util.h"
 
 ScriptableVariable::ScriptableVariable(QObject *parent)
-    : QObject(parent), m_engine(nullptr)
+    : QObject(parent)
+    , m_engine(nullptr)
 {
 }
 
 ScriptableVariable::ScriptableVariable(QJSEngine *engine, QObject *parent)
-    : QObject(parent), m_engine(engine)
+    : QObject(parent)
+    , m_engine(engine)
 {
 }
 
 void ScriptableVariable::setContent(const QString &content)
 {
-  m_variable = Variable(content);
+    m_variable = Variable(content);
 }
 
 QVariant ScriptableVariable::resolve(ScriptableContext *c)
 {
-  auto var = m_variable.resolve(c->context());
+    auto var = m_variable.resolve(c->context());
 
-  if (KTextTemplate::isSafeString(var)) {
-    auto ssObj = new ScriptableSafeString(m_engine);
-    ssObj->setContent(getSafeString(var));
-    return m_engine->newQObject(ssObj).toVariant();
-  }
-  return var;
+    if (KTextTemplate::isSafeString(var)) {
+        auto ssObj = new ScriptableSafeString(m_engine);
+        ssObj->setContent(getSafeString(var));
+        return m_engine->newQObject(ssObj).toVariant();
+    }
+    return var;
 }
 
 bool ScriptableVariable::isTrue(ScriptableContext *c)
 {
-  return m_variable.isTrue(c->context());
+    return m_variable.isTrue(c->context());
 }

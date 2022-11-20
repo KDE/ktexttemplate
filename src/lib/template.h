@@ -94,66 +94,66 @@ class TemplatePrivate;
 */
 class KTEXTTEMPLATE_EXPORT TemplateImpl : public QObject
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  ~TemplateImpl() override;
+    ~TemplateImpl() override;
 
-  /**
-    Renders the **%Template** to a string given the Context @p c.
-  */
-  QString render(Context *c) const;
+    /**
+      Renders the **%Template** to a string given the Context @p c.
+    */
+    QString render(Context *c) const;
 
-  /**
-    Renders the **%Template** to the OutputStream @p stream given the Context c.
-  */
-  OutputStream *render(OutputStream *stream, Context *c) const;
+    /**
+      Renders the **%Template** to the OutputStream @p stream given the Context c.
+    */
+    OutputStream *render(OutputStream *stream, Context *c) const;
 
 #ifndef K_DOXYGEN
-  /**
-    @internal
-  */
-  NodeList nodeList() const;
+    /**
+      @internal
+    */
+    NodeList nodeList() const;
 
-  /**
-    @internal
-  */
-  void setNodeList(const NodeList &list);
+    /**
+      @internal
+    */
+    void setNodeList(const NodeList &list);
 #endif
 
-  /**
-    Returns an error code for the error encountered.
-  */
-  Error error() const;
+    /**
+      Returns an error code for the error encountered.
+    */
+    Error error() const;
 
-  /**
-    Returns more information to developers in the form of a string.
-  */
-  QString errorString() const;
+    /**
+      Returns more information to developers in the form of a string.
+    */
+    QString errorString() const;
 
-  /**
-    Returns the Engine that created this **%Template**.
-  */
-  Engine const *engine() const;
+    /**
+      Returns the Engine that created this **%Template**.
+    */
+    Engine const *engine() const;
 
 #ifndef K_DOXYGEN
 protected:
-  TemplateImpl(Engine const *engine, QObject *parent = {});
-  TemplateImpl(Engine const *engine, bool smartTrim, QObject *parent = {});
+    TemplateImpl(Engine const *engine, QObject *parent = {});
+    TemplateImpl(Engine const *engine, bool smartTrim, QObject *parent = {});
 
-  void setContent(const QString &templateString);
+    void setContent(const QString &templateString);
 #endif
 
 private:
-  // Don't allow setting the parent on a Template, which is memory managed as
-  // a QSharedPointer.
-  using QObject::setParent;
+    // Don't allow setting the parent on a Template, which is memory managed as
+    // a QSharedPointer.
+    using QObject::setParent;
 
 private:
-  Q_DECLARE_PRIVATE(Template)
-  TemplatePrivate *const d_ptr;
+    Q_DECLARE_PRIVATE(Template)
+    TemplatePrivate *const d_ptr;
 #ifndef K_DOXYGEN
-  friend class Engine;
-  friend class Parser;
+    friend class Engine;
+    friend class Parser;
 #endif
 };
 }

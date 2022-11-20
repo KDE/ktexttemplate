@@ -26,17 +26,20 @@ CommentNodeFactory::CommentNodeFactory() = default;
 
 Node *CommentNodeFactory::getNode(const QString &tagContent, Parser *p) const
 {
-  Q_UNUSED(tagContent);
+    Q_UNUSED(tagContent);
 
-  p->skipPast(QStringLiteral("endcomment"));
+    p->skipPast(QStringLiteral("endcomment"));
 
-  return new CommentNode(p);
+    return new CommentNode(p);
 }
 
-CommentNode::CommentNode(QObject *parent) : Node(parent) {}
+CommentNode::CommentNode(QObject *parent)
+    : Node(parent)
+{
+}
 
 void CommentNode::render(OutputStream *stream, Context *c) const
 {
-  Q_UNUSED(stream);
-  Q_UNUSED(c);
+    Q_UNUSED(stream);
+    Q_UNUSED(c);
 }

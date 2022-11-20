@@ -27,27 +27,25 @@ using namespace KTextTemplate;
 
 class RegroupNodeFactory : public AbstractNodeFactory
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  RegroupNodeFactory();
+    RegroupNodeFactory();
 
-  Node *getNode(const QString &tagContent, Parser *p) const override;
+    Node *getNode(const QString &tagContent, Parser *p) const override;
 };
 
 class RegroupNode : public Node
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  RegroupNode(const FilterExpression &target,
-              const FilterExpression &expression, const QString &varName,
-              QObject *parent = {});
+    RegroupNode(const FilterExpression &target, const FilterExpression &expression, const QString &varName, QObject *parent = {});
 
-  void render(OutputStream *stream, Context *c) const override;
+    void render(OutputStream *stream, Context *c) const override;
 
 private:
-  FilterExpression m_target;
-  FilterExpression m_expression;
-  QString m_varName;
+    FilterExpression m_target;
+    FilterExpression m_expression;
+    QString m_varName;
 };
 
 #endif

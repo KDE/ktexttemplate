@@ -32,50 +32,47 @@ using namespace KTextTemplate;
 
 class I18ncNodeFactory : public AbstractNodeFactory
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  I18ncNodeFactory();
+    I18ncNodeFactory();
 
-  Node *getNode(const QString &tagContent, Parser *p) const override;
+    Node *getNode(const QString &tagContent, Parser *p) const override;
 };
 
 class I18ncVarNodeFactory : public AbstractNodeFactory
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  I18ncVarNodeFactory();
+    I18ncVarNodeFactory();
 
-  Node *getNode(const QString &tagContent, Parser *p) const override;
+    Node *getNode(const QString &tagContent, Parser *p) const override;
 };
 
 class I18ncNode : public Node
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  I18ncNode(const QString &sourceText, const QString &context,
-            const QList<FilterExpression> &feList, QObject *parent = {});
-  void render(OutputStream *stream, Context *c) const override;
+    I18ncNode(const QString &sourceText, const QString &context, const QList<FilterExpression> &feList, QObject *parent = {});
+    void render(OutputStream *stream, Context *c) const override;
 
 private:
-  QString m_sourceText;
-  QString m_context;
-  QList<FilterExpression> m_filterExpressionList;
+    QString m_sourceText;
+    QString m_context;
+    QList<FilterExpression> m_filterExpressionList;
 };
 
 class I18ncVarNode : public Node
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  I18ncVarNode(const QString &sourceText, const QString &context,
-               const QList<FilterExpression> &feList, const QString &resultName,
-               QObject *parent = {});
-  void render(OutputStream *stream, Context *c) const override;
+    I18ncVarNode(const QString &sourceText, const QString &context, const QList<FilterExpression> &feList, const QString &resultName, QObject *parent = {});
+    void render(OutputStream *stream, Context *c) const override;
 
 private:
-  QString m_sourceText;
-  QString m_context;
-  QList<FilterExpression> m_filterExpressionList;
-  QString m_resultName;
+    QString m_sourceText;
+    QString m_context;
+    QList<FilterExpression> m_filterExpressionList;
+    QString m_resultName;
 };
 
 #endif

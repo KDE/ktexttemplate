@@ -67,45 +67,43 @@ class CachingLoaderDecoratorPrivate;
 
   @author Stephen Kelly <steveire@gmail.com>
  */
-class KTEXTTEMPLATE_EXPORT CachingLoaderDecorator
-    : public AbstractTemplateLoader
+class KTEXTTEMPLATE_EXPORT CachingLoaderDecorator : public AbstractTemplateLoader
 {
 public:
-  /**
-    Constructor
-  */
-  CachingLoaderDecorator(QSharedPointer<AbstractTemplateLoader> loader);
+    /**
+      Constructor
+    */
+    CachingLoaderDecorator(QSharedPointer<AbstractTemplateLoader> loader);
 
-  /**
-    Destructor
-  */
-  ~CachingLoaderDecorator() override;
+    /**
+      Destructor
+    */
+    ~CachingLoaderDecorator() override;
 
-  bool canLoadTemplate(const QString &name) const override;
+    bool canLoadTemplate(const QString &name) const override;
 
-  std::pair<QString, QString> getMediaUri(const QString &fileName) const override;
+    std::pair<QString, QString> getMediaUri(const QString &fileName) const override;
 
-  Template loadByName(const QString &name,
-                      const KTextTemplate::Engine *engine) const override;
+    Template loadByName(const QString &name, const KTextTemplate::Engine *engine) const override;
 
-  /**
-    Clears the Templates objects cached in the decorator.
-   */
-  void clear();
+    /**
+      Clears the Templates objects cached in the decorator.
+     */
+    void clear();
 
-  /**
-    Returns the number of Template objects cached in the decorator.
-   */
-  int size() const;
+    /**
+      Returns the number of Template objects cached in the decorator.
+     */
+    int size() const;
 
-  /**
-    Returns whether the cache is empty.
-   */
-  bool isEmpty() const;
+    /**
+      Returns whether the cache is empty.
+     */
+    bool isEmpty() const;
 
 private:
-  Q_DECLARE_PRIVATE(CachingLoaderDecorator)
-  CachingLoaderDecoratorPrivate *const d_ptr;
+    Q_DECLARE_PRIVATE(CachingLoaderDecorator)
+    CachingLoaderDecoratorPrivate *const d_ptr;
 };
 }
 

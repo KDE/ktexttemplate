@@ -32,45 +32,43 @@
 
 static QSharedPointer<KTextTemplate::AbstractLocalizer> getLocalizer()
 {
-  QSharedPointer<KTextTemplate::QtLocalizer> localizer
-      = QSharedPointer<KTextTemplate::QtLocalizer>(new KTextTemplate::QtLocalizer);
-  localizer->setAppTranslatorPrefix("contacts_");
-  localizer->setAppTranslatorPath(qApp->applicationDirPath());
+    QSharedPointer<KTextTemplate::QtLocalizer> localizer = QSharedPointer<KTextTemplate::QtLocalizer>(new KTextTemplate::QtLocalizer);
+    localizer->setAppTranslatorPrefix("contacts_");
+    localizer->setAppTranslatorPath(qApp->applicationDirPath());
 
-  QStringList locales = QStringList() << "en_US"
-                                      << "en_GB"
-                                      << "de_DE"
-                                      << "fr_FR";
-  if (!locales.contains(QLocale::system().name()))
-    locales.append(QLocale::system().name());
-  for (const QString &localeName : locales) {
-    QTranslator *qtTranslator = new QTranslator;
-    qtTranslator->load("qt_" + localeName,
-                       QLibraryInfo::location(QLibraryInfo::TranslationsPath));
-    qtTranslator->setObjectName("qt_" + localeName);
-    localizer->installTranslator(qtTranslator, localeName);
+    QStringList locales = QStringList() << "en_US"
+                                        << "en_GB"
+                                        << "de_DE"
+                                        << "fr_FR";
+    if (!locales.contains(QLocale::system().name()))
+        locales.append(QLocale::system().name());
+    for (const QString &localeName : locales) {
+        QTranslator *qtTranslator = new QTranslator;
+        qtTranslator->load("qt_" + localeName, QLibraryInfo::location(QLibraryInfo::TranslationsPath));
+        qtTranslator->setObjectName("qt_" + localeName);
+        localizer->installTranslator(qtTranslator, localeName);
 
-    QTranslator *myappTranslator = new QTranslator;
-    myappTranslator->load("contacts_" + localeName + ".qm",
-                          qApp->applicationDirPath());
-    myappTranslator->setObjectName("contacts_" + localeName);
-    localizer->installTranslator(myappTranslator, localeName);
-  }
+        QTranslator *myappTranslator = new QTranslator;
+        myappTranslator->load("contacts_" + localeName + ".qm", qApp->applicationDirPath());
+        myappTranslator->setObjectName("contacts_" + localeName);
+        localizer->installTranslator(myappTranslator, localeName);
+    }
 
-  return localizer.staticCast<KTextTemplate::AbstractLocalizer>();
+    return localizer.staticCast<KTextTemplate::AbstractLocalizer>();
 }
 
-template <> void AppMainWindow<KTextTemplate::QtLocalizer>::initLocalizer()
+template<>
+void AppMainWindow<KTextTemplate::QtLocalizer>::initLocalizer()
 {
-  m_localizer = getLocalizer();
+    m_localizer = getLocalizer();
 }
 
 int main(int argc, char *argv[])
 {
-  QApplication app(argc, argv);
+    QApplication app(argc, argv);
 
-  AppMainWindow<KTextTemplate::QtLocalizer> win(TEMPLATE_DIR);
-  win.show();
+    AppMainWindow<KTextTemplate::QtLocalizer> win(TEMPLATE_DIR);
+    win.show();
 
-  return app.exec();
+    return app.exec();
 }

@@ -47,97 +47,96 @@ class ParserPrivate;
 */
 class KTEXTTEMPLATE_EXPORT Parser : public QObject
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  /**
-    Constructor.
+    /**
+      Constructor.
 
-    Initialises the **%Parser** with the @p tokenList.
-  */
-  Parser(const QList<Token> &tokenList, QObject *parent);
+      Initialises the **%Parser** with the @p tokenList.
+    */
+    Parser(const QList<Token> &tokenList, QObject *parent);
 
-  /**
-    Destructor.
-  */
-  ~Parser() override;
+    /**
+      Destructor.
+    */
+    ~Parser() override;
 
-  /**
-    Advance the parser, using @p parent as the parent of new Nodes. The parser
-    will stop if it encounters a tag which is contained in the list @p stopAt.
+    /**
+      Advance the parser, using @p parent as the parent of new Nodes. The parser
+      will stop if it encounters a tag which is contained in the list @p stopAt.
 
-    For example, the @gr_tag{if} tag would stopAt both @gr_tag{endif} and
-    @gr_tag{else} tags.
+      For example, the @gr_tag{if} tag would stopAt both @gr_tag{endif} and
+      @gr_tag{else} tags.
 
-    @see AbstractNodeFactory::getNode
-  */
-  NodeList parse(Node *parent, const QStringList &stopAt = {});
+      @see AbstractNodeFactory::getNode
+    */
+    NodeList parse(Node *parent, const QStringList &stopAt = {});
 
-  /**
-    This is an overloaded method.
-    @see parse.
-  */
-  NodeList parse(TemplateImpl *parent, const QStringList &stopAt = {});
+    /**
+      This is an overloaded method.
+      @see parse.
+    */
+    NodeList parse(TemplateImpl *parent, const QStringList &stopAt = {});
 
-  /**
-    This is an overloaded method.
-    @see parse.
-  */
-  NodeList parse(Node *parent, const QString &stopAt);
+    /**
+      This is an overloaded method.
+      @see parse.
+    */
+    NodeList parse(Node *parent, const QString &stopAt);
 
-  /**
-    Returns the filter object called @p name or an invalid object if no filter
-    with that name is loaded.
-  */
-  QSharedPointer<Filter> getFilter(const QString &name) const;
+    /**
+      Returns the filter object called @p name or an invalid object if no filter
+      with that name is loaded.
+    */
+    QSharedPointer<Filter> getFilter(const QString &name) const;
 
-  /**
-    Advances the parser to the tag @p tag. This method is similar to @ref parse,
-    but it does not create nodes for tags encountered.
-  */
-  void skipPast(const QString &tag);
+    /**
+      Advances the parser to the tag @p tag. This method is similar to @ref parse,
+      but it does not create nodes for tags encountered.
+    */
+    void skipPast(const QString &tag);
 
-  /**
-    Returns the next token to be processed by the parser. This can be examined
-    in template tag implementations to determine why parsing stopped.
+    /**
+      Returns the next token to be processed by the parser. This can be examined
+      in template tag implementations to determine why parsing stopped.
 
-    For example, if the @gr_tag{if} tag, parsing may stop at an @gr_tag{else}
-    tag, in which case parsing should be restarted, or it could stop at an
-    @gr_tag{endif} tag, in which case parsing is finished for that node.
-  */
-  Token takeNextToken();
+      For example, if the @gr_tag{if} tag, parsing may stop at an @gr_tag{else}
+      tag, in which case parsing should be restarted, or it could stop at an
+      @gr_tag{endif} tag, in which case parsing is finished for that node.
+    */
+    Token takeNextToken();
 
-  /**
-    Returns whether the parser has another token to process.
-  */
-  bool hasNextToken() const;
+    /**
+      Returns whether the parser has another token to process.
+    */
+    bool hasNextToken() const;
 
-  /**
-    Deletes the next token available to the parser.
-  */
-  void removeNextToken();
+    /**
+      Deletes the next token available to the parser.
+    */
+    void removeNextToken();
 
-  void invalidBlockTag(const Token &token, const QString &command,
-                       const QStringList &stopAt = {});
+    void invalidBlockTag(const Token &token, const QString &command, const QStringList &stopAt = {});
 
 #ifndef K_DOXYGEN
-  /**
-    @internal
+    /**
+      @internal
 
-    Used by the @gr_tag{load} tag to load libraries.
-  */
-  void loadLib(const QString &name);
+      Used by the @gr_tag{load} tag to load libraries.
+    */
+    void loadLib(const QString &name);
 #endif
 
 protected:
-  /**
-    Puts the token @p token to the front of the list to be processed by the
-    parser.
-  */
-  void prependToken(const Token &token);
+    /**
+      Puts the token @p token to the front of the list to be processed by the
+      parser.
+    */
+    void prependToken(const Token &token);
 
 private:
-  Q_DECLARE_PRIVATE(Parser)
-  ParserPrivate *const d_ptr;
+    Q_DECLARE_PRIVATE(Parser)
+    ParserPrivate *const d_ptr;
 };
 }
 

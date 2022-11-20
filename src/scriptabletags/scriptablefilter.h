@@ -30,17 +30,16 @@ using namespace KTextTemplate;
 class ScriptableFilter : public Filter
 {
 public:
-  ScriptableFilter(const QJSValue &filterObject, QJSEngine *engine);
-  ~ScriptableFilter() override;
+    ScriptableFilter(const QJSValue &filterObject, QJSEngine *engine);
+    ~ScriptableFilter() override;
 
-  QVariant doFilter(const QVariant &input, const QVariant &argument,
-                    bool autoescape = {}) const override;
+    QVariant doFilter(const QVariant &input, const QVariant &argument, bool autoescape = {}) const override;
 
-  bool isSafe() const override;
+    bool isSafe() const override;
 
 private:
-  QJSValue m_filterObject;
-  QJSEngine *m_scriptEngine;
+    QJSValue m_filterObject;
+    QJSEngine *m_scriptEngine;
 };
 
 #endif

@@ -80,65 +80,65 @@ class SafeString;
 class KTEXTTEMPLATE_EXPORT OutputStream
 {
 public:
-  /**
-    Creates a null **%OutputStream**. Content streamed to
-    this **%OutputStream** is sent to <tt>/dev/null</tt>
-  */
-  OutputStream();
+    /**
+      Creates a null **%OutputStream**. Content streamed to
+      this **%OutputStream** is sent to <tt>/dev/null</tt>
+    */
+    OutputStream();
 
-  /**
-    Creates an **%OutputStream** which will stream content to @p stream
-    with appropriate escaping.
-  */
-  explicit OutputStream(QTextStream *stream);
+    /**
+      Creates an **%OutputStream** which will stream content to @p stream
+      with appropriate escaping.
+    */
+    explicit OutputStream(QTextStream *stream);
 
-  /**
-    Destructor
-  */
-  virtual ~OutputStream();
+    /**
+      Destructor
+    */
+    virtual ~OutputStream();
 
-  /**
-    Returns an escaped version of @p input. Does not write anything to the
-    stream.
-  */
-  virtual QString escape(const QString &input) const;
+    /**
+      Returns an escaped version of @p input. Does not write anything to the
+      stream.
+    */
+    virtual QString escape(const QString &input) const;
 
-  /**
-    Returns an escaped version of @p input. Does not write anything to the
-    stream.
-  */
-  QString escape(const SafeString &input) const;
+    /**
+      Returns an escaped version of @p input. Does not write anything to the
+      stream.
+    */
+    QString escape(const SafeString &input) const;
 
-  /**
-    Returns a cloned **%OutputStream** with the same filtering behaviour.
-  */
-  virtual QSharedPointer<OutputStream> clone(QTextStream *stream) const;
+    /**
+      Returns a cloned **%OutputStream** with the same filtering behaviour.
+    */
+    virtual QSharedPointer<OutputStream> clone(QTextStream *stream) const;
 
-  /**
-    Returns @p after escaping it, unless @p input is "safe", in which case,
-    @p input is returned unmodified.
-  */
-  QString conditionalEscape(const KTextTemplate::SafeString &input) const;
+    /**
+      Returns @p after escaping it, unless @p input is "safe", in which case,
+      @p input is returned unmodified.
+    */
+    QString conditionalEscape(const KTextTemplate::SafeString &input) const;
 
-  /**
-    Writes @p input to the stream after escaping it.
-  */
-  OutputStream &operator<<(const QString &input);
+    /**
+      Writes @p input to the stream after escaping it.
+    */
+    OutputStream &operator<<(const QString &input);
 
-  /**
-    Writes @p input to the stream after escaping it if necessary.
-  */
-  OutputStream &operator<<(const SafeString &input);
+    /**
+      Writes @p input to the stream after escaping it if necessary.
+    */
+    OutputStream &operator<<(const SafeString &input);
 
-  /**
-    Reads the content of @p stream and writes it unmodified to the result
-    stream.
-  */
-  OutputStream &operator<<(QTextStream *stream);
+    /**
+      Reads the content of @p stream and writes it unmodified to the result
+      stream.
+    */
+    OutputStream &operator<<(QTextStream *stream);
 
 private:
-  QTextStream *m_stream;
-  Q_DISABLE_COPY(OutputStream)
+    QTextStream *m_stream;
+    Q_DISABLE_COPY(OutputStream)
 };
 }
 

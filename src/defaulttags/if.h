@@ -29,29 +29,27 @@ using namespace KTextTemplate;
 
 class IfNodeFactory : public AbstractNodeFactory
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  IfNodeFactory();
+    IfNodeFactory();
 
-  Node *getNode(const QString &tagContent, Parser *p) const override;
+    Node *getNode(const QString &tagContent, Parser *p) const override;
 };
 
 class IfToken;
 
 class IfNode : public Node
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  explicit IfNode(QObject *parent = {});
+    explicit IfNode(QObject *parent = {});
 
-  void
-  setNodelistConditions(const QVector<std::pair<QSharedPointer<IfToken>, NodeList>>
-                            &conditionNodelists);
+    void setNodelistConditions(const QVector<std::pair<QSharedPointer<IfToken>, NodeList>> &conditionNodelists);
 
-  void render(OutputStream *stream, Context *c) const override;
+    void render(OutputStream *stream, Context *c) const override;
 
 private:
-  QVector<std::pair<QSharedPointer<IfToken>, NodeList>> mConditionNodelists;
+    QVector<std::pair<QSharedPointer<IfToken>, NodeList>> mConditionNodelists;
 };
 
 #endif

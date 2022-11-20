@@ -25,9 +25,9 @@
 
 class MainWindow : public QWidget
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  MainWindow(QWidget *parent = 0);
+    MainWindow(QWidget *parent = 0);
 };
 
 #endif

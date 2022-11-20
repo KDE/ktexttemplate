@@ -27,25 +27,25 @@ using namespace KTextTemplate;
 
 class DebugNodeFactory : public AbstractNodeFactory
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  DebugNodeFactory();
+    DebugNodeFactory();
 
-  Node *getNode(const QString &tagContent, Parser *p) const override;
+    Node *getNode(const QString &tagContent, Parser *p) const override;
 };
 
 class DebugNode : public Node
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  explicit DebugNode(QObject *parent = {});
+    explicit DebugNode(QObject *parent = {});
 
-  void render(OutputStream *stream, Context *c) const override;
+    void render(OutputStream *stream, Context *c) const override;
 
 private:
-  FilterExpression m_filterExpression;
-  QString m_name;
-  NodeList m_list;
+    FilterExpression m_filterExpression;
+    QString m_name;
+    NodeList m_list;
 };
 
 #endif

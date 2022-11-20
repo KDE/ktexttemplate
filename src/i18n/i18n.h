@@ -32,47 +32,45 @@ using namespace KTextTemplate;
 
 class I18nNodeFactory : public AbstractNodeFactory
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  I18nNodeFactory();
+    I18nNodeFactory();
 
-  Node *getNode(const QString &tagContent, Parser *p) const override;
+    Node *getNode(const QString &tagContent, Parser *p) const override;
 };
 
 class I18nVarNodeFactory : public AbstractNodeFactory
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  I18nVarNodeFactory();
+    I18nVarNodeFactory();
 
-  Node *getNode(const QString &tagContent, Parser *p) const override;
+    Node *getNode(const QString &tagContent, Parser *p) const override;
 };
 
 class I18nNode : public Node
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  I18nNode(const QString &sourceText, const QList<FilterExpression> &feList,
-           QObject *parent = {});
-  void render(OutputStream *stream, Context *c) const override;
+    I18nNode(const QString &sourceText, const QList<FilterExpression> &feList, QObject *parent = {});
+    void render(OutputStream *stream, Context *c) const override;
 
 private:
-  QString m_sourceText;
-  QList<FilterExpression> m_filterExpressionList;
+    QString m_sourceText;
+    QList<FilterExpression> m_filterExpressionList;
 };
 
 class I18nVarNode : public Node
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  I18nVarNode(const QString &sourceText, const QList<FilterExpression> &feList,
-              const QString &resultName, QObject *parent = {});
-  void render(OutputStream *stream, Context *c) const override;
+    I18nVarNode(const QString &sourceText, const QList<FilterExpression> &feList, const QString &resultName, QObject *parent = {});
+    void render(OutputStream *stream, Context *c) const override;
 
 private:
-  QString m_sourceText;
-  QList<FilterExpression> m_filterExpressionList;
-  QString m_resultName;
+    QString m_sourceText;
+    QList<FilterExpression> m_filterExpressionList;
+    QString m_resultName;
 };
 
 #endif

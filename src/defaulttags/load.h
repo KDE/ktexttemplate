@@ -28,18 +28,18 @@ using namespace KTextTemplate;
 class LoadNodeFactory : public AbstractNodeFactory
 {
 public:
-  LoadNodeFactory();
+    LoadNodeFactory();
 
-  Node *getNode(const QString &tagContent, Parser *p) const override;
+    Node *getNode(const QString &tagContent, Parser *p) const override;
 };
 
 class LoadNode : public Node
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  explicit LoadNode(QObject *parent = {});
+    explicit LoadNode(QObject *parent = {});
 
-  void render(OutputStream *stream, Context *c) const override;
+    void render(OutputStream *stream, Context *c) const override;
 };
 
 #endif

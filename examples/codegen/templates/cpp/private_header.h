@@ -1,24 +1,32 @@
-{% extends "base_header.h" %}
+{ % extends "base_header.h" % }
 
-{% block includes %}
+{ % block includes % }
 #include "{{ className|to_public|lower }}.h"
-{% endblock %}
+{ % endblock % }
 
-{# override the apidox block with nothing #}
-{% block apidox %}
+{#override the apidox block with nothing #} { % block apidox % }
 
-{% endblock %}
+{ % endblock % }
 
-{% block class_content %}
-  {{ className }}Private( {{ className|to_public }} *qq )
+{ % block class_content % } {
+    {
+        className
+    }
+}
+Private({{className | to_public}} * qq)
     : q_ptr(qq)
-  {
+{
+}
+Q_DECLARE_PUBLIC({{className | to_public}}){{className | to_public}} *const q_ptr;
 
-  }
-  Q_DECLARE_PUBLIC({{ className|to_public }})
-  {{ className|to_public  }} * const q_ptr;
-
-{% for property in properties %}
-  {{ property.type }} m_{{ property.name }};
-{% endfor %}
-{% endblock %}
+{% for property in properties %
+}
+{
+    {
+        property.type
+    }
+}
+m_{{property.name}};
+{ % endfor % } {
+    % endblock %
+}

@@ -33,26 +33,29 @@ class Engine;
 
 class TemplatePrivate
 {
-  TemplatePrivate(Engine const *engine, bool smartTrim, TemplateImpl *t)
-      : q_ptr(t), m_error(NoError), m_smartTrim(smartTrim), m_engine(engine)
-  {
-  }
+    TemplatePrivate(Engine const *engine, bool smartTrim, TemplateImpl *t)
+        : q_ptr(t)
+        , m_error(NoError)
+        , m_smartTrim(smartTrim)
+        , m_engine(engine)
+    {
+    }
 
-  void parse();
-  NodeList compileString(const QString &str);
-  void setError(Error type, const QString &message) const;
+    void parse();
+    NodeList compileString(const QString &str);
+    void setError(Error type, const QString &message) const;
 
-  Q_DECLARE_PUBLIC(TemplateImpl)
-  TemplateImpl *const q_ptr;
+    Q_DECLARE_PUBLIC(TemplateImpl)
+    TemplateImpl *const q_ptr;
 
-  mutable Error m_error;
-  mutable QString m_errorString;
-  NodeList m_nodeList;
-  bool m_smartTrim;
-  QPointer<const Engine> m_engine;
+    mutable Error m_error;
+    mutable QString m_errorString;
+    NodeList m_nodeList;
+    bool m_smartTrim;
+    QPointer<const Engine> m_engine;
 
-  friend class KTextTemplate::Engine;
-  friend class Parser;
+    friend class KTextTemplate::Engine;
+    friend class Parser;
 };
 }
 

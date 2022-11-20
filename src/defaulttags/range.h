@@ -28,31 +28,32 @@ using namespace KTextTemplate;
 class RangeNodeFactory : public AbstractNodeFactory
 {
 public:
-  RangeNodeFactory();
+    RangeNodeFactory();
 
-  Node *getNode(const QString &tagContent, Parser *p) const override;
+    Node *getNode(const QString &tagContent, Parser *p) const override;
 };
 
 class RangeNode : public Node
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  RangeNode(const QString &name, const FilterExpression &startExpression,
-            const FilterExpression &stopExpression, QObject *parent = {});
-  RangeNode(const QString &name, const FilterExpression &startExpression,
-            const FilterExpression &stopExpression,
-            const FilterExpression &stepExpression = {}, QObject *parent = {});
+    RangeNode(const QString &name, const FilterExpression &startExpression, const FilterExpression &stopExpression, QObject *parent = {});
+    RangeNode(const QString &name,
+              const FilterExpression &startExpression,
+              const FilterExpression &stopExpression,
+              const FilterExpression &stepExpression = {},
+              QObject *parent = {});
 
-  void setNodeList(const NodeList &list);
+    void setNodeList(const NodeList &list);
 
-  void render(OutputStream *stream, Context *c) const override;
+    void render(OutputStream *stream, Context *c) const override;
 
 private:
-  NodeList m_list;
-  QString m_name;
-  FilterExpression m_startExpression;
-  FilterExpression m_stopExpression;
-  FilterExpression m_stepExpression;
+    NodeList m_list;
+    QString m_name;
+    FilterExpression m_startExpression;
+    FilterExpression m_stopExpression;
+    FilterExpression m_stepExpression;
 };
 
 #endif

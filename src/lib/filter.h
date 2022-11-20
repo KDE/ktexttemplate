@@ -59,57 +59,55 @@ namespace KTextTemplate
 class KTEXTTEMPLATE_EXPORT Filter
 {
 public:
-  /**
-    Destructor.
-  */
-  virtual ~Filter();
+    /**
+      Destructor.
+    */
+    virtual ~Filter();
 
 #ifndef K_DOXYGEN
-  /**
-    FilterExpression makes it possible to access stream methods like escape
-    while resolving.
-  */
-  void setStream(OutputStream *stream);
+    /**
+      FilterExpression makes it possible to access stream methods like escape
+      while resolving.
+    */
+    void setStream(OutputStream *stream);
 #endif
 
-  /**
-    Escapes and returns @p input. The OutputStream::escape method is used to
-    escape @p input.
-  */
-  SafeString escape(const QString &input) const;
+    /**
+      Escapes and returns @p input. The OutputStream::escape method is used to
+      escape @p input.
+    */
+    SafeString escape(const QString &input) const;
 
-  /**
-    Escapes and returns @p input. The OutputStream::escape method is used to
-    escape @p input.
-  */
-  SafeString escape(const SafeString &input) const;
+    /**
+      Escapes and returns @p input. The OutputStream::escape method is used to
+      escape @p input.
+    */
+    SafeString escape(const SafeString &input) const;
 
-  /**
-    Escapes @p input if not already safe from further escaping and returns it.
-    The OutputStream::escape method is used to escape @p input.
-  */
-  SafeString conditionalEscape(const SafeString &input) const;
+    /**
+      Escapes @p input if not already safe from further escaping and returns it.
+      The OutputStream::escape method is used to escape @p input.
+    */
+    SafeString conditionalEscape(const SafeString &input) const;
 
-  /**
-    Reimplement to filter @p input given @p argument.
+    /**
+      Reimplement to filter @p input given @p argument.
 
-    @p autoescape determines whether the autoescape feature is currently on or
-    off. Most filters will not use this.
+      @p autoescape determines whether the autoescape feature is currently on or
+      off. Most filters will not use this.
 
-    @see @ref autoescaping
-  */
-  virtual QVariant doFilter(const QVariant &input,
-                            const QVariant &argument = {},
-                            bool autoescape = {}) const = 0;
+      @see @ref autoescaping
+    */
+    virtual QVariant doFilter(const QVariant &input, const QVariant &argument = {}, bool autoescape = {}) const = 0;
 
-  /**
-    Reimplement to return whether this filter is safe.
-  */
-  virtual bool isSafe() const;
+    /**
+      Reimplement to return whether this filter is safe.
+    */
+    virtual bool isSafe() const;
 
 private:
 #ifndef K_DOXYGEN
-  OutputStream *m_stream;
+    OutputStream *m_stream;
 #endif
 };
 }

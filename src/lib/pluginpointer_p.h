@@ -32,44 +32,65 @@ namespace KTextTemplate
 
   @author Stephen Kelly <steveire@gmail.com>
 */
-template <typename PluginType> class PluginPointer
+template<typename PluginType>
+class PluginPointer
 {
-  class _Dummy;
+    class _Dummy;
 
 public:
-  // This allows returning 0 from a function returning a PluginType*
-  PluginPointer(_Dummy * = {}) : m_plugin(nullptr) {}
+    // This allows returning 0 from a function returning a PluginType*
+    PluginPointer(_Dummy * = {})
+        : m_plugin(nullptr)
+    {
+    }
 
-  explicit PluginPointer(const QString &fileName) : m_object(nullptr), m_plugin(nullptr)
-  {
-    m_pluginLoader = QSharedPointer<QPluginLoader>(new QPluginLoader(fileName));
+    explicit PluginPointer(const QString &fileName)
+        : m_object(nullptr)
+        , m_plugin(nullptr)
+    {
+        m_pluginLoader = QSharedPointer<QPluginLoader>(new QPluginLoader(fileName));
 
-    // This causes a load of the plugin, and we never call unload() to
-    // unload
-    // it. Unloading it would cause the destructors of all types defined in
-    // plugins
-    // to be unreachable. If a Template object outlives the last engine,
-    // that
-    // causes segfaults if the plugin has been unloaded.
-    m_object = m_pluginLoader->instance();
+        // This causes a load of the plugin, and we never call unload() to
+        // unload
+        // it. Unloading it would cause the destructors of all types defined in
+        // plugins
+        // to be unreachable. If a Template object outlives the last engine,
+        // that
+        // causes segfaults if the plugin has been unloaded.
+        m_object = m_pluginLoader->instance();
 
-    m_plugin = qobject_cast<PluginType *>(m_object);
-  }
+        m_plugin = qobject_cast<PluginType *>(m_object);
+    }
 
-  QString errorString() { return m_pluginLoader->errorString(); }
+    QString errorString()
+    {
+        return m_pluginLoader->errorString();
+    }
 
-  QObject *object() { return m_object; }
+    QObject *object()
+    {
+        return m_object;
+    }
 
-  PluginType *operator->() { return m_plugin; }
+    PluginType *operator->()
+    {
+        return m_plugin;
+    }
 
-  operator bool() { return m_plugin ? true : false; }
+    operator bool()
+    {
+        return m_plugin ? true : false;
+    }
 
-  PluginType *data() const { return m_plugin; }
+    PluginType *data() const
+    {
+        return m_plugin;
+    }
 
 private:
-  QObject *m_object;
-  PluginType *m_plugin;
-  QSharedPointer<QPluginLoader> m_pluginLoader;
+    QObject *m_object;
+    PluginType *m_plugin;
+    QSharedPointer<QPluginLoader> m_pluginLoader;
 };
 }
 

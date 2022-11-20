@@ -31,59 +31,60 @@ using namespace KTextTemplate;
 
 class L10nFileSizeNodeFactory : public AbstractNodeFactory
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  L10nFileSizeNodeFactory();
+    L10nFileSizeNodeFactory();
 
-  Node *getNode(const QString &tagContent, Parser *p) const override;
+    Node *getNode(const QString &tagContent, Parser *p) const override;
 };
 
 class L10nFileSizeVarNodeFactory : public AbstractNodeFactory
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  L10nFileSizeVarNodeFactory();
+    L10nFileSizeVarNodeFactory();
 
-  Node *getNode(const QString &tagContent, Parser *p) const override;
+    Node *getNode(const QString &tagContent, Parser *p) const override;
 };
 
 class L10nFileSizeNode : public Node
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  L10nFileSizeNode(const FilterExpression &size,
-                   const FilterExpression &unitSystem,
-                   const FilterExpression &precision,
-                   const FilterExpression &multiplier,
-                   QObject *parent = nullptr);
+    L10nFileSizeNode(const FilterExpression &size,
+                     const FilterExpression &unitSystem,
+                     const FilterExpression &precision,
+                     const FilterExpression &multiplier,
+                     QObject *parent = nullptr);
 
-  void render(OutputStream *stream, Context *c) const override;
+    void render(OutputStream *stream, Context *c) const override;
 
 private:
-  FilterExpression m_size;
-  FilterExpression m_unitSystem;
-  FilterExpression m_precision;
-  FilterExpression m_multiplier;
+    FilterExpression m_size;
+    FilterExpression m_unitSystem;
+    FilterExpression m_precision;
+    FilterExpression m_multiplier;
 };
 
 class L10nFileSizeVarNode : public Node
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  L10nFileSizeVarNode(const FilterExpression &size,
-                      const FilterExpression &unitSystem,
-                      const FilterExpression &precision,
-                      const FilterExpression &multiplier,
-                      const QString &resultName, QObject *parent = nullptr);
+    L10nFileSizeVarNode(const FilterExpression &size,
+                        const FilterExpression &unitSystem,
+                        const FilterExpression &precision,
+                        const FilterExpression &multiplier,
+                        const QString &resultName,
+                        QObject *parent = nullptr);
 
-  void render(OutputStream *stream, Context *c) const override;
+    void render(OutputStream *stream, Context *c) const override;
 
 private:
-  FilterExpression m_size;
-  FilterExpression m_unitSystem;
-  FilterExpression m_precision;
-  FilterExpression m_multiplier;
-  QString m_resultName;
+    FilterExpression m_size;
+    FilterExpression m_unitSystem;
+    FilterExpression m_precision;
+    FilterExpression m_multiplier;
+    QString m_resultName;
 };
 
 #endif

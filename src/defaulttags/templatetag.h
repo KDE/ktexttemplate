@@ -27,30 +27,30 @@ using namespace KTextTemplate;
 
 class TemplateTagNodeFactory : public AbstractNodeFactory
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  TemplateTagNodeFactory();
+    TemplateTagNodeFactory();
 
-  Node *getNode(const QString &tagContent, Parser *p) const override;
+    Node *getNode(const QString &tagContent, Parser *p) const override;
 };
 
 class TemplateTagNode : public Node
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  /**
-  The expression.
-  Nodes to render if the expression is true
-  Nodes to render if the expression is false
-  */
-  explicit TemplateTagNode(const QString &tagName, QObject *parent = {});
+    /**
+    The expression.
+    Nodes to render if the expression is true
+    Nodes to render if the expression is false
+    */
+    explicit TemplateTagNode(const QString &tagName, QObject *parent = {});
 
-  void render(OutputStream *stream, Context *c) const override;
+    void render(OutputStream *stream, Context *c) const override;
 
-  static bool isKeyword(const QString &name);
+    static bool isKeyword(const QString &name);
 
 private:
-  QString m_name;
+    QString m_name;
 };
 
 #endif

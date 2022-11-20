@@ -34,18 +34,18 @@ namespace KTextTemplate
   Types of errors that can occur while using %KTextTemplate
 */
 enum Error {
-  NoError,
-  EmptyVariableError,
-  EmptyBlockTagError,
-  InvalidBlockTagError,
-  UnclosedBlockTagError,
-  UnknownFilterError,
-  TagSyntaxError,
-  //   VariableSyntaxError,
+    NoError,
+    EmptyVariableError,
+    EmptyBlockTagError,
+    InvalidBlockTagError,
+    UnclosedBlockTagError,
+    UnknownFilterError,
+    TagSyntaxError,
+    //   VariableSyntaxError,
 
-  VariableNotInContext,
-  ObjectReturnTypeInvalid,
-  CompileFunctionError
+    VariableNotInContext,
+    ObjectReturnTypeInvalid,
+    CompileFunctionError
 };
 
 /// @headerfile exception.h <KTextTemplate/Exception>
@@ -84,36 +84,45 @@ enum Error {
 class KTEXTTEMPLATE_EXPORT Exception
 {
 public:
-  /**
-    Creates an exception for the error @p errorCode and the verbose
-    message @p what
-  */
-  Exception(Error errorCode, const QString &what)
-      : m_errorCode(errorCode), m_what(what)
-  {
-  }
+    /**
+      Creates an exception for the error @p errorCode and the verbose
+      message @p what
+    */
+    Exception(Error errorCode, const QString &what)
+        : m_errorCode(errorCode)
+        , m_what(what)
+    {
+    }
 
-  virtual ~Exception() throw() {}
+    virtual ~Exception() throw()
+    {
+    }
 
 #ifndef K_DOXYGEN
-  /**
-    @internal
+    /**
+      @internal
 
-    Returns the verbose message for the exception.
-  */
-  const QString what() const throw() { return m_what; }
+      Returns the verbose message for the exception.
+    */
+    const QString what() const throw()
+    {
+        return m_what;
+    }
 
-  /**
-    @internal
+    /**
+      @internal
 
-    Returns the error code for the exception.
-  */
-  Error errorCode() const { return m_errorCode; }
+      Returns the error code for the exception.
+    */
+    Error errorCode() const
+    {
+        return m_errorCode;
+    }
 #endif
 
 private:
-  Error m_errorCode;
-  QString m_what;
+    Error m_errorCode;
+    QString m_what;
 };
 }
 

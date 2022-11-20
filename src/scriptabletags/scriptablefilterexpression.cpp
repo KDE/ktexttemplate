@@ -29,43 +29,41 @@
 using namespace KTextTemplate;
 
 ScriptableFilterExpression::ScriptableFilterExpression(QObject *parent)
-    : QObject(parent), m_engine(nullptr)
+    : QObject(parent)
+    , m_engine(nullptr)
 {
 }
 
-ScriptableFilterExpression::ScriptableFilterExpression(QJSEngine *engine,
-                                                       QObject *parent)
-    : QObject(parent), m_engine(engine)
+ScriptableFilterExpression::ScriptableFilterExpression(QJSEngine *engine, QObject *parent)
+    : QObject(parent)
+    , m_engine(engine)
 {
 }
 
-void ScriptableFilterExpression::init(const QString &content,
-                                      KTextTemplate::Parser *parser)
+void ScriptableFilterExpression::init(const QString &content, KTextTemplate::Parser *parser)
 {
-  m_filterExpression = FilterExpression(content, parser);
+    m_filterExpression = FilterExpression(content, parser);
 }
 
 QVariant ScriptableFilterExpression::resolve(ScriptableContext *c)
 {
-  auto var = m_filterExpression.resolve(c->context());
+    auto var = m_filterExpression.resolve(c->context());
 
-  if (KTextTemplate::isSafeString(var)) {
-    auto ssObj = new ScriptableSafeString(m_engine);
-    ssObj->setContent(getSafeString(var));
-    return m_engine->newQObject(ssObj).toVariant();
-  }
-  return var;
+    if (KTextTemplate::isSafeString(var)) {
+        auto ssObj = new ScriptableSafeString(m_engine);
+        ssObj->setContent(getSafeString(var));
+        return m_engine->newQObject(ssObj).toVariant();
+    }
+    return var;
 }
 
 bool ScriptableFilterExpression::isTrue(ScriptableContext *c)
 {
-  return m_filterExpression.isTrue(c->context());
+    return m_filterExpression.isTrue(c->context());
 }
 
-bool ScriptableFilterExpression::equals(ScriptableFilterExpression *other,
-                                        ScriptableContext *scriptableC)
+bool ScriptableFilterExpression::equals(ScriptableFilterExpression *other, ScriptableContext *scriptableC)
 {
-  auto c = scriptableC->context();
-  return KTextTemplate::equals(m_filterExpression.resolve(c),
-                               other->m_filterExpression.resolve(c));
+    auto c = scriptableC->context();
+    return KTextTemplate::equals(m_filterExpression.resolve(c), other->m_filterExpression.resolve(c));
 }

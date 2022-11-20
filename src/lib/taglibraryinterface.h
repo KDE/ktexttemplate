@@ -78,32 +78,32 @@ class Filter;
 class TagLibraryInterface
 {
 public:
-  virtual ~TagLibraryInterface() {}
+    virtual ~TagLibraryInterface()
+    {
+    }
 
-  /**
-    Returns the AbstractNodeFactory implementations available in this library.
-  */
-  virtual QHash<QString, AbstractNodeFactory *>
-  nodeFactories(const QString &name = {})
-  {
-    Q_UNUSED(name);
-    static const QHash<QString, AbstractNodeFactory *> h;
-    return h;
-  };
+    /**
+      Returns the AbstractNodeFactory implementations available in this library.
+    */
+    virtual QHash<QString, AbstractNodeFactory *> nodeFactories(const QString &name = {})
+    {
+        Q_UNUSED(name);
+        static const QHash<QString, AbstractNodeFactory *> h;
+        return h;
+    };
 
-  /**
-    Returns the Filter implementations available in this library.
-  */
-  virtual QHash<QString, Filter *> filters(const QString &name = {})
-  {
-    Q_UNUSED(name);
-    static const QHash<QString, Filter *> h;
-    return h;
-  };
+    /**
+      Returns the Filter implementations available in this library.
+    */
+    virtual QHash<QString, Filter *> filters(const QString &name = {})
+    {
+        Q_UNUSED(name);
+        static const QHash<QString, Filter *> h;
+        return h;
+    };
 };
 }
 
-Q_DECLARE_INTERFACE(KTextTemplate::TagLibraryInterface,
-                    "org.kde.KTextTemplate.TagLibraryInterface/1.0")
+Q_DECLARE_INTERFACE(KTextTemplate::TagLibraryInterface, "org.kde.KTextTemplate.TagLibraryInterface/1.0")
 
 #endif

@@ -27,16 +27,14 @@
 
 class LocalRequestManager : public QNetworkAccessManager
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  LocalRequestManager(KTextTemplate::Engine *engine, QObject *parent = 0);
+    LocalRequestManager(KTextTemplate::Engine *engine, QObject *parent = 0);
 
-  virtual QNetworkReply *createRequest(Operation op,
-                                       const QNetworkRequest &request,
-                                       QIODevice *outgoingData = 0);
+    virtual QNetworkReply *createRequest(Operation op, const QNetworkRequest &request, QIODevice *outgoingData = 0);
 
 private:
-  KTextTemplate::Engine *m_engine;
+    KTextTemplate::Engine *m_engine;
 };
 
 #endif

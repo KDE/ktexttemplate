@@ -25,11 +25,15 @@
 
 #include <unordered_map>
 
-template <typename Key> struct QtHasher {
-  size_t operator()(Key k) const { return qHash(k); }
+template<typename Key>
+struct QtHasher {
+    size_t operator()(Key k) const
+    {
+        return qHash(k);
+    }
 };
 
-template <typename Key, typename Value>
+template<typename Key, typename Value>
 struct QtUnorderedMap : public std::unordered_map<Key, Value, QtHasher<Key>> {
 };
 

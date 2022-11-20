@@ -30,15 +30,13 @@ using namespace KTextTemplate;
 class AddFilter : public Filter
 {
 public:
-  QVariant doFilter(const QVariant &input, const QVariant &argument = {},
-                    bool autoescape = {}) const override;
+    QVariant doFilter(const QVariant &input, const QVariant &argument = {}, bool autoescape = {}) const override;
 };
 
 class GetDigitFilter : public Filter
 {
 public:
-  QVariant doFilter(const QVariant &input, const QVariant &argument = {},
-                    bool autoescape = {}) const override;
+    QVariant doFilter(const QVariant &input, const QVariant &argument = {}, bool autoescape = {}) const override;
 };
 
 #endif

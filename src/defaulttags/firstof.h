@@ -28,22 +28,21 @@ using namespace KTextTemplate;
 class FirstOfNodeFactory : public AbstractNodeFactory
 {
 public:
-  FirstOfNodeFactory();
+    FirstOfNodeFactory();
 
-  Node *getNode(const QString &tagContent, Parser *p) const override;
+    Node *getNode(const QString &tagContent, Parser *p) const override;
 };
 
 class FirstOfNode : public Node
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  explicit FirstOfNode(const QList<FilterExpression> &list,
-                       QObject *parent = {});
+    explicit FirstOfNode(const QList<FilterExpression> &list, QObject *parent = {});
 
-  void render(OutputStream *stream, Context *c) const override;
+    void render(OutputStream *stream, Context *c) const override;
 
 private:
-  QList<FilterExpression> m_variableList;
+    QList<FilterExpression> m_variableList;
 };
 
 #endif

@@ -33,88 +33,78 @@ class Context;
 
 class RssFeedNodeFactory : public KTextTemplate::AbstractNodeFactory
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  RssFeedNodeFactory(QObject *parent = 0);
+    RssFeedNodeFactory(QObject *parent = 0);
 
-  virtual KTextTemplate::Node *getNode(const QString &tagContent,
-                                  KTextTemplate::Parser *p) const;
+    virtual KTextTemplate::Node *getNode(const QString &tagContent, KTextTemplate::Parser *p) const;
 };
 
 class RssFeedNode : public KTextTemplate::Node
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  RssFeedNode(const KTextTemplate::FilterExpression &url,
-              const KTextTemplate::FilterExpression &query, QObject *parent = 0);
+    RssFeedNode(const KTextTemplate::FilterExpression &url, const KTextTemplate::FilterExpression &query, QObject *parent = 0);
 
-  void setChildNodes(QList<Node *> childNodes);
+    void setChildNodes(QList<Node *> childNodes);
 
-  virtual void render(KTextTemplate::OutputStream *stream,
-                      KTextTemplate::Context *c) const;
+    virtual void render(KTextTemplate::OutputStream *stream, KTextTemplate::Context *c) const;
 
 private:
-  KTextTemplate::FilterExpression m_url;
-  KTextTemplate::FilterExpression m_query;
-  QList<Node *> m_childNodes;
+    KTextTemplate::FilterExpression m_url;
+    KTextTemplate::FilterExpression m_query;
+    QList<Node *> m_childNodes;
 };
 
 class XmlRoleNodeFactory : public KTextTemplate::AbstractNodeFactory
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  XmlRoleNodeFactory(QObject *parent = 0);
+    XmlRoleNodeFactory(QObject *parent = 0);
 
-  virtual KTextTemplate::Node *getNode(const QString &tagContent,
-                                  KTextTemplate::Parser *p) const;
+    virtual KTextTemplate::Node *getNode(const QString &tagContent, KTextTemplate::Parser *p) const;
 };
 
 class XmlRoleNode : public KTextTemplate::Node
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  XmlRoleNode(const KTextTemplate::FilterExpression &query, QObject *parent = 0);
+    XmlRoleNode(const KTextTemplate::FilterExpression &query, QObject *parent = 0);
 
-  virtual void render(KTextTemplate::OutputStream *stream,
-                      KTextTemplate::Context *c) const;
+    virtual void render(KTextTemplate::OutputStream *stream, KTextTemplate::Context *c) const;
 
 private:
-  KTextTemplate::FilterExpression m_name;
-  KTextTemplate::FilterExpression m_query;
-  int m_count;
+    KTextTemplate::FilterExpression m_name;
+    KTextTemplate::FilterExpression m_query;
+    int m_count;
 };
 
 class XmlNamespaceNodeFactory : public KTextTemplate::AbstractNodeFactory
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  XmlNamespaceNodeFactory(QObject *parent = 0);
+    XmlNamespaceNodeFactory(QObject *parent = 0);
 
-  virtual KTextTemplate::Node *getNode(const QString &tagContent,
-                                  KTextTemplate::Parser *p) const;
+    virtual KTextTemplate::Node *getNode(const QString &tagContent, KTextTemplate::Parser *p) const;
 };
 
 class XmlNamespaceNode : public KTextTemplate::Node
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  XmlNamespaceNode(const KTextTemplate::FilterExpression &query, const QString &name,
-                   QObject *parent = 0);
+    XmlNamespaceNode(const KTextTemplate::FilterExpression &query, const QString &name, QObject *parent = 0);
 
-  virtual void render(KTextTemplate::OutputStream *stream,
-                      KTextTemplate::Context *c) const;
+    virtual void render(KTextTemplate::OutputStream *stream, KTextTemplate::Context *c) const;
 
 private:
-  QString m_name;
-  KTextTemplate::FilterExpression m_query;
+    QString m_name;
+    KTextTemplate::FilterExpression m_query;
 };
 
 class ResizeFilter : public KTextTemplate::Filter
 {
 public:
-  QVariant doFilter(const QVariant &input,
-                    const QVariant &argument = QVariant(),
-                    bool autoescape = false) const;
+    QVariant doFilter(const QVariant &input, const QVariant &argument = QVariant(), bool autoescape = false) const;
 };
 
 #endif

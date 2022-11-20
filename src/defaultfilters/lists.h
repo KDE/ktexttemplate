@@ -30,91 +30,104 @@ using namespace KTextTemplate;
 class JoinFilter : public Filter
 {
 public:
-  QVariant doFilter(const QVariant &input, const QVariant &argument = {},
-                    bool autoescape = {}) const override;
+    QVariant doFilter(const QVariant &input, const QVariant &argument = {}, bool autoescape = {}) const override;
 
-  bool isSafe() const override { return true; }
+    bool isSafe() const override
+    {
+        return true;
+    }
 };
 
 class LengthFilter : public Filter
 {
 public:
-  QVariant doFilter(const QVariant &input, const QVariant &argument = {},
-                    bool autoescape = {}) const override;
+    QVariant doFilter(const QVariant &input, const QVariant &argument = {}, bool autoescape = {}) const override;
 
-  bool isSafe() const override { return true; }
+    bool isSafe() const override
+    {
+        return true;
+    }
 };
 
 class LengthIsFilter : public Filter
 {
 public:
-  QVariant doFilter(const QVariant &input, const QVariant &argument = {},
-                    bool autoescape = {}) const override;
+    QVariant doFilter(const QVariant &input, const QVariant &argument = {}, bool autoescape = {}) const override;
 
-  bool isSafe() const override { return true; }
+    bool isSafe() const override
+    {
+        return true;
+    }
 };
 
 class FirstFilter : public Filter
 {
 public:
-  QVariant doFilter(const QVariant &input, const QVariant &argument = {},
-                    bool autoescape = {}) const override;
+    QVariant doFilter(const QVariant &input, const QVariant &argument = {}, bool autoescape = {}) const override;
 };
 
 class LastFilter : public Filter
 {
 public:
-  QVariant doFilter(const QVariant &input, const QVariant &argument = {},
-                    bool autoescape = {}) const override;
+    QVariant doFilter(const QVariant &input, const QVariant &argument = {}, bool autoescape = {}) const override;
 };
 
 class RandomFilter : public Filter
 {
 public:
-  QVariant doFilter(const QVariant &input, const QVariant &argument = {},
-                    bool autoescape = {}) const override;
+    QVariant doFilter(const QVariant &input, const QVariant &argument = {}, bool autoescape = {}) const override;
 
-  bool isSafe() const override { return true; }
+    bool isSafe() const override
+    {
+        return true;
+    }
 };
 
 class SliceFilter : public Filter
 {
 public:
-  QVariant doFilter(const QVariant &input, const QVariant &argument = {},
-                    bool autoescape = {}) const override;
+    QVariant doFilter(const QVariant &input, const QVariant &argument = {}, bool autoescape = {}) const override;
 
-  bool isSafe() const override { return true; }
+    bool isSafe() const override
+    {
+        return true;
+    }
 };
 
 class MakeListFilter : public Filter
 {
 public:
-  QVariant doFilter(const QVariant &input, const QVariant &argument = {},
-                    bool autoescape = {}) const override;
+    QVariant doFilter(const QVariant &input, const QVariant &argument = {}, bool autoescape = {}) const override;
 
-  bool isSafe() const override { return true; }
+    bool isSafe() const override
+    {
+        return true;
+    }
 };
 
 class UnorderedListFilter : public Filter
 {
 public:
-  QVariant doFilter(const QVariant &input, const QVariant &argument = {},
-                    bool autoescape = {}) const override;
+    QVariant doFilter(const QVariant &input, const QVariant &argument = {}, bool autoescape = {}) const override;
 
-  bool isSafe() const override { return true; }
+    bool isSafe() const override
+    {
+        return true;
+    }
 
 protected:
-  SafeString processList(const QVariantList &list, int tabs,
-                         bool autoescape) const;
+    SafeString processList(const QVariantList &list, int tabs, bool autoescape) const;
 };
 
 class DictSortFilter : public Filter
 {
 public:
-  QVariant doFilter(const QVariant &input, const QVariant &argument = {},
-                    bool autoescape = {}) const override;
+    QVariant doFilter(const QVariant &input, const QVariant &argument = {}, bool autoescape = {}) const override;
 
-  bool isSafe() const override { return false; }
+    bool isSafe() const override
+    {
+        return false;
+    }
 };
 
 #endif

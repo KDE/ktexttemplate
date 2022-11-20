@@ -25,16 +25,16 @@
 
 class MethodTableView : public QTableView
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  MethodTableView(QWidget *parent = 0);
+    MethodTableView(QWidget *parent = 0);
 };
 
 class ArgsTableView : public QTableView
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  ArgsTableView(QWidget *parent = 0);
+    ArgsTableView(QWidget *parent = 0);
 };
 
 #endif

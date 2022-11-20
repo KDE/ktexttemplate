@@ -27,23 +27,23 @@ using namespace KTextTemplate;
 
 class NowNodeFactory : public AbstractNodeFactory
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  NowNodeFactory();
+    NowNodeFactory();
 
-  Node *getNode(const QString &tagContent, Parser *p) const override;
+    Node *getNode(const QString &tagContent, Parser *p) const override;
 };
 
 class NowNode : public Node
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  explicit NowNode(const QString &formatString, QObject *parent = {});
+    explicit NowNode(const QString &formatString, QObject *parent = {});
 
-  void render(OutputStream *stream, Context *c) const override;
+    void render(OutputStream *stream, Context *c) const override;
 
 private:
-  QString m_formatString;
+    QString m_formatString;
 };
 
 #endif

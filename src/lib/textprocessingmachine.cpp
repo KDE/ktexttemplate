@@ -24,27 +24,26 @@ using namespace KTextTemplate;
 
 void TextProcessingMachine::processCharacter(QString::const_iterator character)
 {
-  auto s = currentState();
-  while (s) {
-    if (!doProcessCharacter(character, s)) {
-      s = s->parent();
-    } else {
-      return;
+    auto s = currentState();
+    while (s) {
+        if (!doProcessCharacter(character, s)) {
+            s = s->parent();
+        } else {
+            return;
+        }
     }
-  }
 }
 
-bool TextProcessingMachine::doProcessCharacter(
-    QString::const_iterator character, State<CharTransitionInterface> *state)
+bool TextProcessingMachine::doProcessCharacter(QString::const_iterator character, State<CharTransitionInterface> *state)
 {
-  const auto transitions = state->transitions();
-  auto it = transitions.constBegin();
-  const auto end = transitions.constEnd();
-  for (; it != end; ++it) {
-    if ((*it)->characterTest(character)) {
-      executeTransition(state, *it);
-      return true;
+    const auto transitions = state->transitions();
+    auto it = transitions.constBegin();
+    const auto end = transitions.constEnd();
+    for (; it != end; ++it) {
+        if ((*it)->characterTest(character)) {
+            executeTransition(state, *it);
+            return true;
+        }
     }
-  }
-  return false;
+    return false;
 }

@@ -46,36 +46,36 @@ class RenderContextPrivate;
 class KTEXTTEMPLATE_EXPORT RenderContext
 {
 public:
-  /**
-    Returns the data for the node @p scopeNode.
-   */
-  QVariant &data(const Node *const scopeNode);
+    /**
+      Returns the data for the node @p scopeNode.
+     */
+    QVariant &data(const Node *const scopeNode);
 
-  /**
-    Returns whether the **%RenderContext** contains data for @p scopeNode.
-   */
-  bool contains(Node *const scopeNode) const;
+    /**
+      Returns whether the **%RenderContext** contains data for @p scopeNode.
+     */
+    bool contains(Node *const scopeNode) const;
 
-  /**
-    Destructor
-   */
-  ~RenderContext();
+    /**
+      Destructor
+     */
+    ~RenderContext();
 
 #ifndef K_DOXYGEN
 private:
-  RenderContext();
+    RenderContext();
 
-  void push();
+    void push();
 
-  void pop();
+    void pop();
 
 private:
-  friend class ContextPrivate;
-  friend class TemplateImpl;
+    friend class ContextPrivate;
+    friend class TemplateImpl;
 
-  Q_DISABLE_COPY(RenderContext)
-  Q_DECLARE_PRIVATE(RenderContext)
-  RenderContextPrivate *const d_ptr;
+    Q_DISABLE_COPY(RenderContext)
+    Q_DECLARE_PRIVATE(RenderContext)
+    RenderContextPrivate *const d_ptr;
 #endif
 };
 }

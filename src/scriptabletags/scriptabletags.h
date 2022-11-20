@@ -34,55 +34,50 @@ class Engine;
 
 class ScriptableHelperFunctions : public QObject
 {
-  Q_OBJECT
-  QJSEngine *m_scriptEngine;
+    Q_OBJECT
+    QJSEngine *m_scriptEngine;
 
 public:
-  ScriptableHelperFunctions(QJSEngine *scriptEngine)
-      : m_scriptEngine(scriptEngine)
-  {
-  }
+    ScriptableHelperFunctions(QJSEngine *scriptEngine)
+        : m_scriptEngine(scriptEngine)
+    {
+    }
 
-  Q_INVOKABLE QJSValue markSafeFunction(QJSValue inputValue);
-  Q_INVOKABLE QJSValue ScriptableFilterExpressionConstructor(QString name,
-                                                             QObject *parserObj
-                                                             = {});
-  Q_INVOKABLE QJSValue ScriptableNodeConstructor(QJSValue callContext);
-  Q_INVOKABLE QJSValue ScriptableVariableConstructor(QString name);
-  Q_INVOKABLE QJSValue ScriptableTemplateConstructor(QString content,
-                                                     QString name,
-                                                     QObject *parent);
+    Q_INVOKABLE QJSValue markSafeFunction(QJSValue inputValue);
+    Q_INVOKABLE QJSValue ScriptableFilterExpressionConstructor(QString name, QObject *parserObj = {});
+    Q_INVOKABLE QJSValue ScriptableNodeConstructor(QJSValue callContext);
+    Q_INVOKABLE QJSValue ScriptableVariableConstructor(QString name);
+    Q_INVOKABLE QJSValue ScriptableTemplateConstructor(QString content, QString name, QObject *parent);
 };
 
 class ScriptableTagLibrary : public QObject, public TagLibraryInterface
 {
-  Q_OBJECT
-  Q_INTERFACES(KTextTemplate::TagLibraryInterface)
-  Q_PLUGIN_METADATA(IID "org.kde.KTextTemplate.TagLibraryInterface")
+    Q_OBJECT
+    Q_INTERFACES(KTextTemplate::TagLibraryInterface)
+    Q_PLUGIN_METADATA(IID "org.kde.KTextTemplate.TagLibraryInterface")
 public:
-  ScriptableTagLibrary(QObject *parent = {});
+    ScriptableTagLibrary(QObject *parent = {});
 
-  QHash<QString, AbstractNodeFactory *> nodeFactories(const QString &name
-                                                      = {}) override;
+    QHash<QString, AbstractNodeFactory *> nodeFactories(const QString &name = {}) override;
 
-  QHash<QString, Filter *> filters(const QString &name = {}) override;
+    QHash<QString, Filter *> filters(const QString &name = {}) override;
 
 public Q_SLOTS:
-  void addFactory(const QString &factoryName, const QString &tagname);
-  void addFilter(const QString &filterName);
+    void addFactory(const QString &factoryName, const QString &tagname);
+    void addFilter(const QString &filterName);
 
 protected:
-  bool evaluateScript(const QString &name);
-  QHash<QString, AbstractNodeFactory *> getFactories();
-  QHash<QString, Filter *> getFilters();
+    bool evaluateScript(const QString &name);
+    QHash<QString, AbstractNodeFactory *> getFactories();
+    QHash<QString, Filter *> getFilters();
 
 private:
-  QJSEngine *m_scriptEngine;
-  QJSValue m_functions;
-  QHash<QString, AbstractNodeFactory *> m_nodeFactories;
-  QHash<QString, QString> m_factoryNames;
-  QStringList m_filterNames;
-  QHash<QString, Filter *> m_filters;
+    QJSEngine *m_scriptEngine;
+    QJSValue m_functions;
+    QHash<QString, AbstractNodeFactory *> m_nodeFactories;
+    QHash<QString, QString> m_factoryNames;
+    QStringList m_filterNames;
+    QHash<QString, Filter *> m_filters;
 };
 }
 

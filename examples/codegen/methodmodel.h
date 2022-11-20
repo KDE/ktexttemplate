@@ -26,19 +26,18 @@
 
 class MethodModel : public QStandardItemModel
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  MethodModel(QObject *parent = 0);
+    MethodModel(QObject *parent = 0);
 };
 
 class ArgsModel : public QSortFilterProxyModel
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  ArgsModel(QObject *parent = 0);
+    ArgsModel(QObject *parent = 0);
 
-  virtual QVariant headerData(int section, Qt::Orientation orientation,
-                              int role = Qt::DisplayRole) const;
+    virtual QVariant headerData(int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const;
 };
 
 #endif

@@ -32,48 +32,45 @@ using namespace KTextTemplate;
 
 class L10nMoneyNodeFactory : public AbstractNodeFactory
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  L10nMoneyNodeFactory();
+    L10nMoneyNodeFactory();
 
-  Node *getNode(const QString &tagContent, Parser *p) const override;
+    Node *getNode(const QString &tagContent, Parser *p) const override;
 };
 
 class L10nMoneyVarNodeFactory : public AbstractNodeFactory
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  L10nMoneyVarNodeFactory();
+    L10nMoneyVarNodeFactory();
 
-  Node *getNode(const QString &tagContent, Parser *p) const override;
+    Node *getNode(const QString &tagContent, Parser *p) const override;
 };
 
 class L10nMoneyNode : public Node
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  L10nMoneyNode(const FilterExpression &value, const FilterExpression &currency,
-                QObject *parent = {});
-  void render(OutputStream *stream, Context *c) const override;
+    L10nMoneyNode(const FilterExpression &value, const FilterExpression &currency, QObject *parent = {});
+    void render(OutputStream *stream, Context *c) const override;
 
 private:
-  FilterExpression m_value;
-  FilterExpression m_currency;
+    FilterExpression m_value;
+    FilterExpression m_currency;
 };
 
 class L10nMoneyVarNode : public Node
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  L10nMoneyVarNode(const FilterExpression &value,
-                   const FilterExpression &currency, const QString &resultName,
-                   QObject *parent = {});
-  void render(OutputStream *stream, Context *c) const override;
+    L10nMoneyVarNode(const FilterExpression &value, const FilterExpression &currency, const QString &resultName, QObject *parent = {});
+    void render(OutputStream *stream, Context *c) const override;
 
 private:
-  FilterExpression m_value;
-  FilterExpression m_currency;
-  QString m_resultName;
+    FilterExpression m_value;
+    FilterExpression m_currency;
+    QString m_resultName;
 };
 
 #endif

@@ -32,33 +32,31 @@ class MethodModel;
 
 class DesignWidget : public QWidget
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  DesignWidget(QWidget *parent = 0, Qt::WindowFlags f = 0);
+    DesignWidget(QWidget *parent = 0, Qt::WindowFlags f = 0);
 
-  KTextTemplate::Context getContext();
+    KTextTemplate::Context getContext();
 
-  QString outputType() const;
+    QString outputType() const;
 
 Q_SIGNALS:
-  void generateClicked(bool clicked);
+    void generateClicked(bool clicked);
 
 private:
-  void setInitialContent();
-  void insertProperty(int row, const QString &type, const QString &name,
-                      bool readonly);
-  void insertMethod(const QString &access, bool _virtual, const QString &type,
-                    const QString &name, bool _const,
-                    QList<QStringList> args = QList<QStringList>());
+    void setInitialContent();
+    void insertProperty(int row, const QString &type, const QString &name, bool readonly);
+    void
+    insertMethod(const QString &access, bool _virtual, const QString &type, const QString &name, bool _const, QList<QStringList> args = QList<QStringList>());
 
 private Q_SLOTS:
-  void setArgsRootIndex(const QModelIndex &index);
+    void setArgsRootIndex(const QModelIndex &index);
 
 private:
-  Ui::DesignWidget ui;
+    Ui::DesignWidget ui;
 
-  MethodModel *m_methodModel;
-  ArgsModel *m_argsModel;
+    MethodModel *m_methodModel;
+    ArgsModel *m_argsModel;
 };
 
 #endif

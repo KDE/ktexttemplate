@@ -30,31 +30,33 @@
 
 class TemplateReply : public QNetworkReply
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  TemplateReply(const QNetworkRequest &req,
-                const QNetworkAccessManager::Operation op, KTextTemplate::Template t,
-                KTextTemplate::Context c, QObject *parent = 0);
+    TemplateReply(const QNetworkRequest &req,
+                  const QNetworkAccessManager::Operation op,
+                  KTextTemplate::Template t,
+                  KTextTemplate::Context c,
+                  QObject *parent = 0);
 
-  virtual void abort();
-  virtual qint64 readData(char *data, qint64 maxlen);
-  virtual bool atEnd() const;
-  virtual qint64 bytesAvailable() const;
-  virtual bool canReadLine() const;
-  virtual void close();
-  virtual bool isSequential() const;
-  virtual qint64 pos() const;
-  virtual bool reset();
-  virtual bool seek(qint64 pos);
-  virtual void setReadBufferSize(qint64 size);
-  virtual qint64 size() const;
-  virtual bool waitForReadyRead(int msecs);
-  virtual bool open(OpenMode mode);
+    virtual void abort();
+    virtual qint64 readData(char *data, qint64 maxlen);
+    virtual bool atEnd() const;
+    virtual qint64 bytesAvailable() const;
+    virtual bool canReadLine() const;
+    virtual void close();
+    virtual bool isSequential() const;
+    virtual qint64 pos() const;
+    virtual bool reset();
+    virtual bool seek(qint64 pos);
+    virtual void setReadBufferSize(qint64 size);
+    virtual qint64 size() const;
+    virtual bool waitForReadyRead(int msecs);
+    virtual bool open(OpenMode mode);
 
 private:
-  KTextTemplate::Template m_t;
-  KTextTemplate::Context m_c;
-  QBuffer *m_buffer;
+    KTextTemplate::Template m_t;
+    KTextTemplate::Context m_c;
+    QBuffer *m_buffer;
 };
 
 #endif

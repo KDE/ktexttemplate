@@ -31,18 +31,21 @@
 Q_LOGGING_CATEGORY(KTEXTTEMPLATE_LOCALIZER, "kf.texttemplate.qtlocalizer")
 
 struct Locale {
-  explicit Locale(const QLocale &_locale) : locale(_locale) {}
+    explicit Locale(const QLocale &_locale)
+        : locale(_locale)
+    {
+    }
 
-  ~Locale()
-  {
-    qDeleteAll(systemTranslators);
-    qDeleteAll(themeTranslators);
-  }
+    ~Locale()
+    {
+        qDeleteAll(systemTranslators);
+        qDeleteAll(themeTranslators);
+    }
 
-  const QLocale locale;
-  QVector<QTranslator *> externalSystemTranslators; // Not owned by us!
-  QVector<QTranslator *> systemTranslators;
-  QVector<QTranslator *> themeTranslators;
+    const QLocale locale;
+    QVector<QTranslator *> externalSystemTranslators; // Not owned by us!
+    QVector<QTranslator *> systemTranslators;
+    QVector<QTranslator *> themeTranslators;
 };
 
 namespace KTextTemplate
@@ -50,40 +53,40 @@ namespace KTextTemplate
 
 class QtLocalizerPrivate
 {
-  QtLocalizerPrivate(QtLocalizer *qq, const QLocale &locale) : q_ptr(qq)
-  {
-    auto localeStruct = new Locale(locale);
-    m_availableLocales.insert(locale.name(), localeStruct);
-    m_locales.push_back(localeStruct);
-  }
-
-  ~QtLocalizerPrivate()
-  {
-    m_locales.clear();
-    qDeleteAll(m_availableLocales);
-  }
-
-  QLocale currentLocale() const
-  {
-    Q_ASSERT(!m_locales.isEmpty());
-    if (m_locales.isEmpty()) {
-      qCWarning(KTEXTTEMPLATE_LOCALIZER) << "Invalid Locale";
-      return {};
+    QtLocalizerPrivate(QtLocalizer *qq, const QLocale &locale)
+        : q_ptr(qq)
+    {
+        auto localeStruct = new Locale(locale);
+        m_availableLocales.insert(locale.name(), localeStruct);
+        m_locales.push_back(localeStruct);
     }
-    return m_locales.last()->locale;
-  }
 
-  Q_DECLARE_PUBLIC(QtLocalizer)
-  QtLocalizer *const q_ptr;
+    ~QtLocalizerPrivate()
+    {
+        m_locales.clear();
+        qDeleteAll(m_availableLocales);
+    }
 
-  QString translate(const QString &input, const QString &context,
-                    int count = -1) const;
+    QLocale currentLocale() const
+    {
+        Q_ASSERT(!m_locales.isEmpty());
+        if (m_locales.isEmpty()) {
+            qCWarning(KTEXTTEMPLATE_LOCALIZER) << "Invalid Locale";
+            return {};
+        }
+        return m_locales.last()->locale;
+    }
 
-  QHash<QString, Locale *> m_availableLocales;
+    Q_DECLARE_PUBLIC(QtLocalizer)
+    QtLocalizer *const q_ptr;
 
-  QList<Locale *> m_locales;
-  QString m_appTranslatorPath;
-  QString m_appTranslatorPrefix;
+    QString translate(const QString &input, const QString &context, int count = -1) const;
+
+    QHash<QString, Locale *> m_availableLocales;
+
+    QList<Locale *> m_locales;
+    QString m_appTranslatorPath;
+    QString m_appTranslatorPrefix;
 };
 }
 
@@ -91,66 +94,59 @@ using namespace KTextTemplate;
 
 static void replacePercentN(QString *result, int n)
 {
-  if (n >= 0) {
-    auto percentPos = 0;
-    auto len = 0;
-    while ((percentPos = result->indexOf(QLatin1Char('%'), percentPos + len))
-           != -1) {
-      len = 1;
-      QString fmt;
-      if (result->at(percentPos + len) == QLatin1Char('L')) {
-        ++len;
-        fmt = QStringLiteral("%L1");
-      } else {
-        fmt = QStringLiteral("%1");
-      }
-      if (result->at(percentPos + len) == QLatin1Char('n')) {
-        fmt = fmt.arg(n);
-        ++len;
-        result->replace(percentPos, len, fmt);
-        len = fmt.length();
-      }
+    if (n >= 0) {
+        auto percentPos = 0;
+        auto len = 0;
+        while ((percentPos = result->indexOf(QLatin1Char('%'), percentPos + len)) != -1) {
+            len = 1;
+            QString fmt;
+            if (result->at(percentPos + len) == QLatin1Char('L')) {
+                ++len;
+                fmt = QStringLiteral("%L1");
+            } else {
+                fmt = QStringLiteral("%1");
+            }
+            if (result->at(percentPos + len) == QLatin1Char('n')) {
+                fmt = fmt.arg(n);
+                ++len;
+                result->replace(percentPos, len, fmt);
+                len = fmt.length();
+            }
+        }
     }
-  }
 }
 
-QString QtLocalizerPrivate::translate(const QString &input,
-                                      const QString &context, int count) const
+QString QtLocalizerPrivate::translate(const QString &input, const QString &context, int count) const
 {
-  QString result;
+    QString result;
 
-  if (m_locales.isEmpty()) {
-    result = input;
-    replacePercentN(&result, count);
-    return result;
-  }
-
-  auto locale = m_locales.last();
-  for (QTranslator *translator : std::as_const(locale->themeTranslators)) {
-    result = translator->translate("GR_FILENAME", input.toUtf8().constData(),
-                                   context.toUtf8().constData(), count);
-  }
-  if (result.isEmpty()) {
-    auto translators
-        = locale->externalSystemTranslators + locale->systemTranslators;
-    if (translators.isEmpty())
-      return QCoreApplication::translate("GR_FILENAME",
-                                         input.toUtf8().constData(),
-                                         context.toUtf8().constData(), count);
-    for (QTranslator *translator : std::as_const(translators)) {
-      result = translator->translate("GR_FILENAME", input.toUtf8().constData(),
-                                     context.toUtf8().constData(), count);
-      if (!result.isEmpty())
-        break;
+    if (m_locales.isEmpty()) {
+        result = input;
+        replacePercentN(&result, count);
+        return result;
     }
-  }
-  if (!result.isEmpty()) {
-    replacePercentN(&result, count);
-    return result;
-  }
-  auto fallback = input;
-  replacePercentN(&fallback, count);
-  return fallback;
+
+    auto locale = m_locales.last();
+    for (QTranslator *translator : std::as_const(locale->themeTranslators)) {
+        result = translator->translate("GR_FILENAME", input.toUtf8().constData(), context.toUtf8().constData(), count);
+    }
+    if (result.isEmpty()) {
+        auto translators = locale->externalSystemTranslators + locale->systemTranslators;
+        if (translators.isEmpty())
+            return QCoreApplication::translate("GR_FILENAME", input.toUtf8().constData(), context.toUtf8().constData(), count);
+        for (QTranslator *translator : std::as_const(translators)) {
+            result = translator->translate("GR_FILENAME", input.toUtf8().constData(), context.toUtf8().constData(), count);
+            if (!result.isEmpty())
+                break;
+        }
+    }
+    if (!result.isEmpty()) {
+        replacePercentN(&result, count);
+        return result;
+    }
+    auto fallback = input;
+    replacePercentN(&fallback, count);
+    return fallback;
 }
 
 QtLocalizer::QtLocalizer(const QLocale &locale)
@@ -158,207 +154,191 @@ QtLocalizer::QtLocalizer(const QLocale &locale)
 {
 }
 
-QtLocalizer::~QtLocalizer() { delete d_ptr; }
+QtLocalizer::~QtLocalizer()
+{
+    delete d_ptr;
+}
 
 void QtLocalizer::setAppTranslatorPath(const QString &path)
 {
-  Q_D(QtLocalizer);
-  d->m_appTranslatorPath = path;
+    Q_D(QtLocalizer);
+    d->m_appTranslatorPath = path;
 }
 
 void QtLocalizer::setAppTranslatorPrefix(const QString &prefix)
 {
-  Q_D(QtLocalizer);
-  d->m_appTranslatorPrefix = prefix;
+    Q_D(QtLocalizer);
+    d->m_appTranslatorPrefix = prefix;
 }
 
-void QtLocalizer::installTranslator(QTranslator *translator,
-                                    const QString &localeName)
+void QtLocalizer::installTranslator(QTranslator *translator, const QString &localeName)
 {
-  Q_D(QtLocalizer);
-  if (!d->m_availableLocales.contains(localeName)) {
-    const QLocale namedLocale(localeName);
-    d->m_availableLocales.insert(localeName, new Locale(namedLocale));
-  }
-  d->m_availableLocales[localeName]->externalSystemTranslators.prepend(
-      translator);
+    Q_D(QtLocalizer);
+    if (!d->m_availableLocales.contains(localeName)) {
+        const QLocale namedLocale(localeName);
+        d->m_availableLocales.insert(localeName, new Locale(namedLocale));
+    }
+    d->m_availableLocales[localeName]->externalSystemTranslators.prepend(translator);
 }
 
-QString QtLocalizer::localizeDate(const QDate &date,
-                                  QLocale::FormatType formatType) const
+QString QtLocalizer::localizeDate(const QDate &date, QLocale::FormatType formatType) const
 {
-  Q_D(const QtLocalizer);
-  return d->currentLocale().toString(date, formatType);
+    Q_D(const QtLocalizer);
+    return d->currentLocale().toString(date, formatType);
 }
 
-QString QtLocalizer::localizeTime(const QTime &time,
-                                  QLocale::FormatType formatType) const
+QString QtLocalizer::localizeTime(const QTime &time, QLocale::FormatType formatType) const
 {
-  Q_D(const QtLocalizer);
-  return d->currentLocale().toString(time, formatType);
+    Q_D(const QtLocalizer);
+    return d->currentLocale().toString(time, formatType);
 }
 
-QString QtLocalizer::localizeDateTime(const QDateTime &dateTime,
-                                      QLocale::FormatType formatType) const
+QString QtLocalizer::localizeDateTime(const QDateTime &dateTime, QLocale::FormatType formatType) const
 {
-  Q_D(const QtLocalizer);
-  return d->currentLocale().toString(dateTime, formatType);
+    Q_D(const QtLocalizer);
+    return d->currentLocale().toString(dateTime, formatType);
 }
 
 QString QtLocalizer::localizeNumber(int number) const
 {
-  Q_D(const QtLocalizer);
-  return d->currentLocale().toString(number);
+    Q_D(const QtLocalizer);
+    return d->currentLocale().toString(number);
 }
 
 QString QtLocalizer::localizeNumber(qreal number) const
 {
-  Q_D(const QtLocalizer);
-  return d->currentLocale().toString(number, 'f', 2);
+    Q_D(const QtLocalizer);
+    return d->currentLocale().toString(number, 'f', 2);
 }
 
-QString QtLocalizer::localizeMonetaryValue(qreal value,
-                                           const QString &currencyCode) const
+QString QtLocalizer::localizeMonetaryValue(qreal value, const QString &currencyCode) const
 {
-  Q_D(const QtLocalizer);
-  auto currencySymbol = QStringLiteral("$");
-  if (currencyCode == QStringLiteral("EUR")) {
-    currencySymbol = QChar(0x20AC);
-  } else if (currencyCode == QStringLiteral("GBP")) {
-    currencySymbol = QStringLiteral("£");
-  } else {
-    currencySymbol = currencyCode;
-  }
-  return currencySymbol + QLatin1Char(' ')
-         + d->currentLocale().toString(value, 'f', 2);
+    Q_D(const QtLocalizer);
+    auto currencySymbol = QStringLiteral("$");
+    if (currencyCode == QStringLiteral("EUR")) {
+        currencySymbol = QChar(0x20AC);
+    } else if (currencyCode == QStringLiteral("GBP")) {
+        currencySymbol = QStringLiteral("£");
+    } else {
+        currencySymbol = currencyCode;
+    }
+    return currencySymbol + QLatin1Char(' ') + d->currentLocale().toString(value, 'f', 2);
 }
 
-static QString substituteArguments(const QString &input,
-                                   const QVariantList &arguments)
+static QString substituteArguments(const QString &input, const QVariantList &arguments)
 {
-  auto string = input;
-  for (const QVariant &arg : arguments) {
-    if (arg.userType() == qMetaTypeId<int>())
-      string = string.arg(arg.value<int>());
-    else if (arg.userType() == qMetaTypeId<double>())
-      string = string.arg(arg.value<double>());
-    else if (arg.userType() == qMetaTypeId<QDateTime>())
-      string = string.arg(arg.value<QDateTime>().toString());
-    else
-      string = string.arg(arg.value<QString>());
-  }
-  return string;
+    auto string = input;
+    for (const QVariant &arg : arguments) {
+        if (arg.userType() == qMetaTypeId<int>())
+            string = string.arg(arg.value<int>());
+        else if (arg.userType() == qMetaTypeId<double>())
+            string = string.arg(arg.value<double>());
+        else if (arg.userType() == qMetaTypeId<QDateTime>())
+            string = string.arg(arg.value<QDateTime>().toString());
+        else
+            string = string.arg(arg.value<QString>());
+    }
+    return string;
 }
 
-QString QtLocalizer::localizeContextString(const QString &string,
-                                           const QString &context,
-                                           const QVariantList &arguments) const
+QString QtLocalizer::localizeContextString(const QString &string, const QString &context, const QVariantList &arguments) const
 {
-  Q_D(const QtLocalizer);
-  const auto translated = d->translate(string, context);
-  return substituteArguments(translated, arguments);
+    Q_D(const QtLocalizer);
+    const auto translated = d->translate(string, context);
+    return substituteArguments(translated, arguments);
 }
 
-QString QtLocalizer::localizeString(const QString &string,
-                                    const QVariantList &arguments) const
+QString QtLocalizer::localizeString(const QString &string, const QVariantList &arguments) const
 {
-  Q_D(const QtLocalizer);
-  const auto translated = d->translate(string, QString());
-  return substituteArguments(translated, arguments);
+    Q_D(const QtLocalizer);
+    const auto translated = d->translate(string, QString());
+    return substituteArguments(translated, arguments);
 }
 
-QString QtLocalizer::localizePluralContextString(
-    const QString &string, const QString &pluralForm, const QString &context,
-    const QVariantList &_arguments) const
+QString QtLocalizer::localizePluralContextString(const QString &string, const QString &pluralForm, const QString &context, const QVariantList &_arguments) const
 {
-  Q_UNUSED(pluralForm)
-  Q_D(const QtLocalizer);
-  auto arguments = _arguments;
-  const auto N = arguments.takeFirst().toInt();
-  const auto translated = d->translate(string, context, N);
-  return substituteArguments(translated, arguments);
+    Q_UNUSED(pluralForm)
+    Q_D(const QtLocalizer);
+    auto arguments = _arguments;
+    const auto N = arguments.takeFirst().toInt();
+    const auto translated = d->translate(string, context, N);
+    return substituteArguments(translated, arguments);
 }
 
-QString QtLocalizer::localizePluralString(const QString &string,
-                                          const QString &pluralForm,
-                                          const QVariantList &_arguments) const
+QString QtLocalizer::localizePluralString(const QString &string, const QString &pluralForm, const QVariantList &_arguments) const
 {
-  Q_UNUSED(pluralForm)
-  Q_D(const QtLocalizer);
-  auto arguments = _arguments;
-  const auto N = arguments.takeFirst().toInt();
-  const auto translated = d->translate(string, QString(), N);
-  return substituteArguments(translated, arguments);
+    Q_UNUSED(pluralForm)
+    Q_D(const QtLocalizer);
+    auto arguments = _arguments;
+    const auto N = arguments.takeFirst().toInt();
+    const auto translated = d->translate(string, QString(), N);
+    return substituteArguments(translated, arguments);
 }
 
 QString QtLocalizer::currentLocale() const
 {
-  Q_D(const QtLocalizer);
-  return d->currentLocale().name();
+    Q_D(const QtLocalizer);
+    return d->currentLocale().name();
 }
 
 void QtLocalizer::pushLocale(const QString &localeName)
 {
-  Q_D(QtLocalizer);
-  Locale *localeStruct = nullptr;
-  if (!d->m_availableLocales.contains(localeName)) {
-    localeStruct = new Locale(QLocale(localeName));
-    auto qtTranslator = new QTranslator;
-    (void)qtTranslator->load(
-        QStringLiteral("qt_") + localeName,
-        QLibraryInfo::path(QLibraryInfo::TranslationsPath));
-    localeStruct->systemTranslators.append(qtTranslator);
-    auto appTranslator = new QTranslator;
-    (void)appTranslator->load(d->m_appTranslatorPrefix + localeName,
-                              d->m_appTranslatorPath);
-    localeStruct->systemTranslators.append(appTranslator);
-    d->m_availableLocales.insert(localeName, localeStruct);
-  } else {
-    localeStruct = d->m_availableLocales[localeName];
-  }
-  Q_ASSERT(localeStruct);
-  d->m_locales.push_back(localeStruct);
+    Q_D(QtLocalizer);
+    Locale *localeStruct = nullptr;
+    if (!d->m_availableLocales.contains(localeName)) {
+        localeStruct = new Locale(QLocale(localeName));
+        auto qtTranslator = new QTranslator;
+        (void)qtTranslator->load(QStringLiteral("qt_") + localeName, QLibraryInfo::path(QLibraryInfo::TranslationsPath));
+        localeStruct->systemTranslators.append(qtTranslator);
+        auto appTranslator = new QTranslator;
+        (void)appTranslator->load(d->m_appTranslatorPrefix + localeName, d->m_appTranslatorPath);
+        localeStruct->systemTranslators.append(appTranslator);
+        d->m_availableLocales.insert(localeName, localeStruct);
+    } else {
+        localeStruct = d->m_availableLocales[localeName];
+    }
+    Q_ASSERT(localeStruct);
+    d->m_locales.push_back(localeStruct);
 }
 
 void QtLocalizer::popLocale()
 {
-  Q_D(QtLocalizer);
-  Q_ASSERT(!d->m_locales.isEmpty());
-  d->m_locales.takeLast();
+    Q_D(QtLocalizer);
+    Q_ASSERT(!d->m_locales.isEmpty());
+    d->m_locales.takeLast();
 }
 
 void QtLocalizer::loadCatalog(const QString &path, const QString &catalog)
 {
-  Q_D(QtLocalizer);
-  auto it = d->m_availableLocales.constBegin();
-  const auto end = d->m_availableLocales.constEnd();
-  for (; it != end; ++it) {
-    auto translator = new QTranslator();
-    const auto loaded
-        = translator->load(it.key() + QLatin1Char('/') + catalog, path);
-    if (!loaded)
-      continue;
+    Q_D(QtLocalizer);
+    auto it = d->m_availableLocales.constBegin();
+    const auto end = d->m_availableLocales.constEnd();
+    for (; it != end; ++it) {
+        auto translator = new QTranslator();
+        const auto loaded = translator->load(it.key() + QLatin1Char('/') + catalog, path);
+        if (!loaded)
+            continue;
 
-    translator->setObjectName(catalog);
+        translator->setObjectName(catalog);
 
-    it.value()->themeTranslators.prepend(translator);
-  }
+        it.value()->themeTranslators.prepend(translator);
+    }
 }
 
 void QtLocalizer::unloadCatalog(const QString &catalog)
 {
-  Q_D(QtLocalizer);
-  auto it = d->m_availableLocales.constBegin();
-  const auto end = d->m_availableLocales.constEnd();
-  for (; it != end; ++it) {
-    auto tranIt = (*it)->themeTranslators.begin();
-    while (tranIt != (*it)->themeTranslators.end()) {
-      if ((*tranIt)->objectName() == catalog) {
-        delete *tranIt;
-        tranIt = (*it)->themeTranslators.erase(tranIt);
-      } else {
-        ++tranIt;
-      }
+    Q_D(QtLocalizer);
+    auto it = d->m_availableLocales.constBegin();
+    const auto end = d->m_availableLocales.constEnd();
+    for (; it != end; ++it) {
+        auto tranIt = (*it)->themeTranslators.begin();
+        while (tranIt != (*it)->themeTranslators.end()) {
+            if ((*tranIt)->objectName() == catalog) {
+                delete *tranIt;
+                tranIt = (*it)->themeTranslators.erase(tranIt);
+            } else {
+                ++tranIt;
+            }
+        }
     }
-  }
 }

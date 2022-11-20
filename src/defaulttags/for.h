@@ -27,36 +27,35 @@ using namespace KTextTemplate;
 
 class ForNodeFactory : public AbstractNodeFactory
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  ForNodeFactory();
+    ForNodeFactory();
 
-  Node *getNode(const QString &tagContent, Parser *p) const override;
+    Node *getNode(const QString &tagContent, Parser *p) const override;
 };
 
 class ForNode : public Node
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  enum Reversed { IsNotReversed, IsReversed };
+    enum Reversed { IsNotReversed, IsReversed };
 
-  ForNode(const QStringList &loopVars, const FilterExpression &fe, int reversed,
-          QObject *parent = {});
+    ForNode(const QStringList &loopVars, const FilterExpression &fe, int reversed, QObject *parent = {});
 
-  void setLoopList(const NodeList &loopNodeList);
-  void setEmptyList(const NodeList &emptyList);
+    void setLoopList(const NodeList &loopNodeList);
+    void setEmptyList(const NodeList &emptyList);
 
-  void render(OutputStream *stream, Context *c) const override;
+    void render(OutputStream *stream, Context *c) const override;
 
 private:
-  static void insertLoopVariables(Context *c, int listSize, int i);
-  void renderLoop(OutputStream *stream, Context *c) const;
+    static void insertLoopVariables(Context *c, int listSize, int i);
+    void renderLoop(OutputStream *stream, Context *c) const;
 
-  QStringList m_loopVars;
-  FilterExpression m_filterExpression;
-  NodeList m_loopNodeList;
-  NodeList m_emptyNodeList;
-  int m_isReversed;
+    QStringList m_loopVars;
+    FilterExpression m_filterExpression;
+    NodeList m_loopNodeList;
+    NodeList m_emptyNodeList;
+    int m_isReversed;
 };
 
 #endif

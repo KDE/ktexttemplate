@@ -37,40 +37,40 @@ using namespace KTextTemplate;
 
 class ScriptableNode : public Node
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  ScriptableNode(QObject *parent = {});
-  void setScriptEngine(QJSEngine *engine);
-  void init(const QJSValue &concreteNode, const QJSValue &renderMethod);
+    ScriptableNode(QObject *parent = {});
+    void setScriptEngine(QJSEngine *engine);
+    void init(const QJSValue &concreteNode, const QJSValue &renderMethod);
 
-  QJSEngine *engine();
+    QJSEngine *engine();
 
-  void render(OutputStream *stream, Context *c) const override;
+    void render(OutputStream *stream, Context *c) const override;
 
 private:
-  QJSEngine *m_scriptEngine;
-  QJSValue m_concreteNode;
-  QJSValue m_renderMethod;
+    QJSEngine *m_scriptEngine;
+    QJSValue m_concreteNode;
+    QJSValue m_renderMethod;
 
 public Q_SLOTS:
-  void setNodeList(const QString &name, const QList<QObject *> &);
+    void setNodeList(const QString &name, const QList<QObject *> &);
 };
 
 class ScriptableNodeFactory : public AbstractNodeFactory
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  ScriptableNodeFactory(QObject *parent = {});
-  void setScriptEngine(QJSEngine *engine);
+    ScriptableNodeFactory(QObject *parent = {});
+    void setScriptEngine(QJSEngine *engine);
 
-  void setEngine(KTextTemplate::Engine *engine) override;
-  void setFactory(const QJSValue &factoryMethod);
+    void setEngine(KTextTemplate::Engine *engine) override;
+    void setFactory(const QJSValue &factoryMethod);
 
-  Node *getNode(const QString &tagContent, Parser *p = {}) const override;
+    Node *getNode(const QString &tagContent, Parser *p = {}) const override;
 
 private:
-  QJSEngine *m_scriptEngine;
-  QJSValue m_factoryMethod;
+    QJSEngine *m_scriptEngine;
+    QJSValue m_factoryMethod;
 };
 
 #endif

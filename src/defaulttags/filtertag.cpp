@@ -26,52 +26,48 @@
 
 FilterNodeFactory::FilterNodeFactory() = default;
 
-KTextTemplate::Node *FilterNodeFactory::getNode(const QString &tagContent,
-                                                KTextTemplate::Parser *p) const
+KTextTemplate::Node *FilterNodeFactory::getNode(const QString &tagContent, KTextTemplate::Parser *p) const
 {
-  auto expr = tagContent.split(QLatin1Char(' '),
-                               Qt::SkipEmptyParts
-  );
+    auto expr = tagContent.split(QLatin1Char(' '), Qt::SkipEmptyParts);
 
-  expr.removeFirst();
+    expr.removeFirst();
 
-  auto expression = expr.join(QChar::fromLatin1(' '));
-  FilterExpression fe(QStringLiteral("var|%1").arg(expression), p);
+    auto expression = expr.join(QChar::fromLatin1(' '));
+    FilterExpression fe(QStringLiteral("var|%1").arg(expression), p);
 
-  auto filters = fe.filters();
-  if (filters.contains(QStringLiteral("safe"))
-      || filters.contains(QStringLiteral("escape"))) {
-    throw KTextTemplate::Exception(
-        TagSyntaxError, QStringLiteral("Use the \"autoescape\" tag instead."));
-  }
+    auto filters = fe.filters();
+    if (filters.contains(QStringLiteral("safe")) || filters.contains(QStringLiteral("escape"))) {
+        throw KTextTemplate::Exception(TagSyntaxError, QStringLiteral("Use the \"autoescape\" tag instead."));
+    }
 
-  auto n = new FilterNode(fe, p);
+    auto n = new FilterNode(fe, p);
 
-  auto filterNodes = p->parse(n, QStringLiteral("endfilter"));
-  p->removeNextToken();
+    auto filterNodes = p->parse(n, QStringLiteral("endfilter"));
+    p->removeNextToken();
 
-  n->setNodeList(filterNodes);
-  return n;
+    n->setNodeList(filterNodes);
+    return n;
 }
 
 FilterNode::FilterNode(const FilterExpression &fe, QObject *parent)
-    : Node(parent), m_fe(fe)
+    : Node(parent)
+    , m_fe(fe)
 {
 }
 
 void FilterNode::setNodeList(const NodeList &filterList)
 {
-  m_filterList = filterList;
+    m_filterList = filterList;
 }
 
 void FilterNode::render(OutputStream *stream, Context *c) const
 {
-  QString output;
-  QTextStream textStream(&output);
-  auto temp = stream->clone(&textStream);
-  m_filterList.render(temp.data(), c);
-  c->push();
-  c->insert(QStringLiteral("var"), output);
-  m_fe.resolve(stream, c);
-  c->pop();
+    QString output;
+    QTextStream textStream(&output);
+    auto temp = stream->clone(&textStream);
+    m_filterList.render(temp.data(), c);
+    c->push();
+    c->insert(QStringLiteral("var"), output);
+    m_fe.resolve(stream, c);
+    c->pop();
 }

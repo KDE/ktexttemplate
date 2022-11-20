@@ -34,24 +34,24 @@ class Engine;
 
 class MainWindow : public QMainWindow
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  MainWindow(QWidget *parent = 0, Qt::WindowFlags flags = 0);
-  virtual ~MainWindow();
+    MainWindow(QWidget *parent = 0, Qt::WindowFlags flags = 0);
+    virtual ~MainWindow();
 
 private Q_SLOTS:
-  void generateOutput();
+    void generateOutput();
 
 private:
-  void createOutputTab(const QString &label, const QString &content);
+    void createOutputTab(const QString &label, const QString &content);
 
-  void generateCpp();
+    void generateCpp();
 
 private:
-  DesignWidget *m_designWidget;
-  KTextTemplate::Engine *m_engine;
-  QSharedPointer<KTextTemplate::FileSystemTemplateLoader> m_loader;
-  QTabWidget *m_tabWidget;
+    DesignWidget *m_designWidget;
+    KTextTemplate::Engine *m_engine;
+    QSharedPointer<KTextTemplate::FileSystemTemplateLoader> m_loader;
+    QTabWidget *m_tabWidget;
 };
 
 #endif

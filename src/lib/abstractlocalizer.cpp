@@ -32,18 +32,17 @@ AbstractLocalizer::~AbstractLocalizer() = default;
 
 QString AbstractLocalizer::localize(const QVariant &variant) const
 {
-  if (variant.userType() == qMetaTypeId<QDate>())
-    return localizeDate(variant.value<QDate>());
-  if (variant.userType() == qMetaTypeId<QTime>())
-    return localizeTime(variant.value<QTime>());
-  if (variant.userType() == qMetaTypeId<QDateTime>())
-    return localizeDateTime(variant.value<QDateTime>());
-  if (isSafeString(variant))
-    return localizeString(getSafeString(variant).get());
-  if (variant.userType() == qMetaTypeId<double>()
-      || variant.userType() == qMetaTypeId<float>())
-    return localizeNumber(variant.value<double>());
-  if (variant.canConvert<int>())
-    return localizeNumber(variant.value<int>());
-  return {};
+    if (variant.userType() == qMetaTypeId<QDate>())
+        return localizeDate(variant.value<QDate>());
+    if (variant.userType() == qMetaTypeId<QTime>())
+        return localizeTime(variant.value<QTime>());
+    if (variant.userType() == qMetaTypeId<QDateTime>())
+        return localizeDateTime(variant.value<QDateTime>());
+    if (isSafeString(variant))
+        return localizeString(getSafeString(variant).get());
+    if (variant.userType() == qMetaTypeId<double>() || variant.userType() == qMetaTypeId<float>())
+        return localizeNumber(variant.value<double>());
+    if (variant.canConvert<int>())
+        return localizeNumber(variant.value<int>());
+    return {};
 }

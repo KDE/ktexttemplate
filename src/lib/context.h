@@ -117,166 +117,165 @@ class ContextPrivate;
 class KTEXTTEMPLATE_EXPORT Context
 {
 public:
-  /**
-    Creates an empty context
-  */
-  Context();
-  /**
-    Sets every key in the hash as a property name with the variant as the
-    value.
-  */
-  explicit Context(const QVariantHash &hash);
+    /**
+      Creates an empty context
+    */
+    Context();
+    /**
+      Sets every key in the hash as a property name with the variant as the
+      value.
+    */
+    explicit Context(const QVariantHash &hash);
 
-  /**
-    Copy Constructor
-  */
-  Context(const Context &other);
+    /**
+      Copy Constructor
+    */
+    Context(const Context &other);
 
-  /**
-    Assignmant operator
-  */
-  Context &operator=(const Context &other);
-
-#ifndef K_DOXYGEN
-  /**
-    @internal
-
-    Whether to automatically escape all context content. This is not usually
-    used directly. Use the @gr_tag{autoescape} tag instead.
-  */
-  bool autoEscape() const;
-
-  /**
-    @internal
-
-    Sets whether to automatically escape all context content. This is not
-    usually used directly. Use the @gr_tag{autoescape} tag instead.
-  */
-  void setAutoEscape(bool autoescape);
-#endif
-  /**
-    Destructor
-  */
-  ~Context();
-
-  /**
-    Returns the context object identified by the key @p str
-  */
-  QVariant lookup(const QString &str) const;
-
-  /**
-    Insert the context object @p object identified by @p name into
-    the **%Context**.
-  */
-  void insert(const QString &name, QObject *object);
-
-  /**
-    Insert the context object @p variant identified by @p name into
-    the **%Context**.
-  */
-  void insert(const QString &name, const QVariant &variant);
-
-  /**
-    Pushes a new context.
-    @see @ref context_stack
-  */
-  void push();
-
-  /**
-    Pops the context.
-    @see @ref context_stack
-  */
-  void pop();
+    /**
+      Assignmant operator
+    */
+    Context &operator=(const Context &other);
 
 #ifndef K_DOXYGEN
-  /**
-    @internal Returns the context hash at depth @p depth.
-  */
-  QVariantHash stackHash(int depth) const;
+    /**
+      @internal
 
-  /**
-    @internal
-    Returns whether template being rendered is being mutated.
-  */
-  bool isMutating() const;
+      Whether to automatically escape all context content. This is not usually
+      used directly. Use the @gr_tag{autoescape} tag instead.
+    */
+    bool autoEscape() const;
 
-  /**
-    @internal
-    Sets whether template being rendered is being mutated to @p mutating.
-  */
-  void setMutating(bool mutating);
+    /**
+      @internal
 
-  /**
-    @internal
-  */
-  void addExternalMedia(const QString &absolutePart,
-                        const QString &relativePart);
+      Sets whether to automatically escape all context content. This is not
+      usually used directly. Use the @gr_tag{autoescape} tag instead.
+    */
+    void setAutoEscape(bool autoescape);
+#endif
+    /**
+      Destructor
+    */
+    ~Context();
 
-  /**
-    @internal
-  */
-  void clearExternalMedia();
+    /**
+      Returns the context object identified by the key @p str
+    */
+    QVariant lookup(const QString &str) const;
+
+    /**
+      Insert the context object @p object identified by @p name into
+      the **%Context**.
+    */
+    void insert(const QString &name, QObject *object);
+
+    /**
+      Insert the context object @p variant identified by @p name into
+      the **%Context**.
+    */
+    void insert(const QString &name, const QVariant &variant);
+
+    /**
+      Pushes a new context.
+      @see @ref context_stack
+    */
+    void push();
+
+    /**
+      Pops the context.
+      @see @ref context_stack
+    */
+    void pop();
+
+#ifndef K_DOXYGEN
+    /**
+      @internal Returns the context hash at depth @p depth.
+    */
+    QVariantHash stackHash(int depth) const;
+
+    /**
+      @internal
+      Returns whether template being rendered is being mutated.
+    */
+    bool isMutating() const;
+
+    /**
+      @internal
+      Sets whether template being rendered is being mutated to @p mutating.
+    */
+    void setMutating(bool mutating);
+
+    /**
+      @internal
+    */
+    void addExternalMedia(const QString &absolutePart, const QString &relativePart);
+
+    /**
+      @internal
+    */
+    void clearExternalMedia();
 #endif
 
-  /**
-    Sets the @p localizer to be used.
+    /**
+      Sets the @p localizer to be used.
 
-    The **%Context** takes ownerwhip of the localizer.
-  */
-  void setLocalizer(QSharedPointer<AbstractLocalizer> localizer);
+      The **%Context** takes ownerwhip of the localizer.
+    */
+    void setLocalizer(QSharedPointer<AbstractLocalizer> localizer);
 
-  /**
-    Returns the localizer currently in use.
-  */
-  QSharedPointer<AbstractLocalizer> localizer() const;
+    /**
+      Returns the localizer currently in use.
+    */
+    QSharedPointer<AbstractLocalizer> localizer() const;
 
-  /**
-    Returns the external media encountered in the Template while rendering.
-  */
-  QList<std::pair<QString, QString>> externalMedia() const;
+    /**
+      Returns the external media encountered in the Template while rendering.
+    */
+    QList<std::pair<QString, QString>> externalMedia() const;
 
-  /**
-    The type of urls to external media that should be put in the template.
-  */
-  enum UrlType {
-    AbsoluteUrls, ///< Absolute URLs should be put in the template.
-    RelativeUrls  ///< Relative URLs should be put in the template.
-  };
+    /**
+      The type of urls to external media that should be put in the template.
+    */
+    enum UrlType {
+        AbsoluteUrls, ///< Absolute URLs should be put in the template.
+        RelativeUrls ///< Relative URLs should be put in the template.
+    };
 
-  /**
-    Sets the type of external media URL to be used in the template to @p type.
-    @see @ref media_finder_tag
-  */
-  void setUrlType(UrlType type);
+    /**
+      Sets the type of external media URL to be used in the template to @p type.
+      @see @ref media_finder_tag
+    */
+    void setUrlType(UrlType type);
 
-  /**
-    The type of URL used in the template.
-  */
-  UrlType urlType() const;
+    /**
+      The type of URL used in the template.
+    */
+    UrlType urlType() const;
 
-  /**
-    Sets the relative path to external media to be used in templates to @p
-    relativePath
+    /**
+      Sets the relative path to external media to be used in templates to @p
+      relativePath
 
-    @see @ref media_finder_tag
-  */
-  void setRelativeMediaPath(const QString &relativePath);
+      @see @ref media_finder_tag
+    */
+    void setRelativeMediaPath(const QString &relativePath);
 
-  /**
-    The relative path to external media to be used in templates.
-  */
-  QString relativeMediaPath() const;
+    /**
+      The relative path to external media to be used in templates.
+    */
+    QString relativeMediaPath() const;
 
-  /**
-    Returns a modifiable RenderContext. This may be used to make
-    Template rendering threadsafe so that render state does not need to be
-    stored in the Node implementation itself.
-   */
-  RenderContext *renderContext() const;
+    /**
+      Returns a modifiable RenderContext. This may be used to make
+      Template rendering threadsafe so that render state does not need to be
+      stored in the Node implementation itself.
+     */
+    RenderContext *renderContext() const;
 
 private:
-  Q_DECLARE_PRIVATE(Context)
-  ContextPrivate *const d_ptr;
+    Q_DECLARE_PRIVATE(Context)
+    ContextPrivate *const d_ptr;
 };
 }
 

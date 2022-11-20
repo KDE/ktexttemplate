@@ -51,20 +51,17 @@ KTEXTTEMPLATE_EXPORT QString unescapeStringLiteral(const QString &input);
 /**
   Marks the @p input as safe.
 */
-KTEXTTEMPLATE_EXPORT KTextTemplate::SafeString
-markSafe(const KTextTemplate::SafeString &input);
+KTEXTTEMPLATE_EXPORT KTextTemplate::SafeString markSafe(const KTextTemplate::SafeString &input);
 
 /**
   Marks the @p input as requiring escaping.
 */
-KTEXTTEMPLATE_EXPORT KTextTemplate::SafeString
-markForEscaping(const KTextTemplate::SafeString &input);
+KTEXTTEMPLATE_EXPORT KTextTemplate::SafeString markForEscaping(const KTextTemplate::SafeString &input);
 
 /**
   Retrieves and returns a SafeString from the @p input.
 */
-KTEXTTEMPLATE_EXPORT KTextTemplate::SafeString
-getSafeString(const QVariant &input);
+KTEXTTEMPLATE_EXPORT KTextTemplate::SafeString getSafeString(const QVariant &input);
 
 /**
   Returns whether @p input contains a SafeString.
@@ -95,8 +92,7 @@ KTEXTTEMPLATE_EXPORT bool equals(const QVariant &lhs, const QVariant &rhs);
   size is for example given in @a KiB, use a multiplier of @a 1024. The returned
   pair will have the converted size as @a first and the unit as @a second.
 */
-KTEXTTEMPLATE_EXPORT std::pair<qreal, QString>
-calcFileSize(qreal size, int unitSystem = 10, qreal multiplier = 1.0);
+KTEXTTEMPLATE_EXPORT std::pair<qreal, QString> calcFileSize(qreal size, int unitSystem = 10, qreal multiplier = 1.0);
 
 #ifndef K_DOXYGEN
 /**
@@ -104,8 +100,7 @@ calcFileSize(qreal size, int unitSystem = 10, qreal multiplier = 1.0);
   Returns the @p list as a formatted string. This is for debugging purposes
   only.
 */
-KTEXTTEMPLATE_EXPORT KTextTemplate::SafeString
-toString(const QVariantList &list);
+KTEXTTEMPLATE_EXPORT KTextTemplate::SafeString toString(const QVariantList &list);
 #endif
 }
 

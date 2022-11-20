@@ -29,20 +29,20 @@ using namespace KTextTemplate;
 
 class ScriptableSafeString : public QObject
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  ScriptableSafeString(QObject *parent = {});
+    ScriptableSafeString(QObject *parent = {});
 
-  void setContent(const SafeString &content);
-  SafeString wrappedString() const;
+    void setContent(const SafeString &content);
+    SafeString wrappedString() const;
 
 public Q_SLOTS:
-  bool isSafe() const;
-  void setSafety(bool safeness);
-  QString rawString();
+    bool isSafe() const;
+    void setSafety(bool safeness);
+    QString rawString();
 
 private:
-  SafeString m_safeString;
+    SafeString m_safeString;
 };
 
 #endif

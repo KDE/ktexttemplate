@@ -23,41 +23,41 @@
 #include "comboboxdelegate.h"
 #include <QHeaderView>
 
-MethodTableView::MethodTableView(QWidget *parent) : QTableView(parent)
+MethodTableView::MethodTableView(QWidget *parent)
+    : QTableView(parent)
 {
-  QStringList accessTypes;
-  accessTypes << "public"
-              << "protected"
-              << "private"
-              << "signals"
-              << "public slots"
-              << "protected slots"
-              << "private slots"
-              << "Q_PRIVATE_SLOT";
+    QStringList accessTypes;
+    accessTypes << "public"
+                << "protected"
+                << "private"
+                << "signals"
+                << "public slots"
+                << "protected slots"
+                << "private slots"
+                << "Q_PRIVATE_SLOT";
 
-  setItemDelegateForColumn(0, new ComboBoxDelegate(accessTypes));
+    setItemDelegateForColumn(0, new ComboBoxDelegate(accessTypes));
 
-  QStringList types;
-  types << "void";
-  for (int i = 0; i < sizeof sTypes / sizeof *sTypes; ++i)
-    types << *(sTypes + i);
+    QStringList types;
+    types << "void";
+    for (int i = 0; i < sizeof sTypes / sizeof *sTypes; ++i)
+        types << *(sTypes + i);
 
-  setItemDelegateForColumn(
-      2, new ComboBoxDelegate(types, ComboBoxDelegate::Editable));
+    setItemDelegateForColumn(2, new ComboBoxDelegate(types, ComboBoxDelegate::Editable));
 
-  setEditTriggers(QAbstractItemView::AllEditTriggers);
-  horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
+    setEditTriggers(QAbstractItemView::AllEditTriggers);
+    horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
 }
 
-ArgsTableView::ArgsTableView(QWidget *parent) : QTableView(parent)
+ArgsTableView::ArgsTableView(QWidget *parent)
+    : QTableView(parent)
 {
-  QStringList types;
-  for (int i = 0; i < sizeof sTypes / sizeof *sTypes; ++i)
-    types << *(sTypes + i);
+    QStringList types;
+    for (int i = 0; i < sizeof sTypes / sizeof *sTypes; ++i)
+        types << *(sTypes + i);
 
-  setItemDelegateForColumn(
-      0, new ComboBoxDelegate(types, ComboBoxDelegate::Editable));
+    setItemDelegateForColumn(0, new ComboBoxDelegate(types, ComboBoxDelegate::Editable));
 
-  setEditTriggers(QAbstractItemView::AllEditTriggers);
-  horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
+    setEditTriggers(QAbstractItemView::AllEditTriggers);
+    horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
 }

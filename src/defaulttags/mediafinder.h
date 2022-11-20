@@ -28,22 +28,21 @@ using namespace KTextTemplate;
 class MediaFinderNodeFactory : public AbstractNodeFactory
 {
 public:
-  MediaFinderNodeFactory();
+    MediaFinderNodeFactory();
 
-  Node *getNode(const QString &tagContent, Parser *p) const override;
+    Node *getNode(const QString &tagContent, Parser *p) const override;
 };
 
 class MediaFinderNode : public Node
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  explicit MediaFinderNode(const QList<FilterExpression> &mediaExpressionList,
-                           QObject *parent = {});
+    explicit MediaFinderNode(const QList<FilterExpression> &mediaExpressionList, QObject *parent = {});
 
-  void render(OutputStream *stream, Context *c) const override;
+    void render(OutputStream *stream, Context *c) const override;
 
 private:
-  QList<FilterExpression> m_mediaExpressionList;
+    QList<FilterExpression> m_mediaExpressionList;
 };
 
 #endif

@@ -32,54 +32,54 @@ using namespace KTextTemplate;
 
 class I18ncpNodeFactory : public AbstractNodeFactory
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  I18ncpNodeFactory();
+    I18ncpNodeFactory();
 
-  Node *getNode(const QString &tagContent, Parser *p) const override;
+    Node *getNode(const QString &tagContent, Parser *p) const override;
 };
 
 class I18ncpVarNodeFactory : public AbstractNodeFactory
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  I18ncpVarNodeFactory();
+    I18ncpVarNodeFactory();
 
-  Node *getNode(const QString &tagContent, Parser *p) const override;
+    Node *getNode(const QString &tagContent, Parser *p) const override;
 };
 
 class I18ncpNode : public Node
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  I18ncpNode(const QString &contextText, const QString &sourceText,
-             const QString &pluralTex, const QList<FilterExpression> &feList,
-             QObject *parent = {});
-  void render(OutputStream *stream, Context *c) const override;
+    I18ncpNode(const QString &contextText, const QString &sourceText, const QString &pluralTex, const QList<FilterExpression> &feList, QObject *parent = {});
+    void render(OutputStream *stream, Context *c) const override;
 
 private:
-  QString m_contextText;
-  QString m_sourceText;
-  QString m_pluralText;
-  QList<FilterExpression> m_filterExpressionList;
+    QString m_contextText;
+    QString m_sourceText;
+    QString m_pluralText;
+    QList<FilterExpression> m_filterExpressionList;
 };
 
 class I18ncpVarNode : public Node
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  I18ncpVarNode(const QString &contextText, const QString &sourceText,
-                const QString &pluralText,
-                const QList<FilterExpression> &feList,
-                const QString &resultName, QObject *parent = {});
-  void render(OutputStream *stream, Context *c) const override;
+    I18ncpVarNode(const QString &contextText,
+                  const QString &sourceText,
+                  const QString &pluralText,
+                  const QList<FilterExpression> &feList,
+                  const QString &resultName,
+                  QObject *parent = {});
+    void render(OutputStream *stream, Context *c) const override;
 
 private:
-  QString m_contextText;
-  QString m_sourceText;
-  QString m_pluralText;
-  QList<FilterExpression> m_filterExpressionList;
-  QString m_resultName;
+    QString m_contextText;
+    QString m_sourceText;
+    QString m_pluralText;
+    QList<FilterExpression> m_filterExpressionList;
+    QString m_resultName;
 };
 
 #endif

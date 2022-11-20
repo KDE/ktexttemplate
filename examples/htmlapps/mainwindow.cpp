@@ -20,9 +20,9 @@
 
 #include "mainwindow.h"
 
+#include <QDebug>
 #include <QHBoxLayout>
 #include <QWebView>
-#include <QDebug>
 
 #include "ktexttemplate_paths.h"
 #include <ktexttemplate.h>
@@ -30,23 +30,23 @@
 #include "localrequestmanager.h"
 #include <QCoreApplication>
 
-MainWindow::MainWindow(QWidget *parent) : QWidget(parent)
+MainWindow::MainWindow(QWidget *parent)
+    : QWidget(parent)
 {
-  QHBoxLayout *layout = new QHBoxLayout(this);
+    QHBoxLayout *layout = new QHBoxLayout(this);
 
-  QWebView *wv = new QWebView;
+    QWebView *wv = new QWebView;
 
-  KTextTemplate::Engine *engine = new KTextTemplate::Engine(this);
-  engine->addDefaultLibrary("customplugin");
+    KTextTemplate::Engine *engine = new KTextTemplate::Engine(this);
+    engine->addDefaultLibrary("customplugin");
 
-  QSharedPointer<KTextTemplate::FileSystemTemplateLoader> loader(
-      new KTextTemplate::FileSystemTemplateLoader);
-  loader->setTemplateDirs(QStringList() << KTEXTTEMPLATE_TEMPLATE_PATH);
-  engine->addTemplateLoader(loader);
+    QSharedPointer<KTextTemplate::FileSystemTemplateLoader> loader(new KTextTemplate::FileSystemTemplateLoader);
+    loader->setTemplateDirs(QStringList() << KTEXTTEMPLATE_TEMPLATE_PATH);
+    engine->addTemplateLoader(loader);
 
-  wv->page()->setNetworkAccessManager(new LocalRequestManager(engine, this));
+    wv->page()->setNetworkAccessManager(new LocalRequestManager(engine, this));
 
-  wv->load(QUrl("template:///home/main.html"));
+    wv->load(QUrl("template:///home/main.html"));
 
-  layout->addWidget(wv);
+    layout->addWidget(wv);
 }

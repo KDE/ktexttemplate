@@ -30,24 +30,23 @@
 
 class ScriptableFilterExpression : public QObject
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  ScriptableFilterExpression(QObject *parent = {});
-  ScriptableFilterExpression(QJSEngine *engine, QObject *parent = {});
+    ScriptableFilterExpression(QObject *parent = {});
+    ScriptableFilterExpression(QJSEngine *engine, QObject *parent = {});
 
-  void init(const QString &content, KTextTemplate::Parser *parser);
+    void init(const QString &content, KTextTemplate::Parser *parser);
 
 public Q_SLOTS:
-  QVariant resolve(ScriptableContext *c);
+    QVariant resolve(ScriptableContext *c);
 
-  bool isTrue(ScriptableContext *c);
+    bool isTrue(ScriptableContext *c);
 
-  bool equals(ScriptableFilterExpression *other,
-              ScriptableContext *scriptableC);
+    bool equals(ScriptableFilterExpression *other, ScriptableContext *scriptableC);
 
 private:
-  KTextTemplate::FilterExpression m_filterExpression;
-  QJSEngine *m_engine;
+    KTextTemplate::FilterExpression m_filterExpression;
+    QJSEngine *m_engine;
 };
 
 #endif

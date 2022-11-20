@@ -27,26 +27,26 @@ using namespace KTextTemplate;
 
 class WithLocaleNodeFactory : public AbstractNodeFactory
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  WithLocaleNodeFactory();
+    WithLocaleNodeFactory();
 
-  Node *getNode(const QString &tagContent, Parser *p) const override;
+    Node *getNode(const QString &tagContent, Parser *p) const override;
 };
 
 class WithLocaleNode : public Node
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  WithLocaleNode(const FilterExpression &localeName, QObject *parent = {});
+    WithLocaleNode(const FilterExpression &localeName, QObject *parent = {});
 
-  void setNodeList(const NodeList &nodeList);
+    void setNodeList(const NodeList &nodeList);
 
-  void render(OutputStream *stream, Context *c) const override;
+    void render(OutputStream *stream, Context *c) const override;
 
 private:
-  FilterExpression m_localeName;
-  NodeList m_list;
+    FilterExpression m_localeName;
+    NodeList m_list;
 };
 
 #endif

@@ -34,18 +34,18 @@ namespace KTextTemplate
 */
 class KTEXTTEMPLATE_EXPORT TextNode : public Node
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  explicit TextNode(const QString &content, QObject *parent = {});
+    explicit TextNode(const QString &content, QObject *parent = {});
 
-  void render(OutputStream *stream, Context *c) const override
-  { // krazy:exclude:inline
-    Q_UNUSED(c);
-    (*stream) << m_content;
-  }
+    void render(OutputStream *stream, Context *c) const override
+    { // krazy:exclude:inline
+        Q_UNUSED(c);
+        (*stream) << m_content;
+    }
 
 private:
-  const QString m_content;
+    const QString m_content;
 };
 
 /**
@@ -55,14 +55,14 @@ private:
 */
 class KTEXTTEMPLATE_EXPORT VariableNode : public Node
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  explicit VariableNode(const FilterExpression &fe, QObject *parent = {});
+    explicit VariableNode(const FilterExpression &fe, QObject *parent = {});
 
-  void render(OutputStream *stream, Context *c) const override;
+    void render(OutputStream *stream, Context *c) const override;
 
 private:
-  FilterExpression m_filterExpression;
+    FilterExpression m_filterExpression;
 };
 }
 

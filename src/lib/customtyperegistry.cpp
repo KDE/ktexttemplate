@@ -35,55 +35,51 @@ using namespace KTextTemplate;
 
 CustomTypeRegistry::CustomTypeRegistry()
 {
-  // KTextTemplate Types
-  registerBuiltInMetatype<SafeString>();
-  registerBuiltInMetatype<MetaEnumVariable>();
+    // KTextTemplate Types
+    registerBuiltInMetatype<SafeString>();
+    registerBuiltInMetatype<MetaEnumVariable>();
 }
 
-void CustomTypeRegistry::registerLookupOperator(int id,
-                                                MetaType::LookupFunction f)
+void CustomTypeRegistry::registerLookupOperator(int id, MetaType::LookupFunction f)
 {
-  CustomTypeInfo &info = types[id];
-  info.lookupFunction = f;
+    CustomTypeInfo &info = types[id];
+    info.lookupFunction = f;
 }
 
-QVariant CustomTypeRegistry::lookup(const QVariant &object,
-                                    const QString &property) const
+QVariant CustomTypeRegistry::lookup(const QVariant &object, const QString &property) const
 {
-  if (!object.isValid())
-    return {};
-  const auto id = object.userType();
-  MetaType::LookupFunction lf;
+    if (!object.isValid())
+        return {};
+    const auto id = object.userType();
+    MetaType::LookupFunction lf;
 
-  {
-    auto it = types.constFind(id);
-    if (it == types.constEnd()) {
-      qCWarning(KTEXTTEMPLATE_CUSTOMTYPE) << "Don't know how to handle metatype"
-                                          << QMetaType(id).name();
-      // :TODO: Print out error message
-      return {};
+    {
+        auto it = types.constFind(id);
+        if (it == types.constEnd()) {
+            qCWarning(KTEXTTEMPLATE_CUSTOMTYPE) << "Don't know how to handle metatype" << QMetaType(id).name();
+            // :TODO: Print out error message
+            return {};
+        }
+
+        const CustomTypeInfo &info = it.value();
+        if (!info.lookupFunction) {
+            qCWarning(KTEXTTEMPLATE_CUSTOMTYPE) << "No lookup function for metatype" << QMetaType(id).name();
+            lf = nullptr;
+            // :TODO: Print out error message
+            return {};
+        }
+
+        lf = info.lookupFunction;
     }
 
-    const CustomTypeInfo &info = it.value();
-    if (!info.lookupFunction) {
-      qCWarning(KTEXTTEMPLATE_CUSTOMTYPE) << "No lookup function for metatype"
-                                          << QMetaType(id).name();
-      lf = nullptr;
-      // :TODO: Print out error message
-      return {};
-    }
-
-    lf = info.lookupFunction;
-  }
-
-  return lf(object, property);
+    return lf(object, property);
 }
 
 bool CustomTypeRegistry::lookupAlreadyRegistered(int id) const
 {
-  auto it = types.constFind(id);
-  if (it != types.constEnd()) {
-    return it.value().lookupFunction != nullptr;
-  }
-  return false;
+    auto it = types.constFind(id);
+    if (it != types.constEnd()) {
+        return it.value().lookupFunction != nullptr;
+    }
+    return false;
 }

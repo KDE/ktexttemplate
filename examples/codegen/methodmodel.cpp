@@ -20,29 +20,32 @@
 
 #include "methodmodel.h"
 
-MethodModel::MethodModel(QObject *parent) : QStandardItemModel(parent)
+MethodModel::MethodModel(QObject *parent)
+    : QStandardItemModel(parent)
 {
-  setHorizontalHeaderLabels(QStringList() << "Access"
-                                          << "virtual"
-                                          << "Type"
-                                          << "Name"
-                                          << "Const");
+    setHorizontalHeaderLabels(QStringList() << "Access"
+                                            << "virtual"
+                                            << "Type"
+                                            << "Name"
+                                            << "Const");
 }
 
-ArgsModel::ArgsModel(QObject *parent) : QSortFilterProxyModel(parent) {}
-
-QVariant ArgsModel::headerData(int section, Qt::Orientation orientation,
-                               int role) const
+ArgsModel::ArgsModel(QObject *parent)
+    : QSortFilterProxyModel(parent)
 {
-  if (role == Qt::DisplayRole && orientation == Qt::Horizontal) {
-    switch (section) {
-    case 0:
-      return "Type";
-    case 1:
-      return "Name";
-    case 2:
-      return "Default";
+}
+
+QVariant ArgsModel::headerData(int section, Qt::Orientation orientation, int role) const
+{
+    if (role == Qt::DisplayRole && orientation == Qt::Horizontal) {
+        switch (section) {
+        case 0:
+            return "Type";
+        case 1:
+            return "Name";
+        case 2:
+            return "Default";
+        }
     }
-  }
-  return QSortFilterProxyModel::headerData(section, orientation, role);
+    return QSortFilterProxyModel::headerData(section, orientation, role);
 }

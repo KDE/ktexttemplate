@@ -23,9 +23,9 @@
 
 #include <QWidget>
 
+#include <KTextTemplate/TemplateLoader>
 #include <QListWidget>
 #include <QWebView>
-#include <KTextTemplate/TemplateLoader>
 
 namespace KTextTemplate
 {
@@ -36,45 +36,44 @@ class QComboBox;
 
 class MainWindow : public QWidget
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  MainWindow(const QString &templateDir, QWidget *parent = 0,
-             Qt::WindowFlags f = 0);
+    MainWindow(const QString &templateDir, QWidget *parent = 0, Qt::WindowFlags f = 0);
 
 protected:
-  virtual void initLocalizer();
+    virtual void initLocalizer();
 
 private Q_SLOTS:
-  void render() const;
-  void delayedInit();
+    void render() const;
+    void delayedInit();
 
 protected:
-  QSharedPointer<KTextTemplate::AbstractLocalizer> m_localizer;
+    QSharedPointer<KTextTemplate::AbstractLocalizer> m_localizer;
 
 private:
-  QListWidget *m_list;
-  QWebView *m_webView;
-  QComboBox *m_combo;
-  QString m_templateDir;
+    QListWidget *m_list;
+    QWebView *m_webView;
+    QComboBox *m_combo;
+    QString m_templateDir;
 
-  KTextTemplate::Engine *m_engine;
-  QSharedPointer<KTextTemplate::FileSystemTemplateLoader> m_templateLoader;
+    KTextTemplate::Engine *m_engine;
+    QSharedPointer<KTextTemplate::FileSystemTemplateLoader> m_templateLoader;
 };
 
-template <typename T> class AppMainWindow : public MainWindow
+template<typename T>
+class AppMainWindow : public MainWindow
 {
 public:
-  AppMainWindow(const QString &templateDir, QWidget *parent = 0,
-                Qt::WindowFlags f = 0)
-      : MainWindow(templateDir, parent, f)
-  {
-  }
+    AppMainWindow(const QString &templateDir, QWidget *parent = 0, Qt::WindowFlags f = 0)
+        : MainWindow(templateDir, parent, f)
+    {
+    }
 
 protected:
-  virtual void initLocalizer()
-  {
-    m_localizer = QSharedPointer<KTextTemplate::AbstractLocalizer>(new T);
-  }
+    virtual void initLocalizer()
+    {
+        m_localizer = QSharedPointer<KTextTemplate::AbstractLocalizer>(new T);
+    }
 };
 
 #endif

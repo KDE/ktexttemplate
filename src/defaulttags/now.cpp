@@ -29,27 +29,25 @@ NowNodeFactory::NowNodeFactory() = default;
 
 Node *NowNodeFactory::getNode(const QString &tagContent, Parser *p) const
 {
-  auto expr = tagContent.split(QLatin1Char('"'),
-                               Qt::KeepEmptyParts
-  );
+    auto expr = tagContent.split(QLatin1Char('"'), Qt::KeepEmptyParts);
 
-  if (expr.size() != 3) {
-    throw KTextTemplate::Exception(
-        TagSyntaxError, QStringLiteral("now tag takes one argument"));
-  }
+    if (expr.size() != 3) {
+        throw KTextTemplate::Exception(TagSyntaxError, QStringLiteral("now tag takes one argument"));
+    }
 
-  auto formatString = expr.at(1);
+    auto formatString = expr.at(1);
 
-  return new NowNode(formatString, p);
+    return new NowNode(formatString, p);
 }
 
 NowNode::NowNode(const QString &formatString, QObject *parent)
-    : Node(parent), m_formatString(formatString)
+    : Node(parent)
+    , m_formatString(formatString)
 {
 }
 
 void NowNode::render(OutputStream *stream, Context *c) const
 {
-  Q_UNUSED(c)
-  (*stream) << QDateTime::currentDateTime().toString(m_formatString);
+    Q_UNUSED(c)
+    (*stream) << QDateTime::currentDateTime().toString(m_formatString);
 }

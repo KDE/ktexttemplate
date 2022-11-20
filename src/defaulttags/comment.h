@@ -27,20 +27,20 @@ using namespace KTextTemplate;
 
 class CommentNodeFactory : public AbstractNodeFactory
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  CommentNodeFactory();
+    CommentNodeFactory();
 
-  Node *getNode(const QString &tagContent, Parser *p) const override;
+    Node *getNode(const QString &tagContent, Parser *p) const override;
 };
 
 class CommentNode : public Node
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  explicit CommentNode(QObject *parent = {});
+    explicit CommentNode(QObject *parent = {});
 
-  void render(OutputStream *stream, Context *c) const override;
+    void render(OutputStream *stream, Context *c) const override;
 };
 
 #endif

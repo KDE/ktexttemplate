@@ -27,29 +27,27 @@ using namespace KTextTemplate;
 
 class WidthRatioNodeFactory : public AbstractNodeFactory
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  WidthRatioNodeFactory();
+    WidthRatioNodeFactory();
 
-  Node *getNode(const QString &tagContent, Parser *p) const override;
+    Node *getNode(const QString &tagContent, Parser *p) const override;
 };
 
 class WidthRatioNode : public Node
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  WidthRatioNode(const FilterExpression &valExpr,
-                 const FilterExpression &maxExpr,
-                 const FilterExpression &maxWidth, QObject *parent = {});
+    WidthRatioNode(const FilterExpression &valExpr, const FilterExpression &maxExpr, const FilterExpression &maxWidth, QObject *parent = {});
 
-  void render(OutputStream *stream, Context *c) const override;
+    void render(OutputStream *stream, Context *c) const override;
 
 private:
-  static int round(qreal);
+    static int round(qreal);
 
-  FilterExpression m_valExpr;
-  FilterExpression m_maxExpr;
-  FilterExpression m_maxWidth;
+    FilterExpression m_valExpr;
+    FilterExpression m_maxExpr;
+    FilterExpression m_maxWidth;
 };
 
 #endif

@@ -35,19 +35,19 @@ using namespace KTextTemplate;
 
 class ScriptableTemplate : public QObject
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  explicit ScriptableTemplate(Template t, QObject *parent = {});
+    explicit ScriptableTemplate(Template t, QObject *parent = {});
 
 public Q_SLOTS:
-  QString render(ScriptableContext *c) const;
+    QString render(ScriptableContext *c) const;
 
-  QList<QObject *> nodeList() const;
+    QList<QObject *> nodeList() const;
 
-  void setNodeList(const QList<QObject *> &list);
+    void setNodeList(const QList<QObject *> &list);
 
 private:
-  Template m_template;
+    Template m_template;
 };
 
 #endif

@@ -31,38 +31,42 @@ namespace KTextTemplate
 
 struct CustomTypeInfo {
 public:
-  CustomTypeInfo() : lookupFunction(nullptr) {}
+    CustomTypeInfo()
+        : lookupFunction(nullptr)
+    {
+    }
 
-  KTextTemplate::MetaType::LookupFunction lookupFunction;
+    KTextTemplate::MetaType::LookupFunction lookupFunction;
 };
 
 struct CustomTypeRegistry {
-  CustomTypeRegistry();
+    CustomTypeRegistry();
 
-  void registerLookupOperator(int id, MetaType::LookupFunction f);
+    void registerLookupOperator(int id, MetaType::LookupFunction f);
 
-  template <typename RealType, typename HandleAs> int registerBuiltInMetatype()
-  {
-    QVariant (*lf)(const QVariant &, const QString &)
-        = LookupTrait<RealType &, HandleAs &>::doLookUp;
+    template<typename RealType, typename HandleAs>
+    int registerBuiltInMetatype()
+    {
+        QVariant (*lf)(const QVariant &, const QString &) = LookupTrait<RealType &, HandleAs &>::doLookUp;
 
-    const int id = qMetaTypeId<RealType>();
+        const int id = qMetaTypeId<RealType>();
 
-    registerLookupOperator(id, reinterpret_cast<MetaType::LookupFunction>(lf));
+        registerLookupOperator(id, reinterpret_cast<MetaType::LookupFunction>(lf));
 
-    return id;
-  }
+        return id;
+    }
 
-  template <typename Type> int registerBuiltInMetatype()
-  {
-    return registerBuiltInMetatype<Type, Type>();
-  }
+    template<typename Type>
+    int registerBuiltInMetatype()
+    {
+        return registerBuiltInMetatype<Type, Type>();
+    }
 
-  QVariant lookup(const QVariant &object, const QString &property) const;
-  bool lookupAlreadyRegistered(int id) const;
+    QVariant lookup(const QVariant &object, const QString &property) const;
+    bool lookupAlreadyRegistered(int id) const;
 
-  QHash<int, CustomTypeInfo> types;
-  QMutex mutex;
+    QHash<int, CustomTypeInfo> types;
+    QMutex mutex;
 };
 }
 

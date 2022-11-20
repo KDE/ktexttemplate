@@ -32,15 +32,15 @@
 
 int main(int argc, char **argv)
 {
-  const QByteArray &ba = QByteArray("contacts_kde");
-  const KLocalizedString name = ki18n("KTextTemplate KDE i18n example");
-  KAboutData aboutData(ba, ba, name, ba, name);
-  KCmdLineArgs::init(argc, argv, &aboutData);
+    const QByteArray &ba = QByteArray("contacts_kde");
+    const KLocalizedString name = ki18n("KTextTemplate KDE i18n example");
+    KAboutData aboutData(ba, ba, name, ba, name);
+    KCmdLineArgs::init(argc, argv, &aboutData);
 
-  KApplication app;
+    KApplication app;
 
-  AppMainWindow<KDELocalizer> win(TEMPLATE_DIR);
-  win.show();
+    AppMainWindow<KDELocalizer> win(TEMPLATE_DIR);
+    win.show();
 
-  app.exec();
+    app.exec();
 }

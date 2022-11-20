@@ -23,21 +23,23 @@
 using namespace KTextTemplate;
 
 TextNode::TextNode(const QString &content, QObject *parent)
-    : Node(parent), m_content(content)
+    : Node(parent)
+    , m_content(content)
 {
 }
 
 VariableNode::VariableNode(const FilterExpression &fe, QObject *parent)
-    : Node(parent), m_filterExpression(fe)
+    : Node(parent)
+    , m_filterExpression(fe)
 {
 }
 
 void VariableNode::render(OutputStream *stream, Context *c) const
 {
-  const auto v = m_filterExpression.resolve(c);
-  if (!v.isValid())
-    return;
-  streamValueInContext(stream, v, c);
+    const auto v = m_filterExpression.resolve(c);
+    if (!v.isValid())
+        return;
+    streamValueInContext(stream, v, c);
 }
 
 #include "moc_nodebuiltins_p.cpp"

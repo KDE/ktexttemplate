@@ -33,22 +33,25 @@ using namespace KTextTemplate;
 
 class ScriptableContext : public QObject
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  explicit ScriptableContext(Context *c, QObject *parent = {});
+    explicit ScriptableContext(Context *c, QObject *parent = {});
 
-  Context *context() { return m_c; }
+    Context *context()
+    {
+        return m_c;
+    }
 
 public Q_SLOTS:
-  QVariant lookup(const QString &name);
-  void insert(const QString &name, const QVariant &variant);
-  void push();
-  void pop();
+    QVariant lookup(const QString &name);
+    void insert(const QString &name, const QVariant &variant);
+    void push();
+    void pop();
 
-  QString render(const QList<QObject *> &list) const;
+    QString render(const QList<QObject *> &list) const;
 
 private:
-  Context *m_c;
+    Context *m_c;
 };
 
 #endif

@@ -25,16 +25,16 @@
 
 class PropertyTableWidget : public QTableWidget
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  PropertyTableWidget(QWidget *parent = 0);
+    PropertyTableWidget(QWidget *parent = 0);
 
-  virtual void contextMenuEvent(QContextMenuEvent *contextMenuEvent);
+    virtual void contextMenuEvent(QContextMenuEvent *contextMenuEvent);
 
 public Q_SLOTS:
-  void slotAdd();
-  void slotRemove();
-  void slotClear();
+    void slotAdd();
+    void slotRemove();
+    void slotClear();
 };
 
 #endif

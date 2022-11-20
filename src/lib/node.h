@@ -81,55 +81,54 @@ class NodePrivate;
 */
 class KTEXTTEMPLATE_EXPORT Node : public QObject
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  /**
-    Constructor.
+    /**
+      Constructor.
 
-    @param parent The parent QObject
-  */
-  explicit Node(QObject *parent = {});
+      @param parent The parent QObject
+    */
+    explicit Node(QObject *parent = {});
 
-  /**
-    Destructor.
-  */
-  ~Node() override;
+    /**
+      Destructor.
+    */
+    ~Node() override;
 
-  /**
-    Reimplement this to render the template in the Context @p c.
+    /**
+      Reimplement this to render the template in the Context @p c.
 
-    This will also involve calling render on and child nodes.
-  */
-  virtual void render(OutputStream *stream, Context *c) const = 0;
+      This will also involve calling render on and child nodes.
+    */
+    virtual void render(OutputStream *stream, Context *c) const = 0;
 
 #ifndef K_DOXYGEN
-  /**
-    @internal
-  */
-  virtual bool mustBeFirst()
-  { // krazy:exclude:inline
-    return false;
-  }
+    /**
+      @internal
+    */
+    virtual bool mustBeFirst()
+    { // krazy:exclude:inline
+        return false;
+    }
 #endif
 
 protected:
-  /**
-    Renders the value @p input in the Context @p c. This will involve escaping
-    @p input if necessary.
+    /**
+      Renders the value @p input in the Context @p c. This will involve escaping
+      @p input if necessary.
 
-    This is only relevant to developing template tags.
-  */
-  void streamValueInContext(OutputStream *stream, const QVariant &input,
-                            KTextTemplate::Context *c) const;
+      This is only relevant to developing template tags.
+    */
+    void streamValueInContext(OutputStream *stream, const QVariant &input, KTextTemplate::Context *c) const;
 
-  /**
-    Returns a raw pointer to the Template this **%Node** is in.
-  */
-  TemplateImpl *containerTemplate() const;
+    /**
+      Returns a raw pointer to the Template this **%Node** is in.
+    */
+    TemplateImpl *containerTemplate() const;
 
 private:
-  Q_DECLARE_PRIVATE(Node)
-  NodePrivate *const d_ptr;
+    Q_DECLARE_PRIVATE(Node)
+    NodePrivate *const d_ptr;
 };
 
 /// @headerfile node.h KTextTemplate/node.h
@@ -152,69 +151,70 @@ private:
 class KTEXTTEMPLATE_EXPORT NodeList : public QList<KTextTemplate::Node *>
 {
 public:
-  /**
-    Creates an empty **%NodeList**.
-  */
-  NodeList();
+    /**
+      Creates an empty **%NodeList**.
+    */
+    NodeList();
 
-  /**
-    Copy constructor.
-  */
-  NodeList(const NodeList &list);
+    /**
+      Copy constructor.
+    */
+    NodeList(const NodeList &list);
 
-  NodeList &operator=(const NodeList &list);
+    NodeList &operator=(const NodeList &list);
 
-  /**
-    Convenience constructor
-  */
-  /* implicit */ NodeList(const QList<KTextTemplate::Node *> &list);
+    /**
+      Convenience constructor
+    */
+    /* implicit */ NodeList(const QList<KTextTemplate::Node *> &list);
 
-  /**
-    Destructor.
-  */
-  ~NodeList();
+    /**
+      Destructor.
+    */
+    ~NodeList();
 
-  /**
-    Appends @p node to the end of this **%NodeList**.
-  */
-  void append(KTextTemplate::Node *node);
+    /**
+      Appends @p node to the end of this **%NodeList**.
+    */
+    void append(KTextTemplate::Node *node);
 
-  /**
-    Appends @p nodeList to the end of this **%NodeList**.
-  */
-  void append(const QList<KTextTemplate::Node *> &nodeList);
+    /**
+      Appends @p nodeList to the end of this **%NodeList**.
+    */
+    void append(const QList<KTextTemplate::Node *> &nodeList);
 
-  /**
-    Returns true if this **%NodeList** contains non-text nodes.
-  */
-  bool containsNonText() const;
+    /**
+      Returns true if this **%NodeList** contains non-text nodes.
+    */
+    bool containsNonText() const;
 
-  /**
-    A recursive listing of nodes in this tree of type @p T.
-  */
-  template <typename T> QList<T> findChildren()
-  {
-    QList<T> children;
-    QList<KTextTemplate::Node *>::const_iterator it;
-    const QList<KTextTemplate::Node *>::const_iterator first = constBegin();
-    const QList<KTextTemplate::Node *>::const_iterator last = constEnd();
-    for (it = first; it != last; ++it) {
-      T object = qobject_cast<T>(*it);
-      if (object) {
-        children << object;
-      }
-      children << (*it)->findChildren<T>();
+    /**
+      A recursive listing of nodes in this tree of type @p T.
+    */
+    template<typename T>
+    QList<T> findChildren()
+    {
+        QList<T> children;
+        QList<KTextTemplate::Node *>::const_iterator it;
+        const QList<KTextTemplate::Node *>::const_iterator first = constBegin();
+        const QList<KTextTemplate::Node *>::const_iterator last = constEnd();
+        for (it = first; it != last; ++it) {
+            T object = qobject_cast<T>(*it);
+            if (object) {
+                children << object;
+            }
+            children << (*it)->findChildren<T>();
+        }
+        return children;
     }
-    return children;
-  }
 
-  /**
-    Renders the list of Nodes in the Context @p c.
-  */
-  void render(OutputStream *stream, Context *c) const;
+    /**
+      Renders the list of Nodes in the Context @p c.
+    */
+    void render(OutputStream *stream, Context *c) const;
 
 private:
-  bool m_containsNonText;
+    bool m_containsNonText;
 };
 
 class AbstractNodeFactoryPrivate;
@@ -303,77 +303,78 @@ class AbstractNodeFactoryPrivate;
 */
 class KTEXTTEMPLATE_EXPORT AbstractNodeFactory : public QObject
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  /**
-    Constructor.
+    /**
+      Constructor.
 
-    @param parent The parent QObject
-  */
-  explicit AbstractNodeFactory(QObject *parent = {});
+      @param parent The parent QObject
+    */
+    explicit AbstractNodeFactory(QObject *parent = {});
 
-  /**
-    Destructor.
-  */
-  ~AbstractNodeFactory() override;
+    /**
+      Destructor.
+    */
+    ~AbstractNodeFactory() override;
 
-  /**
-    This method should be reimplemented to return a Node which can be
-    rendered.
+    /**
+      This method should be reimplemented to return a Node which can be
+      rendered.
 
-    The @p tagContent is the content of the tag including the tag name and
-    arguments. For example, if the template content is @gr_tag{my_tag arg1
-    arg2}, the tagContent will be &quot;my_tag arg1 arg2&quot;.
+      The @p tagContent is the content of the tag including the tag name and
+      arguments. For example, if the template content is @gr_tag{my_tag arg1
+      arg2}, the tagContent will be &quot;my_tag arg1 arg2&quot;.
 
-    The Parser @p p is available and can be advanced if appropriate. For
-    example, if the tag has an end tag, the parser can be advanced to the end
-    tag.
+      The Parser @p p is available and can be advanced if appropriate. For
+      example, if the tag has an end tag, the parser can be advanced to the end
+      tag.
 
-    @see tags
-  */
-  virtual Node *getNode(const QString &tagContent, Parser *p) const = 0;
+      @see tags
+    */
+    virtual Node *getNode(const QString &tagContent, Parser *p) const = 0;
 
 #ifndef K_DOXYGEN
-  /**
-    @internal
+    /**
+      @internal
 
-    Sets the Engine which created this NodeFactory. Used by the
-    ScriptableNodeFactory.
-  */
-  virtual void setEngine(Engine *) {}
+      Sets the Engine which created this NodeFactory. Used by the
+      ScriptableNodeFactory.
+    */
+    virtual void setEngine(Engine *)
+    {
+    }
 #endif
 
 protected:
-  /**
-    Splits @p str into a list, taking quote marks into account.
+    /**
+      Splits @p str into a list, taking quote marks into account.
 
-    This is typically used in the implementation of getNode with the
-    tagContent.
+      This is typically used in the implementation of getNode with the
+      tagContent.
 
-    If @p str is 'one &quot;two three&quot; four 'five &quot; six' seven', the
-    returned list will contain the following strings:
+      If @p str is 'one &quot;two three&quot; four 'five &quot; six' seven', the
+      returned list will contain the following strings:
 
-    - one
-    - &quot;two three&quot;
-    - four
-    - five &quot; six
-    - seven
-  */
-  Q_INVOKABLE QStringList smartSplit(const QString &str) const;
+      - one
+      - &quot;two three&quot;
+      - four
+      - five &quot; six
+      - seven
+    */
+    Q_INVOKABLE QStringList smartSplit(const QString &str) const;
 
 protected:
-  /**
-    Returns a list of FilterExpression objects created with Parser @p p as
-    described by the content of @p list.
+    /**
+      Returns a list of FilterExpression objects created with Parser @p p as
+      described by the content of @p list.
 
-    This is used for convenience when handling the arguments to a tag.
-  */
-  QList<FilterExpression> getFilterExpressionList(const QStringList &list,
-                                                  Parser *p) const;
+      This is used for convenience when handling the arguments to a tag.
+    */
+    QList<FilterExpression> getFilterExpressionList(const QStringList &list, Parser *p) const;
 
 private:
-  Q_DECLARE_PRIVATE(AbstractNodeFactory)
-  AbstractNodeFactoryPrivate *const d_ptr;
+    Q_DECLARE_PRIVATE(AbstractNodeFactory)
+    AbstractNodeFactoryPrivate *const d_ptr;
 };
 }
 

@@ -37,40 +37,37 @@ using namespace KTextTemplate;
 
 class TestCachingLoader : public QObject
 {
-  Q_OBJECT
+    Q_OBJECT
 
 private Q_SLOTS:
-  void testRenderAfterError();
+    void testRenderAfterError();
 };
 
 void TestCachingLoader::testRenderAfterError()
 {
-  Engine engine;
-  engine.setPluginPaths({QStringLiteral(KTEXTTEMPLATE_PLUGIN_PATH)});
+    Engine engine;
+    engine.setPluginPaths({QStringLiteral(KTEXTTEMPLATE_PLUGIN_PATH)});
 
-  QSharedPointer<InMemoryTemplateLoader> loader(new InMemoryTemplateLoader);
-  loader->setTemplate(QStringLiteral("template1"),
-                      QStringLiteral("This template has an error {{ va>r }}"));
-  loader->setTemplate(QStringLiteral("template2"), QStringLiteral("Ok"));
-  loader->setTemplate(QStringLiteral("main"),
-                      QStringLiteral("{% include template_var %}"));
+    QSharedPointer<InMemoryTemplateLoader> loader(new InMemoryTemplateLoader);
+    loader->setTemplate(QStringLiteral("template1"), QStringLiteral("This template has an error {{ va>r }}"));
+    loader->setTemplate(QStringLiteral("template2"), QStringLiteral("Ok"));
+    loader->setTemplate(QStringLiteral("main"), QStringLiteral("{% include template_var %}"));
 
-  QSharedPointer<KTextTemplate::CachingLoaderDecorator> cache(
-      new KTextTemplate::CachingLoaderDecorator(loader));
+    QSharedPointer<KTextTemplate::CachingLoaderDecorator> cache(new KTextTemplate::CachingLoaderDecorator(loader));
 
-  engine.addTemplateLoader(cache);
+    engine.addTemplateLoader(cache);
 
-  Context c;
-  Template t;
-  t = engine.loadByName(QStringLiteral("main"));
+    Context c;
+    Template t;
+    t = engine.loadByName(QStringLiteral("main"));
 
-  c.insert(QStringLiteral("template_var"), QLatin1String("template1"));
-  QCOMPARE(t->render(&c), QString());
-  QCOMPARE(t->error(), TagSyntaxError);
+    c.insert(QStringLiteral("template_var"), QLatin1String("template1"));
+    QCOMPARE(t->render(&c), QString());
+    QCOMPARE(t->error(), TagSyntaxError);
 
-  c.insert(QStringLiteral("template_var"), QLatin1String("template2"));
-  QCOMPARE(t->render(&c), QLatin1String("Ok"));
-  QCOMPARE(t->error(), NoError);
+    c.insert(QStringLiteral("template_var"), QLatin1String("template2"));
+    QCOMPARE(t->render(&c), QLatin1String("Ok"));
+    QCOMPARE(t->error(), NoError);
 }
 
 QTEST_MAIN(TestCachingLoader)

@@ -32,134 +32,152 @@ namespace KTextTemplate
 class Lexer
 {
 public:
-  explicit Lexer(const QString &templateString);
-  ~Lexer();
+    explicit Lexer(const QString &templateString);
+    ~Lexer();
 
-  enum TrimType { NoSmartTrim, SmartTrim };
+    enum TrimType { NoSmartTrim, SmartTrim };
 
-  QList<Token> tokenize(TrimType type = NoSmartTrim);
+    QList<Token> tokenize(TrimType type = NoSmartTrim);
 
-  void markStartSyntax();
-  void markEndSyntax();
-  void markNewline();
-  void clearMarkers();
-  void finalizeToken();
-  void finalizeTokenWithTrimmedWhitespace();
-
-private:
-  void reset();
-  void finalizeToken(int nextPosition, bool processSyntax);
+    void markStartSyntax();
+    void markEndSyntax();
+    void markNewline();
+    void clearMarkers();
+    void finalizeToken();
+    void finalizeTokenWithTrimmedWhitespace();
 
 private:
-  QString m_templateString;
+    void reset();
+    void finalizeToken(int nextPosition, bool processSyntax);
 
-  QList<Token> m_tokenList;
-  int m_lineCount;
-  int m_upto;
-  int m_processedUpto;
-  int m_startSyntaxPosition;
-  int m_endSyntaxPosition;
-  int m_newlinePosition;
+private:
+    QString m_templateString;
+
+    QList<Token> m_tokenList;
+    int m_lineCount;
+    int m_upto;
+    int m_processedUpto;
+    int m_startSyntaxPosition;
+    int m_endSyntaxPosition;
+    int m_newlinePosition;
 };
 
 struct NullLexerAction {
-  static void doAction(Lexer *) {}
+    static void doAction(Lexer *)
+    {
+    }
 };
 
-template <typename TType, typename Test, typename Action1 = NullLexerAction,
-          typename Action2 = NullLexerAction>
+template<typename TType, typename Test, typename Action1 = NullLexerAction, typename Action2 = NullLexerAction>
 class LexerObject : public TType
 {
 public:
-  LexerObject(Lexer *lexer, State<typename TType::Type> *sourceState = {})
-      : TType(sourceState), m_lexer(lexer)
-  {
-  }
+    LexerObject(Lexer *lexer, State<typename TType::Type> *sourceState = {})
+        : TType(sourceState)
+        , m_lexer(lexer)
+    {
+    }
 
-  bool characterTest(QString::const_iterator character)
-  {
-    return Test::characterTest(character);
-  }
+    bool characterTest(QString::const_iterator character)
+    {
+        return Test::characterTest(character);
+    }
 
-  void onTransition() { Action1::doAction(m_lexer); }
+    void onTransition()
+    {
+        Action1::doAction(m_lexer);
+    }
 
-  void onEntry() { Action1::doAction(m_lexer); }
+    void onEntry()
+    {
+        Action1::doAction(m_lexer);
+    }
 
-  void onExit() { Action2::doAction(m_lexer); }
+    void onExit()
+    {
+        Action2::doAction(m_lexer);
+    }
 
 private:
-  Lexer *const m_lexer;
+    Lexer *const m_lexer;
 };
 
 struct TokenFinalizer {
-  static void doAction(Lexer *lexer) { lexer->finalizeToken(); }
+    static void doAction(Lexer *lexer)
+    {
+        lexer->finalizeToken();
+    }
 };
 
 struct TokenFinalizerWithTrimming {
-  static void doAction(Lexer *lexer)
-  {
-    lexer->finalizeTokenWithTrimmedWhitespace();
-  }
+    static void doAction(Lexer *lexer)
+    {
+        lexer->finalizeTokenWithTrimmedWhitespace();
+    }
 };
 
 struct TokenFinalizerWithTrimmingAndNewline {
-  static void doAction(Lexer *lexer)
-  {
-    lexer->finalizeTokenWithTrimmedWhitespace();
-    lexer->markNewline();
-  }
+    static void doAction(Lexer *lexer)
+    {
+        lexer->finalizeTokenWithTrimmedWhitespace();
+        lexer->markNewline();
+    }
 };
 
 struct MarkStartSyntax {
-  static void doAction(Lexer *lexer) { lexer->markStartSyntax(); }
+    static void doAction(Lexer *lexer)
+    {
+        lexer->markStartSyntax();
+    }
 };
 
 struct FinalizeAndMarkStartSyntax {
-  static void doAction(Lexer *lexer)
-  {
-    lexer->finalizeToken();
-    lexer->markStartSyntax();
-  }
+    static void doAction(Lexer *lexer)
+    {
+        lexer->finalizeToken();
+        lexer->markStartSyntax();
+    }
 };
 
 struct MarksClearer {
-  static void doAction(Lexer *lexer) { lexer->clearMarkers(); }
+    static void doAction(Lexer *lexer)
+    {
+        lexer->clearMarkers();
+    }
 };
 
 struct MarkEndSyntax {
-  static void doAction(Lexer *lexer) { lexer->markEndSyntax(); }
+    static void doAction(Lexer *lexer)
+    {
+        lexer->markEndSyntax();
+    }
 };
 
 struct MarkNewline {
-  static void doAction(Lexer *lexer) { lexer->markNewline(); }
+    static void doAction(Lexer *lexer)
+    {
+        lexer->markNewline();
+    }
 };
 
-template <char c, typename Action = NullLexerAction>
-class CharacterTransition
-    : public LexerObject<State<CharTransitionInterface>::Transition,
-                         CharacterTest<c>, Action>
+template<char c, typename Action = NullLexerAction>
+class CharacterTransition : public LexerObject<State<CharTransitionInterface>::Transition, CharacterTest<c>, Action>
 {
 public:
-  CharacterTransition(Lexer *lexer,
-                      State<CharTransitionInterface> *sourceState = {})
-      : LexerObject<State<CharTransitionInterface>::Transition,
-                    CharacterTest<c>, Action>(lexer, sourceState)
-  {
-  }
+    CharacterTransition(Lexer *lexer, State<CharTransitionInterface> *sourceState = {})
+        : LexerObject<State<CharTransitionInterface>::Transition, CharacterTest<c>, Action>(lexer, sourceState)
+    {
+    }
 };
 
-template <char c, typename Action = NullLexerAction>
-class NegateCharacterTransition
-    : public LexerObject<State<CharTransitionInterface>::Transition,
-                         Negate<CharacterTest<c>>, Action>
+template<char c, typename Action = NullLexerAction>
+class NegateCharacterTransition : public LexerObject<State<CharTransitionInterface>::Transition, Negate<CharacterTest<c>>, Action>
 {
 public:
-  NegateCharacterTransition(Lexer *lexer,
-                            State<CharTransitionInterface> *sourceState = {})
-      : LexerObject<State<CharTransitionInterface>::Transition,
-                    Negate<CharacterTest<c>>, Action>(lexer, sourceState)
-  {
-  }
+    NegateCharacterTransition(Lexer *lexer, State<CharTransitionInterface> *sourceState = {})
+        : LexerObject<State<CharTransitionInterface>::Transition, Negate<CharacterTest<c>>, Action>(lexer, sourceState)
+    {
+    }
 };
 }
 

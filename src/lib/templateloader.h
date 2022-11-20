@@ -48,28 +48,26 @@ class AbstractLocalizer;
 class KTEXTTEMPLATE_EXPORT AbstractTemplateLoader
 {
 public:
-  /**
-    Destructor
-  */
-  virtual ~AbstractTemplateLoader();
+    /**
+      Destructor
+    */
+    virtual ~AbstractTemplateLoader();
 
-  /**
-    Load a Template called @p name. Return an invalid Template if no content
-    by that name exists.
-  */
-  virtual Template loadByName(const QString &name,
-                              Engine const *engine) const = 0;
+    /**
+      Load a Template called @p name. Return an invalid Template if no content
+      by that name exists.
+    */
+    virtual Template loadByName(const QString &name, Engine const *engine) const = 0;
 
-  /**
-    Return a complete URI for media identified by fileName.
-  */
-  virtual std::pair<QString, QString>
-  getMediaUri(const QString &fileName) const = 0;
+    /**
+      Return a complete URI for media identified by fileName.
+    */
+    virtual std::pair<QString, QString> getMediaUri(const QString &fileName) const = 0;
 
-  /**
-    Return true if a Template identified by @p name exists and can be loaded.
-  */
-  virtual bool canLoadTemplate(const QString &name) const = 0;
+    /**
+      Return true if a Template identified by @p name exists and can be loaded.
+    */
+    virtual bool canLoadTemplate(const QString &name) const = 0;
 };
 
 /// @headerfile templateloader.h KTextTemplate/templateloader.h
@@ -134,50 +132,48 @@ class FileSystemTemplateLoaderPrivate;
   @see @ref deploying_templates
 
 */
-class KTEXTTEMPLATE_EXPORT FileSystemTemplateLoader
-    : public AbstractTemplateLoader
+class KTEXTTEMPLATE_EXPORT FileSystemTemplateLoader : public AbstractTemplateLoader
 {
 public:
-  /**
-    Constructor
-  */
-  FileSystemTemplateLoader(const QSharedPointer<AbstractLocalizer> localizer
-                           = {});
+    /**
+      Constructor
+    */
+    FileSystemTemplateLoader(const QSharedPointer<AbstractLocalizer> localizer = {});
 
-  /**
-    Destructor
-  */
-  ~FileSystemTemplateLoader() override;
+    /**
+      Destructor
+    */
+    ~FileSystemTemplateLoader() override;
 
-  Template loadByName(const QString &name, Engine const *engine) const override;
+    Template loadByName(const QString &name, Engine const *engine) const override;
 
-  bool canLoadTemplate(const QString &name) const override;
+    bool canLoadTemplate(const QString &name) const override;
 
-  std::pair<QString, QString> getMediaUri(const QString &fileName) const override;
+    std::pair<QString, QString> getMediaUri(const QString &fileName) const override;
 
-  /**
-    Sets the theme of this loader to @p themeName
-  */
-  void setTheme(const QString &themeName);
+    /**
+      Sets the theme of this loader to @p themeName
+    */
+    void setTheme(const QString &themeName);
 
-  /**
-    The themeName of this TemplateLoader
-  */
-  QString themeName() const;
+    /**
+      The themeName of this TemplateLoader
+    */
+    QString themeName() const;
 
-  /**
-    Sets the directories to look for template files to @p dirs.
-  */
-  void setTemplateDirs(const QStringList &dirs);
+    /**
+      Sets the directories to look for template files to @p dirs.
+    */
+    void setTemplateDirs(const QStringList &dirs);
 
-  /**
-    The directories this TemplateLoader looks in for template files.
-   */
-  QStringList templateDirs() const;
+    /**
+      The directories this TemplateLoader looks in for template files.
+     */
+    QStringList templateDirs() const;
 
 private:
-  Q_DECLARE_PRIVATE(FileSystemTemplateLoader)
-  FileSystemTemplateLoaderPrivate *const d_ptr;
+    Q_DECLARE_PRIVATE(FileSystemTemplateLoader)
+    FileSystemTemplateLoaderPrivate *const d_ptr;
 };
 
 /// @headerfile templateloader.h KTextTemplate/templateloader.h
@@ -192,37 +188,36 @@ private:
   Templates can be made available using the @ref setTemplate method, and will
   then be retrieved by the KTextTemplate::Engine as appropriate.
 */
-class KTEXTTEMPLATE_EXPORT InMemoryTemplateLoader
-    : public AbstractTemplateLoader
+class KTEXTTEMPLATE_EXPORT InMemoryTemplateLoader : public AbstractTemplateLoader
 {
 public:
-  InMemoryTemplateLoader();
-  ~InMemoryTemplateLoader() override;
+    InMemoryTemplateLoader();
+    ~InMemoryTemplateLoader() override;
 
-  Template loadByName(const QString &name, Engine const *engine) const override;
+    Template loadByName(const QString &name, Engine const *engine) const override;
 
-  bool canLoadTemplate(const QString &name) const override;
+    bool canLoadTemplate(const QString &name) const override;
 
-  std::pair<QString, QString> getMediaUri(const QString &fileName) const override;
+    std::pair<QString, QString> getMediaUri(const QString &fileName) const override;
 
-  /**
-    Add a template content to this Loader.
+    /**
+      Add a template content to this Loader.
 
-    Example:
+      Example:
 
-    @code
-      auto loader = QSharedPointer<InMemoryTemplateLoader::create();
-      loader->setTemplate( "name_template", "My name is {{ name }}" );
-      loader->setTemplate( "age_template", "My age is {{ age }}" );
-      engine->addTemplateLoader( loader );
+      @code
+        auto loader = QSharedPointer<InMemoryTemplateLoader::create();
+        loader->setTemplate( "name_template", "My name is {{ name }}" );
+        loader->setTemplate( "age_template", "My age is {{ age }}" );
+        engine->addTemplateLoader( loader );
 
-      // Both templates may now be retrieved by calling Engine::loadByName.
-    @endcode
-  */
-  void setTemplate(const QString &name, const QString &content);
+        // Both templates may now be retrieved by calling Engine::loadByName.
+      @endcode
+    */
+    void setTemplate(const QString &name, const QString &content);
 
 private:
-  QHash<QString, QString> m_namedTemplates;
+    QHash<QString, QString> m_namedTemplates;
 };
 }
 

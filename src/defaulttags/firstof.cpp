@@ -27,30 +27,29 @@ FirstOfNodeFactory::FirstOfNodeFactory() = default;
 
 Node *FirstOfNodeFactory::getNode(const QString &tagContent, Parser *p) const
 {
-  auto expr = smartSplit(tagContent);
+    auto expr = smartSplit(tagContent);
 
-  const auto tagName = expr.takeAt(0);
+    const auto tagName = expr.takeAt(0);
 
-  if (expr.isEmpty()) {
-    throw KTextTemplate::Exception(
-        TagSyntaxError,
-        QStringLiteral("%1 expects at least one argument").arg(tagName));
-  }
+    if (expr.isEmpty()) {
+        throw KTextTemplate::Exception(TagSyntaxError, QStringLiteral("%1 expects at least one argument").arg(tagName));
+    }
 
-  return new FirstOfNode(getFilterExpressionList(expr, p), p);
+    return new FirstOfNode(getFilterExpressionList(expr, p), p);
 }
 
 FirstOfNode::FirstOfNode(const QList<FilterExpression> &list, QObject *parent)
-    : Node(parent), m_variableList(list)
+    : Node(parent)
+    , m_variableList(list)
 {
 }
 
 void FirstOfNode::render(OutputStream *stream, Context *c) const
 {
-  for (const FilterExpression &fe : m_variableList) {
-    if (fe.isTrue(c)) {
-      fe.resolve(stream, c);
-      return;
+    for (const FilterExpression &fe : m_variableList) {
+        if (fe.isTrue(c)) {
+            fe.resolve(stream, c);
+            return;
+        }
     }
-  }
 }

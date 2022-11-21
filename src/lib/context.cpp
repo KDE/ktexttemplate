@@ -34,9 +34,6 @@ class ContextPrivate
 {
     ContextPrivate(Context *context, const QVariantHash &variantHash)
         : q_ptr(context)
-        , m_autoescape(true)
-        , m_mutating(false)
-        , m_urlType(Context::AbsoluteUrls)
         , m_renderContext(new RenderContext)
         , m_localizer(new NullLocalizer)
     {
@@ -52,10 +49,10 @@ class ContextPrivate
     Context *const q_ptr;
 
     QList<QVariantHash> m_variantHashStack;
-    bool m_autoescape;
-    bool m_mutating;
+    bool m_autoescape = true;
+    bool m_mutating = false;
     QList<std::pair<QString, QString>> m_externalMedia;
-    Context::UrlType m_urlType;
+    Context::UrlType m_urlType = Context::AbsoluteUrls;
     QString m_relativeMediaPath;
     RenderContext *const m_renderContext;
     QSharedPointer<AbstractLocalizer> m_localizer;

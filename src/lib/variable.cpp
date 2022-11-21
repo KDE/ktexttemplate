@@ -40,7 +40,6 @@ class VariablePrivate
 public:
     VariablePrivate(Variable *variable)
         : q_ptr(variable)
-        , m_localize(false)
     {
     }
 
@@ -50,7 +49,7 @@ public:
     QString m_varString;
     QVariant m_literal;
     QStringList m_lookups;
-    bool m_localize;
+    bool m_localize = false;
 };
 }
 

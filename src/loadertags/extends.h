@@ -37,7 +37,7 @@ class ExtendsNodeFactory : public AbstractNodeFactory
 {
     Q_OBJECT
 public:
-    ExtendsNodeFactory(QObject *parent = {});
+    explicit ExtendsNodeFactory(QObject *parent = {});
 
     Node *getNode(const QString &tagContent, Parser *p) const override;
 };

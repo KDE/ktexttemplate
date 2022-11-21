@@ -54,7 +54,7 @@ class ConstantIncludeNode : public Node
 {
     Q_OBJECT
 public:
-    ConstantIncludeNode(const QString &filename, QObject *parent = {});
+    explicit ConstantIncludeNode(const QString &filename, QObject *parent = {});
     void render(OutputStream *stream, Context *c) const override;
 
 private:

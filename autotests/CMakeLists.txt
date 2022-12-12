@@ -25,6 +25,7 @@ if (Qt6LinguistTools_FOUND)
 
   set( LINGUIST_QM_ARGS COMMAND "${QT_LRELEASE_EXECUTABLE}" )
 
+  set( generate_QMs )
   foreach(TESTS_LOCALE ${TESTS_LOCALES})
       set( generate_QMs ${generate_QMs} ${LINGUIST_QM_ARGS} "${CMAKE_CURRENT_SOURCE_DIR}/test_${TESTS_LOCALE}.ts" "-qm" "${CMAKE_CURRENT_BINARY_DIR}/test_${TESTS_LOCALE}.qm" )
   endforeach()

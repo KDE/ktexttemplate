@@ -1,6 +1,6 @@
 set(KTextTemplate_INSTALL_INCLUDEDIR ${KDE_INSTALL_INCLUDEDIR_KF}/KTextTemplate) # visibility incluee path
 
-set(@KTextTemplate_PLUGIN_PATH@ ${KDE_INSTALL_FULL_LIBDIR} )
+set(KTextTemplate_PLUGIN_PATH ${KDE_INSTALL_FULL_LIBDIR} )
 
 configure_file(ktexttemplate_config_p.h.cmake  ${CMAKE_CURRENT_BINARY_DIR}/ktexttemplate_config_p.h)
 

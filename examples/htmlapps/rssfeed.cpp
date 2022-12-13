@@ -20,7 +20,7 @@
 
 #include "rssfeed.h"
 
-#include <ktexttemplate.h>
+#include <KTextTemplate/Util>
 
 #include <QAbstractXmlNodeModel>
 #include <QBuffer>

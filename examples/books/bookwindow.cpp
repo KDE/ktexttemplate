@@ -51,7 +51,9 @@
 #include <QInputDialog>
 #include <QMessageBox>
 
-#include <ktexttemplate.h>
+#include <KTextTemplate/Context>
+#include <KTextTemplate/Engine>
+#include <KTextTemplate/FileSystemTemplateLoader>
 
 BookWindow::BookWindow()
 {

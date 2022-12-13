@@ -29,7 +29,10 @@
 #include <QDir>
 #include <QTimer>
 
-#include "ktexttemplate.h"
+#include <KTextTemplate/Context>
+#include <KTextTemplate/Engine>
+#include <KTextTemplate/FileSystemTemplateLoader>
+
 #include "ktexttemplate_paths.h"
 
 static const struct {

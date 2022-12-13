@@ -25,7 +25,8 @@
 #include <QWebView>
 
 #include "ktexttemplate_paths.h"
-#include <ktexttemplate.h>
+#include <KTextTemplate/Engine>
+#include <KTextTemplate/FileSystemTemplateLoader>
 
 #include "localrequestmanager.h"
 #include <QCoreApplication>

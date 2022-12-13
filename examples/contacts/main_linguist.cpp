@@ -24,7 +24,7 @@
 #include <QLibraryInfo>
 #include <QTranslator>
 
-#include <ktexttemplate.h>
+#include <KTextTemplate/QtLocalizer>
 
 #include "ktexttemplate_paths.h"
 

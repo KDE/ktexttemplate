@@ -26,7 +26,11 @@
 
 #include <QDebug>
 
-#include "ktexttemplate.h"
+#include <KTextTemplate/Context>
+#include <KTextTemplate/Engine>
+#include <KTextTemplate/FileSystemTemplateLoader>
+#include <KTextTemplate/Util>
+
 #include "ktexttemplate_paths.h"
 
 #include "designwidget.h"

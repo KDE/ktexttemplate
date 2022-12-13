@@ -32,6 +32,9 @@ ExternalProject_Add(contacts
   DEPENDS codegen
 )
 
+if(FALSE) # remove once htmlapps is ported
+
+# TODO port away from Qt5::XmlPatterns & Qt5::WebKit
 ExternalProject_Add(htmlapps
   SOURCE_DIR ${CMAKE_SOURCE_DIR}/htmlapps
   INSTALL_COMMAND ""
@@ -39,3 +42,5 @@ ExternalProject_Add(htmlapps
     -DCMAKE_PREFIX_PATH=${prefixPath}
   DEPENDS contacts
 )
+
+endif()

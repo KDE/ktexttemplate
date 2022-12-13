@@ -54,9 +54,7 @@ BookDelegate::BookDelegate(QObject *parent)
 void BookDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const
 {
     if (index.column() != 5) {
-        QStyleOptionViewItem opt = option;
-        opt.rect.adjust(0, 0, -1, -1); // since we draw the grid ourselves
-        QSqlRelationalDelegate::paint(painter, opt, index);
+        QSqlRelationalDelegate::paint(painter, option, index);
     } else {
         const QAbstractItemModel *model = index.model();
         QPalette::ColorGroup cg =
@@ -74,7 +72,6 @@ void BookDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, 
             painter->drawPixmap(x, y, star);
             x += width;
         }
-        drawFocus(painter, option, option.rect.adjusted(0, 0, -1, -1)); // since we draw the grid ourselves
     }
 
     QPen pen = painter->pen();

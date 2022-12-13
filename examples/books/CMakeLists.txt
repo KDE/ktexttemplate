@@ -16,8 +16,8 @@ get_filename_component(KTextTemplate_PLUGIN_DIR ${KTextTemplate_PLUGIN_DIR} PATH
 
 configure_file(ktexttemplate_paths.h.cmake ${PROJECT_BINARY_DIR}/ktexttemplate_paths.h)
 
-find_package(Qt5Widgets REQUIRED)
-find_package(Qt5Sql REQUIRED)
+find_package(Qt6Widgets REQUIRED)
+find_package(Qt6Sql REQUIRED)
 
 add_executable(books
   main.cpp
@@ -27,12 +27,8 @@ add_executable(books
   books.qrc
 )
 
-target_link_libraries(
-  books
-  KF6::TextTemplate
-)
-
 target_link_libraries(books
+  KF6::TextTemplate
   Qt6::Widgets
   Qt6::Sql
 )

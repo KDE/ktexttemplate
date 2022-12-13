@@ -25,7 +25,7 @@
 
 #include <KTextTemplate/TemplateLoader>
 #include <QListWidget>
-#include <QWebView>
+#include <QWebEngineView>
 
 namespace KTextTemplate
 {
@@ -52,7 +52,7 @@ protected:
 
 private:
     QListWidget *m_list;
-    QWebView *m_webView;
+    QWebEngineView *m_webView;
     QComboBox *m_combo;
     QString m_templateDir;
 

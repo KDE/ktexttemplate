@@ -19,11 +19,11 @@ target_link_libraries(
   KF6::TextTemplate
 )
 
-find_package(Qt6WebKitWidgets REQUIRED)
+find_package(Qt6WebEngineWidgets REQUIRED)
 find_package(Qt6LinguistTools REQUIRED)
 target_link_libraries(
   contacts_linguist
-  Qt6::WebKitWidgets
+  Qt6::WebEngineWidgets
 )
 set(lupdate_exe Qt6::lupdate)
 set(lrelease_exe Qt6::lrelease)

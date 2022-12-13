@@ -113,7 +113,7 @@ MainWindow::MainWindow(const QString &templateDir, QWidget *parent)
 
     connect(m_combo, SIGNAL(currentIndexChanged(int)), SLOT(render()));
 
-    m_webView = new QWebView;
+    m_webView = new QWebEngineView;
     wLayout->addWidget(m_webView);
     QTimer::singleShot(0, this, SLOT(delayedInit()));
 }

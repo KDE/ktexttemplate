@@ -26,8 +26,8 @@
 
 #include <QDebug>
 
-DesignWidget::DesignWidget(QWidget *parent, Qt::WindowFlags f)
-    : QWidget(parent, f)
+DesignWidget::DesignWidget(QWidget *parent)
+    : QWidget(parent)
 {
     ui.setupUi(this);
     setInitialContent();

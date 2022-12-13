@@ -64,8 +64,8 @@ public:
     }
 };
 
-MainWindow::MainWindow(QWidget *parent, Qt::WindowFlags flags)
-    : QMainWindow(parent, flags)
+MainWindow::MainWindow(QWidget *parent)
+    : QMainWindow(parent)
 {
     QSplitter *splitter = new QSplitter(this);
     splitter->setStretchFactor(1, 5);

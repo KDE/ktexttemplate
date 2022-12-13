@@ -55,8 +55,8 @@ static const struct {
                 {"Frank Fischer", "frank@fischer.com", "+54321", 321, "Fake St", "Tokyo", "fish", "EUR", 89000.89, 234000.4, 8754},
                 {"Gina Jameson", "gina@jameson.com", "+98765", 123, "Other St", "Beijing", "genes", "EUR", 430000, 23400000.4, 9000}};
 
-MainWindow::MainWindow(const QString &templateDir, QWidget *parent, Qt::WindowFlags flags)
-    : QWidget(parent, flags)
+MainWindow::MainWindow(const QString &templateDir, QWidget *parent)
+    : QWidget(parent)
 {
     QHBoxLayout *layout = new QHBoxLayout(this);
     QSplitter *splitter = new QSplitter(this);

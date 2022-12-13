@@ -34,7 +34,7 @@ class DesignWidget : public QWidget
 {
     Q_OBJECT
 public:
-    DesignWidget(QWidget *parent = 0, Qt::WindowFlags f = 0);
+    explicit DesignWidget(QWidget *parent = nullptr);
 
     KTextTemplate::Context getContext();
 

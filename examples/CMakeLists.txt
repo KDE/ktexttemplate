@@ -39,11 +39,3 @@ ExternalProject_Add(htmlapps
     -DCMAKE_PREFIX_PATH=${prefixPath}
   DEPENDS contacts
 )
-
-ExternalProject_Add(textedit
-  SOURCE_DIR ${CMAKE_SOURCE_DIR}/textedit
-  INSTALL_COMMAND ""
-  CMAKE_ARGS
-    -DCMAKE_PREFIX_PATH=${prefixPath}
-  DEPENDS htmlapps
-)

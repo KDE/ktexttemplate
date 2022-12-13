@@ -38,7 +38,6 @@ add_library(KTextTemplate SHARED
   engine_p.h
   exception.h
   ktexttemplate_tags_p.h
-  ktexttemplate.h
   lexer_p.h
   metaenumvariable_p.h
   nodebuiltins_p.h
@@ -176,12 +175,6 @@ install(FILES
   ${KTextTemplate_HEADERS}
   ${CMAKE_CURRENT_BINARY_DIR}/ktexttemplate_export.h
   DESTINATION "${KTextTemplate_INSTALL_INCLUDEDIR}/ktexttemplate" # lowercase C++ namespace
-  COMPONENT Templates
-)
-
-install(FILES
-  ktexttemplate.h
-  DESTINATION ${KTextTemplate_INSTALL_INCLUDEDIR}
   COMPONENT Templates
 )
 

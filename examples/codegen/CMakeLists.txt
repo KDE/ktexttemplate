@@ -16,7 +16,7 @@ get_filename_component(KTextTemplate_PLUGIN_DIR ${KTextTemplate_PLUGIN_DIR} PATH
 
 configure_file(ktexttemplate_paths.h.cmake ${PROJECT_BINARY_DIR}/ktexttemplate_paths.h)
 
-qt5_add_resources(
+qt6_add_resources(
   codegen_example_RCS_SRCS
   custom_tags.qrc
   OPTIONS -root "/plugins/kf6/ktexttemplate/"
@@ -35,7 +35,7 @@ add_executable(codegen
 )
 target_compile_definitions(codegen PRIVATE QT_DISABLE_DEPRECATED_BEFORE=0)
 
-find_package(Qt5Widgets REQUIRED)
+find_package(Qt6Widgets REQUIRED)
 
 target_link_libraries(
   codegen

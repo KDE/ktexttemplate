@@ -34,7 +34,7 @@ Node *TemplateTagNodeFactory::getNode(const QString &tagContent, Parser *p) cons
         throw KTextTemplate::Exception(TagSyntaxError, QStringLiteral("'templatetag' statement takes one argument"));
     }
 
-    auto name = expr.first();
+    const auto name = expr.constFirst();
 
     if (!TemplateTagNode::isKeyword(name)) {
         throw KTextTemplate::Exception(TagSyntaxError, QStringLiteral("Not a template tag"));

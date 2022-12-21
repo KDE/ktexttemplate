@@ -47,7 +47,7 @@ Node *AutoescapeNodeFactory::getNode(const QString &tagContent, Parser *p) const
 
     auto n = new AutoescapeNode(state, p);
 
-    auto list = p->parse(n, QStringLiteral("endautoescape"));
+    const auto list = p->parse(n, QStringLiteral("endautoescape"));
     p->removeNextToken();
 
     n->setList(list);

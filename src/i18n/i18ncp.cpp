@@ -116,7 +116,7 @@ KTextTemplate::Node *I18ncpVarNodeFactory::getNode(const QString &tagContent, Pa
         feList.append(FilterExpression(expr.at(i), p));
     }
 
-    auto resultName = expr.last();
+    const auto resultName = expr.last();
 
     return new I18ncpVarNode(contextText, sourceText, pluralText, feList, resultName);
 }
@@ -165,7 +165,7 @@ void I18ncpVarNode::render(OutputStream *stream, Context *c) const
     QVariantList args;
     for (const FilterExpression &fe : m_filterExpressionList)
         args.append(fe.resolve(c));
-    auto resultString = c->localizer()->localizePluralContextString(m_sourceText, m_pluralText, m_contextText, args);
+    const auto resultString = c->localizer()->localizePluralContextString(m_sourceText, m_pluralText, m_contextText, args);
 
     c->insert(m_resultName, resultString);
 }

@@ -44,7 +44,7 @@ Node *RegroupNodeFactory::getNode(const QString &tagContent, Parser *p) const
 
     FilterExpression expression(QStringLiteral("\"") + expr.at(3) + QStringLiteral("\""), p);
 
-    auto name = expr.at(5);
+    const auto name = expr.at(5);
 
     return new RegroupNode(target, expression, name, p);
 }

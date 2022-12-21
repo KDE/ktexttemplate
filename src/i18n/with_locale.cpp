@@ -40,7 +40,7 @@ Node *WithLocaleNodeFactory::getNode(const QString &tagContent, Parser *p) const
     FilterExpression fe(expr.at(1), p);
 
     auto n = new WithLocaleNode(fe, p);
-    auto nodeList = p->parse(n, QStringLiteral("endwith_locale"));
+    const auto nodeList = p->parse(n, QStringLiteral("endwith_locale"));
     n->setNodeList(nodeList);
     p->removeNextToken();
 

@@ -93,7 +93,7 @@ KTextTemplate::Node *I18ncVarNodeFactory::getNode(const QString &tagContent, Par
         feList.append(FilterExpression(expr.at(i), p));
     }
 
-    auto resultName = expr.last();
+    const auto resultName = expr.last();
 
     return new I18ncVarNode(sourceText, contextText, feList, resultName);
 }
@@ -111,7 +111,7 @@ void I18ncNode::render(OutputStream *stream, Context *c) const
     QVariantList args;
     for (const FilterExpression &fe : m_filterExpressionList)
         args.append(fe.resolve(c));
-    auto resultString = c->localizer()->localizeContextString(m_sourceText, m_context, args);
+    const auto resultString = c->localizer()->localizeContextString(m_sourceText, m_context, args);
 
     streamValueInContext(stream, resultString, c);
 }
@@ -135,7 +135,7 @@ void I18ncVarNode::render(OutputStream *stream, Context *c) const
     QVariantList args;
     for (const FilterExpression &fe : m_filterExpressionList)
         args.append(fe.resolve(c));
-    auto resultString = c->localizer()->localizeContextString(m_sourceText, m_context, args);
+    const auto resultString = c->localizer()->localizeContextString(m_sourceText, m_context, args);
 
     c->insert(m_resultName, resultString);
 }

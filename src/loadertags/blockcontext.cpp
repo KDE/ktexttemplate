@@ -54,7 +54,7 @@ void BlockContext::push(const QString &name, BlockNode const *blockNode)
     m_blocks[name].append(const_cast<BlockNode *>(blockNode));
 }
 
-bool BlockContext::isEmpty()
+bool BlockContext::isEmpty() const
 {
     return m_blocks.isEmpty();
 }

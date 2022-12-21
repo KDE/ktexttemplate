@@ -51,7 +51,7 @@ Node *WithNodeFactory::getNode(const QString &tagContent, Parser *p) const
     }
 
     auto n = new WithNode(namedExpressions, p);
-    auto nodeList = p->parse(n, QStringLiteral("endwith"));
+    const auto nodeList = p->parse(n, QStringLiteral("endwith"));
     n->setNodeList(nodeList);
     p->removeNextToken();
 

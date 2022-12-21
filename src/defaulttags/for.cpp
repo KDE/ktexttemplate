@@ -62,7 +62,7 @@ Node *ForNodeFactory::getNode(const QString &tagContent, Parser *p) const
 
     auto n = new ForNode(vars, fe, reversed, p);
 
-    auto loopNodes = p->parse(n, {QStringLiteral("empty"), QStringLiteral("endfor")});
+    const auto loopNodes = p->parse(n, {QStringLiteral("empty"), QStringLiteral("endfor")});
     n->setLoopList(loopNodes);
 
     NodeList emptyNodes;

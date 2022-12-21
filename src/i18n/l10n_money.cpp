@@ -34,7 +34,7 @@ Node *L10nMoneyNodeFactory::getNode(const QString &tagContent, Parser *p) const
     if (expr.size() < 2)
         throw KTextTemplate::Exception(TagSyntaxError, QStringLiteral("Error: l10n_money tag takes at least one argument"));
 
-    FilterExpression value(expr.at(1), p);
+    const FilterExpression value(expr.at(1), p);
 
     FilterExpression currency;
 
@@ -60,7 +60,7 @@ KTextTemplate::Node *L10nMoneyVarNodeFactory::getNode(const QString &tagContent,
     if (expr.size() == 3)
         currency = FilterExpression(expr.at(2), p);
 
-    auto resultName = expr.last();
+    const auto resultName = expr.last();
 
     return new L10nMoneyVarNode(value, currency, resultName);
 }
@@ -90,7 +90,7 @@ L10nMoneyVarNode::L10nMoneyVarNode(const FilterExpression &value, const FilterEx
 void L10nMoneyVarNode::render(OutputStream *stream, Context *c) const
 {
     Q_UNUSED(stream)
-    auto resultString = c->localizer()->localizeMonetaryValue(m_value.resolve(c).value<double>(), getSafeString(m_currency.resolve(c)).get());
+    const auto resultString = c->localizer()->localizeMonetaryValue(m_value.resolve(c).value<double>(), getSafeString(m_currency.resolve(c)).get());
 
     c->insert(m_resultName, resultString);
 }

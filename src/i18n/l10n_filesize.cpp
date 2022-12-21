@@ -87,7 +87,7 @@ Node *L10nFileSizeVarNodeFactory::getNode(const QString &tagContent, Parser *p) 
         multiplier = FilterExpression(parts.at(3), p);
     }
 
-    auto resultName = parts.last();
+    const auto resultName = parts.last();
 
     return new L10nFileSizeVarNode(size, unitSystem, precision, multiplier, resultName, p);
 }

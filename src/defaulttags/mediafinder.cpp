@@ -54,10 +54,10 @@ void MediaFinderNode::render(OutputStream *stream, Context *c) const
 
     for (const FilterExpression &fe : m_mediaExpressionList) {
         if (fe.isTrue(c)) {
-            auto fileUrl = engine->mediaUri(getSafeString(fe.resolve(c)));
+            const auto fileUrl = engine->mediaUri(getSafeString(fe.resolve(c)));
             if (fileUrl.second.isEmpty())
                 continue;
-            auto uri = QUrl::fromLocalFile(fileUrl.first).toString();
+            const auto uri = QUrl::fromLocalFile(fileUrl.first).toString();
             c->addExternalMedia(uri, fileUrl.second);
             if (c->urlType() == Context::AbsoluteUrls)
                 streamValueInContext(stream, uri, c);

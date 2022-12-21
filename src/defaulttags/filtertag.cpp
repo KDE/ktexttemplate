@@ -32,7 +32,7 @@ KTextTemplate::Node *FilterNodeFactory::getNode(const QString &tagContent, KText
 
     expr.removeFirst();
 
-    auto expression = expr.join(QChar::fromLatin1(' '));
+    const auto expression = expr.join(QChar::fromLatin1(' '));
     FilterExpression fe(QStringLiteral("var|%1").arg(expression), p);
 
     auto filters = fe.filters();

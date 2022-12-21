@@ -37,7 +37,7 @@ public:
 
     BlockNode *getBlock(const QString &name) const;
 
-    bool isEmpty();
+    bool isEmpty() const;
 
     void remove(QList<BlockNode *> const &nodes);
 

@@ -34,13 +34,13 @@ I18nNodeFactory::I18nNodeFactory() = default;
 
 Node *I18nNodeFactory::getNode(const QString &tagContent, Parser *p) const
 {
-    auto expr = smartSplit(tagContent);
+    const auto expr = smartSplit(tagContent);
 
     if (expr.size() < 2)
         throw KTextTemplate::Exception(TagSyntaxError, QStringLiteral("Error: i18n tag takes at least one argument"));
 
     auto sourceText = expr.at(1);
-    auto size = sourceText.size();
+    const auto size = sourceText.size();
 
     if (!(sourceText.startsWith(QLatin1Char('"')) && sourceText.endsWith(QLatin1Char('"')))
         && !(sourceText.startsWith(QLatin1Char('\'')) && sourceText.endsWith(QLatin1Char('\'')))) {
@@ -66,7 +66,7 @@ KTextTemplate::Node *I18nVarNodeFactory::getNode(const QString &tagContent, Pars
         throw KTextTemplate::Exception(TagSyntaxError, QStringLiteral("Error: i18n_var tag takes at least three arguments"));
 
     auto sourceText = expr.at(1);
-    auto size = sourceText.size();
+    const auto size = sourceText.size();
 
     if (!(sourceText.startsWith(QLatin1Char('"')) && sourceText.endsWith(QLatin1Char('"')))
         && !(sourceText.startsWith(QLatin1Char('\'')) && sourceText.endsWith(QLatin1Char('\'')))) {
@@ -115,7 +115,7 @@ void I18nVarNode::render(OutputStream *stream, Context *c) const
     QVariantList args;
     for (const FilterExpression &fe : m_filterExpressionList)
         args.append(fe.resolve(c));
-    auto resultString = c->localizer()->localizeString(m_sourceText, args);
+    const auto resultString = c->localizer()->localizeString(m_sourceText, args);
 
     c->insert(m_resultName, resultString);
 }

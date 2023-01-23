@@ -19,7 +19,7 @@ include(KDEFrameworkCompilerSettings NO_POLICY_SCOPE)
 include(KDECMakeSettings)
 include(KDEGitCommitHooks)
 
-set(REQUIRED_QT_VERSION 6.2.0)
+set(REQUIRED_QT_VERSION 6.4.0)
 find_package(Qt6Core ${REQUIRED_QT_VERSION} REQUIRED NO_MODULE)
 find_package(Qt6Qml ${REQUIRED_QT_VERSION} NO_MODULE)
 
@@ -51,7 +51,7 @@ if (CMAKE_COMPILER_IS_GNUCXX)
 endif()
 
 ecm_set_disabled_deprecation_versions(
-    QT 6.2
+    QT 6.4
 )
 
 kde_enable_exceptions()

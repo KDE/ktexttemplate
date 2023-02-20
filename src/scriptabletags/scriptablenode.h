@@ -39,7 +39,7 @@ class ScriptableNode : public Node
 {
     Q_OBJECT
 public:
-    ScriptableNode(QObject *parent = {});
+    explicit ScriptableNode(QObject *parent = {});
     void setScriptEngine(QJSEngine *engine);
     void init(const QJSValue &concreteNode, const QJSValue &renderMethod);
 

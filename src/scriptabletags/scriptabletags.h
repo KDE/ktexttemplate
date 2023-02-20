@@ -38,7 +38,7 @@ class ScriptableHelperFunctions : public QObject
     QJSEngine *m_scriptEngine;
 
 public:
-    ScriptableHelperFunctions(QJSEngine *scriptEngine)
+    explicit ScriptableHelperFunctions(QJSEngine *scriptEngine)
         : m_scriptEngine(scriptEngine)
     {
     }

@@ -32,7 +32,7 @@ class ScriptableFilterExpression : public QObject
 {
     Q_OBJECT
 public:
-    ScriptableFilterExpression(QObject *parent = {});
+    explicit ScriptableFilterExpression(QObject *parent = {});
     ScriptableFilterExpression(QJSEngine *engine, QObject *parent = {});
 
     void init(const QString &content, KTextTemplate::Parser *parser);

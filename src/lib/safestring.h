@@ -166,7 +166,7 @@ public:
         SafeString *m_safeString;
 
     public:
-        NestedString(SafeString *safeString);
+        explicit NestedString(SafeString *safeString);
         NestedString(const QString &content, SafeString *safeString);
 
         SafeString &append(const SafeString &str);

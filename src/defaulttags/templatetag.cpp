@@ -45,8 +45,8 @@ Node *TemplateTagNodeFactory::getNode(const QString &tagContent, Parser *p) cons
 
 TemplateTagNode::TemplateTagNode(const QString &name, QObject *parent)
     : Node(parent)
+    , m_name(name)
 {
-    m_name = name;
 }
 
 static QHash<QString, QString> getKeywordMap()

@@ -41,10 +41,10 @@ Node *WidthRatioNodeFactory::getNode(const QString &tagContent, Parser *p) const
 
 WidthRatioNode::WidthRatioNode(const FilterExpression &valExpr, const FilterExpression &maxExpr, const FilterExpression &maxWidth, QObject *parent)
     : Node(parent)
+    , m_valExpr(valExpr)
+    , m_maxExpr(maxExpr)
+    , m_maxWidth(maxWidth)
 {
-    m_valExpr = valExpr;
-    m_maxExpr = maxExpr;
-    m_maxWidth = maxWidth;
 }
 
 int WidthRatioNode::round(qreal number)

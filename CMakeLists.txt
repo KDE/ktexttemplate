@@ -60,9 +60,10 @@ set( KTextTemplate_INSTALL_PLUGINDIR ${KDE_INSTALL_PLUGINDIR}/kf6/ktexttemplate 
 
 include("${KTextTemplate_MODULE_DIR}/KF6TextTemplateMacros.cmake")
 
+set(ktexttemplate_version_header "${CMAKE_CURRENT_BINARY_DIR}/src/lib/ktexttemplate_version.h")
 ecm_setup_version(PROJECT
   VARIABLE_PREFIX KTEXTTEMPLATE
-  VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/ktexttemplate_version.h"
+  VERSION_HEADER "${ktexttemplate_version_header}"
   PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF6TextTemplateConfigVersion.cmake"
   SOVERSION 6
 )
@@ -106,7 +107,7 @@ install(EXPORT KF6TextTemplateTargets
 )
 
 install(FILES
-  ${CMAKE_CURRENT_BINARY_DIR}/ktexttemplate_version.h
+  ${ktexttemplate_version_header}
   DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF}/KTextTemplate
   COMPONENT Devel
 )

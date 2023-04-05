@@ -59,7 +59,12 @@ target_sources(KTextTemplate PRIVATE
   token.h
   typeaccessor.h
 )
-generate_export_header(KTextTemplate)
+ecm_generate_export_header(KTextTemplate
+    GROUP_BASE_NAME KF
+    VERSION ${KF_VERSION}
+    USE_VERSION_HEADER
+    DEPRECATED_BASE_VERSION 0
+)
 if (CMAKE_CXX_COMPILER_ID MATCHES GNU OR CMAKE_CXX_COMPILER_ID MATCHES Clang)
   # Lexer uses CRTP with some specializations overriding, but not all:
   target_compile_options(KTextTemplate PRIVATE -Wno-suggest-override)

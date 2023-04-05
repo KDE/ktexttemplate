@@ -33,6 +33,7 @@ include(ECMDeprecationSettings)
 include(ECMGenerateHeaders)
 include(ECMAddQch)
 include(ECMSetupVersion)
+include(ECMGenerateExportHeader)
 include(CMakePackageConfigHelpers)
 
 option(BUILD_QCH "Build API documentation in QCH format (for e.g. Qt Assistant, Qt Creator & KDevelop)" OFF)
@@ -42,8 +43,6 @@ set(EXCLUDE_DEPRECATED_BEFORE_AND_AT 0 CACHE STRING "Control the range of deprec
 
 set(KTextTemplate_MODULE_DIR ${CMAKE_SOURCE_DIR}/cmake/modules)
 list(APPEND CMAKE_MODULE_PATH ${KTextTemplate_MODULE_DIR})
-
-include(GenerateExportHeader)
 
 if (CMAKE_COMPILER_IS_GNUCXX)
   set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -Wshadow -std=iso9899:1990 -Werror-implicit-function-declaration")

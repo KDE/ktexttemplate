@@ -8,7 +8,16 @@ set_source_files_properties(taglibraryinterface.h PROPERTIES
   SKIP_AUTOMOC TRUE
 )
 
-add_library(KTextTemplate SHARED
+add_library(KTextTemplate)
+add_library(KF6::TextTemplate ALIAS KTextTemplate)
+
+set_target_properties(KTextTemplate PROPERTIES
+    VERSION     ${KTEXTTEMPLATE_VERSION}
+    SOVERSION   ${KTEXTTEMPLATE_SOVERSION}
+    EXPORT_NAME TextTemplate
+)
+
+target_sources(KTextTemplate PRIVATE
   abstractlocalizer.cpp
   cachingloaderdecorator.cpp
   customtyperegistry.cpp
@@ -50,11 +59,7 @@ add_library(KTextTemplate SHARED
   token.h
   typeaccessor.h
 )
-add_library(KF6::TextTemplate ALIAS KTextTemplate)
 generate_export_header(KTextTemplate)
-set_property(TARGET KTextTemplate PROPERTY
-  EXPORT_NAME TextTemplate
-)
 if (CMAKE_CXX_COMPILER_ID MATCHES GNU OR CMAKE_CXX_COMPILER_ID MATCHES Clang)
   # Lexer uses CRTP with some specializations overriding, but not all:
   target_compile_options(KTextTemplate PRIVATE -Wno-suggest-override)
@@ -141,11 +146,6 @@ target_link_libraries(KTextTemplate
 
 target_include_directories(KTextTemplate
     INTERFACE "$<INSTALL_INTERFACE:${KTextTemplate_INSTALL_INCLUDEDIR}>"
-)
-
-set_target_properties(KTextTemplate PROPERTIES
-  VERSION    ${KTEXTTEMPLATE_VERSION}
-  SOVERSION  ${KTEXTTEMPLATE_SOVERSION}
 )
 
 ecm_qt_export_logging_category(

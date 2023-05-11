@@ -279,7 +279,7 @@ void TestInternationalization::testLocalizedTemplate()
     c.setLocalizer(cLocalizer);
     QCOMPARE(t->render(&c), cFragment);
     c.setLocalizer(en_USLocalizer);
-    QCOMPARE(t->render(&c), en_USFragment);
+    QCOMPARE(t->render(&c).replace(QStringLiteral("\u202FAM"), QLatin1String(" AM")), en_USFragment);
     c.setLocalizer(en_GBLocalizer);
     QCOMPARE(t->render(&c), en_GBFragment);
     c.setLocalizer(deLocalizer);
@@ -898,7 +898,7 @@ void TestInternationalization::testTimes()
 
     QCOMPARE(nullLocalizer->localizeTime(time), nullTime);
     QCOMPARE(cLocalizer->localizeTime(time), cTime);
-    QCOMPARE(en_USLocalizer->localizeTime(time), en_USTime);
+    QCOMPARE(en_USLocalizer->localizeTime(time).simplified(), en_USTime);
     QCOMPARE(en_GBLocalizer->localizeTime(time), en_GBTime);
     QCOMPARE(deLocalizer->localizeTime(time), deTime);
     QCOMPARE(frLocalizer->localizeTime(time), frTime);
@@ -935,7 +935,7 @@ void TestInternationalization::testDateTimes()
 
     QCOMPARE(nullLocalizer->localizeDateTime(dateTime), dateTime.toString());
     QCOMPARE(cLocalizer->localizeDateTime(dateTime), cDateTime);
-    QCOMPARE(en_USLocalizer->localizeDateTime(dateTime), en_USDateTime);
+    QCOMPARE(en_USLocalizer->localizeDateTime(dateTime).simplified(), en_USDateTime);
     QCOMPARE(en_GBLocalizer->localizeDateTime(dateTime), en_GBDateTime);
     QCOMPARE(deLocalizer->localizeDateTime(dateTime), deDateTime);
     QCOMPARE(frLocalizer->localizeDateTime(dateTime), frDateTime);

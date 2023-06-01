@@ -223,11 +223,11 @@ if(BUILD_QCH)
             ${CMAKE_CURRENT_BINARY_DIR}
         BLANK_MACROS
             KTEXTTEMPLATE_EXPORT
-+        # TODO: ecm_add_qch does not yet support custom alias extensions
-+        # ALIASES += \
-+        #     gr_tag{1}="<tt>{%&nbsp;\1&nbsp;%}</tt>" \
-+        #     gr_var{1}="<tt>{{&nbsp;\1&nbsp;}}</tt>"
-+        # EXPAND_AS_DEFINED += TemplateImp
+            # TODO: ecm_add_qch does not yet support custom alias extensions
+            # ALIASES += \
+            #     gr_tag{1}="<tt>{%&nbsp;\1&nbsp;%}</tt>" \
+            #     gr_var{1}="<tt>{{&nbsp;\1&nbsp;}}</tt>"
+            # EXPAND_AS_DEFINED += TemplateImp
         TAGFILE_INSTALL_DESTINATION ${KDE_INSTALL_QTQCHDIR}
         QCH_INSTALL_DESTINATION ${KDE_INSTALL_QTQCHDIR}
         COMPONENT Devel

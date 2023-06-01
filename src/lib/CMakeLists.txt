@@ -8,16 +8,16 @@ set_source_files_properties(taglibraryinterface.h PROPERTIES
   SKIP_AUTOMOC TRUE
 )
 
-add_library(KTextTemplate)
-add_library(KF6::TextTemplate ALIAS KTextTemplate)
+add_library(KF6TextTemplate)
+add_library(KF6::TextTemplate ALIAS KF6TextTemplate)
 
-set_target_properties(KTextTemplate PROPERTIES
+set_target_properties(KF6TextTemplate PROPERTIES
     VERSION     ${KTEXTTEMPLATE_VERSION}
     SOVERSION   ${KTEXTTEMPLATE_SOVERSION}
     EXPORT_NAME TextTemplate
 )
 
-target_sources(KTextTemplate PRIVATE
+target_sources(KF6TextTemplate PRIVATE
   abstractlocalizer.cpp
   cachingloaderdecorator.cpp
   customtyperegistry.cpp
@@ -59,7 +59,8 @@ target_sources(KTextTemplate PRIVATE
   token.h
   typeaccessor.h
 )
-ecm_generate_export_header(KTextTemplate
+ecm_generate_export_header(KF6TextTemplate
+    BASE_NAME KTextTemplate
     GROUP_BASE_NAME KF
     VERSION ${KF_VERSION}
     USE_VERSION_HEADER
@@ -67,23 +68,23 @@ ecm_generate_export_header(KTextTemplate
 )
 if (CMAKE_CXX_COMPILER_ID MATCHES GNU OR CMAKE_CXX_COMPILER_ID MATCHES Clang)
   # Lexer uses CRTP with some specializations overriding, but not all:
-  target_compile_options(KTextTemplate PRIVATE -Wno-suggest-override)
+  target_compile_options(KF6TextTemplate PRIVATE -Wno-suggest-override)
 endif()
 
 if (CMAKE_GENERATOR MATCHES "Visual Studio")
 
-  set_property(TARGET KTextTemplate PROPERTY DEBUG_POSTFIX "d")
+  set_property(TARGET KF6TextTemplate PROPERTY DEBUG_POSTFIX "d")
 
   foreach(cfg ${CMAKE_CONFIGURATION_TYPES})
     string(TOUPPER ${cfg} CFG)
-    set_target_properties(KTextTemplate
+    set_target_properties(KF6TextTemplate
       PROPERTIES
       LIBRARY_OUTPUT_DIRECTORY_${CFG} "${CMAKE_CURRENT_BINARY_DIR}"
       RUNTIME_OUTPUT_DIRECTORY_${CFG} "${CMAKE_CURRENT_BINARY_DIR}"
       )
   endforeach()
 endif()
-target_compile_definitions(KTextTemplate
+target_compile_definitions(KF6TextTemplate
   PRIVATE
     PLUGINS_PREFER_DEBUG_POSTFIX=$<CONFIG:Debug>
 )
@@ -132,9 +133,9 @@ if (Qt6Qml_FOUND)
     list(APPEND scriptabletags_SRCS ${CMAKE_SOURCE_DIR}/src/scriptabletags/${file})
   endforeach()
 
-  target_sources(KTextTemplate PRIVATE ${scriptabletags_SRCS})
-  target_include_directories(KTextTemplate PRIVATE ../scriptabletags)
-  target_link_libraries(KTextTemplate
+  target_sources(KF6TextTemplate PRIVATE ${scriptabletags_SRCS})
+  target_include_directories(KF6TextTemplate PRIVATE ../scriptabletags)
+  target_link_libraries(KF6TextTemplate
     PRIVATE Qt6::Qml
   )
 endif()
@@ -145,11 +146,11 @@ endif()
 
 configure_file(ktexttemplate_test_export.h.in "${CMAKE_CURRENT_BINARY_DIR}/ktexttemplate_test_export.h")
 
-target_link_libraries(KTextTemplate
+target_link_libraries(KF6TextTemplate
   PUBLIC Qt6::Core
 )
 
-target_include_directories(KTextTemplate
+target_include_directories(KF6TextTemplate
     INTERFACE "$<INSTALL_INTERFACE:${KTextTemplate_INSTALL_INCLUDEDIR}>"
 )
 
@@ -174,7 +175,7 @@ ecm_qt_export_logging_category(
     EXPORT KTEXTTEMPLATE
 )
 
-install(TARGETS KTextTemplate EXPORT KF6TextTemplateTargets ${KF_INSTALL_TARGETS_DEFAULT_ARGS})
+install(TARGETS KF6TextTemplate EXPORT KF6TextTemplateTargets ${KF_INSTALL_TARGETS_DEFAULT_ARGS})
 
 install(FILES
   ${KTextTemplate_HEADERS}

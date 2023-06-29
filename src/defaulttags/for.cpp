@@ -196,3 +196,5 @@ void ForNode::render(OutputStream *stream, Context *c) const
     }
     c->pop();
 }
+
+#include "moc_for.cpp"

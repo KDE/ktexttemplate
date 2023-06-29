@@ -87,3 +87,5 @@ void IfNode::render(OutputStream *stream, Context *c) const
         }
     }
 }
+
+#include "moc_if.cpp"

@@ -66,3 +66,5 @@ void WidthRatioNode::render(OutputStream *stream, Context *c) const
     // TODO put integral streamers in OutputStream?
     (*stream) << QString::number(result);
 }
+
+#include "moc_widthratio.cpp"

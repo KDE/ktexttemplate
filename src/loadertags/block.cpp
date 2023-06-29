@@ -147,3 +147,5 @@ QString BlockNode::name() const
 {
     return m_name;
 }
+
+#include "moc_block.cpp"

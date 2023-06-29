@@ -100,3 +100,5 @@ void CycleNode::render(OutputStream *stream, Context *c) const
     }
     (*stream) << value;
 }
+
+#include "moc_cycle.cpp"

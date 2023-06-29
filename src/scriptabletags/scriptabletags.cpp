@@ -240,3 +240,5 @@ void ScriptableTagLibrary::addFilter(const QString &filterName)
 {
     m_filterNames << filterName;
 }
+
+#include "moc_scriptabletags.cpp"

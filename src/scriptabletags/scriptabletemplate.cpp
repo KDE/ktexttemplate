@@ -47,3 +47,5 @@ void ScriptableTemplate::setNodeList(const QList<QObject *> &list)
     }
     m_template->setNodeList(nodeList);
 }
+
+#include "moc_scriptabletemplate.cpp"

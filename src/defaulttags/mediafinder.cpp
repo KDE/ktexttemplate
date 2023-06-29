@@ -57,3 +57,5 @@ void MediaFinderNode::render(OutputStream *stream, Context *c) const
         }
     }
 }
+
+#include "moc_mediafinder.cpp"

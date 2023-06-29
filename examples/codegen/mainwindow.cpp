@@ -174,3 +174,5 @@ void MainWindow::createOutputTab(const QString &label, const QString &content)
 
     browser->setPlainText(content);
 }
+
+#include "moc_mainwindow.cpp"

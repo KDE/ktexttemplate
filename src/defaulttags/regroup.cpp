@@ -108,3 +108,5 @@ void RegroupNode::render(OutputStream *stream, Context *c) const
     }
     c->insert(m_varName, contextList);
 }
+
+#include "moc_regroup.cpp"

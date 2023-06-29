@@ -41,3 +41,5 @@ void LoadNode::render(OutputStream *stream, Context *c) const
     Q_UNUSED(stream)
     Q_UNUSED(c)
 }
+
+#include "moc_load.cpp"

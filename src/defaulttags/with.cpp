@@ -67,3 +67,5 @@ void WithNode::render(OutputStream *stream, Context *c) const
     m_list.render(stream, c);
     c->pop();
 }
+
+#include "moc_with.cpp"

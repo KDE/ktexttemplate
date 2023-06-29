@@ -60,3 +60,5 @@ void FilterNode::render(OutputStream *stream, Context *c) const
     m_fe.resolve(stream, c);
     c->pop();
 }
+
+#include "moc_filtertag.cpp"

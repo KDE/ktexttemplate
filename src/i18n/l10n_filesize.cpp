@@ -269,3 +269,5 @@ void L10nFileSizeVarNode::render(OutputStream *stream, Context *c) const
 
     c->insert(m_resultName, resultString);
 }
+
+#include "moc_l10n_filesize.cpp"

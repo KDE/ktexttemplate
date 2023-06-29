@@ -62,3 +62,5 @@ void AutoescapeNode::render(OutputStream *stream, Context *c) const
     m_list.render(stream, c);
     c->setAutoEscape(old_setting);
 }
+
+#include "moc_autoescape.cpp"

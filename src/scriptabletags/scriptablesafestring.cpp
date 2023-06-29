@@ -38,3 +38,5 @@ QString ScriptableSafeString::rawString()
 {
     return m_safeString;
 }
+
+#include "moc_scriptablesafestring.cpp"

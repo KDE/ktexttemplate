@@ -287,3 +287,5 @@ void Parser::prependToken(const Token &token)
     Q_D(Parser);
     d->m_tokenList.prepend(token);
 }
+
+#include "moc_parser.cpp"

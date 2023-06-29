@@ -8,3 +8,5 @@
 */
 
 #include "bookwrapper.h"
+
+#include "moc_bookwrapper.cpp"

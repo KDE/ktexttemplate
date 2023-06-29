@@ -42,3 +42,5 @@ void FirstOfNode::render(OutputStream *stream, Context *c) const
         }
     }
 }
+
+#include "moc_firstof.cpp"

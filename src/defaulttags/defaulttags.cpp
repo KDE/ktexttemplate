@@ -8,3 +8,5 @@
 */
 
 #include "defaulttags.h"
+
+#include "moc_defaulttags.cpp"

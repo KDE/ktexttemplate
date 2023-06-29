@@ -8,3 +8,5 @@
 */
 
 #include "i18ntags.h"
+
+#include "moc_i18ntags.cpp"

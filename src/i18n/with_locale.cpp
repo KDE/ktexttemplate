@@ -57,3 +57,5 @@ void WithLocaleNode::render(OutputStream *stream, Context *c) const
     c->localizer()->popLocale();
     c->pop();
 }
+
+#include "moc_with_locale.cpp"

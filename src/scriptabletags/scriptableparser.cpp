@@ -66,3 +66,5 @@ QList<QObject *> ScriptableParser::parse(QObject *parent, const QStringList &sto
     }
     return objList;
 }
+
+#include "moc_scriptableparser.cpp"

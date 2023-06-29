@@ -91,3 +91,5 @@ void ConstantIncludeNode::render(OutputStream *stream, Context *c) const
     blockContext.remove(nodes);
     variant.setValue(blockContext);
 }
+
+#include "moc_include.cpp"

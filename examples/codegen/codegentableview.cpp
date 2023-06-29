@@ -50,3 +50,5 @@ ArgsTableView::ArgsTableView(QWidget *parent)
     setEditTriggers(QAbstractItemView::AllEditTriggers);
     horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
 }
+
+#include "moc_codegentableview.cpp"

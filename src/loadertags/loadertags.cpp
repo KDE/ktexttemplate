@@ -8,3 +8,5 @@
 */
 
 #include "loadertags.h"
+
+#include "moc_loadertags.cpp"

@@ -52,3 +52,5 @@ QString ScriptableContext::render(const QList<QObject *> &list) const
     nodeList.render(&stream, m_c);
     return ret;
 }
+
+#include "moc_scriptablecontext.cpp"

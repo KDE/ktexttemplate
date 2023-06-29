@@ -32,3 +32,5 @@ void CommentNode::render(OutputStream *stream, Context *c) const
     Q_UNUSED(stream);
     Q_UNUSED(c);
 }
+
+#include "moc_comment.cpp"

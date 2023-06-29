@@ -112,3 +112,5 @@ void RangeNode::render(OutputStream *stream, Context *c) const
             c->pop();
     }
 }
+
+#include "moc_range.cpp"

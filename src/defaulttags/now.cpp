@@ -40,3 +40,5 @@ void NowNode::render(OutputStream *stream, Context *c) const
     Q_UNUSED(c)
     (*stream) << QDateTime::currentDateTime().toString(m_formatString);
 }
+
+#include "moc_now.cpp"

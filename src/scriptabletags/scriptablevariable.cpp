@@ -47,3 +47,5 @@ bool ScriptableVariable::isTrue(ScriptableContext *c)
 {
     return m_variable.isTrue(c->context());
 }
+
+#include "moc_scriptablevariable.cpp"

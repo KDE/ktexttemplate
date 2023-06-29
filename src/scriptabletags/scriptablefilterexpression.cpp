@@ -56,3 +56,5 @@ bool ScriptableFilterExpression::equals(ScriptableFilterExpression *other, Scrip
     auto c = scriptableC->context();
     return KTextTemplate::equals(m_filterExpression.resolve(c), other->m_filterExpression.resolve(c));
 }
+
+#include "moc_scriptablefilterexpression.cpp"

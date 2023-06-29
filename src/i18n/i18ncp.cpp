@@ -158,3 +158,5 @@ void I18ncpVarNode::render(OutputStream *stream, Context *c) const
 
     c->insert(m_resultName, resultString);
 }
+
+#include "moc_i18ncp.cpp"

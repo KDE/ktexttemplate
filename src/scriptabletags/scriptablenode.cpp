@@ -105,3 +105,5 @@ void ScriptableNode::setNodeList(const QString &name, const QList<QObject *> &ob
     }
     m_concreteNode.setProperty(name, objectListArray);
 }
+
+#include "moc_scriptablenode.cpp"

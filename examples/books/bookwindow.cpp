@@ -198,3 +198,5 @@ void BookWindow::renderBooks() const
     file.write(content.toLocal8Bit());
     file.close();
 }
+
+#include "moc_bookwindow.cpp"

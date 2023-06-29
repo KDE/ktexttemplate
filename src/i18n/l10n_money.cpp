@@ -83,3 +83,5 @@ void L10nMoneyVarNode::render(OutputStream *stream, Context *c) const
 
     c->insert(m_resultName, resultString);
 }
+
+#include "moc_l10n_money.cpp"

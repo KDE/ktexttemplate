@@ -64,3 +64,5 @@ void TemplateTagNode::render(OutputStream *stream, Context *c) const
     static auto map = getKeywordMap();
     (*stream) << map.value(m_name);
 }
+
+#include "moc_templatetag.cpp"

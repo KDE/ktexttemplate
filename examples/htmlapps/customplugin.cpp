@@ -14,3 +14,5 @@
 
 Q_EXPORT_PLUGIN2(customplugin, CustomPlugin)
 #endif
+
+#include "moc_customplugin.cpp"

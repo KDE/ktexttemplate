@@ -40,3 +40,5 @@ MainWindow::MainWindow(QWidget *parent)
 
     layout->addWidget(wv);
 }
+
+#include "moc_mainwindow.cpp"

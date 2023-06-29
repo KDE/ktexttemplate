@@ -349,3 +349,5 @@ bool Engine::smartTrimEnabled() const
     Q_D(const Engine);
     return d->m_smartTrimEnabled;
 }
+
+#include "moc_engine.cpp"

@@ -84,3 +84,5 @@ void IfEqualNode::render(OutputStream *stream, Context *c) const
     else
         m_falseList.render(stream, c);
 }
+
+#include "moc_ifequal.cpp"

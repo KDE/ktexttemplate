@@ -53,3 +53,5 @@ void SpacelessNode::render(OutputStream *stream, Context *c) const
     m_nodeList.render(temp.data(), c);
     (*stream) << markSafe(stripSpacesBetweenTags(output.trimmed()));
 }
+
+#include "moc_spaceless.cpp"

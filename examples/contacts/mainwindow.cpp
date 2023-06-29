@@ -154,3 +154,5 @@ void MainWindow::render() const
 
     m_webView->setHtml(result);
 }
+
+#include "moc_mainwindow.cpp"

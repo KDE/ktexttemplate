@@ -43,3 +43,5 @@ void DebugNode::render(OutputStream *stream, Context *c) const
 
     (*stream) << ret;
 }
+
+#include "moc_debug.cpp"

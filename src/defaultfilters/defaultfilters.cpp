@@ -8,3 +8,5 @@
 */
 
 #include "defaultfilters.h"
+
+#include "moc_defaultfilters.cpp"

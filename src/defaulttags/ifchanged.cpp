@@ -105,3 +105,5 @@ void IfChangedNode::render(OutputStream *stream, Context *c) const
         m_falseList.render(stream, c);
     }
 }
+
+#include "moc_ifchanged.cpp"

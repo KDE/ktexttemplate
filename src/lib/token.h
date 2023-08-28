@@ -41,6 +41,6 @@ struct Token {
 };
 }
 
-Q_DECLARE_TYPEINFO(KTextTemplate::Token, Q_MOVABLE_TYPE);
+Q_DECLARE_TYPEINFO(KTextTemplate::Token, Q_RELOCATABLE_TYPE);
 
 #endif

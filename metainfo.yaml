@@ -10,7 +10,7 @@ platforms:
     - name: Android
 portingAid: false
 deprecated: false
-release: false
+release: true
 public_source_dirs:
     - src/lib
 libraries:

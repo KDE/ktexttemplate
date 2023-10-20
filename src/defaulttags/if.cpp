@@ -19,7 +19,7 @@ Node *IfNodeFactory::getNode(const QString &tagContent, Parser *p) const
 {
     auto expr = smartSplit(tagContent);
 
-    QVector<std::pair<QSharedPointer<IfToken>, NodeList>> nodelistConditions;
+    QList<std::pair<QSharedPointer<IfToken>, NodeList>> nodelistConditions;
 
     auto n = new IfNode(p);
 
@@ -61,7 +61,7 @@ IfNode::IfNode(QObject *parent)
 {
 }
 
-void IfNode::setNodelistConditions(const QVector<std::pair<QSharedPointer<IfToken>, NodeList>> &conditionNodelists)
+void IfNode::setNodelistConditions(const QList<std::pair<QSharedPointer<IfToken>, NodeList>> &conditionNodelists)
 {
     mConditionNodelists = conditionNodelists;
 }

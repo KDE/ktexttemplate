@@ -363,7 +363,7 @@ void doTestAssociativeContainer_Variant(bool unordered = {})
 void TestGenericTypes::testSequentialContainer_Variant()
 {
     doTestSequentialContainer_Variant<QVariantList>();
-    doTestSequentialContainer_Variant<QVector<QVariant>>();
+    doTestSequentialContainer_Variant<QList<QVariant>>();
     doTestSequentialContainer_Variant<QStack<QVariant>>();
     doTestSequentialContainer_Variant<QQueue<QVariant>>();
 }
@@ -483,7 +483,7 @@ void doTestAssociativeContainer_Type_Number(bool unordered = {})
 void TestGenericTypes::testSequentialContainer_Type()
 {
     doTestSequentialContainer_Type<QList<Person>>();
-    doTestSequentialContainer_Type<QVector<Person>>();
+    doTestSequentialContainer_Type<QList<Person>>();
     doTestSequentialContainer_Type<QStack<Person>>();
     doTestSequentialContainer_Type<QQueue<Person>>();
     doTestSequentialContainer_Type<QSet<Person>>();
@@ -559,14 +559,14 @@ void TestGenericTypes::testThirdPartySharedPointer()
     QCOMPARE(t1->render(&c), QStringLiteral("Grant Lee 2"));
 }
 
-using ListVectorInt = QList<QVector<qint16>>;
-using MapListVectorInt = QMap<int, QList<QVector<qint16>>>;
-using StackMapListVectorInt = QStack<QMap<int, QList<QVector<qint16>>>>;
+using ListVectorInt = QList<QList<qint16>>;
+using MapListVectorInt = QMap<int, QList<QList<qint16>>>;
+using StackMapListVectorInt = QStack<QMap<int, QList<QList<qint16>>>>;
 
-static QVector<qint16> getNumbers()
+static QList<qint16> getNumbers()
 {
     static auto n = 0;
-    QVector<qint16> nums;
+    QList<qint16> nums;
     nums.push_back(++n);
     nums.push_back(++n);
     return nums;
@@ -827,8 +827,8 @@ class ObjectWithProperties : public QObject
     Q_OBJECT
     Q_PROPERTY(QList<int> numberList READ numberList)
     Q_PROPERTY(QList<CustomGadget> gadgetList READ gadgetList)
-    Q_PROPERTY(QVector<PersonObject *> personList READ personList)
-    Q_PROPERTY(QVector<QSharedPointer<PersonObject>> personPtrList READ personPtrList)
+    Q_PROPERTY(QList<PersonObject *> personList READ personList)
+    Q_PROPERTY(QList<QSharedPointer<PersonObject>> personPtrList READ personPtrList)
 
 public:
     ObjectWithProperties(QObject *parent = {})
@@ -852,11 +852,11 @@ public:
     {
         return m_gadgetList;
     }
-    QVector<PersonObject *> personList()
+    QList<PersonObject *> personList()
     {
         return m_personList;
     }
-    QVector<QSharedPointer<PersonObject>> personPtrList()
+    QList<QSharedPointer<PersonObject>> personPtrList()
     {
         return m_personPtrList;
     }
@@ -864,8 +864,8 @@ public:
 private:
     QList<int> m_numberList;
     QList<CustomGadget> m_gadgetList;
-    QVector<PersonObject *> m_personList;
-    QVector<QSharedPointer<PersonObject>> m_personPtrList;
+    QList<PersonObject *> m_personList;
+    QList<QSharedPointer<PersonObject>> m_personPtrList;
 };
 
 void TestGenericTypes::propertyMacroTypes()

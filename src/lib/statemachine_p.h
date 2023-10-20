@@ -10,8 +10,8 @@
 #ifndef KTEXTTEMPLATE_STATEMACHINE_P_H
 #define KTEXTTEMPLATE_STATEMACHINE_P_H
 
+#include <QList>
 #include <QString>
-#include <QVector>
 
 namespace KTextTemplate
 {
@@ -63,7 +63,7 @@ public:
     {
         m_children.append(state);
     }
-    QVector<State<TransitionInterface> *> children() const
+    QList<State<TransitionInterface> *> children() const
     {
         return m_children;
     }
@@ -85,7 +85,7 @@ public:
     {
         m_transitions.append(transition);
     }
-    QVector<Transition *> transitions()
+    QList<Transition *> transitions()
     {
         return m_transitions;
     }
@@ -129,8 +129,8 @@ protected:
 
 private:
     State<TransitionInterface> *m_initialState;
-    QVector<Transition *> m_transitions;
-    QVector<State<TransitionInterface> *> m_children;
+    QList<Transition *> m_transitions;
+    QList<State<TransitionInterface> *> m_children;
     State<TransitionInterface> *const m_parent;
     Transition *m_endTransition = nullptr;
     State<TransitionInterface> *m_unconditionalTransition;

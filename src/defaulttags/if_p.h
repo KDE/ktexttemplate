@@ -10,8 +10,8 @@
 #ifndef IF_P_H
 #define IF_P_H
 
+#include <QList>
 #include <QStringList>
-#include <QVector>
 
 #include "../lib/exception.h"
 #include "filterexpression.h"
@@ -41,7 +41,7 @@ private:
 
 private:
     KTextTemplate::Parser *mParser;
-    QVector<QSharedPointer<IfToken>> mParseNodes;
+    QList<QSharedPointer<IfToken>> mParseNodes;
     int mPos = 0;
     QSharedPointer<IfToken> mCurrentToken;
 };

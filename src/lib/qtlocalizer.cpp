@@ -12,8 +12,8 @@
 #include <QCoreApplication>
 #include <QDateTime>
 #include <QLibraryInfo>
+#include <QList>
 #include <QTranslator>
-#include <QVector>
 
 #include <QLoggingCategory>
 
@@ -32,9 +32,9 @@ struct Locale {
     }
 
     const QLocale locale;
-    QVector<QTranslator *> externalSystemTranslators; // Not owned by us!
-    QVector<QTranslator *> systemTranslators;
-    QVector<QTranslator *> themeTranslators;
+    QList<QTranslator *> externalSystemTranslators; // Not owned by us!
+    QList<QTranslator *> systemTranslators;
+    QList<QTranslator *> themeTranslators;
 };
 
 namespace KTextTemplate

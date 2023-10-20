@@ -22,8 +22,8 @@
 
 // Need these for inheriting from QList<T> to work
 // http://lists.trolltech.com/qt-interest/2008-01/thread00578-0.html
+#include <QList>
 #include <QSet>
-#include <QVector>
 
 namespace KTextTemplate
 {

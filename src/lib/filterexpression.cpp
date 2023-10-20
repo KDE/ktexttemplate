@@ -29,7 +29,7 @@ class FilterExpressionPrivate
     }
 
     Variable m_variable;
-    QVector<ArgFilter> m_filters;
+    QList<ArgFilter> m_filters;
     QStringList m_filterNames;
 
     Q_DECLARE_PUBLIC(FilterExpression)

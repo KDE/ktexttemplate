@@ -33,9 +33,9 @@ TestGenericContainers::TestGenericContainers(QObject *parent)
 }
 
 template<typename T>
-QVector<T> getItems()
+QList<T> getItems()
 {
-    QVector<T> items;
+    QList<T> items;
     items.push_back(9);
     items.push_back(7);
     items.push_back(5);
@@ -43,27 +43,27 @@ QVector<T> getItems()
 }
 
 template<>
-QVector<QString> getItems<QString>()
+QList<QString> getItems<QString>()
 {
-    QVector<QString> items;
+    QList<QString> items;
     for (const int item : getItems<int>())
         items.push_back(QString::number(item));
     return items;
 }
 
 template<>
-QVector<QVariant> getItems<QVariant>()
+QList<QVariant> getItems<QVariant>()
 {
-    QVector<QVariant> items;
+    QList<QVariant> items;
     for (const int item : getItems<int>())
         items.push_back(item);
     return items;
 }
 
 template<>
-QVector<QDateTime> getItems<QDateTime>()
+QList<QDateTime> getItems<QDateTime>()
 {
-    QVector<QDateTime> items;
+    QList<QDateTime> items;
     items.reserve(3);
     for (auto i = 0; i < 3; ++i) {
         QDateTime d;
@@ -75,9 +75,9 @@ QVector<QDateTime> getItems<QDateTime>()
 }
 
 template<>
-QVector<QObject *> getItems<QObject *>()
+QList<QObject *> getItems<QObject *>()
 {
-    QVector<QObject *> items;
+    QList<QObject *> items;
     items.reserve(3);
     for (auto i = 9; i > 4; i -= 2) {
         auto obj = new QObject;
@@ -310,7 +310,7 @@ void doTestAssociativeContainer(bool unordered = {})
 template<typename T>
 void doTestNonHashableContainers()
 {
-    doTestSequentialContainer<QVector<T>>();
+    doTestSequentialContainer<QList<T>>();
     doTestSequentialContainer<QList<T>>();
     doTestSequentialContainer<QQueue<T>>();
     doTestSequentialContainer<QStack<T>>();

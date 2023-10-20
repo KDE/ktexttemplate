@@ -106,7 +106,7 @@ namespace KTextTemplate
   The following containers have built in support:
 
   @li QList&lt;T&gt;
-  @li QVector&lt;T&gt;
+  @li QList&lt;T&gt;
   @li QSet&lt;T&gt;
   @li QLinkedList&lt;T&gt;
   @li QStack&lt;T&gt;
@@ -272,7 +272,7 @@ namespace KTextTemplate
 
   Of course, it is possible to use containers of pointers to concrete QObject subclasses, such as QSet&lt;PersonObject*&gt; and std::vector&lt;SportsClub*&gt; too.
 
-  Because any supported container can also be used as a contained type, nested containers such as <tt>QVector<QList<PersonObject*>></tt> are also supported.
+  Because any supported container can also be used as a contained type, nested containers such as <tt>QList<QList<PersonObject*>></tt> are also supported.
 
   Note that if a type is registered with KTextTemplate::registerMetaType, built in containers of that type do not also need to be registered.
   Third party containers do need to be registered however (See @ref third_party_containers)

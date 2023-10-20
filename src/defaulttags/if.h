@@ -33,12 +33,12 @@ class IfNode : public Node
 public:
     explicit IfNode(QObject *parent = {});
 
-    void setNodelistConditions(const QVector<std::pair<QSharedPointer<IfToken>, NodeList>> &conditionNodelists);
+    void setNodelistConditions(const QList<std::pair<QSharedPointer<IfToken>, NodeList>> &conditionNodelists);
 
     void render(OutputStream *stream, Context *c) const override;
 
 private:
-    QVector<std::pair<QSharedPointer<IfToken>, NodeList>> mConditionNodelists;
+    QList<std::pair<QSharedPointer<IfToken>, NodeList>> mConditionNodelists;
 };
 
 #endif

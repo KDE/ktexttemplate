@@ -30,11 +30,11 @@ template<typename T>
 class RingIterator
 {
 public:
-    RingIterator<T>()
+    RingIterator()
     {
     }
 
-    RingIterator<T>(const QList<T> &list)
+    RingIterator(const QList<T> &list)
         : m_begin(list.constBegin())
         , m_it(list.constBegin())
         , m_end(list.constEnd())

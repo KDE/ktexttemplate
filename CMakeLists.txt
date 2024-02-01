@@ -4,7 +4,7 @@ set(KF_VERSION "6.0.0") # handled by release scripts
 project(KTextTemplate VERSION ${KF_VERSION})
 
 include(FeatureSummary)
-find_package(ECM 5.248.0  CONFIG)
+find_package(ECM 5.249.0  CONFIG)
 set_package_properties(ECM PROPERTIES
   TYPE REQUIRED
   DESCRIPTION "Extra CMake Modules."

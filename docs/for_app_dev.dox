@@ -194,7 +194,7 @@ namespace KTextTemplate
     };
   @endcode
 
-  Classes which do not derive from QObject, but which are decorated with the <tt>Q_GADGET</tt> and <tt><Q_PROPERTY/tt> macros may also be used as expected.
+  Classes which do not derive from QObject, but which are decorated with the <tt>Q_GADGET</tt> and <tt><Q_PROPERTY</tt> macros may also be used as expected.
 
   @subsection generic_variables
 

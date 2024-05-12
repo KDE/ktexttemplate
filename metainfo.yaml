@@ -1,4 +1,3 @@
-maintainer: skelly
 description: Library to allow application developers to separate the structure of documents from the data they contain.
 tier: 1
 type: functional

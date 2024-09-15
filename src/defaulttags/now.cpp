@@ -21,7 +21,10 @@ Node *NowNodeFactory::getNode(const QString &tagContent, Parser *p) const
     auto expr = tagContent.split(QLatin1Char('"'), Qt::KeepEmptyParts);
 
     if (expr.size() != 3) {
-        throw KTextTemplate::Exception(TagSyntaxError, QStringLiteral("now tag takes one argument"));
+        expr = tagContent.split(QLatin1Char('\''), Qt::KeepEmptyParts);
+        if (expr.size() != 3) {
+            throw KTextTemplate::Exception(TagSyntaxError, QStringLiteral("now tag takes one string argument"));
+        }
     }
 
     auto formatString = expr.at(1);

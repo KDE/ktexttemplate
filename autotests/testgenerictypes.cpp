@@ -87,6 +87,13 @@ public:
     int uid;
 };
 
+QDebug operator<<(QDebug debug, const Person &person)
+{
+    QDebugStateSaver saver(debug);
+    debug.nospace() << "Person(" << person.uid << ", name:" << person.name << ", age: " << person.age << ')';
+    return debug;
+}
+
 class PersonGadget
 {
     Q_GADGET

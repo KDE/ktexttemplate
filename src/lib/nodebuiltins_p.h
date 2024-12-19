@@ -15,7 +15,7 @@
 namespace KTextTemplate
 {
 
-/**
+/*!
   @internal
 
   A Node for plain text. Plain text is everything between variables, comments
@@ -37,7 +37,7 @@ private:
     const QString m_content;
 };
 
-/**
+/*!
   @internal
 
   A node for a variable or filter expression substitution.

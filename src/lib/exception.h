@@ -19,7 +19,7 @@
 namespace KTextTemplate
 {
 
-/**
+/*!
   Types of errors that can occur while using %KTextTemplate
 */
 enum Error {
@@ -39,7 +39,7 @@ enum Error {
 
 /// @headerfile exception.h <KTextTemplate/Exception>
 
-/**
+/*!
   @brief An exception for use when implementing template tags.
 
   The **%Exception** class can be used when implementing
@@ -73,7 +73,7 @@ enum Error {
 class KTEXTTEMPLATE_EXPORT Exception
 {
 public:
-    /**
+    /*!
       Creates an exception for the error @p errorCode and the verbose
       message @p what
     */
@@ -88,7 +88,7 @@ public:
     }
 
 #ifndef K_DOXYGEN
-    /**
+    /*!
       @internal
 
       Returns the verbose message for the exception.
@@ -98,7 +98,7 @@ public:
         return m_what;
     }
 
-    /**
+    /*!
       @internal
 
       Returns the error code for the exception.

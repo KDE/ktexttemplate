@@ -25,7 +25,7 @@ namespace KTextTemplate
 /// @headerfile metatype.h <KTextTemplate/MetaType>
 
 #ifndef K_DOXYGEN
-/**
+/*!
   @brief The **%MetaType** is the interface to the KTextTemplate introspection
   system.
 
@@ -39,32 +39,32 @@ namespace KTextTemplate
 class KTEXTTEMPLATE_EXPORT MetaType
 {
 public:
-    /**
+    /*!
       @internal The signature for a property lookup method
      */
     typedef QVariant (*LookupFunction)(const QVariant &, const QString &);
 
-    /**
+    /*!
       @internal Registers a property lookup method
      */
     static void registerLookUpOperator(int id, LookupFunction f);
 
-    /**
+    /*!
       @internal
      */
     static void internalLock();
 
-    /**
+    /*!
       @internal
      */
     static void internalUnlock();
 
-    /**
+    /*!
       @internal
      */
     static QVariant lookup(const QVariant &object, const QString &property);
 
-    /**
+    /*!
       @internal
      */
     static bool lookupAlreadyRegistered(int id);
@@ -133,7 +133,7 @@ struct InternalRegisterType<RealType *, HandleAs *> {
 };
 }
 
-/**
+/*!
   @brief Registers the type RealType with the metatype system.
 
   This method can take a second template parameter to specify a cast
@@ -182,7 +182,7 @@ int registerMetaType()
 }
 
 #ifndef K_DOXYGEN
-/**
+/*!
   @internal
   Register a type so %KTextTemplate knows how to handle it.
 
@@ -197,7 +197,7 @@ int registerMetaType()
 #endif
 } // namespace KTextTemplate
 
-/**
+/*!
   Top boundary of a lookup function for Type.
 
   @see @ref generic_types
@@ -208,7 +208,7 @@ int registerMetaType()
     template<>                                                                                                                                                 \
     inline QVariant TypeAccessor<Type &>::lookUp(const Type &object, const QString &property)                                                                  \
     {
-/**
+/*!
   Top boundary of a lookup function for Type*.
 
   @see @ref generic_types
@@ -219,7 +219,7 @@ int registerMetaType()
     template<>                                                                                                                                                 \
     inline QVariant TypeAccessor<Type *>::lookUp(const Type *const object, const QString &property)                                                            \
     {
-/**
+/*!
   Bottom boundary of a lookup function for Type.
 
   @see @ref generic_types

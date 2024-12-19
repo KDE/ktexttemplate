@@ -20,7 +20,7 @@ namespace KTextTemplate
 
 /// @headerfile safestring.h <KTextTemplate/SafeString>
 
-/**
+/*!
   @brief A QString wrapper class for containing whether a string is safe or
   needs to be escaped.
 
@@ -80,7 +80,7 @@ namespace KTextTemplate
 class KTEXTTEMPLATE_EXPORT SafeString
 {
 public:
-    /**
+    /*!
       Possible safety states of a **%SafeString**
     */
     enum Safety {
@@ -89,59 +89,59 @@ public:
                   /// added to the output of rendering.
     };
 
-    /**
+    /*!
       Constructs an empty **%SafeString**.
     */
     SafeString();
 
-    /**
+    /*!
       Copy constructor
     */
     SafeString(const SafeString &safeString);
 
-    /**
+    /*!
       Constructs a **%SafeString** with the content @p str whose safety is given
       by @p safe.
     */
     SafeString(const QString &str, bool safe);
 
-    /**
+    /*!
       Constructs a **%SafeString** with the content @p str whose safety is given
       by @p safety.
     */
     /* implicit */ SafeString(const QString &str,
                               Safety safety = IsNotSafe); // krazy:exclude=explicit
 
-    /**
+    /*!
       Destructor
     */
     ~SafeString();
 
 #ifndef K_DOXYGEN
-    /**
+    /*!
       Set whether the string should be escaped.
     */
     void setNeedsEscape(bool needsEscape);
 #endif
 
-    /**
+    /*!
       Whether the string needs to be escaped.
     */
     bool needsEscape() const;
 
-    /**
+    /*!
       Whether the string is safe.
     */
     bool isSafe() const;
 
 #ifndef K_DOXYGEN
-    /**
+    /*!
       Set whether the string is safe.
     */
     void setSafety(Safety safety);
 #endif
 
-    /**
+    /*!
       @brief The NestedString is a QString whose methods always return a
       SafeString
 
@@ -277,7 +277,7 @@ public:
 #endif
     };
 
-    /**
+    /*!
       Returns the String held by this **%SafeString**
     */
     const NestedString &get() const
@@ -285,7 +285,7 @@ public:
         return m_nestedString;
     }
 
-    /**
+    /*!
       Returns the String held by this **%SafeString**
     */
     NestedString &get()
@@ -293,7 +293,7 @@ public:
         return m_nestedString;
     }
 
-    /**
+    /*!
       Convenience operator for treating a **%SafeString** like a QString.
     */
     operator QString() const
@@ -301,54 +301,54 @@ public:
         return m_nestedString;
     }
 
-    /**
+    /*!
       Assignment operator.
     */
     SafeString &operator=(const SafeString &str);
 
-    /**
+    /*!
       Returns a concatenation of this with @p str.
 
       The result is not safe because str is not safe.
     */
     SafeString operator+(const QString &str);
 
-    /**
+    /*!
       Returns a concatenation of this with @p str.
 
       The result is safe if both this and str are safe.
     */
     SafeString operator+(const SafeString &str);
 
-    /**
+    /*!
       Appends the content of @p str to this.
 
       The result is not safe because @p str is not safe.
     */
     SafeString &operator+=(const QString &str);
 
-    /**
+    /*!
       Appends the content of @p str to this.
 
       The result is safe if both this and @p str are safe.
     */
     SafeString &operator+=(const SafeString &str);
 
-    /**
+    /*!
       Returns true if the content of @p other matches the content of this.
 
       Safeness and needing escaping are not accounted for in the comparison.
     */
     bool operator==(const SafeString &other) const;
 
-    /**
+    /*!
       Returns true if the content of @p other matches the content of this.
 
       Safeness and needing escaping are not accounted for in the comparison.
     */
     bool operator==(const QString &other) const;
 
-    /**
+    /*!
       Convenience operator for storing a **%SafeString** in a QVariant.
     */
     operator QVariant() const

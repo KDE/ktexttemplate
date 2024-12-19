@@ -36,7 +36,7 @@ class NodePrivate;
 
 /// @headerfile node.h <KTextTemplate/Node>
 
-/**
+/*!
   @brief Base class for all nodes.
 
   The **%Node** class can be implemented to make additional functionality
@@ -72,19 +72,19 @@ class KTEXTTEMPLATE_EXPORT Node : public QObject
 {
     Q_OBJECT
 public:
-    /**
+    /*!
       Constructor.
 
       @param parent The parent QObject
     */
     explicit Node(QObject *parent = {});
 
-    /**
+    /*!
       Destructor.
     */
     ~Node() override;
 
-    /**
+    /*!
       Reimplement this to render the template in the Context @p c.
 
       This will also involve calling render on and child nodes.
@@ -92,7 +92,7 @@ public:
     virtual void render(OutputStream *stream, Context *c) const = 0;
 
 #ifndef K_DOXYGEN
-    /**
+    /*!
       @internal
     */
     virtual bool mustBeFirst()
@@ -102,7 +102,7 @@ public:
 #endif
 
 protected:
-    /**
+    /*!
       Renders the value @p input in the Context @p c. This will involve escaping
       @p input if necessary.
 
@@ -110,7 +110,7 @@ protected:
     */
     void streamValueInContext(OutputStream *stream, const QVariant &input, KTextTemplate::Context *c) const;
 
-    /**
+    /*!
       Returns a raw pointer to the Template this **%Node** is in.
     */
     TemplateImpl *containerTemplate() const;
@@ -122,7 +122,7 @@ private:
 
 /// @headerfile node.h KTextTemplate/node.h
 
-/**
+/*!
   @brief A list of Nodes with some convenience API for rendering them.
 
   Typically, tags which have an end tag will create and later render a list of
@@ -140,44 +140,44 @@ private:
 class KTEXTTEMPLATE_EXPORT NodeList : public QList<KTextTemplate::Node *>
 {
 public:
-    /**
+    /*!
       Creates an empty **%NodeList**.
     */
     NodeList();
 
-    /**
+    /*!
       Copy constructor.
     */
     NodeList(const NodeList &list);
 
     NodeList &operator=(const NodeList &list);
 
-    /**
+    /*!
       Convenience constructor
     */
     /* implicit */ NodeList(const QList<KTextTemplate::Node *> &list);
 
-    /**
+    /*!
       Destructor.
     */
     ~NodeList();
 
-    /**
+    /*!
       Appends @p node to the end of this **%NodeList**.
     */
     void append(KTextTemplate::Node *node);
 
-    /**
+    /*!
       Appends @p nodeList to the end of this **%NodeList**.
     */
     void append(const QList<KTextTemplate::Node *> &nodeList);
 
-    /**
+    /*!
       Returns true if this **%NodeList** contains non-text nodes.
     */
     bool containsNonText() const;
 
-    /**
+    /*!
       A recursive listing of nodes in this tree of type @p T.
     */
     template<typename T>
@@ -197,7 +197,7 @@ public:
         return children;
     }
 
-    /**
+    /*!
       Renders the list of Nodes in the Context @p c.
     */
     void render(OutputStream *stream, Context *c) const;
@@ -210,7 +210,7 @@ class AbstractNodeFactoryPrivate;
 
 /// @headerfile node.h KTextTemplate/node.h
 
-/**
+/*!
   @brief Base class for all NodeFactories
 
   This class can be used to make custom tags available to templates.
@@ -294,19 +294,19 @@ class KTEXTTEMPLATE_EXPORT AbstractNodeFactory : public QObject
 {
     Q_OBJECT
 public:
-    /**
+    /*!
       Constructor.
 
       @param parent The parent QObject
     */
     explicit AbstractNodeFactory(QObject *parent = {});
 
-    /**
+    /*!
       Destructor.
     */
     ~AbstractNodeFactory() override;
 
-    /**
+    /*!
       This method should be reimplemented to return a Node which can be
       rendered.
 
@@ -323,7 +323,7 @@ public:
     virtual Node *getNode(const QString &tagContent, Parser *p) const = 0;
 
 #ifndef K_DOXYGEN
-    /**
+    /*!
       @internal
 
       Sets the Engine which created this NodeFactory. Used by the
@@ -335,7 +335,7 @@ public:
 #endif
 
 protected:
-    /**
+    /*!
       Splits @p str into a list, taking quote marks into account.
 
       This is typically used in the implementation of getNode with the
@@ -353,7 +353,7 @@ protected:
     Q_INVOKABLE QStringList smartSplit(const QString &str) const;
 
 protected:
-    /**
+    /*!
       Returns a list of FilterExpression objects created with Parser @p p as
       described by the content of @p list.
 

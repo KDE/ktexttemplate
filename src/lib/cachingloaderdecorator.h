@@ -21,7 +21,7 @@ class CachingLoaderDecoratorPrivate;
 
 /// @headerfile cachingloaderdecorator.h <KTextTemplate/CachingLoaderDecorator>
 
-/**
+/*!
   @brief Implements a loader decorator which caches compiled Template objects.
 
   The **%CachingLoaderDecorator** can be used with any implementation of
@@ -59,12 +59,12 @@ class CachingLoaderDecoratorPrivate;
 class KTEXTTEMPLATE_EXPORT CachingLoaderDecorator : public AbstractTemplateLoader
 {
 public:
-    /**
+    /*!
       Constructor
     */
     CachingLoaderDecorator(QSharedPointer<AbstractTemplateLoader> loader);
 
-    /**
+    /*!
       Destructor
     */
     ~CachingLoaderDecorator() override;
@@ -75,17 +75,17 @@ public:
 
     Template loadByName(const QString &name, const KTextTemplate::Engine *engine) const override;
 
-    /**
+    /*!
       Clears the Templates objects cached in the decorator.
      */
     void clear();
 
-    /**
+    /*!
       Returns the number of Template objects cached in the decorator.
      */
     int size() const;
 
-    /**
+    /*!
       Returns whether the cache is empty.
      */
     bool isEmpty() const;

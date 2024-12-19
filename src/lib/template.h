@@ -34,7 +34,7 @@ class TemplatePrivate;
 
 /// @headerfile template.h <KTextTemplate/Template>
 
-/**
+/*!
   @brief The **%Template** class is a tree of nodes which may be rendered.
 
   All Templates are created through the KTextTemplate::Engine class.
@@ -87,39 +87,39 @@ class KTEXTTEMPLATE_EXPORT TemplateImpl : public QObject
 public:
     ~TemplateImpl() override;
 
-    /**
+    /*!
       Renders the **%Template** to a string given the Context @p c.
     */
     QString render(Context *c) const;
 
-    /**
+    /*!
       Renders the **%Template** to the OutputStream @p stream given the Context c.
     */
     OutputStream *render(OutputStream *stream, Context *c) const;
 
 #ifndef K_DOXYGEN
-    /**
+    /*!
       @internal
     */
     NodeList nodeList() const;
 
-    /**
+    /*!
       @internal
     */
     void setNodeList(const NodeList &list);
 #endif
 
-    /**
+    /*!
       Returns an error code for the error encountered.
     */
     Error error() const;
 
-    /**
+    /*!
       Returns more information to developers in the form of a string.
     */
     QString errorString() const;
 
-    /**
+    /*!
       Returns the Engine that created this **%Template**.
     */
     Engine const *engine() const;

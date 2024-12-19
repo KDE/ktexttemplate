@@ -15,7 +15,7 @@
 namespace KTextTemplate
 {
 
-/**
+/*!
   @internal
 
   The available token types.
@@ -29,7 +29,7 @@ enum TokenType {
 
 /// @headerfile token.h <KTextTemplate/Token>
 
-/**
+/*!
   A token in a parse stream for a template.
 
   This class is only relevant for template tag implementations.

@@ -22,7 +22,7 @@ class Filter;
 
 /// @headerfile taglibraryinterface.h <KTextTemplate/TagLibraryInterface>
 
-/**
+/*!
   @brief The **%TagLibraryInterface** returns available tags and filters from
   libraries.
 
@@ -71,7 +71,7 @@ public:
     {
     }
 
-    /**
+    /*!
       Returns the AbstractNodeFactory implementations available in this library.
     */
     virtual QHash<QString, AbstractNodeFactory *> nodeFactories(const QString &name = {})
@@ -81,7 +81,7 @@ public:
         return h;
     };
 
-    /**
+    /*!
       Returns the Filter implementations available in this library.
     */
     virtual QHash<QString, Filter *> filters(const QString &name = {})

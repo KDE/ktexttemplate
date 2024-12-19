@@ -24,7 +24,7 @@ class ParserPrivate;
 
 /// @headerfile parser.h <KTextTemplate/Parser>
 
-/**
+/*!
   @brief The **%Parser** class processes a string template into a tree of nodes.
 
   For application developers, this class is internal.
@@ -38,19 +38,19 @@ class KTEXTTEMPLATE_EXPORT Parser : public QObject
 {
     Q_OBJECT
 public:
-    /**
+    /*!
       Constructor.
 
       Initialises the **%Parser** with the @p tokenList.
     */
     Parser(const QList<Token> &tokenList, QObject *parent);
 
-    /**
+    /*!
       Destructor.
     */
     ~Parser() override;
 
-    /**
+    /*!
       Advance the parser, using @p parent as the parent of new Nodes. The parser
       will stop if it encounters a tag which is contained in the list @p stopAt.
 
@@ -61,31 +61,31 @@ public:
     */
     NodeList parse(Node *parent, const QStringList &stopAt = {});
 
-    /**
+    /*!
       This is an overloaded method.
       @see parse.
     */
     NodeList parse(TemplateImpl *parent, const QStringList &stopAt = {});
 
-    /**
+    /*!
       This is an overloaded method.
       @see parse.
     */
     NodeList parse(Node *parent, const QString &stopAt);
 
-    /**
+    /*!
       Returns the filter object called @p name or an invalid object if no filter
       with that name is loaded.
     */
     QSharedPointer<Filter> getFilter(const QString &name) const;
 
-    /**
+    /*!
       Advances the parser to the tag @p tag. This method is similar to @ref parse,
       but it does not create nodes for tags encountered.
     */
     void skipPast(const QString &tag);
 
-    /**
+    /*!
       Returns the next token to be processed by the parser. This can be examined
       in template tag implementations to determine why parsing stopped.
 
@@ -95,12 +95,12 @@ public:
     */
     Token takeNextToken();
 
-    /**
+    /*!
       Returns whether the parser has another token to process.
     */
     bool hasNextToken() const;
 
-    /**
+    /*!
       Deletes the next token available to the parser.
     */
     void removeNextToken();
@@ -108,7 +108,7 @@ public:
     void invalidBlockTag(const Token &token, const QString &command, const QStringList &stopAt = {});
 
 #ifndef K_DOXYGEN
-    /**
+    /*!
       @internal
 
       Used by the @gr_tag{load} tag to load libraries.
@@ -117,7 +117,7 @@ public:
 #endif
 
 protected:
-    /**
+    /*!
       Puts the token @p token to the front of the list to be processed by the
       parser.
     */

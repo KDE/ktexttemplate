@@ -22,7 +22,7 @@ class VariablePrivate;
 
 /// @headerfile variable.h <KTextTemplate/Variable>
 
-/**
+/*!
   @brief A container for static variables defined in Templates.
 
   This class is only relevant to Template tag authors.
@@ -41,47 +41,47 @@ class VariablePrivate;
 class KTEXTTEMPLATE_EXPORT Variable
 {
 public:
-    /**
+    /*!
       Constructs an invalid **%Variable**
     */
     Variable();
 
-    /**
+    /*!
       Creates a **%Variable** represented by the given @p var
     */
     explicit Variable(const QString &var);
 
-    /**
+    /*!
       Copy constructor
     */
     Variable(const Variable &other);
 
-    /**
+    /*!
       Destructor
     */
     ~Variable();
 
-    /**
+    /*!
       Assignment operator.
     */
     Variable &operator=(const Variable &other);
 
-    /**
+    /*!
       Returns whether this **%Variable** is valid.
     */
     bool isValid() const;
 
-    /**
+    /*!
       Returns whether this **%Variable** evaluates to true with the Context @p c.
     */
     bool isTrue(Context *c) const;
 
-    /**
+    /*!
       Resolves this **%Variable** with the Context @p c.
     */
     QVariant resolve(Context *c) const;
 
-    /**
+    /*!
       Returns whether this **%Variable** is a constant in the Template. A constant
       is represented as a static string in the template
 
@@ -92,19 +92,19 @@ public:
     */
     bool isConstant() const;
 
-    /**
+    /*!
       Returns whether this variable is localized, that is, if it is wrapped with
       _(). @see @ref i18n_l10n
      */
     bool isLocalized() const;
 
-    /**
+    /*!
       Returns whether this variable is a literal string or number. A
       literal **%Variable** does not have any lookup components.
      */
     QVariant literal() const;
 
-    /**
+    /*!
       Returns the lookup components of this **%Variable**.
      */
     QStringList lookups() const;

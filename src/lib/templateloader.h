@@ -22,7 +22,7 @@ class AbstractLocalizer;
 
 /// @headerfile templateloader.h <KTextTemplate/TemplateLoader>
 
-/**
+/*!
   @brief An retrieval interface to a storage location for Template objects.
 
   This interface can be implemented to define new ways of retrieving the content
@@ -37,23 +37,23 @@ class AbstractLocalizer;
 class KTEXTTEMPLATE_EXPORT AbstractTemplateLoader
 {
 public:
-    /**
+    /*!
       Destructor
     */
     virtual ~AbstractTemplateLoader();
 
-    /**
+    /*!
       Load a Template called @p name. Return an invalid Template if no content
       by that name exists.
     */
     virtual Template loadByName(const QString &name, Engine const *engine) const = 0;
 
-    /**
+    /*!
       Return a complete URI for media identified by fileName.
     */
     virtual std::pair<QString, QString> getMediaUri(const QString &fileName) const = 0;
 
-    /**
+    /*!
       Return true if a Template identified by @p name exists and can be loaded.
     */
     virtual bool canLoadTemplate(const QString &name) const = 0;
@@ -63,7 +63,7 @@ public:
 
 class FileSystemTemplateLoaderPrivate;
 
-/**
+/*!
   @brief The **%FileSystemTemplateLoader** loads Templates from the file system.
 
   This template loader works by traversing a list of directories to find
@@ -124,12 +124,12 @@ class FileSystemTemplateLoaderPrivate;
 class KTEXTTEMPLATE_EXPORT FileSystemTemplateLoader : public AbstractTemplateLoader
 {
 public:
-    /**
+    /*!
       Constructor
     */
     FileSystemTemplateLoader(const QSharedPointer<AbstractLocalizer> localizer = {});
 
-    /**
+    /*!
       Destructor
     */
     ~FileSystemTemplateLoader() override;
@@ -140,22 +140,22 @@ public:
 
     std::pair<QString, QString> getMediaUri(const QString &fileName) const override;
 
-    /**
+    /*!
       Sets the theme of this loader to @p themeName
     */
     void setTheme(const QString &themeName);
 
-    /**
+    /*!
       The themeName of this TemplateLoader
     */
     QString themeName() const;
 
-    /**
+    /*!
       Sets the directories to look for template files to @p dirs.
     */
     void setTemplateDirs(const QStringList &dirs);
 
-    /**
+    /*!
       The directories this TemplateLoader looks in for template files.
      */
     QStringList templateDirs() const;
@@ -167,7 +167,7 @@ private:
 
 /// @headerfile templateloader.h KTextTemplate/templateloader.h
 
-/**
+/*!
   @brief The **%InMemoryTemplateLoader** loads Templates set dynamically in
   memory
 
@@ -189,7 +189,7 @@ public:
 
     std::pair<QString, QString> getMediaUri(const QString &fileName) const override;
 
-    /**
+    /*!
       Add a template content to this Loader.
 
       Example:

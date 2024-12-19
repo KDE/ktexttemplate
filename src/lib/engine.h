@@ -21,7 +21,7 @@ class EnginePrivate;
 
 /// @headerfile engine.h <KTextTemplate/Engine>
 
-/**
+/*!
   @brief **%KTextTemplate::Engine** is the main entry point for creating %KTextTemplate
   Templates.
 
@@ -110,28 +110,28 @@ class KTEXTTEMPLATE_EXPORT Engine : public QObject
 {
     Q_OBJECT
 public:
-    /**
+    /*!
       Constructor
     */
     Engine(QObject *parent = {});
 
-    /**
+    /*!
       Destructor.
     */
     ~Engine() override;
 
-    /**
+    /*!
       Returns the TemplateLoaders currently configured on the **%Engine**.
     */
     QList<QSharedPointer<AbstractTemplateLoader>> templateLoaders();
 
-    /**
+    /*!
       Adds @p loader to the TemplateLoaders currently configured on
       the **%Engine**.
     */
     void addTemplateLoader(QSharedPointer<AbstractTemplateLoader> loader);
 
-    /**
+    /*!
       Sets the plugin dirs currently configured on the **%Engine** to @p dirs.
 
       @warning This overwrites the default paths. You normally want
@@ -141,22 +141,22 @@ public:
     */
     void setPluginPaths(const QStringList &dirs);
 
-    /**
+    /*!
       Prepend @p dir to the list of plugin dirs.
     */
     void addPluginPath(const QString &dir);
 
-    /**
+    /*!
       Removes all instances of @p dir from the list of plugin dirs.
     */
     void removePluginPath(const QString &dir);
 
-    /**
+    /*!
       Returns the currently configured plugin dirs
     */
     QStringList pluginPaths() const;
 
-    /**
+    /*!
       Returns a URI for a media item with the name @p name.
 
       Typically this will be used for images. For example the media URI for the
@@ -170,7 +170,7 @@ public:
     */
     std::pair<QString, QString> mediaUri(const QString &fileName) const;
 
-    /**
+    /*!
       Load the Template identified by @p name.
 
       The Templates and plugins loaded will be determined by
@@ -178,7 +178,7 @@ public:
     */
     Template loadByName(const QString &name) const;
 
-    /**
+    /*!
       Create a new Template with the content @p content identified by @p name.
 
       The secondary Templates and plugins loaded will be determined by
@@ -186,24 +186,24 @@ public:
     */
     Template newTemplate(const QString &content, const QString &name) const;
 
-    /**
+    /*!
       Returns the libraries available by default to new Templates.
     */
     QStringList defaultLibraries() const;
 
-    /**
+    /*!
       Adds the library named @p libName to the libraries available by default to
       new Templates.
     */
     void addDefaultLibrary(const QString &libName);
 
-    /**
+    /*!
       Removes the library named @p libName from the libraries available by
       default to new Templates.
     */
     void removeDefaultLibrary(const QString &libName);
 
-    /**
+    /*!
       Returns whether the smart trim feature is enabled for newly loaded
       templates.
 
@@ -213,7 +213,7 @@ public:
      */
     bool smartTrimEnabled() const;
 
-    /**
+    /*!
       Sets whether the smart trim feature is enabled for newly loaded templates.
 
       @see smart_trim
@@ -221,14 +221,14 @@ public:
     void setSmartTrimEnabled(bool enabled);
 
 #ifndef K_DOXYGEN
-    /**
+    /*!
       @internal
 
       Loads and returns the libraries specified in defaultLibraries or @p state.
     */
     void loadDefaultLibraries();
 
-    /**
+    /*!
       @internal
 
       Loads and returns the library specified by @p name in the

@@ -25,7 +25,7 @@ class Node;
 
 class RenderContextPrivate;
 
-/**
+/*!
    @brief Provides storage facility for state while rendering a template.
 
    This class can not be instatiated by users of it. An instance
@@ -35,17 +35,17 @@ class RenderContextPrivate;
 class KTEXTTEMPLATE_EXPORT RenderContext
 {
 public:
-    /**
+    /*!
       Returns the data for the node @p scopeNode.
      */
     QVariant &data(const Node *const scopeNode);
 
-    /**
+    /*!
       Returns whether the **%RenderContext** contains data for @p scopeNode.
      */
     bool contains(Node *const scopeNode) const;
 
-    /**
+    /*!
       Destructor
      */
     ~RenderContext();

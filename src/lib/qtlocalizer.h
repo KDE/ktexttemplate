@@ -21,7 +21,7 @@ class QtLocalizerPrivate;
 
 /// @headerfile qtlocalizer.h <KTextTemplate/QtLocalizer>
 
-/**
+/*!
   @brief Provides internationalization based on QLocale and QTranslator.
 
   This class implements access to the %Qt Localization system. Localizable
@@ -46,29 +46,29 @@ class QtLocalizerPrivate;
 class KTEXTTEMPLATE_EXPORT QtLocalizer : public AbstractLocalizer
 {
 public:
-    /**
+    /*!
       Constructs a new **%QtLocalizer** using the @p locale
     */
     QtLocalizer(const QLocale &locale = QLocale::system());
 
-    /**
+    /*!
       Destructor
      */
     ~QtLocalizer() override;
 
-    /**
+    /*!
       Set the path to look for translations of the application strings.
      */
     void setAppTranslatorPath(const QString &path);
 
-    /**
+    /*!
       Set the prefix of translation files. For example, if the German translation
       file is called <tt>myapp_de_DE.qm</tt>, the prefix should be set to
       <tt>myapp_</tt>.
      */
     void setAppTranslatorPrefix(const QString &prefix);
 
-    /**
+    /*!
       Install a @p translator to use for a particular @p localeName.
 
       @code

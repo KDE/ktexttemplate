@@ -196,41 +196,4 @@ ecm_qt_install_logging_categories(
     DESTINATION "${KDE_INSTALL_LOGGINGCATEGORIESDIR}"
 )
 
-if(BUILD_QCH)
-    ecm_add_qch(
-        KF6TextTemplate_QCH
-        NAME KTextTemplate
-        BASE_NAME KF6TextTemplate
-        VERSION ${KF_VERSION}
-        ORG_DOMAIN org.kde
-        SOURCES # using only public headers, to cover only public API
-            ${KTextTemplate_HEADERS}
-            "${CMAKE_SOURCE_DIR}/docs/builtins.dox"
-            "${CMAKE_SOURCE_DIR}/docs/differences_django.dox"
-            "${CMAKE_SOURCE_DIR}/docs/examples.dox"
-            "${CMAKE_SOURCE_DIR}/docs/extension.dox"
-            "${CMAKE_SOURCE_DIR}/docs/for_app_dev.dox"
-            "${CMAKE_SOURCE_DIR}/docs/for_themers.dox"
-            "${CMAKE_SOURCE_DIR}/docs/generictypes.dox"
-            "${CMAKE_SOURCE_DIR}/docs/internals.dox"
-            "${CMAKE_SOURCE_DIR}/docs/l10n.dox"
-            "${CMAKE_SOURCE_DIR}/docs/using_and_deploying.dox"
-            "${CMAKE_SOURCE_DIR}/Mainpage.dox"
-        IMAGE_DIRS
-            "${CMAKE_SOURCE_DIR}/docs/pics"
-        LINK_QCHS
-            Qt6Core_QCH
-        INCLUDE_DIRS
-            ${CMAKE_CURRENT_BINARY_DIR}
-        BLANK_MACROS
-            KTEXTTEMPLATE_EXPORT
-            # TODO: ecm_add_qch does not yet support custom alias extensions
-            # ALIASES += \
-            #     gr_tag{1}="<tt>{%&nbsp;\1&nbsp;%}</tt>" \
-            #     gr_var{1}="<tt>{{&nbsp;\1&nbsp;}}</tt>"
-            # EXPAND_AS_DEFINED += TemplateImp
-        TAGFILE_INSTALL_DESTINATION ${KDE_INSTALL_QTQCHDIR}
-        QCH_INSTALL_DESTINATION ${KDE_INSTALL_QTQCHDIR}
-        COMPONENT Devel
-    )
-endif()
+ecm_generate_qdoc(KF6TextTemplate ktexttemplate.qdocconf)

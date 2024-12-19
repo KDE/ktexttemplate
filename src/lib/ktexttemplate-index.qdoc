@@ -1,0 +1,77 @@
+/*!
+    \page ktexttemplate-index.html
+    \title KTextTemplate
+
+    \section1 Overview
+
+    KTextTemplate is a Free Software, Open Source Qt based library used for text processing.
+
+    The text template is modelled after the \l {https://docs.djangoproject.com/en/1.9/ref/templates/language/} {Django template system}:
+
+    \code
+    <ul>
+    {% for athlete in athlete_list %}
+    <li>{{ athlete.name }}{% if athlete.isCaptain %} (C){% endif %}</li>
+    {% endfor %}
+    </ul>
+    \endcode
+
+    KTextTemplate is covered by the GNU Lesser General Public Licence version 2.1 or, at your option, any later version.
+
+    Application API:
+    \list
+    \li KTextTemplate::AbstractLocalizer
+    \li KTextTemplate::AbstractTemplateLoader
+    \li KTextTemplate::CachingLoaderDecorator
+    \li KTextTemplate::Context
+    \li KTextTemplate::Engine
+    \li KTextTemplate::FileSystemTemplateLoader
+    \li KTextTemplate::InMemoryTemplateLoader
+    \li KTextTemplate::OutputStream
+    \li KTextTemplate::QtLocalizer
+    \li KTextTemplate::Template
+    \endlist
+
+    Plugin API:
+    \list
+    \li KTextTemplate::AbstractNodeFactory
+    \li KTextTemplate::Exception
+    \li KTextTemplate::Filter
+    \li KTextTemplate::FilterExpression
+    \li KTextTemplate::Node
+    \li KTextTemplate::NodeList
+    \li KTextTemplate::Parser
+    \li KTextTemplate::RenderContext
+    \li KTextTemplate::SafeString
+    \li KTextTemplate::TagLibraryInterface
+    \li KTextTemplate::Variable
+    \endlist
+
+    Guides:
+    \list
+    \li \l {KTextTemplate for theme artists}
+    \li \l {KTextTemplate for application developers}
+    \li \l {Builtin tags and filters}
+    \li \l {Extending the template system}
+    \li \l {Examples of KTextTemplate use}
+    \li \l {Differences between Django and KTextTemplate}
+    \li \l {Using KTextTemplate in your application}
+    \li \l {Internals}
+    \li \l {Generic type and template support}
+    \li \l {Internationalization and Localization}
+    \endlist
+
+    \section1 Using the Module
+
+    \include {module-use.qdocinc} {using the c++ api}
+
+    \section2 Building with CMake
+
+    \include {module-use.qdocinc} {building with cmake} {KF6} {TextTemplate} {KF6::TextTemplate}
+
+    \section1 API Reference
+
+    \list
+        \li \l{KTextTemplate C++ Classes}
+    \endlist
+*/

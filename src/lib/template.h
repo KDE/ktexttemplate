@@ -24,31 +24,32 @@ class Engine;
 class TemplateImpl;
 class OutputStream;
 
-#ifdef K_DOXYGEN
-#define TemplateImpl Template
-#else
+/*!
+ * \typedef KTextTemplate::Template
+ * \relates KTextTemplate::TemplateImpl
+ */
 typedef QSharedPointer<TemplateImpl> Template;
-#endif
 
 class TemplatePrivate;
 
-/// @headerfile template.h <KTextTemplate/Template>
-
-/**
-  @brief The **%Template** class is a tree of nodes which may be rendered.
+/*!
+  \class KTextTemplate::TemplateImpl
+  \inheaderfile KTextTemplate/Template
+  \inmodule KTextTemplate
+  \brief The Template class is a tree of nodes which may be rendered.
 
   All Templates are created through the KTextTemplate::Engine class.
-  A **%Template** is created by parsing some text markup passed into the Engine,
+  A Template is created by parsing some text markup passed into the Engine,
   or by reading it from a file.
 
-  Note that **%Template** is actually a typedef for a
-  <tt>QSharedPointer&lt;TemplateImpl&gt;</tt>, so all of its members should be
-  accessed with <tt>operator-&gt;()</tt>.
+  Note that Template is actually a typedef for a
+  QSharedPointer<TemplateImpl>; so all of its members should be
+  accessed with operator->().
 
-  The result of parsing is a **%Template** object which can be rendered multiple
+  The result of parsing is a Template object which can be rendered multiple
   times with multiple different Contexts.
 
-  @code
+  \code
     auto engine = getEngine();
     auto t = engine->newTemplate(
         "{{ name }} is aged {{ age }}",
@@ -74,12 +75,10 @@ class TemplatePrivate;
         qDebug() << t->errorString();
       }
     }
-  @endcode
+  \endcode
 
-  If there is an error in parsing or rendering, the @ref error and @ref
+  If there is an error in parsing or rendering, the error and
   errorString methods can be used to check the source of the error.
-
-  @author Stephen Kelly <steveire@gmail.com>
 */
 class KTEXTTEMPLATE_EXPORT TemplateImpl : public QObject
 {
@@ -87,50 +86,46 @@ class KTEXTTEMPLATE_EXPORT TemplateImpl : public QObject
 public:
     ~TemplateImpl() override;
 
-    /**
-      Renders the **%Template** to a string given the Context @p c.
+    /*!
+      Renders the Template to a string given the Context \a c.
     */
     QString render(Context *c) const;
 
-    /**
-      Renders the **%Template** to the OutputStream @p stream given the Context c.
+    /*!
+      Renders the Template to the OutputStream \a stream given the Context c.
     */
     OutputStream *render(OutputStream *stream, Context *c) const;
 
-#ifndef K_DOXYGEN
-    /**
-      @internal
+    /*!
+      \internal
     */
     NodeList nodeList() const;
 
-    /**
-      @internal
+    /*!
+      \internal
     */
     void setNodeList(const NodeList &list);
-#endif
 
-    /**
+    /*!
       Returns an error code for the error encountered.
     */
     Error error() const;
 
-    /**
+    /*!
       Returns more information to developers in the form of a string.
     */
     QString errorString() const;
 
-    /**
-      Returns the Engine that created this **%Template**.
+    /*!
+      Returns the Engine that created this Template.
     */
     Engine const *engine() const;
 
-#ifndef K_DOXYGEN
 protected:
     TemplateImpl(Engine const *engine, QObject *parent = {});
     TemplateImpl(Engine const *engine, bool smartTrim, QObject *parent = {});
 
     void setContent(const QString &templateString);
-#endif
 
 private:
     // Don't allow setting the parent on a Template, which is memory managed as
@@ -140,10 +135,8 @@ private:
 private:
     Q_DECLARE_PRIVATE(Template)
     TemplatePrivate *const d_ptr;
-#ifndef K_DOXYGEN
     friend class Engine;
     friend class Parser;
-#endif
 };
 }
 

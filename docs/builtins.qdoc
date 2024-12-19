@@ -1,0 +1,70 @@
+/*!
+  \page ktexttemplate-builtins
+  \title Builtin tags and filters
+
+  \section1 Tags and filters ported from Django
+
+  See the \l {https://docs.djangoproject.com/en/1.9/ref/templates/builtins/} {Builtins documentation for Django 1.9} for an overview of the builtin tags and filters available in KTextTemplate. Almost all tags and filter in django are available in KTextTemplate. Exceptions are \l {https://docs.djangoproject.com/en/1.9/ref/templates/builtins/#url} {the url tag}, because KTextTemplate does not have a views system. Additionally the \c ssi tag is disabled because of potential security risks. The \c dictsort, \c dictsortreversed, \c filesizeformat, \c iriencode, \c phone2numeric, \c pluralize, \c pprint, \c title, \c truncatewords_html, \c urlencode, \c urlize and \c urlizetrunc filters have not yet been ported due to time constraints.
+
+  \section1 Additional tags available in KTextTemplate
+
+  KTextTemplate also provides some extra tags not available in Django.
+
+  \section2 media_finder
+
+  Queries KTextTemplate for a complete URL, given a target name.
+
+  This tag can typically be used to insert a URL for an image, external script or CSS file, or other external media.
+
+  \code
+    <img src="{% media_finder "someimage.png" %}" />
+  \endcode
+
+  The \c media_finder tag retrieves the result through Engine::mediaUri, which in turn queries the TemplateLoaders for the URL to return via the AbstractTemplateLoader::getMediaUri interface.
+
+  It is possible to configure whether absolute or relative urls are created by using the Context::setUrlType method. If the path to external media is not the same as the path to the template, the Context::setRelativeMediaPath method can be used to specify a relative base path. For example, if creating a template \c /home/user/myoutput.html which references \c someimage.png, the path \c "myoutput_media/" can be set so that the \c media_finder puts the path \c myoutput_media/someimage.png into the template. This way the output and the media it references are portable together.
+
+  It is the responsibility of the caller to copy the media to the \c /home/user/myoutput_media/ directory.
+
+  With \c media_prefix defined to nothing when creating output with absolute urls, and something like \c "media/" if creating output with relative urls and external media should be available in the \c media/ subdirectory.
+
+  \section2 range
+
+  Loops over a range in a manner similar to the \l {http://docs.python.org/library/functions.html#range} {python builtin of the same name}.
+
+  Create a list from 0 to 5:
+  \code
+    <ul>
+    {% range 5 as num %}
+      <li>{{ num }}
+    {% endrange %}
+    </ul>
+  \endcode
+
+  Create a list from 5 to 10:
+  \code
+    <ul>
+    {% range 5 10 as num %}
+      <li>{{ num }}
+    {% endrange %}
+    </ul>
+  \endcode
+
+  Create a list from 5 to 50 with a step of 5:
+  \code
+    <ul>
+    {% range 5 50 5 as num %}
+      <li>{{ num }}
+    {% endrange %}
+    </ul>
+  \endcode
+
+  The range tag can also be used without arguments:
+
+  \code
+    {% range rating %}
+      <img src="{% media_finder "star.png" %}" />
+    {% endrange %}
+  \endcode
+
+*/

@@ -23,10 +23,12 @@ struct Token;
 
 class FilterExpressionPrivate;
 
-/// @headerfile filterexpression.h <KTextTemplate/FilterExpression>
+/*!
+  \class KTextTemplate::FilterExpression
+  \inheaderfile KTextTemplate/FilterExpression
+  \inmodule KTextTemplate
 
-/**
-  @brief A **%FilterExpression** object represents a filter expression in a
+  \brief A FilterExpression object represents a filter expression in a
   template.
 
   This class is only relevant if implementing custom tags or filters. Most of
@@ -37,20 +39,20 @@ class FilterExpressionPrivate;
   In template markup, a filter expression is a variable followed by one or more
   filters separated by pipes:
 
-  %Filter expressions may appear in variable nodes:
-  @code
+  Filter expressions may appear in variable nodes:
+  \code
     {{ some_var|upper_filter|lower_filter }}
-  @endcode
+  \endcode
 
   Or as arguments to tags
-  @code
+  \code
     {% some_tag some_arg1|filter1|filter2 some_arg2|filter3 %}
-  @endcode
+  \endcode
 
   The **%FilterExpression** class would be used in the getNode implementation of
-  the AbstractNodeFactory implementation for the <tt>some_tag</tt> tag.
+  the AbstractNodeFactory implementation for the some_tag tag.
 
-  @code
+  \code
     Node* SomeTagFactory::getNode(const QString &tagContent, Parser *p) const {
       auto parts = smartSplit( tagContent );
 
@@ -61,35 +63,35 @@ class FilterExpressionPrivate;
 
       return new SomeTagNode( arg1, arg2, p );
     }
-  @endcode
+  \endcode
 
-  @see AbstractNodeFactory::getFilterExpressionList
+  \sa AbstractNodeFactory::getFilterExpressionList
 
-  When implementing the Node::render method, the @ref resolve method may be used
+  When implementing the Node::render method, the resolve method may be used
   to process the filter expression.
 
-  For example, if our <tt>SomeTagNode</tt> was to concatenate the resolved
+  For example, if our SomeTagNode was to concatenate the resolved
   values given as arguments:
 
-  @code
+  \code
     void SomeTagNode::render( QTextStream *stream, Context *c ) {
       m_arg1.resolve( stream, c );
       m_arg2.resolve( stream, c );
     }
-  @endcode
+  \endcode
 
   Because Filters are highly generic, they do not all write data to the stream.
   For example, a Filter might take as input a string, and return a list by
   splitting the string on commas, or a Filter might compare an input to its
   argument and return whether they are the same, but not write anything to the
-  stream. For that reason, the @ref resolve method writes data to the given
+  stream. For that reason, the resolve method writes data to the given
   stream, and returns the same data in its returned QVariant.
 
-  The suitability of either of the @ref resolve methods will depend on the
+  The suitability of either of the resolve methods will depend on the
   implementation and requirements of your custom tag. For example if the
-  <tt>SomeTagNode</tt> ran a comparison of the arguments:
+  SomeTagNode ran a comparison of the arguments:
 
-  @code
+  \code
     void SomeTagNode::render( QTextStream *stream, Context *c ) {
       QString first = m_arg1.resolve( c ).toString();
       QString second = m_arg2.resolve( c ).toString();
@@ -99,86 +101,70 @@ class FilterExpressionPrivate;
       else
         m_falseList.render( stream, c );
     }
-  @endcode
-
-  @see @ref tags_with_end_tags
-
-  @author Stephen Kelly <steveire@gmail.com>
+  \endcode
 */
 class KTEXTTEMPLATE_EXPORT FilterExpression
 {
 public:
-    /**
-      Constructs an invalid **%FilterExpression**.
+    /*!
+      Constructs an invalid FilterExpression.
     */
     FilterExpression();
 
-    /**
-      Constructs a filter expression from the string @p varString. The Parser @p
+    /*!
+      Constructs a filter expression from the string \a varString. The Parser \a
       parser is used to retrieve filters.
     */
     FilterExpression(const QString &varString, KTextTemplate::Parser *parser);
 
-    /**
-      Copy constructor.
-    */
     FilterExpression(const FilterExpression &other);
 
-    /**
-      Destructor.
-    */
     ~FilterExpression();
 
-    /**
-      Assignment operator.
-    */
     FilterExpression &operator=(const FilterExpression &other);
 
-    /**
-      Returns the initial variable in the **%FilterExpression**.
+    /*!
+      Returns the initial variable in the FilterExpression.
     */
     Variable variable() const;
 
-    /**
-      Resolves the **%FilterExpression** in the Context @p c and writes it to the
-      stream @p stream.
+    /*!
+      Resolves the FilterExpression in the Context \a c and writes it to the
+      stream \a stream.
     */
     QVariant resolve(OutputStream *stream, Context *c) const;
 
-    /**
-      Resolves the **%FilterExpression** in the Context @p c.
+    /*!
+      Resolves the FilterExpression in the Context \a c.
     */
     QVariant resolve(Context *c) const;
 
-    /**
-      Returns whether the Filter resolves to true in the Context @p c.
-      @see @ref truthiness
+    /*!
+      Returns whether the Filter resolves to true in the Context \a c.
     */
     bool isTrue(Context *c) const;
 
-    /**
-      Returns a list for the **%FilterExpression**.
+    /*!
+      Returns a list for the FilterExpression.
 
-      If the **%FilterExpression** can not be resolved to a list, an empty list
+      If the FilterExpression can not be resolved to a list, an empty list
       will be returned.
     */
     QVariantList toList(Context *c) const;
 
-    /**
+    /*!
       Returns whether a filter expression is valid.
 
-      A **%FilterExpression** is valid if all filters in the expression exist and
+      A FilterExpression is valid if all filters in the expression exist and
       the initial variable being filtered is valid.
     */
     bool isValid() const;
 
-#ifndef K_DOXYGEN
-    /**
-      @internal
-      Returns the list of filters in the **%FilterExpression**.
+    /*!
+      \internal
+      Returns the list of filters in the FilterExpression.
     */
     QStringList filters() const;
-#endif
 
 private:
     Q_DECLARE_PRIVATE(FilterExpression)

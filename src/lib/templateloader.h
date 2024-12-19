@@ -20,10 +20,12 @@ namespace KTextTemplate
 
 class AbstractLocalizer;
 
-/// @headerfile templateloader.h <KTextTemplate/TemplateLoader>
+/*!
+  \class KTextTemplate::AbstractTemplateLoader
+  \inheaderfile KTextTemplate/TemplateLoader
+  \inmodule KTextTemplate
 
-/**
-  @brief An retrieval interface to a storage location for Template objects.
+  \brief An retrieval interface to a storage location for Template objects.
 
   This interface can be implemented to define new ways of retrieving the content
   of Templates.
@@ -31,46 +33,43 @@ class AbstractLocalizer;
   The interface of this class should not be called directly from applications.
   TemplateLoaders will typically be created, configured and added to the
   KTextTemplate::Engine which will call the appropriate API.
-
-  @author Stephen Kelly <steveire@gmail.com>
 */
 class KTEXTTEMPLATE_EXPORT AbstractTemplateLoader
 {
 public:
-    /**
-      Destructor
-    */
     virtual ~AbstractTemplateLoader();
 
-    /**
-      Load a Template called @p name. Return an invalid Template if no content
+    /*!
+      Load a Template called \a name. Return an invalid Template if no content
       by that name exists.
     */
     virtual Template loadByName(const QString &name, Engine const *engine) const = 0;
 
-    /**
+    /*!
       Return a complete URI for media identified by fileName.
     */
     virtual std::pair<QString, QString> getMediaUri(const QString &fileName) const = 0;
 
-    /**
-      Return true if a Template identified by @p name exists and can be loaded.
+    /*!
+      Return true if a Template identified by \a name exists and can be loaded.
     */
     virtual bool canLoadTemplate(const QString &name) const = 0;
 };
 
-/// @headerfile templateloader.h KTextTemplate/templateloader.h
-
 class FileSystemTemplateLoaderPrivate;
 
-/**
-  @brief The **%FileSystemTemplateLoader** loads Templates from the file system.
+/*!
+  \class KTextTemplate::FileSystemTemplateLoader
+  \inheaderfile KTextTemplate/TemplateLoader
+  \inmodule KTextTemplate
+
+  \brief The FileSystemTemplateLoader loads Templates from the file system.
 
   This template loader works by traversing a list of directories to find
   templates. Directories are checked in order, and the first match hit is parsed
   and returned.
 
-  @code
+  \code
     loader->setTemplateDirs({
         "/home/user/app/templates",
         "/usr/local/share/app/templates"
@@ -80,12 +79,12 @@ class FileSystemTemplateLoaderPrivate;
     // This will try /home/user/app/templates/mytemplate.html
     // followed by /usr/local/share/app/templates/mytemplate.html
     engine->loadByName( "mytemplate.html" );
-  @endcode
+  \endcode
 
   Additionally, a themeName may be set on the template loader, which will be
   appended to search paths before the template name.
 
-  @code
+  \code
     loader->setTemplateDirs({
       "/home/user/app/templates" <<
       "/usr/local/share/app/templates"
@@ -96,12 +95,12 @@ class FileSystemTemplateLoaderPrivate;
     // This will try /home/user/app/templates/simple_theme/mytemplate.html
     // followed by /usr/local/share/app/templates/simple_theme/mytemplate.html
     engine->loadByName( "mytemplate.html" );
-  @endcode
+  \endcode
 
   Media URIs may be retrieved for media relative to the directories searched
   queried for templates.
 
-  @code
+  \code
     loader->setTemplateDirs({
       "/home/user/app/templates",
       "/usr/local/share/app/templates"
@@ -113,49 +112,52 @@ class FileSystemTemplateLoaderPrivate;
     // followed by /usr/local/share/app/templates/simple_theme/logo.png
     // and return the first one that exists.
     engine->mediaUri( "logo.png" );
-  @endcode
+  \endcode
 
-  The template files loaded by a %**FileSystemTemplateLoader** must be UTF-8
+  The template files loaded by a FileSystemTemplateLoader must be UTF-8
   encoded.
-
-  @see @ref deploying_templates
-
 */
 class KTEXTTEMPLATE_EXPORT FileSystemTemplateLoader : public AbstractTemplateLoader
 {
 public:
-    /**
+    /*!
       Constructor
     */
     FileSystemTemplateLoader(const QSharedPointer<AbstractLocalizer> localizer = {});
 
-    /**
-      Destructor
-    */
     ~FileSystemTemplateLoader() override;
 
+    /*!
+     *
+     */
     Template loadByName(const QString &name, Engine const *engine) const override;
 
+    /*!
+     *
+     */
     bool canLoadTemplate(const QString &name) const override;
 
+    /*!
+     *
+     */
     std::pair<QString, QString> getMediaUri(const QString &fileName) const override;
 
-    /**
-      Sets the theme of this loader to @p themeName
+    /*!
+      Sets the theme of this loader to \a themeName
     */
     void setTheme(const QString &themeName);
 
-    /**
+    /*!
       The themeName of this TemplateLoader
     */
     QString themeName() const;
 
-    /**
-      Sets the directories to look for template files to @p dirs.
+    /*!
+      Sets the directories to look for template files to \a dirs.
     */
     void setTemplateDirs(const QStringList &dirs);
 
-    /**
+    /*!
       The directories this TemplateLoader looks in for template files.
      */
     QStringList templateDirs() const;
@@ -165,21 +167,26 @@ private:
     FileSystemTemplateLoaderPrivate *const d_ptr;
 };
 
-/// @headerfile templateloader.h KTextTemplate/templateloader.h
+/*!
+  \class KTextTemplate::InMemoryTemplateLoader
+  \inheaderfile KTextTemplate/TemplateLoader
+  \inmodule KTextTemplate
 
-/**
-  @brief The **%InMemoryTemplateLoader** loads Templates set dynamically in
-  memory
+  \brief The InMemoryTemplateLoader loads Templates set dynamically in
+  memory.
 
   This class is mostly used for testing purposes, but can also be used for
   simple uses of %KTextTemplate.
 
-  Templates can be made available using the @ref setTemplate method, and will
+  Templates can be made available using the setTemplate method, and will
   then be retrieved by the KTextTemplate::Engine as appropriate.
 */
 class KTEXTTEMPLATE_EXPORT InMemoryTemplateLoader : public AbstractTemplateLoader
 {
 public:
+    /*!
+     *
+     */
     InMemoryTemplateLoader();
     ~InMemoryTemplateLoader() override;
 
@@ -189,19 +196,19 @@ public:
 
     std::pair<QString, QString> getMediaUri(const QString &fileName) const override;
 
-    /**
+    /*!
       Add a template content to this Loader.
 
       Example:
 
-      @code
+      \code
         auto loader = QSharedPointer<InMemoryTemplateLoader::create();
         loader->setTemplate( "name_template", "My name is {{ name }}" );
         loader->setTemplate( "age_template", "My age is {{ age }}" );
         engine->addTemplateLoader( loader );
 
         // Both templates may now be retrieved by calling Engine::loadByName.
-      @endcode
+      \endcode
     */
     void setTemplate(const QString &name, const QString &content);
 

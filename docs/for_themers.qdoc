@@ -1,0 +1,352 @@
+/*!
+  \page ktexttemplate-for-themers
+  \title KTextTemplate for theme artists
+
+  The syntax of KTextTemplate templates is the same as Django templates. This page is an introduction to the syntax, but any Django template introduction is also relevant. Here's some good ones:
+  \list
+  \li https://djangobook.com/mdj2-django-templates/
+  \li https://djangobook.com/extending-template-system/
+  \li http://docs.djangoproject.com/en/dev/topics/templates/
+  \endlist
+
+  \section1 Syntax of KTextTemplate templates
+
+  The syntax of KTextTemplate templates contains four types of tokens - plain text, comments, variables and control tags.
+
+  A simple template might look like this:
+  \badcode
+    {# My simple Template #}
+
+    Hello {{ person.name }},
+
+    {% if person.hasBirthday %}
+    Happy Birthday!
+    {% else %}
+    Have a nice day!
+    {% endif %}
+
+    Bye,
+
+    {{ myname }}
+  \endcode
+
+  \list
+  \li Content inside {# #} are comments and are not part of the output.
+  \li Content inside {{ }} are variables which are substitued when the template is rendered.
+  \li Content inside {% %} are control tags which can affect the rendering of the template. %KTextTemplate ships with commonly used tags such as \c if, \c for, \c cycle and a host of others (see http://docs.djangoproject.com/en/dev/ref/templates/builtins/). It is also possible for application developers and artists to define their own tags.
+  \endlist
+
+  \section2 Loops
+  The type of a variable determines how it can be used in templates. For example, treatment of items in an iterable context works as follows.
+
+  Lists work as expected:
+  \badcode
+    <h2>A few of my favourite things</h2>
+    <ul>
+    {% for item in mylist %}
+    <li>{{ item }}</li>
+    {% endfor %}
+    </ul>
+  \endcode
+
+  If an int or double is used in a loop, it is treated as a list containing one item. That is, this
+
+  \badcode
+    {% for item in myint %}
+    <li>{{ item }}</li>
+    {% endfor %}
+  \endcode
+
+  would be rendered as
+  \badcode
+    <li>6</li>
+  \endcode
+
+  if myint is 6 in the context.
+
+  \section2 Truthiness
+
+  Truthiness of a variable is evaulated in a similar way to python. That is,
+  \list
+  \li The invalid QVariant is \c false
+  \li An empty QString is \c false
+  \li 0 is \c false
+  \li An empty container such as QVariantList or QVariantHash is \c false
+  \li Boolean \c false is \c false
+  \li QObjects that define their own truth behaviour and return \c false are \c false
+  \endlist
+
+  Everything else is \c true.
+
+  \badcode
+    {% if mylist %}
+    <ul>
+    {% for item in mylist %}
+    <li>{{ item }}</li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+  \endcode
+
+  \section2 Variable lookups
+
+  So far we've mostly used simple variable lookups in \c variable tags, but the template system is capable of a lot more. Complex structures can be evaluated using the dot ('.') character.
+
+  The dot can be used for list index lookup (Note that list lookup is 0-indexed):
+  \badcode
+    The first item is {{ mylist.0 }}, and the fifth item is {{ mylist.4 }}.
+  \endcode
+
+  It can also be used for QVariantHash key lookup:
+
+  \badcode
+    The hash value is {{ myhash.mykey }}.
+  \endcode
+
+  And it can retrieve properties from QObject instances:
+
+  \badcode
+    The object property is {{ myobj.myprop }}.
+  \endcode
+
+  \section2 Filters
+
+  Filters can further affect the result of including a variable in a template. Filters are separated by the pipe ('|') character.
+
+  \badcode
+    Name is {{ name }}, and name in uppercase is {{ name|upper }}.
+
+    // rendered as
+    // Name is Alice, and name in uppercase is ALICE.
+  \endcode
+
+  Note that filters may be combined with dot-lookup. For example, if \c people is a list of \c Person objects,
+  and \c Person objects have \c name properties:
+
+  \badcode
+    First persons name: {{ people.0.name|upper }}.
+
+    // rendered as
+    // First persons name: BOB.
+  \endcode
+
+  Filters may also be chained. Here, 'Claire' is first uppercased, then lowercased:
+
+  \badcode
+    Name is {{ name|upper|lower }}
+
+    // rendered as
+    // First persons name: claire.
+  \endcode
+
+  Filters may take one string argument, which is delimited by a colon (':').
+
+  If \c peoplestring contains "Dave and Ellen and Frank", we can cut the string 'and '
+
+  \badcode
+    The people are {{ peoplestring|cut:"and " }}
+
+    // rendered as
+    // The people are Dave Ellen Frank.
+  \endcode
+
+  KTextTemplate ships with many useful filters including \c upper, \c lower, \c slice, \c truncate, \c join, \c split etc (see http://docs.djangoproject.com/en/dev/ref/templates/builtins/). Application developers and artists can also define their own filters.
+
+  \section2 Template Inclusion and Inheritance
+
+  It is possible for templates to include other templates in two ways, by directly including the content of another template, and by extending another template.
+
+  \section3 Including Templates
+
+  The \c include tag is used to include the content of another template.
+
+  \badcode
+    <h1>My page</h1>
+      {% include "breadcrumbs.html" %}
+
+    <h2>My Data</h2>
+      {% include "table.html" %}
+  \endcode
+
+  If \c "breadcrumbs.html" and \c "table.html" exist and contain appropriate content, they will be rendered and added to the output of the template.
+
+  \section3 Extending Templates
+
+  The \c extends tag is used to include and override the content of another template.
+
+  The template being extended must define several blocks using the \c block tag. Typically, one or more base templates will be defined which define the structure and content of all templates, and some placeholders for other templates to fill in.
+
+  For example, a \c base.html might look like this:
+
+  \badcode
+    <html>
+      <head>
+        <title>{% block title %}My Stuff{% endblock %}</title>
+      </head>
+      <body>
+        <div class="sidebar">
+          {% block sidebar %}
+          {% endblock sidebar %}
+        </div>
+        <div class="main_content">
+          {% block content %}
+          {% endblock content %}
+        </div>
+      </body>
+    </html>
+  \endcode
+
+  Then other templates could be written which extend this template, reusing its content and replacing the content of the \c block tags.
+
+  For example, a page about books:
+
+  \badcode
+    {% extends "base.html" %}
+    {% block title %}{{ block.super }} - My Books{% endblock %}
+
+    {% block content %}
+    <ul>
+      {% for book in books %}
+        <li>{{ book.name }}, {{ book.author }}
+      {% endfor %}
+    </ul>
+    {% endblock %}
+  \endcode
+
+  Or a page about DVDs:
+
+  \badcode
+    {% extends "base.html" %}
+    {% block title %}{{ block.super }} - My DVDs{% endblock %}
+
+    {% block content %}
+    <ul>
+      {% for dvd in dvds %}
+        <li>{{ dvd.title }}, {{ dvd.director }}
+      {% endfor %}
+    </ul>
+    {% endblock content %}
+  \endcode
+
+  Note that it is optional to override a \c block in a extended template. It is also optional to repeat the name of the block in its corresponding \c endblock tag.
+
+  The content of an overriden tag is available in the \c block.super variable, and can be reused where appropriate. In the above examples, the use of \c block.super results in the titles of the rendered pages being "My Stuff - My Books", and "My Stuff - My DVDs" respectively.
+
+  \section1 Autoescaping in templates.
+
+  When creating HTML string output it is necessary to consider escaping data inserted into the template. HTML escaping involves replacing \c < with \c &lt; and \c & with \c &amp; etc. KTextTemplate automatically escapes string input before adding it to the output.
+
+  This is relevant when writing a variable from the context into the Template.
+
+  If the context object \c companies is a list containing ('Burger King', 'Ben & Jerries', 'Ford'), and it is used in a template such as:
+
+  \badcode
+    <ul>
+    {% for company in companies %}
+      <li>{{ company }}</li>
+    {% endfor %}
+    </ul>
+  \endcode
+
+  The output would be
+
+  \badcode
+    <ul>
+      <li>Burger King</li>
+      <li>Ben &amp; Jerries</li>
+      <li>Ford</li>
+    </ul>
+  \endcode
+
+  Notice that the \c & has been replaced with \c &amp; as is appropriate for html output.
+
+  Sometimes however, a variable will contain text which has already been escaped and does not need to be escaped again. For example,
+  if we already created a \c table in the context containing the content:
+
+  \badcode
+    <table class="myclass">
+      <tr><th> Company </th><th> Product </th></tr>
+      <tr><td> Burger King </td><td> Fast Food </td></tr>
+      <tr><td> Ben &amp; Jerries </td><td> Icecream </td></tr>
+      <tr><td> Ford </td><td> Cars </td></tr>
+    </table>
+  \endcode
+
+  and a template with the content:
+
+  \badcode
+    <h2> Table of companies </h2>
+
+    {{ table }}
+
+    As you can see in the table...
+  \endcode
+
+  the content would not be rendered properly because it would be escaped.
+
+  \badcode
+    <h2> Table of companies </h2>
+
+    &lt;table class=&quot;myclass&quot;&gt;
+      &lt;tr&gt;&lt;th&gt; Company &lt;/th&gt;&lt;th&gt; Product &lt;/th&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td&gt; Burger King &lt;/td&gt;&lt;td&gt; Fast Food &lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td&gt; Ben &amp;amp; Jerries &lt;/td&gt;&lt;td&gt; Icecream &lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td&gt; Ford &lt;/td&gt;&lt;td&gt; Cars &lt;/td&gt;&lt;/tr&gt;
+    &lt;/table&gt;
+
+    As you can see in the table...
+  \endcode
+
+  Note that the content of \c table has already been escaped. That is \c Ben &amp; Jerries' is already used instead of \c  Ben & Jerries. If a variable has already been escaped and should not be escaped again, it can be marked as safe from further escaping using the \c safe filter.
+
+  \badcode
+    <h2> Table of companies </h2>
+
+    {{ table|safe }}
+
+    As you can see in the table...
+  \endcode
+
+  Resulting in:
+
+  \badcode
+    <h2> Table of companies </h2>
+
+    <table class="myclass">
+      <tr><th> Company </th><th> Product </th></tr>
+      <tr><td> Burger King </td><td> Fast Food </td></tr>
+      <tr><td> Ben &amp; Jerries </td><td> Icecream </td></tr>
+      <tr><td> Ford </td><td> Cars </td></tr>
+    </table>
+
+    As you can see in the table...
+  \endcode
+
+  It is also possible to turn this autoescaping feature off for a block in a template.
+
+  For example:
+
+  \badcode
+    <h2> Some pre-prepared safe data </h2>
+
+    {% autoescape off %}
+      {{ table }}
+      As you can see in the table...
+
+      {% for list in lists %}
+        {{ list }}
+      {% endfor %}
+
+      {{ paragraph_data }}
+    {% endautoescape %}
+  \endcode
+
+  would not escape the content between the \c autoescape and \c endautoescape tags. This should only be used for content which is actually already safe.
+
+  \sa https://docs.djangoproject.com/en/1.9/ref/templates/language/#for-individual-variables
+
+  \section2 Extending the syntax
+
+  It is also possible to extend the syntax of KTextTemplate as you need it using Javascript if the application developer chooses.
+
+*/

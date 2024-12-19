@@ -17,62 +17,56 @@
 
 #include <QVariant>
 
-/// @file
-
 namespace KTextTemplate
 {
 
-/// @headerfile metatype.h <KTextTemplate/MetaType>
+/*!
+  \class KTextTemplate::MetaType
+  \inheaderfile KTextTemplate/MetaType
+  \inmodule KTextTemplate
 
-#ifndef K_DOXYGEN
-/**
-  @brief The **%MetaType** is the interface to the KTextTemplate introspection
+  \brief The MetaType is the interface to the KTextTemplate introspection
   system.
 
-  The **%MetaType** class is used as part of the type registration system of
-  %KTextTemplate.
-
-  @see @ref generic_types_and_templates
-  @author Michael Jansen <kde@michael-jansen.biz>
-  @author Stephen Kelly <steveire@gmail.com>
+  The MetaType class is used as part of the type registration system of
+  KTextTemplate.
 */
 class KTEXTTEMPLATE_EXPORT MetaType
 {
 public:
-    /**
-      @internal The signature for a property lookup method
+    /*!
+      \internal The signature for a property lookup method
      */
     typedef QVariant (*LookupFunction)(const QVariant &, const QString &);
 
-    /**
-      @internal Registers a property lookup method
+    /*!
+      \internal Registers a property lookup method
      */
     static void registerLookUpOperator(int id, LookupFunction f);
 
-    /**
-      @internal
+    /*!
+      \internal
      */
     static void internalLock();
 
-    /**
-      @internal
+    /*!
+      \internal
      */
     static void internalUnlock();
 
-    /**
-      @internal
+    /*!
+      \internal
      */
     static QVariant lookup(const QVariant &object, const QString &property);
 
-    /**
-      @internal
+    /*!
+      \internal
      */
     static bool lookupAlreadyRegistered(int id);
 
 private:
     MetaType();
 };
-#endif
 
 namespace
 {
@@ -133,14 +127,16 @@ struct InternalRegisterType<RealType *, HandleAs *> {
 };
 }
 
-/**
-  @brief Registers the type RealType with the metatype system.
+/*!
+  \relates KTextTemplate::MetaType
+
+  Registers the type RealType with the metatype system.
 
   This method can take a second template parameter to specify a cast
   that should be invoked during registration. This is useful if a base type is
   already supported.
 
-  @code
+  \code
     class SomeType
     {
     public:
@@ -165,9 +161,7 @@ struct InternalRegisterType<RealType *, HandleAs *> {
     // Only the introspectable API from SomeType is needed, so we can reuse that
   registration.
     registerMetaType<OtherType, SomeType>();
-  @endcode
-
-  @see @ref generic_types_and_templates
+  \endcode
  */
 template<typename RealType, typename HandleAs>
 int registerMetaType()
@@ -181,9 +175,8 @@ int registerMetaType()
     return id;
 }
 
-#ifndef K_DOXYGEN
-/**
-  @internal
+/*!
+  \internal
   Register a type so %KTextTemplate knows how to handle it.
 
   This is a convenience method.
@@ -194,13 +187,14 @@ int registerMetaType()
     return registerMetaType<Type, Type>();
 }
 
-#endif
 } // namespace KTextTemplate
 
-/**
+/*!
   Top boundary of a lookup function for Type.
 
-  @see @ref generic_types
+  \macro KTEXTTEMPLATE_BEGIN_LOOKUP(Type)
+
+  \relates KTextTemplate::MetaType
  */
 #define KTEXTTEMPLATE_BEGIN_LOOKUP(Type)                                                                                                                       \
     namespace KTextTemplate                                                                                                                                    \
@@ -208,10 +202,12 @@ int registerMetaType()
     template<>                                                                                                                                                 \
     inline QVariant TypeAccessor<Type &>::lookUp(const Type &object, const QString &property)                                                                  \
     {
-/**
+/*!
   Top boundary of a lookup function for Type*.
 
-  @see @ref generic_types
+  \macro KTEXTTEMPLATE_BEGIN_LOOKUP_PTR(Type)
+
+  \relates KTextTemplate::MetaType
  */
 #define KTEXTTEMPLATE_BEGIN_LOOKUP_PTR(Type)                                                                                                                   \
     namespace KTextTemplate                                                                                                                                    \
@@ -219,10 +215,12 @@ int registerMetaType()
     template<>                                                                                                                                                 \
     inline QVariant TypeAccessor<Type *>::lookUp(const Type *const object, const QString &property)                                                            \
     {
-/**
+/*!
   Bottom boundary of a lookup function for Type.
 
-  @see @ref generic_types
+  \macro KTEXTTEMPLATE_END_LOOKUP
+
+  \relates KTextTemplate::MetaType
  */
 #define KTEXTTEMPLATE_END_LOOKUP                                                                                                                               \
     return QVariant();                                                                                                                                         \

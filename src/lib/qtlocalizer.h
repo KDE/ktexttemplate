@@ -19,15 +19,17 @@ namespace KTextTemplate
 
 class QtLocalizerPrivate;
 
-/// @headerfile qtlocalizer.h <KTextTemplate/QtLocalizer>
+/*!
+  \class KTextTemplate::QtLocalizer
+  \inheaderfile KTextTemplate/QtLocalizer
+  \inmodule KTextTemplate
 
-/**
-  @brief Provides internationalization based on QLocale and QTranslator.
+  \brief Provides internationalization based on QLocale and QTranslator.
 
   This class implements access to the %Qt Localization system. Localizable
   types such as strings, numbers, dates and times can be processed.
 
-  @code
+  \code
     auto t = m_engine->loadTemplate(someTemplate);
     auto c = getContext();
 
@@ -40,45 +42,42 @@ class QtLocalizerPrivate;
     c.setLocalizer(m_fr_Localizer);
     auto frText = t->render(&c);
     fr_display->setText(frText);
-  @endcode
+  \endcode
 
 */
 class KTEXTTEMPLATE_EXPORT QtLocalizer : public AbstractLocalizer
 {
 public:
-    /**
-      Constructs a new **%QtLocalizer** using the @p locale
+    /*!
+      Constructs a new QtLocalizer using the \a locale
     */
     QtLocalizer(const QLocale &locale = QLocale::system());
 
-    /**
-      Destructor
-     */
     ~QtLocalizer() override;
 
-    /**
+    /*!
       Set the path to look for translations of the application strings.
      */
     void setAppTranslatorPath(const QString &path);
 
-    /**
+    /*!
       Set the prefix of translation files. For example, if the German translation
-      file is called <tt>myapp_de_DE.qm</tt>, the prefix should be set to
-      <tt>myapp_</tt>.
+      file is called myapp_de_DE.qm, the prefix should be set to
+      myapp_.
      */
     void setAppTranslatorPrefix(const QString &prefix);
 
-    /**
-      Install a @p translator to use for a particular @p localeName.
+    /*!
+      Install a \a translator to use for a particular \a localeName.
 
-      @code
+      \code
         auto deTranslator = new QTranslator(this);
         auto loaded = deTranslator->load("myapp_de_DE");
         if (!loaded)
           return;
 
         de_localizer->installTranslator(deTranslator, "de_DE");
-      @endcode
+      \endcode
      */
     void installTranslator(QTranslator *translator, const QString &localeName = QLocale::system().name());
 

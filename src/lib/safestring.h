@@ -18,35 +18,37 @@
 namespace KTextTemplate
 {
 
-/// @headerfile safestring.h <KTextTemplate/SafeString>
+/*!
+  \class KTextTemplate::SafeString
+  \inheaderfile KTextTemplate/SafeString
+  \inmodule KTextTemplate
 
-/**
-  @brief A QString wrapper class for containing whether a string is safe or
+  \brief A QString wrapper class for containing whether a string is safe or
   needs to be escaped.
 
   This allows lazy escaping of strings. Otherwise a string may be escaped
   multiple times where it should only be escaped once.
 
-  The **%SafeString** class itself provides information about whether a string
-  is safe from further escaping through the @ref isSafe method. The actual
-  string content held by the **%SafeString** instance is available through the
-  @ref get method. The @ref get method returns a QString subclass which should
+  The SafeString class itself provides information about whether a string
+  is safe from further escaping through the isSafe method. The actual
+  string content held by the SafeString instance is available through the
+  get method. The get method returns a QString subclass which should
   be used like any other QString. The difference is that all methods on
-  NestedString return a **%SafeString** instead of a QString.
+  NestedString return a SafeString instead of a QString.
 
-  @code
+  \code
     SafeString s("this & that", SafeString::IsSafe);
     s.get().replace( "this", "these" ).toUpper();
 
     qDebug() << s.get() << s.isSafe(); // outputs "these & that" false
-  @endcode
+  \endcode
 
   Note that most operations on strings make the string unsafe. For example,
-  while <tt>"K &amp; R"</tt> is safe, using replace("m", "n") will result in
-  <tt>"K &anp; R"</tt>, which is unsafe. Likewise using upper() will return
-  <tt>"K &AMP; R"</tt>, which is unsafe. Because the **%SafeString** can not
+  while "K &amp; R" is safe, using replace("m", "n") will result in
+  "K &anp; R", which is unsafe. Likewise using upper() will return
+  "K &AMP; R", which is unsafe. Because the SafeString can not
   determine whether a method call with particular arguments will change
-  a **%SafeString** from being safe to being unsafe, any operation which can
+  a SafeString from being safe to being unsafe, any operation which can
   possibly make the string unsafe does cause the string to become unsafe. It is
   then up to the caller to restore safe-ness if needed.
 
@@ -55,7 +57,7 @@ namespace KTextTemplate
 
   For example:
 
-  @code
+  \code
     SafeString s1("this & that", SafeString::IsSafe);
     s2 = s1;
     s1.append( QString( " & the other" ) );
@@ -65,84 +67,72 @@ namespace KTextTemplate
     s2.append(s3);
     // Both s2 and s3 are safe, and append is a safe operation, so s2
     // is still safe
-  @endcode
+  \endcode
 
-  @see @ref autoescaping
-  @see OutputStream::escape
-
-  The **%SafeString** class has appropriate operator overloads to make it
+  The SafeString class has appropriate operator overloads to make it
   convenient to use in methods returning a QVariant, such as Filter::doFilter,
   or as a QString. Note that a raw QString is essentially the same
-  as a **%SafeString** which is marked as unsafe.
-
-  @author Stephen Kelly <steveire@gmail.com>
+  as a SafeString which is marked as unsafe.
 */
 class KTEXTTEMPLATE_EXPORT SafeString
 {
 public:
-    /**
-      Possible safety states of a **%SafeString**
+    /*!
+      Possible safety states of a SafeString
+
+      \value IsSafe The string is safe and requires no further escaping
+      \value IsNotSafe The string is not safe. It will be escaped before being added to the output of rendering.
     */
     enum Safety {
-        IsSafe, ///< The string is safe and requires no further escaping
-        IsNotSafe ///< The string is not safe. It will be escaped before being
-                  /// added to the output of rendering.
+        IsSafe,
+        IsNotSafe
     };
 
-    /**
-      Constructs an empty **%SafeString**.
+    /*!
+      Constructs an empty SafeString.
     */
     SafeString();
 
-    /**
-      Copy constructor
-    */
     SafeString(const SafeString &safeString);
 
-    /**
-      Constructs a **%SafeString** with the content @p str whose safety is given
-      by @p safe.
+    /*!
+      Constructs a SafeString with the content \a str whose safety is given
+      by \a safe.
     */
     SafeString(const QString &str, bool safe);
 
-    /**
-      Constructs a **%SafeString** with the content @p str whose safety is given
-      by @p safety.
+    /*!
+      Constructs a SafeString with the content \a str whose safety is given
+      by \a safety.
     */
     /* implicit */ SafeString(const QString &str,
                               Safety safety = IsNotSafe); // krazy:exclude=explicit
 
-    /**
-      Destructor
-    */
     ~SafeString();
 
-#ifndef K_DOXYGEN
-    /**
+    /*!
       Set whether the string should be escaped.
     */
     void setNeedsEscape(bool needsEscape);
-#endif
 
-    /**
+    /*!
       Whether the string needs to be escaped.
     */
     bool needsEscape() const;
 
-    /**
+    /*!
       Whether the string is safe.
     */
     bool isSafe() const;
 
-#ifndef K_DOXYGEN
-    /**
+    /*!
       Set whether the string is safe.
     */
     void setSafety(Safety safety);
-#endif
 
-    /**
-      @brief The NestedString is a QString whose methods always return a
+    /*!
+      \inmodule KTextTemplate
+      The NestedString is a QString whose methods always return a
       SafeString
 
       This class is largely an implementation detail. See the SafeString
@@ -150,7 +140,6 @@ public:
     */
     class KTEXTTEMPLATE_EXPORT NestedString : public QString
     {
-#ifndef K_DOXYGEN
         friend class SafeString;
         SafeString *m_safeString;
 
@@ -274,82 +263,81 @@ public:
         SafeString trimmed() const;
 
         void chop(int n);
-#endif
     };
 
-    /**
-      Returns the String held by this **%SafeString**
+    /*!
+      Returns the String held by this SafeString
     */
     const NestedString &get() const
     {
         return m_nestedString;
     }
 
-    /**
-      Returns the String held by this **%SafeString**
+    /*!
+      Returns the String held by this SafeString
     */
     NestedString &get()
     {
         return m_nestedString;
     }
 
-    /**
-      Convenience operator for treating a **%SafeString** like a QString.
+    /*!
+      Convenience operator for treating a SafeString like a QString.
     */
     operator QString() const
     {
         return m_nestedString;
     }
 
-    /**
+    /*!
       Assignment operator.
     */
     SafeString &operator=(const SafeString &str);
 
-    /**
-      Returns a concatenation of this with @p str.
+    /*!
+      Returns a concatenation of this with \a str.
 
       The result is not safe because str is not safe.
     */
     SafeString operator+(const QString &str);
 
-    /**
-      Returns a concatenation of this with @p str.
+    /*!
+      Returns a concatenation of this with \a str.
 
       The result is safe if both this and str are safe.
     */
     SafeString operator+(const SafeString &str);
 
-    /**
-      Appends the content of @p str to this.
+    /*!
+      Appends the content of \a str to this.
 
-      The result is not safe because @p str is not safe.
+      The result is not safe because \a str is not safe.
     */
     SafeString &operator+=(const QString &str);
 
-    /**
-      Appends the content of @p str to this.
+    /*!
+      Appends the content of \a str to this.
 
-      The result is safe if both this and @p str are safe.
+      The result is safe if both this and \a str are safe.
     */
     SafeString &operator+=(const SafeString &str);
 
-    /**
-      Returns true if the content of @p other matches the content of this.
+    /*!
+      Returns true if the content of \a other matches the content of this.
 
       Safeness and needing escaping are not accounted for in the comparison.
     */
     bool operator==(const SafeString &other) const;
 
-    /**
-      Returns true if the content of @p other matches the content of this.
+    /*!
+      Returns true if the content of \a other matches the content of this.
 
       Safeness and needing escaping are not accounted for in the comparison.
     */
     bool operator==(const QString &other) const;
 
-    /**
-      Convenience operator for storing a **%SafeString** in a QVariant.
+    /*!
+      Convenience operator for storing a SafeString in a QVariant.
     */
     operator QVariant() const
     {
@@ -357,9 +345,7 @@ public:
     }
 
 private:
-#ifndef K_DOXYGEN
     NestedString m_nestedString;
-#endif
     Safety m_safety;
     bool m_needsescape;
 };

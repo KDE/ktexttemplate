@@ -19,8 +19,19 @@
 namespace KTextTemplate
 {
 
-/**
-  Types of errors that can occur while using %KTextTemplate
+/*!
+  Types of errors that can occur while using KTextTemplate
+
+  \value NoError
+  \value EmptyVariableError
+  \value EmptyBlockTagError
+  \value InvalidBlockTagError
+  \value UnclosedBlockTagError
+  \value UnknownFilterError
+  \value TagSyntaxError
+  \value VariableNotInContext
+  \value ObjectReturnTypeInvalid
+  \value CompileFunctionError
 */
 enum Error {
     NoError,
@@ -37,27 +48,29 @@ enum Error {
     CompileFunctionError
 };
 
-/// @headerfile exception.h <KTextTemplate/Exception>
+/*!
+  \class KTextTemplate::Exception
+  \inheaderfile KTextTemplate/Exception
+  \inmodule KTextTemplate
 
-/**
-  @brief An exception for use when implementing template tags.
+  \brief An exception for use when implementing template tags.
 
-  The **%Exception** class can be used when implementing
+  The Exception class can be used when implementing
   AbstractNodeFactory::getNode. An exception can be thrown to indicate that
   the syntax of a particular tag is invalid.
 
   For example, the following template markup should throw an error because the
   include tag should have exactly one argument:
 
-  @code
+  \code
     <div>
       {% include %}
     </div>
-  @endcode
+  \endcode
 
   The corresponding implementation of IncludeNodeFactory::getNode is
 
-  @code
+  \code
     QStringList tagContents = smartSplit( tagContent );
 
     if ( tagContents.size() != 2 )
@@ -66,16 +79,14 @@ enum Error {
 
     // The item at index 0 in the list is the tag name, "include"
     QString includeName = tagContents.at( 1 );
-  @endcode
-
-  @author Stephen Kelly <steveire@gmail.com>
+  \endcode
 */
 class KTEXTTEMPLATE_EXPORT Exception
 {
 public:
-    /**
-      Creates an exception for the error @p errorCode and the verbose
-      message @p what
+    /*!
+      Creates an exception for the error \a errorCode and the verbose
+      message \a what
     */
     Exception(Error errorCode, const QString &what)
         : m_errorCode(errorCode)
@@ -87,9 +98,8 @@ public:
     {
     }
 
-#ifndef K_DOXYGEN
-    /**
-      @internal
+    /*!
+      \internal
 
       Returns the verbose message for the exception.
     */
@@ -98,8 +108,8 @@ public:
         return m_what;
     }
 
-    /**
-      @internal
+    /*!
+      \internal
 
       Returns the error code for the exception.
     */
@@ -107,7 +117,6 @@ public:
     {
         return m_errorCode;
     }
-#endif
 
 private:
     Error m_errorCode;

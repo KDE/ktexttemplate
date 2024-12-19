@@ -1,20 +1,18 @@
-namespace KTextTemplate
-{
+/*!
+  \page ktexttemplate-generictypes
+  \title Generic type and template support
 
-/**
+  \section1 Generic type support
 
-  @page generic_types_and_templates Generic type and template support
+  KTextTemplate offers powerful support for using any type or container in a QVariant as part of the Context.
+  Qt introspection based on \c Q_PROPERTY is the most convenient way to access properties on QObject derived type or types decorated with the \c Q_GADGET macro.
 
-  @section generic_types Generic type support
+  However, sometimes it is necessary to use classes which do can't have \c Q_PROPERTY macros (perhaps because they are defined in third-party headers)
+  and where it would not be practical to create QObject/Q_GADGET wrappers around all related classes.
 
-  %KTextTemplate offers powerful support for using any type or container in a QVariant as part of the Context.
-  %Qt introspection based on Q_PROPERTY is the most convenient way to access properties on QObject derived type or types decorated with the <tt>Q_GADGET</tt> macro.
-  However, sometimes it is necessary to use classes which do can't have Q_PROPERTY macros (perhaps because they are defined in third-party headers)
-  and where it would not be practical to create QObject/<tt>Q_GADGET</tt> wrappers around all related classes.
+  In such cases the metatype can be registered with KTextTemplate and an introspection method can be written.
 
-  In such cases the metatype can be registered with %KTextTemplate and an introspection method can be written.
-
-  @code
+  \code
     // Non-QObject
     class Person
     {
@@ -89,79 +87,84 @@ namespace KTextTemplate
 
       return t->render(&c);
     }
-  @endcode
+  \endcode
 
   There are several necessary steps and consequences.
-  @li The type must be registered as a QMetaType with <tt>Q_DECLARE_METATYPE</tt>. Note that this is not needed for QObject derived types.
-  @li All containers are supported. (See @ref generic_containers)
-  @li The <tt>KTEXTTEMPLATE_BEGIN_LOOKUP</tt> and <tt>KTEXTTEMPLATE_END_LOOKUP</tt> macros help to define the introspection of the type. Between them is the definition of a method with the signature <tt>QVariant&nbsp;getProperty(const&nbsp;Type&nbsp;&object,&nbsp;const&nbsp;QString&nbsp;&property)</tt>.
-  @li KTextTemplate::registerMetaType must be called at some point in the program before attempting to use the type in a Context.
-  @li The Context is created and used as normal.
+  \list
+  \li The type must be registered as a QMetaType with \c Q_DECLARE_METATYPE. Note that this is not needed for QObject derived types.
+  \li All containers are supported.
+  \li The \c KTEXTTEMPLATE_BEGIN_LOOKU and \c KTEXTTEMPLATE_END_LOOKUP macros help to define the introspection of the type. Between them is the definition of a method with the signature \c {QVariant getProperty(const Type &object, const QString &property.
+  \li KTextTemplate::registerMetaType must be called at some point in the program before attempting to use the type in a Context.
+  \li The Context is created and used as normal.
+  \endlist
 
-  @section generic_containers Generic container support
+  \section1 Generic container support
 
-  %KTextTemplate supports most %Qt and STL containers by default if they are registered with the QMetaType system as shown in @ref generic_types.
-  Where a container does not have built in support it can easily be added (See @ref third_party_containers).
+  KTextTemplate supports most Qt and STL containers by default if they are registered with the QMetaType system.
+  Where a container does not have built in support it can easily be added.
 
   The following containers have built in support:
-
-  @li QList&lt;T&gt;
-  @li QList&lt;T&gt;
-  @li QSet&lt;T&gt;
-  @li QLinkedList&lt;T&gt;
-  @li QStack&lt;T&gt;
-  @li QQueue&lt;T&gt;
-  @li std::vector&lt;T&gt;
-  @li std::deque&lt;T&gt;
-  @li std::list&lt;T&gt;
-  @li QHash&lt;QString, T&gt;
-  @li QHash&lt;qint16, T&gt;
-  @li QHash&lt;qint32, T&gt;
-  @li QHash&lt;qint64, T&gt;
-  @li QHash&lt;quint16, T&gt;
-  @li QHash&lt;quint32, T&gt;
-  @li QHash&lt;quint64, T&gt;
-  @li QMap&lt;QString, T&gt;
-  @li QMap&lt;qint16, T&gt;
-  @li QMap&lt;qint32, T&gt;
-  @li QMap&lt;qint64, T&gt;
-  @li QMap&lt;quint16, T&gt;
-  @li QMap&lt;quint32, T&gt;
-  @li QMap&lt;quint64, T&gt;
-  @li std::map&lt;QString, T&gt;
-  @li std::map&lt;qint16, T&gt;
-  @li std::map&lt;qint32, T&gt;
-  @li std::map&lt;qint64, T&gt;
-  @li std::map&lt;quint16, T&gt;
-  @li std::map&lt;quint32, T&gt;
-  @li std::map&lt;quint64, T&gt;
+  \list
+  \li QList<T>
+  \li QList<T>
+  \li QSet<T>
+  \li QLinkedList<T>
+  \li QStack<T>
+  \li QQueue<T>
+  \li std::vector<T>
+  \li std::deque<T>
+  \li std::list<T>
+  \li QHash<QString, T>
+  \li QHash<qint16, T>
+  \li QHash<qint32, T>
+  \li QHash<qint64, T>
+  \li QHash<quint16, T>
+  \li QHash<quint32, T>
+  \li QHash<quint64, T>
+  \li QMap<QString, T>
+  \li QMap<qint16, T>
+  \li QMap<qint32, T>
+  \li QMap<qint64, T>
+  \li QMap<quint16, T>
+  \li QMap<quint32, T>
+  \li QMap<quint64, T>
+  \li std::map<QString, T>
+  \li std::map<qint16, T>
+  \li std::map<qint32, T>
+  \li std::map<qint64, T>
+  \li std::map<quint16, T>
+  \li std::map<quint32, T>
+  \li std::map<quint64, T>
+  \endlist
 
   where T is one of
 
-  @li bool
-  @li qint16
-  @li qint32
-  @li qint64
-  @li quint16
-  @li quint32
-  @li quint64
-  @li float
-  @li double
-  @li QVariant
-  @li QString
-  @li QDateTime
-  @li A pointer to a type which inherits QObject
-  @li Any type registered with KTextTemplate::registerMetaType
-  @li Any supported container
+  \list
+  \li bool
+  \li qint16
+  \li qint32
+  \li qint64
+  \li quint16
+  \li quint32
+  \li quint64
+  \li float
+  \li double
+  \li QVariant
+  \li QString
+  \li QDateTime
+  \li A pointer to a type which inherits QObject
+  \li Any type registered with KTextTemplate::registerMetaType
+  \li Any supported container
+  \endlist
 
-  Note that QSet&lt;T&gt; is an exception and will only work with types for which <tt>qHash(T)</tt> is defined. This means that QSet&lt;QVariant&gt;
+  Note that QSet<T> is an exception and will only work with types for which \c qHash(T) is defined. This means that QSet<QVariant>
   is not possible for example.
 
   Note also that containers of pointers to QObject derived types can be stored in containers, and they do not need to be explicitly
-  registered with %KTextTemplate. Where the class has sufficient <tt>Q_PROPERTY</tt>s defined, the introspection method described above with
-  <tt>KTEXTTEMPLATE_BEGIN_LOOKUP</tt> and <tt>KTEXTTEMPLATE_END_LOOKUP</tt> is also not necessary. Note also that any type or container can be used through a <tt>Q_PROPERTY</tt>.
+  registered with KTextTemplate. Where the class has sufficient \c {Q_PROPERTY}s defined, the introspection method described above with
+  \c KTEXTTEMPLATE_BEGIN_LOOKUP and \c KTEXTTEMPLATE_END_LOOKUP is also not necessary. Note also that any type or container can be used through a \c Q_PROPERTY.
 
-  @code
+  \code
     class PersonObject : public QObject
     {
       Q_OBJECT
@@ -242,13 +245,13 @@ namespace KTextTemplate
 
       return t->render(&c);
     }
-  @endcode
+  \endcode
 
-  @see <a href="http://docs.djangoproject.com/en/1.9/ref/templates/builtins/#regroup">The regroup tag</a>
+  See \l {http://docs.djangoproject.com/en/1.9/ref/templates/builtins/#regroup} {The regroup tag}
 
   The output would be something like
 
-  @verbatim
+  \badcode
     <h1>Tennis</h1>
       <h2>Smithfield Tennis Club</h2>
       <ul>
@@ -268,16 +271,16 @@ namespace KTextTemplate
         <li>Gilian, 27</li>
         <li>Henry, 28</li>
       </ul>
-  @endverbatim
+  \endcode
 
-  Of course, it is possible to use containers of pointers to concrete QObject subclasses, such as QSet&lt;PersonObject*&gt; and std::vector&lt;SportsClub*&gt; too.
+  Of course, it is possible to use containers of pointers to concrete QObject subclasses, such as \c QSet<PersonObject*> and \c std::vector<SportsClub*> too.
 
-  Because any supported container can also be used as a contained type, nested containers such as <tt>QList<QList<PersonObject*>></tt> are also supported.
+  Because any supported container can also be used as a contained type, nested containers such as \c QList<QList<PersonObject*>> are also supported.
 
   Note that if a type is registered with KTextTemplate::registerMetaType, built in containers of that type do not also need to be registered.
-  Third party containers do need to be registered however (See @ref third_party_containers)
+  Third party containers do need to be registered however
 
-  @code
+  \code
     Q_DECLARE_METATYPE(Person)
 
     void someInitializer()
@@ -287,16 +290,16 @@ namespace KTextTemplate
       // Now any of the nested containers can be put 
       // in a Context and used in a Template.
     }
-  @endcode
+  \endcode
 
-  @section third_party_containers Third party containers
+  \section1 Third party containers
 
-  To support another, non-built in container it is necessary to use some macros to register it with %KTextTemplate.
+  To support another, non-built in container it is necessary to use some macros to register it with KTextTemplate.
 
-  For a sequential container, <tt>Q_DECLARE_SEQUENTIAL_CONTAINER_METATYPE</tt>,
-  and <tt>Q_DECLARE_ASSOCIATIVE_CONTAINER_METATYPE</tt> are needed.
+  For a sequential container, \c Q_DECLARE_SEQUENTIAL_CONTAINER_METATYPE,
+  and \c Q_DECLARE_ASSOCIATIVE_CONTAINER_METATYPE are needed.
 
-  @code
+  \code
     #include <boost/circular_buffer>
 
     // Enable looping over the contents of the container
@@ -321,17 +324,15 @@ namespace KTextTemplate
       }
       c.insert("people", QVariant::fromValue(buffer));
     }
-  @endcode
+  \endcode
 
-  @see @ref lookups
+  For associative containers \c Q_DECLARE_ASSOCIATIVE_CONTAINER_METATYPE is needed.
 
-  For associative containers <tt>Q_DECLARE_ASSOCIATIVE_CONTAINER_METATYPE</tt> is needed.
+  \section1 Smart Pointers
 
-  @section smart_pointers Smart Pointers
+  Shared pointer types containing a custom type should be introspected as normal using \c KTEXTTEMPLATE_BEGIN_LOOKUP and \c KTEXTTEMPLATE_END_LOOKUP
 
-  Shared pointer types containing a custom type should be introspected as normal using <tt>KTEXTTEMPLATE_BEGIN_LOOKUP</tt> and <tt>KTEXTTEMPLATE_END_LOOKUP</tt>
-
-  @code
+  \code
     Q_DECLARE_METATYPE(QSharedPointer<Person>)
 
     void someInitializer()
@@ -343,32 +344,32 @@ namespace KTextTemplate
       if (property == "name")
         return object->name();
     KTEXTTEMPLATE_END_LOOKUP
-  @endcode
+  \endcode
 
   Note that if only shared pointers to the type is in your introspectable API you only need to define the property access for the
-  shared pointer. In the case above, there is no need to use <tt>Q_DECLARE_METATYPE</tt> or <tt>KTEXTTEMPLATE_BEGIN_LOOKUP</tt> with <tt>Person</tt> or <tt>Person*</tt>.
+  shared pointer. In the case above, there is no need to use \c Q_DECLARE_METATYPE or \c KTEXTTEMPLATE_BEGIN_LOOKUP with \c Person or \c Person*.
 
   This is of course true of any smart pointer:
 
-  @code
+  \code
     Q_DECLARE_METATYPE(boost::shared_ptr<Person>)
 
     KTEXTTEMPLATE_BEGIN_LOOKUP(boost::shared_ptr<Person>)
       if (property == "name")
         return object->name();
     KTEXTTEMPLATE_END_LOOKUP
-  @endcode
+  \endcode
 
   QSharedPointers containing QObject derived types get special treatment.
 
-  QObjects are automatically introspected for their <tt>Q_PROPERTY</tt>s (See @ref custom_objects).
+  QObjects are automatically introspected for their Q_PROPERTYs.
 
-  If you have QSharedPointer&lt;PersonObject&gt; where <tt>PersonObject</tt> is derived from QObject it will be automatically
-  introspected just like a QObject* is without requiring the <tt>KTEXTTEMPLATE_BEGIN_LOOKUP</tt> and <tt>KTEXTTEMPLATE_END_LOOKUP</tt> macros,
-  the <tt>Q_DECLARE_METATYPE</tt> macro, or registration with the %KTextTemplate metatype system. All of the access registration
-  is handled by %Qt.
+  If you have QSharedPointer<PersonObject> where \c PersonObject is derived from QObject it will be automatically
+  introspected just like a QObject* is without requiring the \c KTEXTTEMPLATE_BEGIN_LOOKUP and \c KTEXTTEMPLATE_END_LOOKUP macros,
+  the \c Q_DECLARE_METATYPE macro, or registration with the KTextTemplate metatype system. All of the access registration
+  is handled by Qt.
 
-  @code
+  \code
     void getContext()
     {
       KTextTemplate::Context c;
@@ -386,12 +387,12 @@ namespace KTextTemplate
 
       return t->render(&c);
     }
-  @endcode
+  \endcode
 
   The same technique can be used to support QObject derived types in third party shared pointers, but that requires
-  an extra macro, <tt>Q_DECLARE_SMART_POINTER_METATYPE</tt>.
+  an extra macro, \c Q_DECLARE_SMART_POINTER_METATYPE.
 
-  @code
+  \code
     Q_DECLARE_SMART_POINTER_METATYPE(boost::shared_ptr)
 
     void getContext()
@@ -401,8 +402,6 @@ namespace KTextTemplate
       c.insert("person", QVariant::fromValue(p));
       return c;
     }
-  @endcode
+  \endcode
 
 */
-
-}

@@ -15,8 +15,8 @@
 namespace KTextTemplate
 {
 
-/**
-  @internal
+/*!
+  \internal
 
   The available token types.
 */
@@ -27,9 +27,8 @@ enum TokenType {
     CommentToken ///< The Token is a comment node.
 };
 
-/// @headerfile token.h <KTextTemplate/Token>
-
-/**
+/*!
+  \internal
   A token in a parse stream for a template.
 
   This class is only relevant for template tag implementations.

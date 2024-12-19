@@ -18,6 +18,7 @@ include(KDEInstallDirs)
 include(KDEFrameworkCompilerSettings NO_POLICY_SCOPE)
 include(KDECMakeSettings)
 include(KDEGitCommitHooks)
+include(ECMGenerateQDoc)
 
 set(REQUIRED_QT_VERSION 6.6.0)
 find_package(Qt6Core ${REQUIRED_QT_VERSION} REQUIRED NO_MODULE)
@@ -31,13 +32,9 @@ set_package_properties(Qt6Qml PROPERTIES
 include(ECMQtDeclareLoggingCategory)
 include(ECMDeprecationSettings)
 include(ECMGenerateHeaders)
-include(ECMAddQch)
 include(ECMSetupVersion)
 include(ECMGenerateExportHeader)
 include(CMakePackageConfigHelpers)
-
-option(BUILD_QCH "Build API documentation in QCH format (for e.g. Qt Assistant, Qt Creator & KDevelop)" OFF)
-add_feature_info(QCH ${BUILD_QCH} "API documentation in QCH format (for e.g. Qt Assistant, Qt Creator & KDevelop)")
 
 set(EXCLUDE_DEPRECATED_BEFORE_AND_AT 0 CACHE STRING "Control the range of deprecated API excluded from the build [default=0].")
 
@@ -74,16 +71,6 @@ if (BUILD_TESTING)
 endif()
 
 set(CMAKECONFIG_INSTALL_DIR "${KDE_INSTALL_CMAKEPACKAGEDIR}/KF6TextTemplate" )
-
-if (BUILD_QCH)
-    ecm_install_qch_export(
-        TARGETS KF6TextTemplate_QCH
-        FILE KF6TextTemplateQchTargets.cmake
-        DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
-        COMPONENT Devel
-    )
-    set(PACKAGE_INCLUDE_QCHTARGETS "include(\"\${CMAKE_CURRENT_LIST_DIR}/KF6TextTemplateQchTargets.cmake\")")
-endif()
 
 configure_package_config_file(
   "${KTextTemplate_MODULE_DIR}/KF6TextTemplateConfig.cmake.in"

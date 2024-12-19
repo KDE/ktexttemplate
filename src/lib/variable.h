@@ -22,8 +22,11 @@ class VariablePrivate;
 
 /// @headerfile variable.h <KTextTemplate/Variable>
 
-/**
-  @brief A container for static variables defined in Templates.
+/*!
+  \class KTextTemplate::Variable
+  \inheaderfile KTextTemplate/Variable
+  \inmodule KTextTemplate
+  \brief A container for static variables defined in Templates.
 
   This class is only relevant to Template tag authors.
 
@@ -35,77 +38,66 @@ class VariablePrivate;
   Arguments to the tag can be used to construct Variables, which may then be
   resolved into the objects they represent in the given Context in the render
   stage.
-
-  @author Stephen Kelly <steveire@gmail.com>
 */
 class KTEXTTEMPLATE_EXPORT Variable
 {
 public:
-    /**
-      Constructs an invalid **%Variable**
+    /*!
+      Constructs an invalid Variable
     */
     Variable();
 
-    /**
-      Creates a **%Variable** represented by the given @p var
+    /*!
+      Creates a Variable represented by the given \a var
     */
     explicit Variable(const QString &var);
 
-    /**
-      Copy constructor
-    */
     Variable(const Variable &other);
 
-    /**
-      Destructor
-    */
     ~Variable();
 
-    /**
-      Assignment operator.
-    */
     Variable &operator=(const Variable &other);
 
-    /**
-      Returns whether this **%Variable** is valid.
+    /*!
+      Returns whether this Variable is valid.
     */
     bool isValid() const;
 
-    /**
-      Returns whether this **%Variable** evaluates to true with the Context @p c.
+    /*!
+      Returns whether this Variable evaluates to true with the Context \a c.
     */
     bool isTrue(Context *c) const;
 
-    /**
-      Resolves this **%Variable** with the Context @p c.
+    /*!
+      Resolves this Variable with the Context \a c.
     */
     QVariant resolve(Context *c) const;
 
-    /**
-      Returns whether this **%Variable** is a constant in the Template. A constant
+    /*!
+      Returns whether this Variable is a constant in the Template. A constant
       is represented as a static string in the template
 
-      @code
+      \code
         Text content
         {% some_tag "constant" variable %}
-      @endcode
+      \endcode
     */
     bool isConstant() const;
 
-    /**
+    /*!
       Returns whether this variable is localized, that is, if it is wrapped with
-      _(). @see @ref i18n_l10n
+      _().
      */
     bool isLocalized() const;
 
-    /**
+    /*!
       Returns whether this variable is a literal string or number. A
-      literal **%Variable** does not have any lookup components.
+      literal Variable does not have any lookup components.
      */
     QVariant literal() const;
 
-    /**
-      Returns the lookup components of this **%Variable**.
+    /*!
+      Returns the lookup components of this Variable.
      */
     QStringList lookups() const;
 

@@ -1,0 +1,11 @@
+/*!
+    \module KTextTemplate
+    \title KTextTemplate C++ Classes
+    \ingroup modules
+    \cmakepackage KF6
+    \cmakecomponent TextTemplate
+
+    \brief Provides Stuff.
+
+    Stuff
+*/

@@ -1,0 +1,29 @@
+include($KDE_DOCS/global/qt-module-defaults.qdocconf)
+
+project = KTextTemplate
+description = Additions to Qt Core
+
+documentationinheaders = true
+
+headerdirs += .
+sourcedirs += . ../../docs
+imagedirs += ../../docs/pics
+
+outputformats = HTML
+
+depends += \
+    qtcore
+
+qhp.projects            = KTextTemplate
+
+qhp.KTextTemplate.file                = ktexttemplate.qhp
+qhp.KTextTemplate.namespace           = org.kde.ktexttemplate.$QT_VERSION_TAG
+qhp.KTextTemplate.virtualFolder       = ktexttemplate
+qhp.KTextTemplate.indexTitle          = KTextTemplate
+qhp.KTextTemplate.indexRoot           =
+
+qhp.KTextTemplate.subprojects         = classes
+qhp.KTextTemplate.subprojects.classes.title = C++ Classes
+qhp.KTextTemplate.subprojects.classes.indexTitle = KTextTemplate C++ Classes
+qhp.KTextTemplate.subprojects.classes.selectors = class fake:headerfile
+qhp.KTextTemplate.subprojects.classes.sortPages = true

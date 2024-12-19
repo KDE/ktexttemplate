@@ -1,0 +1,61 @@
+/*!
+  \page ktexttemplate-examples
+  \title Examples of KTextTemplate use
+
+  \section1 Books
+
+  The Books application from Qt Demos is modified to export the available data to a rendered html file. The example shows a use of the \c extends tag to override some parts of a base template. The templates can be edited to change the exported content without any recompiling. The themer has broad control over how the data os rendered and can even alter the structure of the presented data.
+
+  \image ktexttemplate_book_simple.png "A simple export of the data"
+
+  \image ktexttemplate_book_coloured.png "A coloured export of the data showing the use of the cycle tag."
+
+  \image ktexttemplate_book_coloured_grouped.png "A restructured export of the data showing the use of the ifchanged tag."
+
+  \section1 Codegen
+
+  The codegen example shows how to use KTextTemplate for code generation in multiple languages. The application can be used to generate classes in C++, python and ruby based on the content of the dialog. The user can define properties, which are generated appropriately to the language. For C++ it uses the \c Q_PROPERTY macro and creates an accessor a mutator and a notify signal. It can also be used to generate methods with arguments of any type in each language.
+
+  \image codegen.png "The property and method configuration UI"
+
+  \image codegen-output.png "The output of the codegen tool"
+
+  \section2 Related blog article
+  \l {http://steveire.wordpress.com/2010/04/06/using-grantlee-for-code-generation/} {Using Grantlee for code generation}
+
+  \section1 Contacts
+
+  The contacts application demostrates the use of the internationalization and localization features in KTextTemplate. The user can select several contacts, whose details are formatted in templates for display in different themes. All strings in the templates are translatable, and the numbers, dates and currencies can be localized. The Contacts example can be used with the Qt or the KDE localization systems.
+
+  \image contacts_multi_lang_tables.png "A theme showing selected contacts in localized tables"
+
+  \image contacts_multi_lang_headers.png "An alternative theme showing a single table with localized headers."
+
+  \section2 Related blog article
+  \l {http://steveire.wordpress.com/2010/11/11/localization-tricky-issue} {Localization: Tricky issue}
+
+  \section1 Html application framework
+
+  The htmlapps example demonstrates how string templates can form part of a larger platform for html based applications. The application consists of a an extensible set of templates containing html applications, a KTextTemplate plugin to extract data from rss feeds, and various infrastructure to handle local and remote network requests and render the result in WebKit.
+
+  Several html applications are part of the example, such as capabilities for showing weather information, flickr feeds, identica microblogging etc.
+
+  \image htmlapps.png "A weather application written in HTML"
+
+  \image htmlapps1.png "A flickr application written in HTML"
+
+  \section2 Related blog article
+  \l {http://steveire.wordpress.com/2011/02/06/templating-html-applications-with-grantlee} {Templating HTML Applications with Grantlee}
+
+  \section1 Textedit application example
+
+  The textedit application example is a modified version of the same example which is bundled with Qt. The example shows how a custom type can be used in a text document and processed with the KTextTemplate::Textdocument library. It further demostrates how to add theming to the output using the KTextTemplate::Templates library.
+
+  \section2 Related blog article
+  \l {http://steveire.wordpress.com/2010/04/05/grantleerichtextbuilders} {KTextTemplate::RichTextBuilders}
+
+  \section1 KDE PIM 4.6
+
+  KDE PIM started using KTextTemplate in its 4.6.0 release. The applications KJots and KAddressBook already use KTextTemplate::Templates to render content for user consumption.
+
+*/

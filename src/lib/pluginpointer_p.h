@@ -16,10 +16,9 @@
 namespace KTextTemplate
 {
 
-/**
-  @brief A smart pointer for handling plugins.
-
-  @author Stephen Kelly <steveire@gmail.com>
+/*!
+  \internal
+  \brief A smart pointer for handling plugins.
 */
 template<typename PluginType>
 class PluginPointer

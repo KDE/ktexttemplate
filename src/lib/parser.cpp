@@ -31,9 +31,9 @@ public:
 
     NodeList extendNodeList(NodeList list, Node *node);
 
-    /**
+    /*
       Parses the template to create a Nodelist.
-      The given @p parent is the parent of each node in the returned list.
+      The given parent is the parent of each node in the returned list.
     */
     NodeList parse(QObject *parent, const QStringList &stopAt);
 

@@ -23,81 +23,70 @@
 namespace KTextTemplate
 {
 
-/// @headerfile filter.h <KTextTemplate/Filter>
+/*!
+  \class KTextTemplate::Filter
+  \inheaderfile KTextTemplate/Filter
+  \inmodule KTextTemplate
 
-/**
-  @brief Base class for all filters.
+  \brief Base class for all filters.
 
-  The **%Filter** class can be implemented in plugin libraries to make
+  The Filter class can be implemented in plugin libraries to make
   additional functionality available to templates.
 
-  Developers are required only to implement the @ref doFilter method and
+  Developers are required only to implement the doFilter method and
   integrate the filter as part of a custom plugin, but will never create or
   access filters directly in application code.
 
-  The FilterExpression class is the access interface to a chain of **%Filter**
+  The FilterExpression class is the access interface to a chain of Filter
   objects.
 
-  The @ref escape and @ref conditionalEscape methods are available for escaping
+  The escape and conditionalEscape methods are available for escaping
   data where needed.
-
-  @see @ref filters
-
-  @author Stephen Kelly <steveire@gmail.com>
 */
 class KTEXTTEMPLATE_EXPORT Filter
 {
 public:
-    /**
-      Destructor.
-    */
     virtual ~Filter();
 
-#ifndef K_DOXYGEN
-    /**
+    /*!
       FilterExpression makes it possible to access stream methods like escape
       while resolving.
     */
     void setStream(OutputStream *stream);
-#endif
 
-    /**
-      Escapes and returns @p input. The OutputStream::escape method is used to
-      escape @p input.
+    /*!
+      Escapes and returns \a input. The OutputStream::escape method is used to
+      escape \a input.
     */
     SafeString escape(const QString &input) const;
 
-    /**
-      Escapes and returns @p input. The OutputStream::escape method is used to
-      escape @p input.
+    /*!
+      Escapes and returns \a input. The OutputStream::escape method is used to
+      escape \a input.
     */
     SafeString escape(const SafeString &input) const;
 
-    /**
-      Escapes @p input if not already safe from further escaping and returns it.
-      The OutputStream::escape method is used to escape @p input.
+    /*!
+      Escapes \a input if not already safe from further escaping and returns it.
+      The OutputStream::escape method is used to escape \a input.
     */
     SafeString conditionalEscape(const SafeString &input) const;
 
-    /**
-      Reimplement to filter @p input given @p argument.
+    /*!
+      Reimplement to filter \a input given \a argument.
 
-      @p autoescape determines whether the autoescape feature is currently on or
+      \a autoescape determines whether the autoescape feature is currently on or
       off. Most filters will not use this.
-
-      @see @ref autoescaping
     */
     virtual QVariant doFilter(const QVariant &input, const QVariant &argument = {}, bool autoescape = {}) const = 0;
 
-    /**
+    /*!
       Reimplement to return whether this filter is safe.
     */
     virtual bool isSafe() const;
 
 private:
-#ifndef K_DOXYGEN
     OutputStream *m_stream;
-#endif
 };
 }
 

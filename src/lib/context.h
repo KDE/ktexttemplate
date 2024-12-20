@@ -165,7 +165,8 @@ public:
     void pop();
 
     /*!
-      \internal Returns the context hash at depth \a depth.
+      \internal
+      Returns the context hash at depth \a depth.
     */
     QVariantHash stackHash(int depth) const;
 

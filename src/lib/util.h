@@ -85,7 +85,7 @@ KTEXTTEMPLATE_EXPORT std::pair<qreal, QString> calcFileSize(qreal size, int unit
 
 #ifndef K_DOXYGEN
 /*!
-  @internal
+  \internal
   Returns the @p list as a formatted string. This is for debugging purposes
   only.
 */

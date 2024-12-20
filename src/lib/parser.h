@@ -109,7 +109,7 @@ public:
 
 #ifndef K_DOXYGEN
     /*!
-      @internal
+      \internal
 
       Used by the @gr_tag{load} tag to load libraries.
     */

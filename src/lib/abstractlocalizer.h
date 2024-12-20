@@ -39,13 +39,10 @@ public:
     */
     AbstractLocalizer();
 
-    /*!
-     Destructor
-    */
     virtual ~AbstractLocalizer();
 
     /*!
-      Processes the data in @p variant into a localized string.
+      Processes the data in \a variant into a localized string.
 
       The base implementation can localize numbers, dates and times, and
       strings.
@@ -58,7 +55,7 @@ public:
     virtual QString currentLocale() const = 0;
 
     /*!
-      Makes this localizer use the locale specified by @p localeName for output.
+      Makes this localizer use the locale specified by \a localeName for output.
     */
     virtual void pushLocale(const QString &localeName) = 0;
 
@@ -68,66 +65,66 @@ public:
     virtual void popLocale() = 0;
 
     /*!
-      Loads the @p catalog from @p path.
+      Loads the \a catalog from \a path.
     */
     virtual void loadCatalog(const QString &path, const QString &catalog) = 0;
 
     /*!
-      Unloads the @p catalog
+      Unloads the \a catalog
     */
     virtual void unloadCatalog(const QString &catalog) = 0;
 
     /*!
-      Localizes @p number
+      Localizes \a number
     */
     virtual QString localizeNumber(int number) const = 0;
 
     /*!
-      Localizes @p number
+      Localizes \a number
     */
     virtual QString localizeNumber(qreal number) const = 0;
 
     /*!
-      Localizes @p value as a monetary value in the currency specified by @p
+      Localizes \a value as a monetary value in the currency specified by \a
       currencyCode.
     */
     virtual QString localizeMonetaryValue(qreal value, const QString &currencyCode = {}) const = 0;
 
     /*!
-      Localizes @p date with the specified @p formatType
+      Localizes \a date with the specified \a formatType
     */
     virtual QString localizeDate(const QDate &date, QLocale::FormatType formatType = QLocale::ShortFormat) const = 0;
 
     /*!
-      Localizes @p time with the specified @p formatType
+      Localizes \a time with the specified \a formatType
     */
     virtual QString localizeTime(const QTime &time, QLocale::FormatType formatType = QLocale::ShortFormat) const = 0;
 
     /*!
-      Localizes @p dateTime with the specified @p formatType
+      Localizes \a dateTime with the specified \a formatType
     */
     virtual QString localizeDateTime(const QDateTime &dateTime, QLocale::FormatType formatType = QLocale::ShortFormat) const = 0;
 
     /*!
-      Localizes @p string with the specified @p arguments for substitution
+      Localizes \a string with the specified \a arguments for substitution
     */
     virtual QString localizeString(const QString &string, const QVariantList &arguments = {}) const = 0;
 
     /*!
-      Localizes @p string, disambiguated by @p context with the specified @p
+      Localizes \a string, disambiguated by \a context with the specified \a
       arguments for substitution
     */
     virtual QString localizeContextString(const QString &string, const QString &context, const QVariantList &arguments = {}) const = 0;
 
     /*!
-      Localizes @p string or its @p pluralForm with the specified @p arguments
+      Localizes \a string or its \a pluralForm with the specified \a arguments
       for substitution
     */
     virtual QString localizePluralString(const QString &string, const QString &pluralForm, const QVariantList &arguments = {}) const = 0;
 
     /*!
-      Localizes @p string or its @p pluralForm, disambiguated by @p context with
-      the specified @p arguments for substitution
+      Localizes \a string or its \a pluralForm, disambiguated by \a context with
+      the specified \a arguments for substitution
     */
     virtual QString
     localizePluralContextString(const QString &string, const QString &pluralForm, const QString &context, const QVariantList &arguments = {}) const = 0;

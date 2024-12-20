@@ -20,17 +20,19 @@ namespace KTextTemplate
 class AbstractNodeFactory;
 class Filter;
 
-/// @headerfile taglibraryinterface.h <KTextTemplate/TagLibraryInterface>
-
 /*!
-  @brief The **%TagLibraryInterface** returns available tags and filters from
+  \class KTextTemplate/TagLibraryInterface
+  \inheaderfile KTextTemplate/TagLibraryInterface
+  \inmodule KTextTemplate
+
+  \brief The TagLibraryInterface returns available tags and filters from
   libraries.
 
   This interface must be implemented in tag and filter libraries.
 
   The implementation will usually be very simple.
 
-  @code
+  \code
     class MyTagLibrary : public QObject, public TagLibraryInterface
     {
       Q_OBJECT
@@ -60,9 +62,7 @@ class Filter;
         return filters;
       }
     };
-  @endcode
-
-  @author Stephen Kelly <steveire@gmail.com>
+  \endcode
 */
 class TagLibraryInterface
 {

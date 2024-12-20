@@ -16,7 +16,7 @@ namespace KTextTemplate
 {
 
 /*!
-  @internal
+  \internal
 
   The available token types.
 */

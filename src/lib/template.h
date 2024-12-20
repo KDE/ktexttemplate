@@ -99,12 +99,12 @@ public:
 
 #ifndef K_DOXYGEN
     /*!
-      @internal
+      \internal
     */
     NodeList nodeList() const;
 
     /*!
-      @internal
+      \internal
     */
     void setNodeList(const NodeList &list);
 #endif

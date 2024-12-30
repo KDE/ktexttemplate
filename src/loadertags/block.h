@@ -40,13 +40,7 @@ public:
 
     void render(OutputStream *stream, Context *c) const override;
 
-    BlockNode *takeNodeParent();
-
     QString name() const;
-
-    void setNodeParent(BlockNode *);
-
-    void addParent(NodeList);
 
     NodeList nodeList() const;
 

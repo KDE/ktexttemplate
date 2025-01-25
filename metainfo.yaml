@@ -13,7 +13,7 @@ release: true
 public_source_dirs:
     - src/lib
 libraries:
- - cmake: "KF6::TextTemplate"
+    - cmake: "KF6::TextTemplate"
 cmakename: KF6TextTemplate
 
 public_lib: true

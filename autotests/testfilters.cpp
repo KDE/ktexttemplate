@@ -930,6 +930,24 @@ void TestFilters::testListFilters_data()
     QTest::newRow("filter-slice04") << "{{|slice}}" << dict << QStringLiteral("") << NoError;
 
     dict.clear();
+    dict.insert(QStringLiteral("a"), QStringLiteral("0123456789"));
+
+    // Behavior should be consistent with python's slice notation.
+    QTest::newRow("filter-slice05") << R"({{ a|slice:"1:3" }})" << dict << QStringLiteral("12") << NoError;
+    QTest::newRow("filter-slice06") << R"({{ a|slice:"2:-1" }})" << dict << QStringLiteral("2345678") << NoError;
+    QTest::newRow("filter-slice07") << R"({{ a|slice:":-3" }})" << dict << QStringLiteral("0123456") << NoError;
+    QTest::newRow("filter-slice08") << R"({{ a|slice:":" }})" << dict << QStringLiteral("0123456789") << NoError;
+    QTest::newRow("filter-slice09") << R"({{ a|slice:":4" }})" << dict << QStringLiteral("0123") << NoError;
+    QTest::newRow("filter-slice10") << R"({{ a|slice:"4:" }})" << dict << QStringLiteral("456789") << NoError;
+    QTest::newRow("filter-slice11") << R"({{ a|slice:"-4:-2" }})" << dict << QStringLiteral("67") << NoError;
+    QTest::newRow("filter-slice12") << R"({{ a|slice:"-4:-5" }})" << dict << QStringLiteral("") << NoError;
+    QTest::newRow("filter-slice13") << R"({{ a|slice:"4:1" }})" << dict << QStringLiteral("") << NoError;
+    QTest::newRow("filter-slice14") << R"({{ a|slice:"4:-5" }})" << dict << QStringLiteral("4") << NoError;
+    QTest::newRow("filter-slice15") << R"({{ a|slice:"5:10" }})" << dict << QStringLiteral("56789") << NoError;
+    QTest::newRow("filter-slice16") << R"({{ a|slice:"5:20" }})" << dict << QStringLiteral("56789") << NoError;
+    QTest::newRow("filter-slice17") << R"({{ a|slice:"10:20" }})" << dict << QStringLiteral("") << NoError;
+
+    dict.clear();
     QVariantList sublist{QStringLiteral("<y")};
     dict.insert(QStringLiteral("a"), QVariantList{QStringLiteral("x>"), QVariant(sublist)});
 

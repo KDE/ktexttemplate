@@ -16,6 +16,8 @@
 #include <QDateTime>
 #include <QRandomGenerator>
 #include <QSequentialIterable>
+#include <QtTypes>
+#include <algorithm>
 
 QVariant JoinFilter::doFilter(const QVariant &input, const QVariant &argument, bool autoescape) const
 {
@@ -133,12 +135,26 @@ QVariant SliceFilter::doFilter(const QVariant &input, const QVariant &argument, 
         return {};
 
     if (splitterIndex >= 0) {
-        auto left = argString.get().left(splitterIndex).get().toInt();
-        auto right = argString.get().right(splitterIndex).get().toInt();
-        if (right < 0) {
-            right = inputString.size() + right;
-        }
-        return inputString.mid(left, right);
+        auto startString = argString.get().left(splitterIndex);
+        auto endString = argString.get().mid(splitterIndex + 1);
+        auto getIndex = [&inputString](const auto &str, int defaultValue) -> qsizetype {
+            if (str.get().isEmpty()) {
+                return defaultValue;
+            }
+            bool ok;
+            int value = str.get().toInt(&ok);
+            if (!ok) {
+                return defaultValue;
+            }
+            if (value < 0) {
+                value = inputString.size() + value;
+            }
+            value = std::clamp(value, 0, static_cast<int>(inputString.size()));
+            return value;
+        };
+        int start = getIndex(startString, 0);
+        int end = getIndex(endString, inputString.size());
+        return inputString.mid(start, end > start ? (end - start) : 0);
     }
     return QString(inputString.at(argument.value<int>()));
 }

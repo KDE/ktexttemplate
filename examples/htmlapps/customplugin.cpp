@@ -8,3 +8,5 @@
 */
 
 #include "customplugin.h"
+
+#include "moc_customplugin.cpp"

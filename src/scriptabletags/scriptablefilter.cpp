@@ -78,10 +78,10 @@ QVariant ScriptableFilter::doFilter(const QVariant &input, const QVariant &argum
             return {};
         auto returnedString = returnedStringObject->wrappedString();
         return returnedString;
-    } else if (returnValue.isVariant()) {
-        return qjsvalue_cast<QVariant>(returnValue);
     } else if (returnValue.isArray()) {
         return qjsvalue_cast<QVariantList>(returnValue);
+    } else if (const auto v = returnValue.toVariant(); !v.isNull()) {
+        return v;
     }
     return {};
 }

@@ -29,3 +29,5 @@ qhp.KTextTemplate.subprojects.classes.title = C++ Classes
 qhp.KTextTemplate.subprojects.classes.indexTitle = KTextTemplate C++ Classes
 qhp.KTextTemplate.subprojects.classes.selectors = class fake:headerfile
 qhp.KTextTemplate.subprojects.classes.sortPages = true
+
+tagfile = ktexttemplate.tags

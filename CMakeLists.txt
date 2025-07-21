@@ -47,7 +47,7 @@ if (CMAKE_COMPILER_IS_GNUCXX)
 endif()
 
 ecm_set_disabled_deprecation_versions(
-    QT 6.9.0
+    QT 6.10.0
 )
 
 kde_enable_exceptions()

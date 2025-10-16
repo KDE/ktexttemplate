@@ -20,7 +20,7 @@ include(KDECMakeSettings)
 include(KDEGitCommitHooks)
 include(ECMGenerateQDoc)
 
-set(REQUIRED_QT_VERSION 6.7.0)
+set(REQUIRED_QT_VERSION 6.8.0)
 find_package(Qt6Core ${REQUIRED_QT_VERSION} REQUIRED NO_MODULE)
 find_package(Qt6Qml ${REQUIRED_QT_VERSION} NO_MODULE)
 

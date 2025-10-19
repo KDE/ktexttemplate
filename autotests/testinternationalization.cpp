@@ -292,9 +292,15 @@ void TestInternationalization::testLocalizedTemplate_data()
     QTest::newRow("fragment-01") << QStringLiteral(
         "{% i18n '%1 messages at %2, fraction of total: %3. "
         "Rating : %4' _(1000) _(date) _(0.6) _(4.8) %}")
+#if QT_VERSION >= QT_VERSION_CHECK(6, 11, 0)
+                                 << QStringLiteral(
+                                        "1000 messages at 7 05 2005, fraction of total: 0.60. "
+                                        "Rating : 4.80")
+#else
                                  << QStringLiteral(
                                         "1000 messages at 7 May 2005, fraction of total: 0.60. "
                                         "Rating : 4.80")
+#endif
                                  << QStringLiteral("1,000 messages at 5/7/05, fraction of total: 0.60. Rating : 4.80")
                                  << QStringLiteral(
                                         "1,000 messages at 07/05/2005, fraction of total: "
@@ -312,9 +318,15 @@ void TestInternationalization::testLocalizedTemplate_data()
     QTest::newRow("fragment-02") << QStringLiteral(
         "{% i18n '%1 messages at %2, fraction of total: %3. Rating : %4' "
         "_(integer) _(date) _(smallFloat) _(largeFloat) %}")
+#if QT_VERSION >= QT_VERSION_CHECK(6, 11, 0)
+                                 << QStringLiteral(
+                                        "1000 messages at 7 05 2005, fraction of total: 0.60. "
+                                        "Rating : 4.80")
+#else
                                  << QStringLiteral(
                                         "1000 messages at 7 May 2005, fraction of total: 0.60. "
                                         "Rating : 4.80")
+#endif
                                  << QStringLiteral("1,000 messages at 5/7/05, fraction of total: 0.60. Rating : 4.80")
                                  << QStringLiteral(
                                         "1,000 messages at 07/05/2005, fraction of total: "
@@ -331,9 +343,15 @@ void TestInternationalization::testLocalizedTemplate_data()
     QTest::newRow("fragment-03") << QStringLiteral(
         "{{ _(integer) }} -- {{ _(date) }} -- {{ _(smallFloat) }} -- {{ "
         "_(largeFloat) }} -- {{ _(time) }} -- {{ _(dateTime) }}")
+#if QT_VERSION >= QT_VERSION_CHECK(6, 11, 0)
+                                 << QStringLiteral(
+                                        "1000 -- 7 05 2005 -- 0.60 -- 4.80 -- 04:05 -- 7 "
+                                        "05 2005 04:05")
+#else
                                  << QStringLiteral(
                                         "1000 -- 7 May 2005 -- 0.60 -- 4.80 -- 04:05:06 -- 7 "
                                         "May 2005 04:05:06")
+#endif
                                  << QStringLiteral("1,000 -- 5/7/05 -- 0.60 -- 4.80 -- 4:05 AM -- 5/7/05 4:05 AM")
                                  << QStringLiteral("1,000 -- 07/05/2005 -- 0.60 -- 4.80 -- 04:05 -- 07/05/2005 04:05")
                                  << QStringLiteral("1.000 -- 07.05.05 -- 0,60 -- 4,80 -- 04:05 -- 07.05.05 04:05")
@@ -356,6 +374,21 @@ void TestInternationalization::testLocalizedTemplate_data()
         "_(smallFloat) }} -- {{ _(largeFloat) }} -- {{ _(time) }} -- {{ "
         "_(dateTime) }}"
         "{% endwith_locale %}")
+#if QT_VERSION >= QT_VERSION_CHECK(6, 11, 0)
+                                 << QString::fromUtf8(
+                                        "Today"
+                                        " -- 1000 -- 7 05 2005 -- 0.60 -- 4.80 -- 04:05 -- 7 05 "
+                                        "2005 "
+                                        "04:05"
+                                        "Heute"
+                                        " -- 1.000 -- 07.05.05 -- 0,60 -- 4,80 -- 04:05 -- 07.05.05 "
+                                        "04:05"
+                                        "Aujourd&#39;hui"
+                                        " -- 1" FR_THOUSAND_SEPARATOR
+                                        "000 -- 07/05/2005 -- 0,60 -- 4,80 -- 04:05 -- "
+                                        "07/05/2005 "
+                                        "04:05")
+#else
                                  << QString::fromUtf8(
                                         "Today"
                                         " -- 1000 -- 7 May 2005 -- 0.60 -- 4.80 -- 04:05:06 -- 7 May "
@@ -369,6 +402,7 @@ void TestInternationalization::testLocalizedTemplate_data()
                                         "000 -- 07/05/2005 -- 0,60 -- 4,80 -- 04:05 -- "
                                         "07/05/2005 "
                                         "04:05")
+#endif
                                  << QString::fromUtf8(
                                         "Today"
                                         " -- 1,000 -- 5/7/05 -- 0.60 -- 4.80 -- 4:05 AM -- 5/7/05 4:05 "
@@ -438,6 +472,24 @@ void TestInternationalization::testLocalizedTemplate_data()
         "_(smallFloat) }} -- {{ _(largeFloat) }} -- {{ _(time) }} -- {{ "
         "_(dateTime) }}"
         "{% endwith_locale %}")
+#if QT_VERSION >= QT_VERSION_CHECK(6, 11, 0)
+                                 << QString::fromUtf8(
+                                        "Today"
+                                        " -- 1000 -- 7 05 2005 -- 0.60 -- 4.80 -- 04:05 -- 7 05 "
+                                        "2005 "
+                                        "04:05"
+                                        "Heute"
+                                        " -- 1.000 -- 07.05.05 -- 0,60 -- 4,80 -- 04:05 -- 07.05.05 "
+                                        "04:05"
+                                        "Aujourd&#39;hui"
+                                        " -- 1" FR_THOUSAND_SEPARATOR
+                                        "000 -- 07/05/2005 -- 0,60 -- 4,80 -- 04:05 -- "
+                                        "07/05/2005 "
+                                        "04:05"
+                                        "Heute"
+                                        " -- 1.000 -- 07.05.05 -- 0,60 -- 4,80 -- 04:05 -- 07.05.05 "
+                                        "04:05")
+#else
                                  << QString::fromUtf8(
                                         "Today"
                                         " -- 1000 -- 7 May 2005 -- 0.60 -- 4.80 -- 04:05:06 -- 7 May "
@@ -454,6 +506,7 @@ void TestInternationalization::testLocalizedTemplate_data()
                                         "Heute"
                                         " -- 1.000 -- 07.05.05 -- 0,60 -- 4,80 -- 04:05 -- 07.05.05 "
                                         "04:05")
+#endif
                                  << QString::fromUtf8(
                                         "Today"
                                         " -- 1,000 -- 5/7/05 -- 0.60 -- 4.80 -- 4:05 AM -- 5/7/05 4:05 "
@@ -614,21 +667,41 @@ void TestInternationalization::testSafeContent_data()
     Dict dict;
     dict.insert(QStringLiteral("date"), QDate(2005, 5, 7));
 
-    QTest::newRow("safe-01") << QStringLiteral("{% i18n 'Today is %1' _(date) %}") << QStringLiteral("Today is 7 May 2005")
+    QTest::newRow("safe-01") << QStringLiteral("{% i18n 'Today is %1' _(date) %}")
+#if QT_VERSION >= QT_VERSION_CHECK(6, 11, 0)
+                             << QStringLiteral("Today is 7 05 2005")
+#else
+                             << QStringLiteral("Today is 7 May 2005")
+#endif
                              << QStringLiteral("Aujourd&#39;hui est 07/05/2005") << dict;
 
     QTest::newRow("safe-02") << QStringLiteral("{% autoescape off %}{% i18n 'Today is %1' _(date) %}{% endautoescape %}")
-                             << QStringLiteral("Today is 7 May 2005") << QStringLiteral("Aujourd'hui est 07/05/2005") << dict;
+#if QT_VERSION >= QT_VERSION_CHECK(6, 11, 0)
+                             << QStringLiteral("Today is 7 05 2005")
+#else
+                             << QStringLiteral("Today is 7 May 2005")
+#endif
+                             << QStringLiteral("Aujourd'hui est 07/05/2005") << dict;
 
     QTest::newRow("safe-03") << QStringLiteral(
         "{% i18n_var 'Today is %1' _(date) as today_greeting %}-{{ "
-        "today_greeting }}-") << QStringLiteral("-Today is 7 May 2005-")
+        "today_greeting }}-")
+#if QT_VERSION >= QT_VERSION_CHECK(6, 11, 0)
+                             << QStringLiteral("-Today is 7 05 2005-")
+#else
+                             << QStringLiteral("-Today is 7 May 2005-")
+#endif
                              << QStringLiteral("-Aujourd&#39;hui est 07/05/2005-") << dict;
 
     QTest::newRow("safe-04") << QStringLiteral(
         "{% autoescape off %}{% i18n_var 'Today is %1' _(date) as today_greeting "
         "%}-{{ today_greeting }}-{% endautoescape %}")
-                             << QStringLiteral("-Today is 7 May 2005-") << QStringLiteral("-Aujourd'hui est 07/05/2005-") << dict;
+#if QT_VERSION >= QT_VERSION_CHECK(6, 11, 0)
+                             << QStringLiteral("-Today is 7 05 2005-")
+#else
+                             << QStringLiteral("-Today is 7 May 2005-")
+#endif
+                             << QStringLiteral("-Aujourd'hui est 07/05/2005-") << dict;
 
     QTest::newRow("safe-05") << QStringLiteral("{% with 'Today' as rawText %}-{{ _(rawText) }}-{% endwith %}") << QStringLiteral("-Today-")
                              << QStringLiteral("-Aujourd&#39;hui-") << dict;
@@ -801,11 +874,21 @@ void TestInternationalization::testDates_data()
     QTest::addColumn<QString>("deDate");
     QTest::addColumn<QString>("frDate");
 
-    QTest::newRow("date-01") << QDate(2010, 5, 9) << QStringLiteral("9 May 2010") << QStringLiteral("5/9/10") << QStringLiteral("09/05/2010")
-                             << QStringLiteral("09.05.10") << QStringLiteral("09/05/2010");
+    QTest::newRow("date-01") << QDate(2010, 5, 9)
+#if QT_VERSION >= QT_VERSION_CHECK(6, 11, 0)
+                             << QStringLiteral("9 05 2010")
+#else
+                             << QStringLiteral("9 May 2010")
+#endif
+                             << QStringLiteral("5/9/10") << QStringLiteral("09/05/2010") << QStringLiteral("09.05.10") << QStringLiteral("09/05/2010");
 
-    QTest::newRow("date-02") << QDate(2010, 10, 11) << QStringLiteral("11 Oct 2010") << QStringLiteral("10/11/10") << QStringLiteral("11/10/2010")
-                             << QStringLiteral("11.10.10") << QStringLiteral("11/10/2010");
+    QTest::newRow("date-02") << QDate(2010, 10, 11)
+#if QT_VERSION >= QT_VERSION_CHECK(6, 11, 0)
+                             << QStringLiteral("11 10 2010")
+#else
+                             << QStringLiteral("11 Oct 2010")
+#endif
+                             << QStringLiteral("10/11/10") << QStringLiteral("11/10/2010") << QStringLiteral("11.10.10") << QStringLiteral("11/10/2010");
 }
 
 void TestInternationalization::testIntegers()
@@ -903,14 +986,29 @@ void TestInternationalization::testTimes_data()
     QTest::addColumn<QString>("deTime");
     QTest::addColumn<QString>("frTime");
 
-    QTest::newRow("time-01") << QTime(5, 6, 7) << QStringLiteral("05:06:07") << QStringLiteral("05:06:07") << QStringLiteral("5:06 AM")
-                             << QStringLiteral("05:06") << QStringLiteral("05:06") << QStringLiteral("05:06");
+    QTest::newRow("time-01") << QTime(5, 6, 7) << QStringLiteral("05:06:07")
+#if QT_VERSION >= QT_VERSION_CHECK(6, 11, 0)
+                             << QStringLiteral("05:06")
+#else
+                             << QStringLiteral("05:06:07")
+#endif
+                             << QStringLiteral("5:06 AM") << QStringLiteral("05:06") << QStringLiteral("05:06") << QStringLiteral("05:06");
 
-    QTest::newRow("time-02") << QTime(11, 12, 13) << QStringLiteral("11:12:13") << QStringLiteral("11:12:13") << QStringLiteral("11:12 AM")
-                             << QStringLiteral("11:12") << QStringLiteral("11:12") << QStringLiteral("11:12");
+    QTest::newRow("time-02") << QTime(11, 12, 13) << QStringLiteral("11:12:13")
+#if QT_VERSION >= QT_VERSION_CHECK(6, 11, 0)
+                             << QStringLiteral("11:12")
+#else
+                             << QStringLiteral("11:12:13")
+#endif
+                             << QStringLiteral("11:12 AM") << QStringLiteral("11:12") << QStringLiteral("11:12") << QStringLiteral("11:12");
 
-    QTest::newRow("time-03") << QTime(15, 12, 13) << QStringLiteral("15:12:13") << QStringLiteral("15:12:13") << QStringLiteral("3:12 PM")
-                             << QStringLiteral("15:12") << QStringLiteral("15:12") << QStringLiteral("15:12");
+    QTest::newRow("time-03") << QTime(15, 12, 13) << QStringLiteral("15:12:13")
+#if QT_VERSION >= QT_VERSION_CHECK(6, 11, 0)
+                             << QStringLiteral("15:12")
+#else
+                             << QStringLiteral("15:12:13")
+#endif
+                             << QStringLiteral("3:12 PM") << QStringLiteral("15:12") << QStringLiteral("15:12") << QStringLiteral("15:12");
 }
 
 void TestInternationalization::testDateTimes()
@@ -939,25 +1037,57 @@ void TestInternationalization::testDateTimes_data()
     QTest::addColumn<QString>("deDateTime");
     QTest::addColumn<QString>("frDateTime");
 
-    QTest::newRow("datetime-01") << QDateTime(QDate(2005, 6, 7), QTime(5, 6, 7)) << QStringLiteral("7 Jun 2005 05:06:07") << QStringLiteral("6/7/05 5:06 AM")
-                                 << QStringLiteral("07/06/2005 05:06") << QStringLiteral("07.06.05 05:06") << QStringLiteral("07/06/2005 05:06");
+    QTest::newRow("datetime-01") << QDateTime(QDate(2005, 6, 7), QTime(5, 6, 7))
+#if QT_VERSION >= QT_VERSION_CHECK(6, 11, 0)
+                                 << QStringLiteral("7 06 2005 05:06")
+#else
+                                 << QStringLiteral("7 Jun 2005 05:06:07")
+#endif
+                                 << QStringLiteral("6/7/05 5:06 AM") << QStringLiteral("07/06/2005 05:06") << QStringLiteral("07.06.05 05:06")
+                                 << QStringLiteral("07/06/2005 05:06");
 
-    QTest::newRow("datetime-02") << QDateTime(QDate(2005, 6, 7), QTime(11, 12, 13)) << QStringLiteral("7 Jun 2005 11:12:13")
+    QTest::newRow("datetime-02") << QDateTime(QDate(2005, 6, 7), QTime(11, 12, 13))
+#if QT_VERSION >= QT_VERSION_CHECK(6, 11, 0)
+                                 << QStringLiteral("7 06 2005 11:12")
+#else
+                                 << QStringLiteral("7 Jun 2005 11:12:13")
+#endif
                                  << QStringLiteral("6/7/05 11:12 AM") << QStringLiteral("07/06/2005 11:12") << QStringLiteral("07.06.05 11:12")
                                  << QStringLiteral("07/06/2005 11:12");
 
-    QTest::newRow("datetime-03") << QDateTime(QDate(2005, 6, 7), QTime(15, 12, 13)) << QStringLiteral("7 Jun 2005 15:12:13") << QStringLiteral("6/7/05 3:12 PM")
-                                 << QStringLiteral("07/06/2005 15:12") << QStringLiteral("07.06.05 15:12") << QStringLiteral("07/06/2005 15:12");
+    QTest::newRow("datetime-03") << QDateTime(QDate(2005, 6, 7), QTime(15, 12, 13))
+#if QT_VERSION >= QT_VERSION_CHECK(6, 11, 0)
+                                 << QStringLiteral("7 06 2005 15:12")
+#else
+                                 << QStringLiteral("7 Jun 2005 15:12:13")
+#endif
+                                 << QStringLiteral("6/7/05 3:12 PM") << QStringLiteral("07/06/2005 15:12") << QStringLiteral("07.06.05 15:12")
+                                 << QStringLiteral("07/06/2005 15:12");
 
-    QTest::newRow("datetime-04") << QDateTime(QDate(2005, 10, 11), QTime(5, 6, 7)) << QStringLiteral("11 Oct 2005 05:06:07")
+    QTest::newRow("datetime-04") << QDateTime(QDate(2005, 10, 11), QTime(5, 6, 7))
+#if QT_VERSION >= QT_VERSION_CHECK(6, 11, 0)
+                                 << QStringLiteral("11 10 2005 05:06")
+#else
+                                 << QStringLiteral("11 Oct 2005 05:06:07")
+#endif
                                  << QStringLiteral("10/11/05 5:06 AM") << QStringLiteral("11/10/2005 05:06") << QStringLiteral("11.10.05 05:06")
                                  << QStringLiteral("11/10/2005 05:06");
 
-    QTest::newRow("datetime-05") << QDateTime(QDate(2005, 10, 11), QTime(11, 12, 13)) << QStringLiteral("11 Oct 2005 11:12:13")
+    QTest::newRow("datetime-05") << QDateTime(QDate(2005, 10, 11), QTime(11, 12, 13))
+#if QT_VERSION >= QT_VERSION_CHECK(6, 11, 0)
+                                 << QStringLiteral("11 10 2005 11:12")
+#else
+                                 << QStringLiteral("11 Oct 2005 11:12:13")
+#endif
                                  << QStringLiteral("10/11/05 11:12 AM") << QStringLiteral("11/10/2005 11:12") << QStringLiteral("11.10.05 11:12")
                                  << QStringLiteral("11/10/2005 11:12");
 
-    QTest::newRow("datetime-06") << QDateTime(QDate(2005, 10, 11), QTime(15, 12, 13)) << QStringLiteral("11 Oct 2005 15:12:13")
+    QTest::newRow("datetime-06") << QDateTime(QDate(2005, 10, 11), QTime(15, 12, 13))
+#if QT_VERSION >= QT_VERSION_CHECK(6, 11, 0)
+                                 << QStringLiteral("11 10 2005 15:12")
+#else
+                                 << QStringLiteral("11 Oct 2005 15:12:13")
+#endif
                                  << QStringLiteral("10/11/05 3:12 PM") << QStringLiteral("11/10/2005 15:12") << QStringLiteral("11.10.05 15:12")
                                  << QStringLiteral("11/10/2005 15:12");
 }

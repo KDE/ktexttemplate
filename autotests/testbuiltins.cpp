@@ -430,7 +430,7 @@ void TestBuiltinSyntax::testTruthiness()
     QFETCH(QVariant, input);
     QFETCH(bool, expected);
 
-    QVERIFY(variantIsTrue(input) == expected);
+    QCOMPARE(variantIsTrue(input), expected);
 }
 
 void TestBuiltinSyntax::testRenderAfterError()

@@ -335,7 +335,8 @@ void TestBuiltinSyntax::testObjects()
     SafeString s3(s1);
     Q_UNUSED(s3);
 
-    QMetaType{qMetaTypeId<MetaEnumVariable>()}.create(nullptr);
+    auto ptr = QMetaType{qMetaTypeId<MetaEnumVariable>()}.create(nullptr);
+    QMetaType{qMetaTypeId<MetaEnumVariable>()}.destroy(ptr);
 }
 
 void TestBuiltinSyntax::testTruthiness_data()

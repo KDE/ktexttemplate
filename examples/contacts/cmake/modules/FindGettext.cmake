@@ -115,7 +115,7 @@ MACRO(GETTEXT_CREATE_TRANSLATIONS _potFile _firstPoFile)
 
    FOREACH (_currentPoFile ${ARGN})
       GET_FILENAME_COMPONENT(_absFile ${_currentPoFile} ABSOLUTE)
-      GET_FILENAME_COMPONENT(_abs_PATH ${_absFile} PATH)
+      GET_FILENAME_COMPONENT(_abs_PATH ${_absFile} DIRECTORY)
       GET_FILENAME_COMPONENT(_lang ${_absFile} NAME_WE)
       SET(_gmoFile ${CMAKE_CURRENT_BINARY_DIR}/${_lang}.gmo)
 

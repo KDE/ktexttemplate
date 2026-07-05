@@ -46,6 +46,7 @@ class ScriptableTagLibrary : public QObject, public TagLibraryInterface
     Q_PLUGIN_METADATA(IID "org.kde.KTextTemplate.TagLibraryInterface")
 public:
     ScriptableTagLibrary(QObject *parent = {});
+    ~ScriptableTagLibrary() = default;
 
     QHash<QString, AbstractNodeFactory *> nodeFactories(const QString &name = {}) override;
 

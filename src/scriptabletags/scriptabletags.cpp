@@ -151,6 +151,8 @@ ScriptableTagLibrary::ScriptableTagLibrary(QObject *parent)
     m_scriptEngine->globalObject().setProperty(QStringLiteral("mark_safe"), m_functions.property(QStringLiteral("markSafeFunction")));
 }
 
+ScriptableTagLibrary::~ScriptableTagLibrary() = default;
+
 bool ScriptableTagLibrary::evaluateScript(const QString &name)
 {
     QFile scriptFile(name);

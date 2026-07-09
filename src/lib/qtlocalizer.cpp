@@ -211,7 +211,7 @@ QString QtLocalizer::localizeMonetaryValue(qreal value, const QString &currencyC
     } else {
         currencySymbol = currencyCode;
     }
-    return currencySymbol + QLatin1Char(' ') + d->currentLocale().toString(value, 'f', 2);
+    return d->currentLocale().toCurrencyString(value, currencySymbol);
 }
 
 static QString substituteArguments(const QString &input, const QVariantList &arguments)

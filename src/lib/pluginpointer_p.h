@@ -10,6 +10,7 @@
 #ifndef KTEXTTEMPLATE_PLUGINPOINTER_H
 #define KTEXTTEMPLATE_PLUGINPOINTER_H
 
+#include <QCoreApplication>
 #include <QPluginLoader>
 #include <QSharedPointer>
 
@@ -46,6 +47,7 @@ public:
         // that
         // causes segfaults if the plugin has been unloaded.
         m_object = m_pluginLoader->instance();
+        m_object->setParent(QCoreApplication::instance());
 
         m_plugin = qobject_cast<PluginType *>(m_object);
     }
@@ -65,9 +67,9 @@ public:
         return m_plugin;
     }
 
-    operator bool()
+    operator bool() const
     {
-        return m_plugin ? true : false;
+        return m_plugin;
     }
 
     PluginType *data() const

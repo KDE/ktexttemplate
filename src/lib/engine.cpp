@@ -12,9 +12,6 @@
 
 #include "exception.h"
 #include "ktexttemplate_config_p.h"
-#ifdef QT_QML_LIB
-#include "scriptabletags.h"
-#endif
 #include "template_p.h"
 
 #include <QCoreApplication>
@@ -22,9 +19,10 @@
 #include <QPluginLoader>
 #include <QTextStream>
 
+using namespace Qt::Literals;
 using namespace KTextTemplate;
 
-static const char s_scriptableLibName[] = "ktexttemplate_scriptabletags";
+inline constexpr const auto s_scriptableLibName = "ktexttemplate_scriptabletags"_L1;
 
 Engine::Engine(QObject *parent)
     : QObject(parent)
@@ -39,9 +37,7 @@ Engine::Engine(QObject *parent)
 
 Engine::~Engine()
 {
-#ifdef QT_QML_LIB
     qDeleteAll(d_ptr->m_scriptableLibraries);
-#endif
     d_ptr->m_libraries.clear();
     delete d_ptr;
 }
@@ -120,33 +116,25 @@ void Engine::loadDefaultLibraries()
 {
     Q_D(Engine);
 
-#ifdef QT_QML_LIB
     // Make sure we can load default scriptable libraries if we're supposed to.
-    if (d->m_defaultLibraries.contains(QLatin1String(s_scriptableLibName)) && !d->m_scriptableTagLibrary) {
-        d->m_scriptableTagLibrary = new ScriptableTagLibrary(this);
-
-// It would be better to load this as a plugin, but that is not currently
-// possible with webkit/javascriptcore
-// so we new the library directly.
-// https://bugs.webkit.org/show_bug.cgi?id=38193
-#if 0
-    d->loadCppLibrary( s_scriptableLibName );
-    PluginPointer<TagLibraryInterface> library = d->loadCppLibrary( s_scriptableLibName );
-    if ( !library )
-      throw KTextTemplate::Exception( TagSyntaxError, QStringLiteral("Could not load scriptable tags library") );
-#endif
+    if (d->m_defaultLibraries.contains(s_scriptableLibName)) {
+        d->loadCppLibrary(s_scriptableLibName);
+        PluginPointer<TagLibraryInterface> library = d->loadCppLibrary(s_scriptableLibName);
+        if (!library) {
+            throw KTextTemplate::Exception(TagSyntaxError, QStringLiteral("Could not load scriptable tags library"));
+        }
     }
-#endif
 
     for (const QString &libName : std::as_const(d->m_defaultLibraries)) {
-        if (libName == QLatin1String(s_scriptableLibName))
+        if (libName == s_scriptableLibName) {
             continue;
+        }
 
         // already loaded by the engine.
-        if (d->m_libraries.contains(libName))
+        if (d->m_libraries.contains(libName)) {
             continue;
+        }
 
-#ifdef QT_QML_LIB
         // Although we don't use scripted libaries here, we need to
         // recognize them being first in the search path and not load a
         // c++ plugin of the same name in that case.
@@ -155,7 +143,6 @@ void Engine::loadDefaultLibraries()
             scriptableLibrary->clear();
             break;
         }
-#endif
 
         auto library = d->loadCppLibrary(libName);
         if (library) {
@@ -167,11 +154,6 @@ void Engine::loadDefaultLibraries()
 TagLibraryInterface *Engine::loadLibrary(const QString &name)
 {
     Q_D(Engine);
-
-#ifdef QT_QML_LIB
-    if (name == QLatin1String(s_scriptableLibName))
-        return nullptr;
-#endif
 
     // already loaded by the engine.
     if (d->m_libraries.contains(name))
@@ -187,22 +169,17 @@ TagLibraryInterface *Engine::loadLibrary(const QString &name)
 
 TagLibraryInterface *EnginePrivate::loadLibrary(const QString &name)
 {
-#ifdef QT_QML_LIB
     auto scriptableLibrary = loadScriptableLibrary(name);
-    if (scriptableLibrary)
+    if (scriptableLibrary) {
         return scriptableLibrary;
+    }
 
-// else this is not a scriptable library.
-#endif
-
+    // else this is not a scriptable library.
     return loadCppLibrary(name).data();
 }
 
 EnginePrivate::EnginePrivate(Engine *engine)
     : q_ptr(engine)
-#ifdef QT_QML_LIB
-    , m_scriptableTagLibrary(nullptr)
-#endif
     , m_smartTrimEnabled(false)
 {
 }
@@ -232,41 +209,33 @@ QString EnginePrivate::getScriptLibraryName(const QString &name) const
     return {};
 }
 
-#ifdef QT_QML_LIB
 ScriptableLibraryContainer *EnginePrivate::loadScriptableLibrary(const QString &name)
 {
-    if (!m_scriptableTagLibrary)
+    auto scriptableTagLibrary = m_libraries.value(s_scriptableLibName);
+    if (!scriptableTagLibrary) {
         return nullptr;
-
-#if 0
-  if ( !m_libraries.contains( s_scriptableLibName ) )
-    return 0;
-#endif
+    }
 
     const auto libFileName = getScriptLibraryName(name);
-
-    if (libFileName.isEmpty())
+    if (libFileName.isEmpty()) {
         return nullptr;
+    }
 
     const auto it = m_scriptableLibraries.constFind(libFileName);
     if (it != m_scriptableLibraries.constEnd()) {
         auto library = it.value();
-        library->setNodeFactories(m_scriptableTagLibrary->nodeFactories(libFileName));
-        library->setFilters(m_scriptableTagLibrary->filters(libFileName));
+        library->setNodeFactories(scriptableTagLibrary->nodeFactories(libFileName));
+        library->setFilters(scriptableTagLibrary->filters(libFileName));
         return library;
     }
-#if 0
-  PluginPointer<TagLibraryInterface> scriptableTagLibrary = m_libraries.value( s_scriptableLibName );
-#endif
 
-    const auto factories = m_scriptableTagLibrary->nodeFactories(libFileName);
-    const auto filters = m_scriptableTagLibrary->filters(libFileName);
+    const auto factories = scriptableTagLibrary->nodeFactories(libFileName);
+    const auto filters = scriptableTagLibrary->filters(libFileName);
 
     auto library = new ScriptableLibraryContainer(factories, filters);
     m_scriptableLibraries.insert(libFileName, library);
     return library;
 }
-#endif
 
 PluginPointer<TagLibraryInterface> EnginePrivate::loadCppLibrary(const QString &name)
 {

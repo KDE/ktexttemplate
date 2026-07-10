@@ -116,30 +116,6 @@ ecm_generate_headers(KTextTemplate_CamelCase_HEADERS
     REQUIRED_HEADERS KTextTemplate_HEADERS
 )
 
-if (Qt6Qml_FOUND)
-  set(scriptabletags_FILES
-    scriptablecontext.cpp
-    scriptablefilterexpression.cpp
-    scriptablenode.cpp
-    scriptableparser.cpp
-    scriptablesafestring.cpp
-    scriptabletags.cpp
-    scriptabletemplate.cpp
-    scriptablevariable.cpp
-    scriptablefilter.cpp
-    )
-
-  foreach(file ${scriptabletags_FILES})
-    list(APPEND scriptabletags_SRCS ${CMAKE_SOURCE_DIR}/src/scriptabletags/${file})
-  endforeach()
-
-  target_sources(KF6TextTemplate PRIVATE ${scriptabletags_SRCS})
-  target_include_directories(KF6TextTemplate PRIVATE ../scriptabletags)
-  target_link_libraries(KF6TextTemplate
-    PRIVATE Qt6::Qml
-  )
-endif()
-
 if (BUILD_TESTING)
   set(KTEXTTEMPLATE_TESTS_EXPORT "KTEXTTEMPLATE_EXPORT")
 endif()

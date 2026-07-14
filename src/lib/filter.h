@@ -12,6 +12,7 @@
 #ifndef KTEXTTEMPLATE_FILTER_H
 #define KTEXTTEMPLATE_FILTER_H
 
+#include "context.h"
 #include "ktexttemplate_export.h"
 #include "outputstream.h"
 #include "safestring.h"
@@ -22,6 +23,10 @@
 
 namespace KTextTemplate
 {
+
+class FilterExpression;
+class FilterPrivate;
+class ScriptableLibraryContainer;
 
 /*!
   \class KTextTemplate::Filter
@@ -46,6 +51,7 @@ namespace KTextTemplate
 class KTEXTTEMPLATE_EXPORT Filter
 {
 public:
+    explicit Filter();
     virtual ~Filter();
 
     /*!
@@ -58,35 +64,56 @@ public:
       Escapes and returns \a input. The OutputStream::escape method is used to
       escape \a input.
     */
-    SafeString escape(const QString &input) const;
+    [[nodiscard]] SafeString escape(const QString &input) const;
 
     /*!
       Escapes and returns \a input. The OutputStream::escape method is used to
       escape \a input.
     */
-    SafeString escape(const SafeString &input) const;
+    [[nodiscard]] SafeString escape(const SafeString &input) const;
 
     /*!
       Escapes \a input if not already safe from further escaping and returns it.
       The OutputStream::escape method is used to escape \a input.
     */
-    SafeString conditionalEscape(const SafeString &input) const;
+    [[nodiscard]] SafeString conditionalEscape(const SafeString &input) const;
 
+    // TODO KF7: pass context as an argument to doFilter, rather than holding it temporarily as a member
     /*!
       Reimplement to filter \a input given \a argument.
 
       \a autoescape determines whether the autoescape feature is currently on or
       off. Most filters will not use this.
     */
-    virtual QVariant doFilter(const QVariant &input, const QVariant &argument = {}, bool autoescape = {}) const = 0;
+    [[nodiscard]] virtual QVariant doFilter(const QVariant &input, const QVariant &argument = {}, bool autoescape = {}) const = 0;
 
     /*!
       Reimplement to return whether this filter is safe.
     */
-    virtual bool isSafe() const;
+    [[nodiscard]] virtual bool isSafe() const;
+
+    /*!
+       The context in which the filter is evaluated.
+       \warning Calling this is only valid from within doFilter itself!
+    */
+    [[nodiscard]] Context *context() const;
 
 private:
-    OutputStream *m_stream;
+    Q_DISABLE_COPY(Filter)
+    // TODO KF7 remove this
+    // this is needed as prior to KF 6.29 what became d below was uninitialized
+    // and the default ctor was inline, ie. older external subclasses would leave us
+    // with an uninitialized member variable here
+    friend class ParserPrivate;
+    friend class ScriptableLibraryContainer;
+    KTEXTTEMPLATE_NO_EXPORT void forgottenBaseCtorRemoveInKF7();
+
+    // TODO KF7 remove this if Context becomes an argument to doFilter
+    friend class FilterExpression;
+    KTEXTTEMPLATE_NO_EXPORT void setContext(Context *context);
+
+    // can become a std::unique_ptr in KF7, but not before due to the above issue
+    FilterPrivate *d_ptr = nullptr;
 };
 }
 

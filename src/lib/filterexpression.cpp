@@ -203,7 +203,9 @@ QVariant FilterExpression::resolve(OutputStream *stream, Context *c) const
 
         const auto varString = getSafeString(var);
 
+        filter->setContext(c);
         var = filter->doFilter(var, arg, c->autoEscape());
+        filter->setContext(nullptr);
 
         if (var.userType() == qMetaTypeId<KTextTemplate::SafeString>() || var.userType() == qMetaTypeId<QString>()) {
             if (filter->isSafe() && varString.isSafe()) {

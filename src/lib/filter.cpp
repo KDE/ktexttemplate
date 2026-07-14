@@ -11,33 +11,67 @@
 
 using namespace KTextTemplate;
 
-Filter::~Filter() = default;
+class KTextTemplate::FilterPrivate
+{
+public:
+    OutputStream *m_stream = nullptr;
+    Context *m_context = nullptr;
+};
+
+Filter::Filter() = default;
+Filter::~Filter()
+{
+    delete d_ptr;
+}
+
+void Filter::forgottenBaseCtorRemoveInKF7()
+{
+    d_ptr = nullptr;
+}
 
 void Filter::setStream(KTextTemplate::OutputStream *stream)
 {
-    m_stream = stream;
+    if (!d_ptr) {
+        d_ptr = new FilterPrivate;
+    }
+    d_ptr->m_stream = stream;
 }
 
 SafeString Filter::escape(const QString &input) const
 {
-    return m_stream->escape(input);
+    return d_ptr->m_stream->escape(input);
 }
 
 SafeString Filter::escape(const SafeString &input) const
 {
-    if (input.isSafe())
-        return {m_stream->escape(input), SafeString::IsSafe};
-    return m_stream->escape(input);
+    if (input.isSafe()) {
+        return {d_ptr->m_stream->escape(input), SafeString::IsSafe};
+    }
+    return d_ptr->m_stream->escape(input);
 }
 
 SafeString Filter::conditionalEscape(const SafeString &input) const
 {
-    if (!input.isSafe())
-        return m_stream->escape(input);
+    if (!input.isSafe()) {
+        return d_ptr->m_stream->escape(input);
+    }
     return input;
 }
 
 bool Filter::isSafe() const
 {
     return false;
+}
+
+Context *Filter::context() const
+{
+    return d_ptr ? d_ptr->m_context : nullptr;
+}
+
+void Filter::setContext(KTextTemplate::Context *context)
+{
+    if (!d_ptr) {
+        d_ptr = new FilterPrivate;
+    }
+    d_ptr->m_context = context;
 }

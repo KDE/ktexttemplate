@@ -65,10 +65,11 @@ void ParserPrivate::openLibrary(TagLibraryInterface *library)
         nodeIt.value()->setEngine(engine);
         m_nodeFactories.insert(nodeIt.key(), nodeIt.value());
     }
-    auto filters = library->filters();
-    for (auto filterIt = filters.begin(), filterEnd = filters.end(); filterIt != filterEnd; ++filterIt) {
-        auto f = QSharedPointer<Filter>(filterIt.value());
-        m_filters.insert(filterIt.key(), f);
+    const auto filters = library->filters();
+    for (const auto filterIt : filters.asKeyValueRange()) {
+        filterIt.second->forgottenBaseCtorRemoveInKF7();
+        auto f = QSharedPointer<Filter>(filterIt.second);
+        m_filters.insert(filterIt.first, f);
     }
 }
 

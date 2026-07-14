@@ -36,6 +36,9 @@ public:
 
     void setFilters(const QHash<QString, Filter *> &filters)
     {
+        for (const auto filter : filters) {
+            filter->forgottenBaseCtorRemoveInKF7();
+        }
         m_filters = filters;
     }
 

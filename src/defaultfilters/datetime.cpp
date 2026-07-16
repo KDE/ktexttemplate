@@ -13,6 +13,8 @@
 
 #include <QDateTime>
 
+using namespace Qt::Literals;
+
 QVariant timeSince(const QDateTime &early, const QDateTime &late)
 {
     Q_ASSERT(early.isValid());
@@ -81,12 +83,26 @@ QVariant DateFilter::doFilter(const QVariant &input, const QVariant &argument, b
         d = QDateTime::fromString(getSafeString(input), Qt::ISODateWithMs);
     }
 
-    auto argString = getSafeString(argument);
+    const QString argString = getSafeString(argument);
 
-    if (!argString.get().isEmpty())
-        return d.toString(argString);
+    // locale-specific format constants as defined in https://docs.djangoproject.com/en/6.0/ref/templates/builtins/#date
+    if (argString.isEmpty() || argString == "DATE_FORMAT"_L1) {
+        return context()->localizer()->localizeDate(d.date(), QLocale::LongFormat);
+    }
+    if (argString == "SHORT_DATE_FORMAT"_L1) {
+        return context()->localizer()->localizeDate(d.date(), QLocale::ShortFormat);
+    }
+    if (argString == "DATETIME_FORMAT"_L1) {
+        return context()->localizer()->localizeDateTime(d, QLocale::LongFormat);
+    }
+    if (argString == "SHORT_DATETIME_FORMAT"_L1) {
+        return context()->localizer()->localizeDateTime(d, QLocale::ShortFormat);
+    }
 
-    return d.toString(QStringLiteral("MMM. d, yyyy"));
+    // custom format
+    Q_ASSERT(!argString.isEmpty());
+    QLocale l(context()->localizer()->currentLocale());
+    return l.toString(d, argString);
 }
 
 QVariant TimeFilter::doFilter(const QVariant &input, const QVariant &argument, bool autoescape) const
@@ -103,8 +119,15 @@ QVariant TimeFilter::doFilter(const QVariant &input, const QVariant &argument, b
         d = QDateTime::fromString(getSafeString(input), Qt::ISODateWithMs);
     }
 
-    auto argString = getSafeString(argument);
-    return d.toString(argString);
+    const QString argString = getSafeString(argument);
+
+    if (argString.isEmpty() || argString == "TIME_FORMAT"_L1) {
+        return context()->localizer()->localizeTime(d.time(), QLocale::ShortFormat);
+    }
+
+    Q_ASSERT(!argString.isEmpty());
+    QLocale l(context()->localizer()->currentLocale());
+    return l.toString(d.time(), argString);
 }
 
 QVariant TimeSinceFilter::doFilter(const QVariant &input, const QVariant &argument, bool autoescape) const

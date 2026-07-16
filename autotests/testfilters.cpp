@@ -18,8 +18,11 @@
 #include "context.h"
 #include "engine.h"
 #include "ktexttemplate_paths.h"
+#include "qtlocalizer.h"
 #include "template.h"
 #include <util.h>
+
+using namespace Qt::Literals;
 
 using Dict = QHash<QString, QVariant>;
 
@@ -90,6 +93,8 @@ void TestFilters::initTestCase()
         QStringLiteral(KTEXTTEMPLATE_PLUGIN_PATH),
         appDirPath + QStringLiteral("/tests/") // For testtags.qs
     });
+
+    m_engine->addDefaultLibrary(u"ktexttemplate_i18ntags"_s); // for with_locale for testing date/time filters
 }
 
 void TestFilters::cleanupTestCase()
@@ -107,6 +112,7 @@ void TestFilters::doTest()
     auto t = m_engine->newTemplate(input, QLatin1String(QTest::currentDataTag()));
 
     Context context(dict);
+    context.setLocalizer(QSharedPointer<AbstractLocalizer>(new QtLocalizer(QLocale(QLocale::English, QLocale::UnitedStates))));
 
     auto result = t->render(&context);
 
@@ -332,11 +338,29 @@ void TestFilters::testDateBasedFilters_data()
     dict.insert(QStringLiteral("d"), d);
 
     QTest::newRow("date01") << "{{ d|date:\"MM\" }}" << dict << QStringLiteral("01") << NoError;
-    QTest::newRow("date02") << QStringLiteral("{{ d|date }}") << dict << d.toString(QStringLiteral("MMM. d, yyyy")) << NoError;
+    QTest::newRow("date02") << QStringLiteral("{{ d|date }}") << dict << QLocale(u"en_US"_s).toString(d.date(), QLocale::LongFormat) << NoError;
+    QTest::newRow("date03") << "{{ d|date:\"MMMM\" }}" << dict << u"January"_s << NoError;
+    QTest::newRow("date04") << "{{ d|date:\"SHORT_DATE_FORMAT\" }}" << dict << u"1/1/08"_s << NoError;
+    QTest::newRow("date05") << "{{ d|date:\"SHORT_DATETIME_FORMAT\" }}" << dict << u"1/1/08 12:00\u202fAM"_s << NoError;
 
     dict.clear();
     dict.insert(QStringLiteral("d"), QStringLiteral("fail_string"));
-    QTest::newRow("date03") << "{{ d|date:\"MM\" }}" << dict << QString() << NoError;
+    QTest::newRow("date06") << "{{ d|date:\"MM\" }}" << dict << QString() << NoError;
+
+    dict.clear();
+    dict.insert(u"d"_s, QDate{2026, 7, 14});
+    QTest::newRow("date07") << u"{% with_locale \"de_DE\" %}{{ d|date:\"SHORT_DATE_FORMAT\" }}{% endwith_locale %}"_s << dict << u"14.07.26"_s << NoError;
+    QTest::newRow("date08") << u"{% with_locale \"de_DE\" %}{{ d|date }}{% endwith_locale %}"_s << dict << u"Dienstag, 14. Juli 2026"_s << NoError;
+    QTest::newRow("date09") << u"{% with_locale \"de_DE\" %}{{ d|date:\"DATE_FORMAT\" }}{% endwith_locale %}"_s << dict << u"Dienstag, 14. Juli 2026"_s
+                            << NoError;
+    QTest::newRow("date10") << u"{% with_locale \"de_DE\" %}{{ d|date:\"MMMM\" }}{% endwith_locale %}"_s << dict << u"Juli"_s << NoError;
+
+    dict.clear();
+    dict.insert(u"t"_s, QTime{13, 24, 56});
+    QTest::newRow("time01") << u"{{ t|time }}"_s << dict << u"1:24\u202fPM"_s << NoError;
+    QTest::newRow("time02") << u"{{ t|time:\"H'h'mm\" }}"_s << dict << u"13h24"_s << NoError;
+    QTest::newRow("time03") << u"{% with_locale \"de_DE\" %}{{ t|time }}{% endwith_locale %}"_s << dict << u"13:24"_s << NoError;
+    QTest::newRow("time04") << u"{% with_locale \"de_DE\" %}{{ t|time:\"TIME_FORMAT\" }}{% endwith_locale %}"_s << dict << u"13:24"_s << NoError;
 }
 
 void TestFilters::testStringFilters_data()

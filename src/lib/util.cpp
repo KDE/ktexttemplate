@@ -11,6 +11,8 @@
 
 #include "metaenumvariable_p.h"
 
+#include <QAssociativeIterable>
+#include <QSequentialIterable>
 #include <QStringList>
 
 QString KTextTemplate::unescapeStringLiteral(const QString &input)
@@ -66,6 +68,16 @@ bool KTextTemplate::variantIsTrue(const QVariant &variant)
     case QMetaType::QVariantHash: {
         return !variant.value<QVariantHash>().isEmpty();
     }
+    }
+
+    // consider any non-empty generic container also "true", like the specific vairant types
+    if (variant.canConvert<QVariantList>()) {
+        const auto iterable = variant.value<QSequentialIterable>();
+        return iterable.begin() != iterable.end();
+    }
+    if (variant.canConvert<QVariantHash>()) {
+        const auto iterable = variant.value<QAssociativeIterable>();
+        return iterable.begin() != iterable.end();
     }
 
     return !getSafeString(variant).get().isEmpty();

@@ -19,6 +19,8 @@
 #include "template.h"
 #include "util.h"
 
+using namespace Qt::Literals;
+
 using Table = QList<QVariantList>;
 using Dict = QHash<QString, QVariant>;
 using StringPair = std::pair<QString, QString>;
@@ -887,6 +889,12 @@ void TestDefaultTags::testIfTag_data()
     f = 7.1;
     dict.insert(QStringLiteral("var"), f);
     QTest::newRow("if-truthiness12") << QStringLiteral("{% if var %}Yes{% else %}No{% endif %}") << dict << QStringLiteral("Yes") << NoError;
+
+    // generic containers
+    dict.insert(u"nostrings"_s, QStringList());
+    dict.insert(u"strings"_s, QStringList({u"foo"_s}));
+    QTest::newRow("if-thruthiness13") << u"{% if nostrings %}Yes{% else %}No{% endif %}"_s << dict << u"No"_s << NoError;
+    QTest::newRow("if-thruthiness14") << u"{% if strings %}Yes{% else %}No{% endif %}"_s << dict << u"Yes"_s << NoError;
 
     dict.clear();
     QTest::newRow("if-tag-badarg01") << QStringLiteral("{% if x|default_if_none:y %}yes{% endif %}") << dict << QString() << NoError;

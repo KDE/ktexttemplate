@@ -1,6 +1,3 @@
-
-include(CMakeParseArguments)
-
 macro(ktexttemplate_adjust_plugin_name pluginname)
   set_target_properties(${pluginname}
     PROPERTIES PREFIX ""

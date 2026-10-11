@@ -51,7 +51,7 @@ public:
     /*!
       Constructs a new QtLocalizer using the \a locale
     */
-    QtLocalizer(const QLocale &locale = QLocale::system());
+    QtLocalizer(const QLocale &locale = QLocale());
 
     ~QtLocalizer() override;
 
@@ -79,7 +79,7 @@ public:
         de_localizer->installTranslator(deTranslator, "de_DE");
       \endcode
      */
-    void installTranslator(QTranslator *translator, const QString &localeName = QLocale::system().name());
+    void installTranslator(QTranslator *translator, const QString &localeName = QLocale().name());
 
     QString currentLocale() const override;
     void pushLocale(const QString &localeName) override;

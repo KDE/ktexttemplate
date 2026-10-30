@@ -30,7 +30,6 @@ class TemplatePrivate
     {
     }
 
-    void parse();
     NodeList compileString(const QString &str);
     void setError(Error type, const QString &message) const;
 

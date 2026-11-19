@@ -305,8 +305,10 @@ void QtLocalizer::loadCatalog(const QString &path, const QString &catalog)
     for (; it != end; ++it) {
         auto translator = new QTranslator();
         const auto loaded = translator->load(it.key() + QLatin1Char('/') + catalog, path);
-        if (!loaded)
+        if (!loaded) {
+            delete translator;
             continue;
+        }
 
         translator->setObjectName(catalog);
 

@@ -18,6 +18,7 @@
 #include "outputstream.h"
 #include "safestring.h"
 
+#include <QObject>
 #include <QStringList>
 
 // Need these for inheriting from QList<T> to work
